@@ -1,0 +1,19 @@
+[remap]
+
+importer="wavefront_obj"
+type="Mesh"
+path="res://.import/discil_main.obj-d8c638d61ba91ea4fe2364c2dc972830.mesh"
+
+[deps]
+
+files=[ "res://.import/discil_main.obj-d8c638d61ba91ea4fe2364c2dc972830.mesh" ]
+
+source_file="res://objects/models/discil_main.obj"
+dest_files=[ "res://.import/discil_main.obj-d8c638d61ba91ea4fe2364c2dc972830.mesh", "res://.import/discil_main.obj-d8c638d61ba91ea4fe2364c2dc972830.mesh" ]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3( 1, 1, 1 )
+offset_mesh=Vector3( 0, 0, 0 )
+optimize_mesh=true

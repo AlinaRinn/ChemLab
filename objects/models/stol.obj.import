@@ -1,0 +1,19 @@
+[remap]
+
+importer="wavefront_obj"
+type="Mesh"
+path="res://.import/stol.obj-f0cc3ae6c4a66220dd41f91aacb96daa.mesh"
+
+[deps]
+
+files=[ "res://.import/stol.obj-f0cc3ae6c4a66220dd41f91aacb96daa.mesh" ]
+
+source_file="res://objects/models/stol.obj"
+dest_files=[ "res://.import/stol.obj-f0cc3ae6c4a66220dd41f91aacb96daa.mesh", "res://.import/stol.obj-f0cc3ae6c4a66220dd41f91aacb96daa.mesh" ]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3( 1, 1, 1 )
+offset_mesh=Vector3( 0, 0, 0 )
+optimize_mesh=true

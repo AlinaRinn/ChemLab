@@ -1,0 +1,226 @@
+[gd_scene load_steps=23 format=2]
+
+[ext_resource path="res://objects/complite/static/wall_shot.tscn" type="PackedScene" id=1]
+[ext_resource path="res://objects/complite/static/floor.tscn" type="PackedScene" id=2]
+[ext_resource path="res://objects/complite/static/wall_long.tscn" type="PackedScene" id=3]
+[ext_resource path="res://objects/complite/static/roof.tscn" type="PackedScene" id=4]
+[ext_resource path="res://objects/complite/interactive/door.tscn" type="PackedScene" id=5]
+[ext_resource path="res://objects/complite/static/table.tscn" type="PackedScene" id=6]
+[ext_resource path="res://objects/complite/static/hood.tscn" type="PackedScene" id=7]
+[ext_resource path="res://objects/complite/static/mendeleev.tscn" type="PackedScene" id=8]
+[ext_resource path="res://objects/complite/static/holder.tscn" type="PackedScene" id=9]
+[ext_resource path="res://objects/complite/interactive/flask.tscn" type="PackedScene" id=10]
+[ext_resource path="res://objects/complite/interactive/notebook.tscn" type="PackedScene" id=11]
+[ext_resource path="res://objects/complite/static/long_tube.tscn" type="PackedScene" id=12]
+[ext_resource path="res://objects/complite/static/book_1.tscn" type="PackedScene" id=13]
+[ext_resource path="res://objects/complite/static/conditioner.tscn" type="PackedScene" id=14]
+[ext_resource path="res://objects/complite/static/board.tscn" type="PackedScene" id=15]
+[ext_resource path="res://objects/complite/static/book_2.tscn" type="PackedScene" id=16]
+[ext_resource path="res://objects/complite/interactive/burner.tscn" type="PackedScene" id=17]
+[ext_resource path="res://objects/target.tscn" type="PackedScene" id=18]
+[ext_resource path="res://objects/complite/interactive/distiller.tscn" type="PackedScene" id=19]
+[ext_resource path="res://objects/complite/static/shelf.tscn" type="PackedScene" id=20]
+[ext_resource path="res://objects/complite/interactive/bottle.tscn" type="PackedScene" id=21]
+[ext_resource path="res://objects/complite/interactive/flask_2.tscn" type="PackedScene" id=22]
+
+[node name="Main" type="Spatial"]
+
+[node name="floors" type="Spatial" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 8.01086e-05, -0.000982046, -0.000324726 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="floor" parent="floors" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.775624, 0 )
+
+[node name="floor2" parent="floors" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 12.1115, -0.775624, 0 )
+
+[node name="walls" type="Spatial" parent="."]
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="wall" parent="walls" instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 18.1054, 0, 0 )
+
+[node name="wall2" parent="walls" instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -5.6741, 0, 0 )
+
+[node name="wallsh" parent="walls" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -8.22448 )
+
+[node name="wallsh2" parent="walls" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 12.5465, 0, -8.22448 )
+
+[node name="wallsh4" parent="walls" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 8.17034 )
+
+[node name="wallsh3" parent="walls" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 12.5465, 0, 8.17034 )
+
+[node name="roofs" type="Spatial" parent="."]
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Spatial" parent="roofs" instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8.4014, 0 )
+
+[node name="Spatial2" parent="roofs" instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 12.0954, 8.4014, 0 )
+
+[node name="others" type="Spatial" parent="."]
+
+[node name="Spatial" parent="others" instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -5.49819, 0.264481, 1.45195 )
+
+[node name="Spatial2" parent="others" instance=ExtResource( 6 )]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.250247, 0.306923, -6.6123 )
+
+[node name="Spatial3" parent="others" instance=ExtResource( 6 )]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 4.36924, 0.306902, -6.61232 )
+
+[node name="Spatial4" parent="others" instance=ExtResource( 6 )]
+transform = Transform( 1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, 13.6607, 0.306923, 6.5234 )
+
+[node name="Spatial5" parent="others" instance=ExtResource( 7 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 16.4319, 0.0297137, -2.76071 )
+
+[node name="Spatial6" parent="others" instance=ExtResource( 12 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.36015, 6.5855, -7.39014 )
+
+[node name="Spatial9" parent="others" instance=ExtResource( 12 )]
+transform = Transform( -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -4.88495, -1.65735, -7.39014 )
+
+[node name="Spatial8" parent="others" instance=ExtResource( 12 )]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -4.8912, 6.56277, 0.839668 )
+
+[node name="Spatial7" parent="others" instance=ExtResource( 12 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 18.592, 6.5855, -7.39014 )
+
+[node name="Spatial10" parent="others" instance=ExtResource( 14 )]
+transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -1.58555, 5.89495, 7.46854 )
+
+[node name="Spatial11" parent="others" instance=ExtResource( 15 )]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 11.1932, 2.15103, -8.1095 )
+
+[node name="Spatial12" parent="others" instance=ExtResource( 19 )]
+transform = Transform( 1, 0, -8.9407e-08, 0, 1, 0, 8.9407e-08, 0, 1, -3.55717, 3.21209, -1.80439 )
+
+[node name="Spatial13" parent="others" instance=ExtResource( 6 )]
+transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -3.85439, 0.475899, -2.53929 )
+
+[node name="Spatial14" parent="others" instance=ExtResource( 20 )]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -0.284925, 2.2298, -7.29399 )
+
+[node name="Bottle" parent="others/Spatial14" instance=ExtResource( 21 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0306711, 1.88561, 1.27428 )
+
+[node name="Bottle2" parent="others/Spatial14" instance=ExtResource( 21 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.170469, 1.88561, 0.743261 )
+
+[node name="Bottle3" parent="others/Spatial14" instance=ExtResource( 21 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0440907, 1.88561, -0.235379 )
+
+[node name="Bottle4" parent="others/Spatial14" instance=ExtResource( 21 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00233507, 0.956308, 0.59095 )
+
+[node name="Bottle5" parent="others/Spatial14" instance=ExtResource( 21 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0726342, 0.956308, -0.925476 )
+
+[node name="Bottle6" parent="others/Spatial14" instance=ExtResource( 21 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.330531, 0.956308, -1.50851 )
+
+[node name="Spatial15" parent="others" instance=ExtResource( 20 )]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 4.19006, 2.2298, -7.29399 )
+
+[node name="Bottle" parent="others/Spatial15" instance=ExtResource( 21 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0920434, 0.956308, 1.31937 )
+
+[node name="Bottle2" parent="others/Spatial15" instance=ExtResource( 21 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0103884, 0.956308, 0.825899 )
+
+[node name="Bottle3" parent="others/Spatial15" instance=ExtResource( 21 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.12992, 1.88561, -0.711114 )
+
+[node name="staffs" type="Spatial" parent="."]
+
+[node name="Spatial" parent="staffs" instance=ExtResource( 8 )]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 5.48298, 3.37457, 8.07273 )
+
+[node name="Spatial2" parent="staffs" instance=ExtResource( 10 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 14.5503, 2.52172, 6.48916 )
+
+[node name="Spatial3" parent="staffs" instance=ExtResource( 10 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 14.9025, 2.51954, 6.49631 )
+
+[node name="Spatial4" parent="staffs" instance=ExtResource( 9 )]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 14.8919, 2.29459, 6.4758 )
+
+[node name="Spatial10" parent="staffs" instance=ExtResource( 10 )]
+transform = Transform( 0.253606, 0, -0.967308, 0, 1, 0, 0.967308, 0, 0.253606, 15.9874, 2.52172, -3.52441 )
+level_1 = "w"
+level_2 = "w"
+level_3 = "w"
+
+[node name="Spatial9" parent="staffs" instance=ExtResource( 10 )]
+transform = Transform( 0.253606, 0, -0.967308, 0, 1, 0, 0.967308, 0, 0.253606, 16.1574, 2.51954, -2.85764 )
+
+[node name="Spatial8" parent="staffs" instance=ExtResource( 9 )]
+transform = Transform( 0.967308, 0, 0.253606, 0, 1, 0, -0.253606, 0, 0.967308, 16.0869, 2.29459, -3.19737 )
+
+[node name="Spatial15" parent="staffs" instance=ExtResource( 10 )]
+transform = Transform( 0.910265, 0, 0.414026, 0, 1, 0, -0.414026, 0, 0.910265, 2.83714, 2.52172, -6.00234 )
+
+[node name="flask_9" parent="staffs" instance=ExtResource( 10 )]
+transform = Transform( 0.967308, 0, 0.253606, 0, 1, 0, -0.253606, 0, 0.967308, 0.399841, 2.51641, -5.32112 )
+level_1 = "1"
+
+[node name="flask_10" parent="staffs" instance=ExtResource( 10 )]
+transform = Transform( 0.967308, 0, 0.253606, 0, 1, 0, -0.253606, 0, 0.967308, 0.89206, 2.52172, -5.75038 )
+level_1 = "1"
+level_2 = "1"
+level_3 = "2"
+
+[node name="Spatial13" parent="staffs" instance=ExtResource( 9 )]
+transform = Transform( -0.414026, 0, 0.910265, 0, 1, 0, -0.910265, 0, -0.414026, 3.14255, 2.29459, -6.15593 )
+
+[node name="Spatial5" parent="staffs" instance=ExtResource( 11 )]
+transform = Transform( -0.360095, 0, -0.932916, 0, 1, 0, 0.932916, 0, -0.360095, 12.5722, 2.10609, 6.13785 )
+note_number = "3"
+
+[node name="Spatial6" parent="staffs" instance=ExtResource( 11 )]
+transform = Transform( -0.861151, 0, -0.50835, 0, 1, 0, 0.50835, 0, -0.861151, 15.4476, 2.10609, -1.63524 )
+note_number = "2"
+note_other = "Тема политкорректных высказываний в Московском метрополитене"
+
+[node name="Spatial11" parent="staffs" instance=ExtResource( 13 )]
+transform = Transform( 0.77686, 0, 0.629673, 0, 1, 0, -0.629673, 0, 0.77686, -1.60423, 2.32115, -6.18138 )
+
+[node name="Spatial14" parent="staffs" instance=ExtResource( 13 )]
+transform = Transform( 0.955428, 0, -0.295225, 0, 1, 0, 0.295225, 0, 0.955428, 0.56983, 2.32115, -7.21976 )
+
+[node name="Spatial12" parent="staffs" instance=ExtResource( 16 )]
+transform = Transform( 0.363089, 0, 0.931755, 0, 1, 0, -0.931755, 0, 0.363089, -1.60175, 2.47342, -6.14109 )
+
+[node name="Spatial16" parent="staffs" instance=ExtResource( 17 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4.62838, 2.26228, -5.85034 )
+burn_other = "Температура данной горелки: 100"
+
+[node name="Spatial17" parent="staffs" instance=ExtResource( 17 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 13.3202, 2.26228, 7.05166 )
+
+[node name="Spatial7" parent="staffs" instance=ExtResource( 11 )]
+transform = Transform( 0.872973, 0, 0.487768, 0, 1, 0, -0.487768, 0, 0.872973, 5.75052, 2.18368, -5.76084 )
+note_number = "1"
+note_other = "Журнал по теме бромирование ацетилена в общественном транспорте"
+
+[node name="secret" parent="." instance=ExtResource( 18 )]
+transform = Transform( 0.439218, 0, 0, 0, 0.220474, 0, 0, 0, 0.286154, -5.04769, 0.639532, 8.03165 )
+target_name = "Тортик это ложь"
+target_id = "10900"
+
+[node name="flask" parent="." instance=ExtResource( 22 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.39083, 2.37239, -5.33202 )

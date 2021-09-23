@@ -1,0 +1,19 @@
+[remap]
+
+importer="wavefront_obj"
+type="Mesh"
+path="res://.import/gorelka.obj-1519fb17f9537f81458cbb6eb606d246.mesh"
+
+[deps]
+
+files=[ "res://.import/gorelka.obj-1519fb17f9537f81458cbb6eb606d246.mesh" ]
+
+source_file="res://objects/models/gorelka.obj"
+dest_files=[ "res://.import/gorelka.obj-1519fb17f9537f81458cbb6eb606d246.mesh", "res://.import/gorelka.obj-1519fb17f9537f81458cbb6eb606d246.mesh" ]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3( 1, 1, 1 )
+offset_mesh=Vector3( 0, 0, 0 )
+optimize_mesh=true
