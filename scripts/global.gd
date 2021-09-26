@@ -29,3 +29,4 @@ func load_notes():
 
 func blank_notes():
 	root_game.get_node('notebook').remove_child(active_note)
+

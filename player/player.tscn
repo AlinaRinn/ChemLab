@@ -46,7 +46,7 @@ func _physics_process(delta):
 	var pl = Vector3()
 	
 	if Input.is_action_just_pressed(\"ui_cancel\"):
-		get_tree().quit()
+		G.to('main_menu')
 	
 	if Input.is_action_pressed(\"ui_left\"):
 		pl.x = -1
