@@ -16,6 +16,10 @@ var temp_object = null
 
 var player
 
+func pause(p=true):
+	get_tree().paused = p
+	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED if p else Input.MOUSE_MODE_VISIBLE)
+
 func to(scene):
 	get_tree().change_scene("res://scenes/"+scene+".tscn")
 

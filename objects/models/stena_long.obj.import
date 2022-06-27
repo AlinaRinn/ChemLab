@@ -16,4 +16,5 @@ dest_files=[ "res://.import/stena_long.obj-5f4ae95ec3af2c1e8d2b1979d680551f.mesh
 generate_tangents=true
 scale_mesh=Vector3( 1, 1, 1 )
 offset_mesh=Vector3( 0, 0, 0 )
-optimize_mesh=true
+octahedral_compression=true
+optimize_mesh_flags=4286

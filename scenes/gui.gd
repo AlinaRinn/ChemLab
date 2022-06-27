@@ -2,7 +2,7 @@ extends Control
 
 func set_target_name(name, other):
 	$target_name.text = name
-	$target_other.text = other
+	$target_other.text = ''
 
 func _physics_process(delta):
 	if !G.target_object:
