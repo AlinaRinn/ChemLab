@@ -24,7 +24,6 @@ shape = SubResource( 1 )
 [node name="tetrad" type="MeshInstance" parent="notebook/CollisionShape"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.99564, -3.30574, 4.83777 )
 mesh = ExtResource( 1 )
-material/0 = null
 material/1 = SubResource( 2 )
 
 [node name="target" parent="." instance=ExtResource( 2 )]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=2]
+[gd_scene load_steps=21 format=2]
 
 [ext_resource path="res://objects/complite/static/wall_shot.tscn" type="PackedScene" id=1]
 [ext_resource path="res://objects/complite/static/floor.tscn" type="PackedScene" id=2]
@@ -17,7 +17,6 @@
 [ext_resource path="res://objects/complite/static/board.tscn" type="PackedScene" id=15]
 [ext_resource path="res://objects/complite/static/book_2.tscn" type="PackedScene" id=16]
 [ext_resource path="res://objects/complite/interactive/burner.tscn" type="PackedScene" id=17]
-[ext_resource path="res://objects/target.tscn" type="PackedScene" id=18]
 [ext_resource path="res://objects/complite/interactive/distiller.tscn" type="PackedScene" id=19]
 [ext_resource path="res://objects/complite/static/shelf.tscn" type="PackedScene" id=20]
 [ext_resource path="res://objects/complite/interactive/bottle.tscn" type="PackedScene" id=21]
@@ -213,8 +212,3 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 13.3202, 2.26228, 7.05166 )
 transform = Transform( 0.872973, 0, 0.487768, 0, 1, 0, -0.487768, 0, 0.872973, 5.13897, 2.18368, -5.72482 )
 note_number = "1"
 note_other = "Журнал по теме бромирование ацетилена в общественном транспорте"
-
-[node name="secret" parent="." instance=ExtResource( 18 )]
-transform = Transform( 0.439218, 0, 0, 0, 0.220474, 0, 0, 0, 0.286154, -5.04769, 0.639532, 8.03165 )
-target_name = "Тортик это ложь"
-target_id = "10900"
