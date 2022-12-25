@@ -16,7 +16,8 @@ _global_script_class_icons={
 
 config/name="chemical_laboratory"
 run/main_scene="res://scenes/main_menu.tscn"
-boot_splash/image="res://images/Main_screen_art_1.png"
+boot_splash/image="res://images/start_screen.png"
+boot_splash/bg_color=Color( 0.141176, 0.141176, 0.141176, 1 )
 config/icon="res://icon.png"
 
 [autoload]
@@ -28,6 +29,7 @@ G="*res://scripts/global.gd"
 window/size/width=1920
 window/size/height=1080
 window/size/fullscreen=true
+window/stretch/mode="2d"
 
 [input]
 

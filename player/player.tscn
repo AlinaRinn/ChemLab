@@ -124,7 +124,6 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.22945, -0.453396, -2 )
 transform = Transform( 0.03, 0, 0, 0, 0.03, 0, 0, 0, 0.03, 0, 0, 0 )
 visible = false
 mesh = SubResource( 3 )
-material/0 = null
 
 [node name="Area" type="Area" parent="head"]
 transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0 )

@@ -29,10 +29,10 @@ anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = -620.0
-margin_top = -305.0
-margin_right = -420.0
-margin_bottom = -230.0
+margin_left = -608.0
+margin_top = -319.0
+margin_right = -408.0
+margin_bottom = -244.0
 text = "skip"
 script = SubResource( 1 )
 
@@ -59,8 +59,8 @@ margin_bottom = 107.5
 
 [node name="text" type="Label" parent="cut/ColorRect/scroll"]
 margin_right = 967.0
-margin_bottom = 31.0
+margin_bottom = 14.0
 size_flags_horizontal = 3
 custom_colors/font_color = Color( 0.866667, 0.780392, 0.780392, 1 )
-text = "some text some text some text some text some text some text some text some text some text some text some text some text some text some text some text some text some text some text some text some text some text some text "
+text = "Welcome to the lab, buddy!"
 autowrap = true

@@ -105,10 +105,6 @@ anchor_top = 1.0
 anchor_bottom = 1.0
 margin_top = -84.0
 margin_right = 242.0
-text = "MUCTR chemical laboratory
-developed by Ilya Basisty"
+text = "MUCTR chemical laboratory"
 align = 1
 valign = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
