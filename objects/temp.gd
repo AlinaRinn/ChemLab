@@ -13,7 +13,7 @@ func action():
 			'temp' : area_temp
 		}
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	if temp_active:
 		#$mesh.visible = true
 		$target.target_name = str(area_temp)

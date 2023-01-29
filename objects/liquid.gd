@@ -13,7 +13,7 @@ func action():
 			'temp' : liquid
 		}
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	if liquid_active:
 		#$mesh.visible = true
 		$target.target_name = str(liquid)

@@ -1,0 +1,35 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://objects/collide.tscn" type="PackedScene" id=1]
+[ext_resource path="res://assets/textures/pltstol.jpg" type="Texture" id=2]
+[ext_resource path="res://assets/textures/gofr.jpg" type="Texture" id=3]
+[ext_resource path="res://assets/models/vitazhka.obj" type="ArrayMesh" id=4]
+
+
+[sub_resource type="SpatialMaterial" id=1]
+
+[sub_resource type="SpatialMaterial" id=2]
+albedo_color = Color( 0.776471, 0.776471, 0.776471, 1 )
+metallic = 1.0
+
+[sub_resource type="SpatialMaterial" id=3]
+albedo_texture = ExtResource( 2 )
+
+[sub_resource type="SpatialMaterial" id=4]
+albedo_texture = ExtResource( 3 )
+
+[node name="Spatial" type="Spatial"]
+
+[node name="vitazhka" type="MeshInstance" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -7.71095, -0.923472, 8.88438 )
+mesh = ExtResource( 4 )
+material/0 = SubResource( 1 )
+material/1 = SubResource( 2 )
+material/2 = SubResource( 3 )
+material/3 = SubResource( 4 )
+
+[node name="Spatial" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1.7526, 0, 0, 0, 1.17155, 0, 0, 0, 2.30144, 0, 0.893219, -0.178046 )
+
+[node name="Spatial2" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1.8827, 0, 0, 0, 0.361552, 0, 0, 0, 2.43869, 0, 4.36562, -0.178046 )
