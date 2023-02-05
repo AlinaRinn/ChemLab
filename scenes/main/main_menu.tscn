@@ -2,7 +2,7 @@
 
 [ext_resource path="res://assets/images/menu_background.png" type="Texture" id=1]
 [ext_resource path="res://scenes/main/continue.gd" type="Script" id=2]
-[ext_resource path="res://scenes/main/lab_3.gd" type="Script" id=3]
+[ext_resource path="res://scenes/main/exit.gd" type="Script" id=3]
 [ext_resource path="res://assets/fonts/font_1.otf" type="DynamicFontData" id=4]
 
 [sub_resource type="GDScript" id=1]
@@ -65,9 +65,6 @@ margin_top = 64.0
 margin_right = 448.0
 margin_bottom = 128.0
 script = SubResource( 2 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="ColorRect" type="ColorRect" parent="main/menu/lab_1"]
 anchor_right = 1.0
@@ -84,7 +81,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 15.0
 custom_fonts/font = SubResource( 3 )
-text = "Лаборатория 1 (тестовая)"
+text = "Лаборатория 1"
 valign = 1
 __meta__ = {
 "_edit_lock_": true,
@@ -97,9 +94,6 @@ margin_top = 160.0
 margin_right = 448.0
 margin_bottom = 224.0
 script = ExtResource( 2 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="ColorRect2" type="ColorRect" parent="main/menu/lab_2"]
 anchor_right = 1.0
@@ -161,9 +155,6 @@ margin_top = 895.0
 margin_right = 448.0
 margin_bottom = 959.0
 script = ExtResource( 3 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="ColorRect2" type="ColorRect" parent="main/menu/exit2"]
 anchor_right = 1.0

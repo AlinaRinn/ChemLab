@@ -1,6 +1,11 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://assets/images/menu_background.png" type="Texture" id=1]
+[ext_resource path="res://assets/fonts/font_6.ttf" type="DynamicFontData" id=2]
+
+[sub_resource type="DynamicFont" id=3]
+size = 40
+font_data = ExtResource( 2 )
 
 [sub_resource type="GDScript" id=1]
 script/source = "extends Button
@@ -8,6 +13,10 @@ script/source = "extends Button
 func _pressed():
 	G.to('game')
 "
+
+[sub_resource type="DynamicFont" id=2]
+size = 50
+font_data = ExtResource( 2 )
 
 [node name="cut_scene" type="Node"]
 
@@ -33,6 +42,7 @@ margin_left = -608.0
 margin_top = -319.0
 margin_right = -408.0
 margin_bottom = -244.0
+custom_fonts/font = SubResource( 3 )
 text = "skip"
 script = SubResource( 1 )
 
@@ -59,8 +69,10 @@ margin_bottom = 107.5
 
 [node name="text" type="Label" parent="cut/ColorRect/scroll"]
 margin_right = 967.0
-margin_bottom = 14.0
+margin_bottom = 44.0
 size_flags_horizontal = 3
 custom_colors/font_color = Color( 0.866667, 0.780392, 0.780392, 1 )
+custom_fonts/font = SubResource( 2 )
 text = "Welcome to the lab, buddy!"
+align = 1
 autowrap = true
