@@ -18,7 +18,7 @@ material/0 = ExtResource( 2 )
 transform = Transform( -3.54033e-07, 307.613, -0.000526584, -3.55774, -5.90642e-06, 1.01108e-11, 0, -0.000231309, 503.547, -0.759216, 6.1954, 6.10352e-05 )
 
 [node name="Box002" parent="Room" index="1"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -306.235, -133.854, -0.564209 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -305.115, -135.296, -0.564209 )
 material/0 = ExtResource( 5 )
 
 [node name="Spatial" parent="Room/Box002" index="0" instance=ExtResource( 6 )]
