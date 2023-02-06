@@ -1,10 +1,13 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://objects/static/room.tscn" type="PackedScene" id=1]
 [ext_resource path="res://objects/static/lamp.tscn" type="PackedScene" id=2]
 [ext_resource path="res://objects/static/chair.tscn" type="PackedScene" id=3]
 [ext_resource path="res://assets/models/distiller.obj" type="ArrayMesh" id=4]
 [ext_resource path="res://objects/static/window.tscn" type="PackedScene" id=5]
+[ext_resource path="res://assets/materials/plastic_black.material" type="Material" id=6]
+[ext_resource path="res://assets/materials/glass_gray.material" type="Material" id=7]
+[ext_resource path="res://objects/static/door.tscn" type="PackedScene" id=8]
 
 [node name="level_area" type="Spatial"]
 
@@ -21,6 +24,9 @@ transform = Transform( 0.06075, 0, 1.12902e-08, 0, 0.0530739, 0, -1.12902e-08, 0
 
 [node name="window4" parent="room" instance=ExtResource( 5 )]
 transform = Transform( 0.06075, 0, 1.12902e-08, 0, 0.0530739, 0, -1.12902e-08, 0, 0.0683951, 15.4533, 3.94156, -17.9182 )
+
+[node name="door" parent="room" instance=ExtResource( 8 )]
+transform = Transform( -1.03531e-07, 0, -2.36852, 0, 2.44842, 0, 1.749, 0, -7.64512e-08, -2.0096, 0.488957, 6.64957 )
 
 [node name="light" type="Spatial" parent="."]
 
@@ -58,3 +64,5 @@ transform = Transform( -0.75, 0, -6.55671e-08, 0, 0.75, 0, 6.55671e-08, 0, -0.75
 transform = Transform( -0.2, 0, -1.74846e-08, 0, 0.2, 0, 1.74846e-08, 0, -0.2, 7.16183, 1.0504, -15.4773 )
 mesh = ExtResource( 4 )
 skeleton = NodePath("../room")
+material/0 = ExtResource( 6 )
+material/1 = ExtResource( 7 )

@@ -1,0 +1,27 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://assets/models/door.glb" type="PackedScene" id=1]
+[ext_resource path="res://assets/materials/paint.material" type="Material" id=2]
+[ext_resource path="res://assets/materials/plastic_black.material" type="Material" id=3]
+[ext_resource path="res://assets/materials/metal.material" type="Material" id=4]
+[ext_resource path="res://objects/collide.tscn" type="PackedScene" id=5]
+
+[node name="door" instance=ExtResource( 1 )]
+
+[node name="frame_005" parent="." index="0"]
+material/0 = ExtResource( 4 )
+
+[node name="door_005" parent="frame_005" index="0"]
+material/0 = ExtResource( 2 )
+
+[node name="kick_plate_005" parent="frame_005/door_005" index="0"]
+material/0 = ExtResource( 4 )
+
+[node name="push_socket_005" parent="frame_005/door_005" index="1"]
+material/0 = ExtResource( 4 )
+
+[node name="push_bar_005" parent="frame_005/door_005/push_socket_005" index="0"]
+material/0 = ExtResource( 3 )
+
+[node name="BoxCollider" parent="frame_005/door_005" index="3" instance=ExtResource( 5 )]
+transform = Transform( 0.0279217, 0, 0, 0, 1.03526, 0, 0, 0, 0.4618, -0.0547199, -0.0390757, -0.457957 )
