@@ -1,9 +1,10 @@
 [gd_scene load_steps=5 format=2]
 
-[ext_resource path="res://assets/materials/light_wood.material" type="Material" id=1]
+[ext_resource path="res://assets/materials/wood_light.material" type="Material" id=1]
 [ext_resource path="res://assets/materials/metal.material" type="Material" id=2]
-[ext_resource path="res://assets/materials/black_plastic.material" type="Material" id=3]
+[ext_resource path="res://assets/materials/plastic_black.material" type="Material" id=3]
 [ext_resource path="res://assets/models/chair.glb" type="PackedScene" id=4]
+
 
 [node name="chair" instance=ExtResource( 4 )]
 
