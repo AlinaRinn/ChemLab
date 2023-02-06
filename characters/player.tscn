@@ -37,7 +37,7 @@ func action():
 
 func get_to_hand(path):
 	in_hand_object = load(path).instance()
-	$head/player_hand.get_child(in_hand_object)
+	#$head/player_hand.get_child(in_hand_object)
 
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
