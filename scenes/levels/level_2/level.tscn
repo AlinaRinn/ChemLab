@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://objects/static/room.tscn" type="PackedScene" id=1]
 [ext_resource path="res://objects/static/lamp.tscn" type="PackedScene" id=2]
@@ -8,6 +8,7 @@
 [ext_resource path="res://assets/materials/plastic_black.material" type="Material" id=6]
 [ext_resource path="res://assets/materials/glass_gray.material" type="Material" id=7]
 [ext_resource path="res://objects/static/door.tscn" type="PackedScene" id=8]
+[ext_resource path="res://objects/interactive/shelf.tscn" type="PackedScene" id=9]
 
 [node name="level_area" type="Spatial"]
 
@@ -66,3 +67,6 @@ mesh = ExtResource( 4 )
 skeleton = NodePath("../room")
 material/0 = ExtResource( 6 )
 material/1 = ExtResource( 7 )
+
+[node name="shelf" parent="." instance=ExtResource( 9 )]
+transform = Transform( 0.025, 0, 0, 0, 0.025, 0, 0, 0, 0.025, 7.66502, 3.74918, -24.5282 )
