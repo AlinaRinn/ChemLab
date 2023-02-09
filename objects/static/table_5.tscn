@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://assets/materials/old_wooden_table.material" type="Material" id=1]
+[ext_resource path="res://assets/models/table_5n.glb" type="PackedScene" id=2]
+
+[node name="table_5n" instance=ExtResource( 2 )]
+
+[node name="old_wooden_table" parent="." index="0"]
+material/0 = ExtResource( 1 )
