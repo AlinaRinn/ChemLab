@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://assets/models/door.glb" type="PackedScene" id=1]
 [ext_resource path="res://assets/materials/paint.material" type="Material" id=2]
@@ -15,18 +15,18 @@ var isOpen = false
 func _input(event):
 	if Input.is_action_just_pressed(\"ui_page_up\"):
 		if(isOpen == false):
-			get_node(\"frame_005/door_005\").rotate_y(-PI/2)
 			isOpen = true
-		else:
-			get_node(\"frame_005/door_005\").rotate_y(PI/2)
+			for i in range(0, 12, 1):
+				get_node(\"frame_005/door_005\").rotate_y(-PI/24)
+				yield(get_tree().create_timer(0.025), \"timeout\")
+		elif(isOpen == true):
 			isOpen = false
-		
-		
+			for i in range(0, 12, 1):
+				get_node(\"frame_005/door_005\").rotate_y(PI/24)
+				yield(get_tree().create_timer(0.025), \"timeout\")
+
 
 "
-
-[sub_resource type="BoxShape" id=2]
-extents = Vector3( 0.170364, 2.3762, 1.29889 )
 
 [node name="door" instance=ExtResource( 1 )]
 script = SubResource( 1 )
@@ -50,13 +50,6 @@ material/0 = ExtResource( 3 )
 transform = Transform( 0.0279217, 0, 0, 0, 1.03526, 0, 0, 0, 0.4618, -0.0547199, -0.0390757, -0.457957 )
 
 [node name="target" parent="frame_005/door_005" index="4" instance=ExtResource( 6 )]
-transform = Transform( 0.0760052, 0, 0, 0, 0.980454, 0, 0, 0, 0.457791, -0.074106, -0.0166591, -0.447144 )
+transform = Transform( 0.0843381, 0, 0, 0, 0.980454, 0, 0, 0, 0.42394, -0.0864472, -0.0166591, -0.447144 )
 target_name = "Выход есть"
 target_id = "9005"
-
-[node name="doorr" type="StaticBody" parent="frame_005/door_005" index="5"]
-transform = Transform( 1.79704, 0, 0, 0, 207.514, 0, 0, 0, 1.79704, 0.0402403, -0.045652, 0 )
-
-[node name="CollisionShape" type="CollisionShape" parent="frame_005/door_005/doorr" index="0"]
-transform = Transform( 0.312596, 0, 0, 0, -0.00213245, 0, 0, 0, 0.190632, -0.0626991, 0.000213455, -0.25779 )
-shape = SubResource( 2 )
