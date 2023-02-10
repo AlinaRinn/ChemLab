@@ -6,7 +6,6 @@
 [ext_resource path="res://scripts/objects/interactive/flask_input.gd" type="Script" id=4]
 [ext_resource path="res://objects/elements/water.tscn" type="PackedScene" id=5]
 
-
 [sub_resource type="BoxShape" id=1]
 extents = Vector3( 0.111432, 0.28669, 0.105521 )
 
@@ -29,7 +28,7 @@ tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = PoolRealArray( 0, 1, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 0, 0.300043, 0, 0, 0, 0, 1, 1, 1, 1 )
 
-[node name="Spatial" type="Spatial"]
+[node name="Spatial2" type="Spatial"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0807306, 0 )
 script = ExtResource( 4 )
 
