@@ -12,16 +12,16 @@ script/source = "extends Spatial
 
 var isOpen = false
 
-func _input(event):
+func _input(_event):
 	if Input.is_action_just_pressed(\"ui_page_up\"):
 		if(isOpen == false):
 			isOpen = true
-			for i in range(0, 12, 1):
+			for _i in range(0, 12, 1):
 				get_node(\"frame_005/door_005\").rotate_y(-PI/24)
 				yield(get_tree().create_timer(0.025), \"timeout\")
 		elif(isOpen == true):
 			isOpen = false
-			for i in range(0, 12, 1):
+			for _i in range(0, 12, 1):
 				get_node(\"frame_005/door_005\").rotate_y(PI/24)
 				yield(get_tree().create_timer(0.025), \"timeout\")
 
