@@ -1,5 +1,7 @@
 extends Node
 
+# This script - singlton, G - entry point
+
 var level = 1
 
 var root_level

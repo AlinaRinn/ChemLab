@@ -34,6 +34,8 @@ func action():
 			action_object.liquid()
 		if action_object.name == 'notebook':
 			action_object.show_notes()
+		if action_object.name == 'door':
+			action_object.open()
 
 func get_to_hand(path):
 	in_hand_object = load(path).instance()

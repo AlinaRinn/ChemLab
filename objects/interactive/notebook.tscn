@@ -5,7 +5,6 @@
 [ext_resource path="res://scripts/objects/interactive/notebook.gd" type="Script" id=3]
 [ext_resource path="res://scripts/objects/interactive/notebook_main.gd" type="Script" id=4]
 
-
 [sub_resource type="BoxShape" id=1]
 extents = Vector3( 0.470603, 0.0341372, 0.33507 )
 
