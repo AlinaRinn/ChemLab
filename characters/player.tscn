@@ -35,11 +35,16 @@ func action():
 		if action_object.name == 'notebook':
 			action_object.show_notes()
 		if action_object.name == 'door':
-			action_object.open()
+			action_object.open()		
+		# не работает с партиал
+		if action_object.name == 'bottle':
+			action_object.get_bottle()		
+		if action_object.name == 'Bottle':
+			action_object.get_bottle()
 
 func get_to_hand(path):
 	in_hand_object = load(path).instance()
-	#$head/player_hand.get_child(in_hand_object)
+	$head/player_hand.add_child(in_hand_object)
 
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)

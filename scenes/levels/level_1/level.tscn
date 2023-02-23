@@ -211,3 +211,6 @@ burn_other = "Температура данной горелки: 100"
 
 [node name="SpiritLamp2" parent="staffs" instance=ExtResource( 17 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 13.3202, 2.26228, 7.05166 )
+
+[node name="Bottle" parent="." instance=ExtResource( 21 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 11.3903, 2.17882, -5.2812 )
