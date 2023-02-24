@@ -3,7 +3,6 @@
 [ext_resource path="res://assets/models/tube_type_0.obj" type="ArrayMesh" id=1]
 [ext_resource path="res://objects/action.tscn" type="PackedScene" id=2]
 
-
 [sub_resource type="SpatialMaterial" id=1]
 albedo_color = Color( 0.313726, 0.482353, 0.501961, 0.556863 )
 metallic = 0.41
