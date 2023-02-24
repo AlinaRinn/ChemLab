@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://assets/models/sink.glb" type="PackedScene" id=1]
+[ext_resource path="res://assets/materials/metal.material" type="Material" id=2]
+[ext_resource path="res://assets/materials/metal_gold.material" type="Material" id=3]
+
+[node name="sink" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0 )
+
+[node name="KitchenSink" parent="." index="0"]
+material/0 = ExtResource( 2 )
+
+[node name="KitchenSinkFaucet" parent="." index="1"]
+material/0 = ExtResource( 3 )
+
+[node name="KitchenSinkHandleR" parent="." index="2"]
+material/0 = ExtResource( 3 )
+
+[node name="KitchenSinkHandleL" parent="." index="3"]
+material/0 = ExtResource( 3 )

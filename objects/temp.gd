@@ -13,7 +13,7 @@ func action():
 			'temp' : area_temp
 		}
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	if temp_active:
 		#$mesh.visible = true
 		$target.target_name = str(area_temp)
@@ -24,8 +24,3 @@ func _physics_process(delta):
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass

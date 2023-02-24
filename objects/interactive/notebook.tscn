@@ -1,0 +1,34 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://assets/models/notebook.obj" type="ArrayMesh" id=1]
+[ext_resource path="res://objects/target.tscn" type="PackedScene" id=2]
+[ext_resource path="res://scripts/objects/interactive/notebook.gd" type="Script" id=3]
+[ext_resource path="res://scripts/objects/interactive/notebook_main.gd" type="Script" id=4]
+
+[sub_resource type="BoxShape" id=1]
+extents = Vector3( 0.470603, 0.0341372, 0.33507 )
+
+[sub_resource type="SpatialMaterial" id=2]
+albedo_color = Color( 0.145098, 0.52549, 0.223529, 1 )
+
+[node name="Spatial" type="Spatial"]
+script = ExtResource( 4 )
+
+[node name="notebook" type="StaticBody" parent="."]
+script = ExtResource( 3 )
+
+[node name="CollisionShape" type="CollisionShape" parent="notebook"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0776436, 0 )
+shape = SubResource( 1 )
+
+[node name="tetrad" type="MeshInstance" parent="notebook/CollisionShape"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.99564, -3.30574, 4.83777 )
+mesh = ExtResource( 1 )
+material/1 = SubResource( 2 )
+
+[node name="target" parent="." instance=ExtResource( 2 )]
+transform = Transform( 0.590051, 0, 0, 0, 0.055014, 0, 0, 0, 0.407929, 0, 0.0784091, 0 )
+target_name = "Лабораторный журнал"
+target_id = "9002"
+target_other = "(Без пометок)"
+delete_parent = false
