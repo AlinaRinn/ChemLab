@@ -21,6 +21,9 @@ var in_hand_object = null
 var cast = null
 
 func action():
+	# Для взаимодействия с объектами
+	# не работает с партиал нодой
+	
 	if action_object:
 		if action_object.name == 'doorr':
 			print(\"good\")
@@ -36,29 +39,31 @@ func action():
 			action_object.show_notes()
 		if action_object.name == 'door':
 			action_object.open()		
-		# не работает с партиал
 		if action_object.name == 'bottle':
 			action_object.get_bottle()		
 		if action_object.name == 'Bottle':
 			action_object.get_bottle()
 
 func get_to_hand(path):
+	# Грузит объект в ручки
 	in_hand_object = load(path).instance()
 	$head/player_hand.add_child(in_hand_object)
 
 func _ready():
+	# Прячет курсор при загрузке на уровень
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 
 func _physics_process(_delta):
 	var pl = Vector3()
 	
+	# Обработка быстрых кнопок
 	if Input.is_action_just_pressed(\"ui_cancel\"):
 		G.to('main_menu')
 	
+	# Обработка кнопок движения и прыжок
 	if Input.is_action_pressed(\"ui_left\"):
 		pl.x = -1
 	if Input.is_action_pressed(\"ui_right\"):
-		#rotate_y(-ROT * _delta)
 		pl.x = 1
 	if Input.is_action_pressed(\"ui_up\"):
 		pl.z = -1
@@ -72,6 +77,7 @@ func _physics_process(_delta):
 		if G.active_note:
 			G.blank_notes()
 			G.active_note = null
+		# Тут костыли
 		pl *= SPEED * _delta
 		pl = pl.rotated(Vector3(0,1,0), rotation.y)
 		
@@ -80,9 +86,9 @@ func _physics_process(_delta):
 	vel.y += gr * _delta
 	
 	vel = move_and_slide(vel, Vector3(0,1,0))
-	
 
 func _input(e):
+	# Обрабатываем движение мышкой
 	if e is InputEventMouseMotion:
 		rot_y -= e.relative.x * ROT
 		rot_x -= e.relative.y * ROT
@@ -93,6 +99,7 @@ func _input(e):
 		transform.basis = Basis(Vector3(0,1,0), rot_y)
 		$head.transform.basis = Basis(Vector3(1,0,0), rot_x)
 	
+	# Обрабатываем нажатия мышкой
 	if e is InputEventMouse:
 		if e.is_pressed():
 			action()

@@ -3,6 +3,7 @@ extends StaticBody
 var active = false
 
 func burn():
+	# Отвечает за анимацию горения
 	if !active:
 		$anim.play("burn")
 		active = true
@@ -12,6 +13,8 @@ func burn():
 
 
 func fire():
+	# Зачем это надо не понимаю
+	# горит и без этого
 	if !$temp.temp_active:
 		$temp.temp_active = true
 	else:

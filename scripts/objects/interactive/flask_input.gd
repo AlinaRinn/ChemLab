@@ -1,9 +1,5 @@
 extends Spatial
 
-
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
 var first_init = true
 var flask = []
 
@@ -52,11 +48,4 @@ func _physics_process(_delta):
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	flask_init()
-	
 	pass
-		
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
