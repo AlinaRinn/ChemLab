@@ -2,7 +2,8 @@
 
 [ext_resource path="res://objects/collide.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/materials/krasivo.material" type="Material" id=2]
-[ext_resource path="res://assets/models/stena_long.obj" type="ArrayMesh" id=3]
+[ext_resource path="res://assets/models/wall_long.obj" type="ArrayMesh" id=3]
+
 
 [node name="wall" type="Spatial"]
 

@@ -1,10 +1,11 @@
 [gd_scene load_steps=9 format=2]
 
-[ext_resource path="res://assets/models/door.glb" type="PackedScene" id=1]
+[ext_resource path="res://assets/models/door_1.glb" type="PackedScene" id=1]
 [ext_resource path="res://assets/materials/paint.material" type="Material" id=2]
 [ext_resource path="res://assets/materials/plastic_black.material" type="Material" id=3]
 [ext_resource path="res://assets/materials/metal.material" type="Material" id=4]
 [ext_resource path="res://objects/target.tscn" type="PackedScene" id=6]
+
 
 [sub_resource type="GDScript" id=1]
 script/source = "extends Spatial

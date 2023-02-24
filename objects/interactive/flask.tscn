@@ -1,10 +1,11 @@
 [gd_scene load_steps=9 format=2]
 
-[ext_resource path="res://assets/models/probirka.obj" type="ArrayMesh" id=1]
+[ext_resource path="res://assets/models/tube_type_0.obj" type="ArrayMesh" id=1]
 [ext_resource path="res://scripts/objects/interactive/flask_script.gd" type="Script" id=2]
 [ext_resource path="res://objects/target.tscn" type="PackedScene" id=3]
 [ext_resource path="res://scripts/objects/interactive/flask_input.gd" type="Script" id=4]
 [ext_resource path="res://objects/elements/water.tscn" type="PackedScene" id=5]
+
 
 [sub_resource type="BoxShape" id=1]
 extents = Vector3( 0.111432, 0.28669, 0.105521 )

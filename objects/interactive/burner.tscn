@@ -2,10 +2,11 @@
 
 [ext_resource path="res://objects/target.tscn" type="PackedScene" id=1]
 [ext_resource path="res://objects/temp.tscn" type="PackedScene" id=2]
-[ext_resource path="res://assets/models/gorelka.obj" type="ArrayMesh" id=3]
+[ext_resource path="res://assets/models/spirit_lamp.obj" type="ArrayMesh" id=3]
 [ext_resource path="res://assets/particle/burn_particle.png" type="Texture" id=4]
 [ext_resource path="res://scripts/objects/interactive/burnerr_main.gd" type="Script" id=5]
 [ext_resource path="res://scripts/objects/interactive/burnerr.gd" type="Script" id=6]
+
 
 [sub_resource type="BoxShape" id=1]
 extents = Vector3( 0.171085, 0.20831, 0.174081 )

@@ -3,7 +3,8 @@
 [ext_resource path="res://assets/materials/wood_light.material" type="Material" id=1]
 [ext_resource path="res://assets/materials/metal.material" type="Material" id=2]
 [ext_resource path="res://assets/materials/plastic_black.material" type="Material" id=3]
-[ext_resource path="res://assets/models/chair.glb" type="PackedScene" id=4]
+[ext_resource path="res://assets/models/chair_1.glb" type="PackedScene" id=4]
+
 
 
 [node name="chair" instance=ExtResource( 4 )]
