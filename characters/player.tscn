@@ -9,6 +9,7 @@ script/source = "extends KinematicBody
 const ROT = 0.005
 const gr = 0.4
 const SPEED = 6
+const SPEED_RUN = 12
 const J_SPEED = 10
 var vel = Vector3()
 
@@ -61,6 +62,7 @@ func _physics_process(_delta):
 	
 	# Обработка кнопок движения и прыжок
 	var pl = Vector3()
+	var speed = SPEED
 	if Input.is_action_pressed(\"ui_left\"):
 		pl.x = -1
 	if Input.is_action_pressed(\"ui_right\"):
@@ -71,10 +73,12 @@ func _physics_process(_delta):
 		pl.z = 1
 	if Input.is_action_just_pressed(\"ui_select\") && is_on_floor():
 		vel.y = J_SPEED 
-	
+	if Input.is_action_pressed(\"ui_run\"):
+		speed = SPEED_RUN
+		
 	if pl:
 		# Вращение
-		pl = pl.rotated(Vector3.UP, rotation.y) * SPEED 
+		pl = pl.rotated(Vector3.UP, rotation.y) * speed 
 		
 		# Взаимодействие с блокнотами
 		if G.active_note:
