@@ -2,5 +2,6 @@ extends Spatial
 
 
 func take():
-	G.player.get_to_hand("res://objects/interactive/bottle.tscn")
-	queue_free()
+	get_parent().remove_child(self)	
+	self.translation = Vector3(0, 0, 0)
+	G.player.get_to_hand(self)

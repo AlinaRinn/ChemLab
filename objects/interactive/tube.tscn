@@ -27,7 +27,7 @@ tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = PoolRealArray( 0, 1, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 0, 0.300043, 0, 0, 0, 0, 1, 1, 1, 1 )
 
-[node name="Spatial2" type="Spatial"]
+[node name="tube" type="Spatial"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0807306, 0 )
 script = ExtResource( 4 )
 
