@@ -1,21 +1,22 @@
 extends Area
 
 export var label = ''
-export var on_action = ''
-export var on_act_label = ''
+export var left_click_action = ''
+export var left_click_label = ''
+export var right_click_action = ''
+export var right_click_label = ''
 
 
 func _ready():
-	pass
-	#$MeshInstance.hide()
+	$MeshInstance.hide()
 
 
 func action():
 	var prt = get_parent()
 	
-	if on_action:
-		if prt.has_method(on_action):
-			prt.call(on_action)
+	if left_click_action:
+		if prt.has_method(left_click_action):
+			prt.call(left_click_action)
 		else:
-			print(on_action+' не существует')
+			print(left_click_action+' не существует')
 

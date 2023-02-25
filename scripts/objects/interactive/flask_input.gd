@@ -2,6 +2,8 @@ extends Spatial
 
 var first_init = true
 var flask = []
+var opened = false
+
 
 export var level_1 = ""
 export var level_2 = ""
@@ -20,10 +22,17 @@ func flask_init():
 	#flask_change_name()
 
 
-func get_flask():
+func take():
 	#G.player.get_to_hand("res://objects/complite/interactive/flask.tscn")
 	queue_free()
-
+	
+func drug():
+	if !opened:
+		$anim.play("drug")
+		opened = true
+	else:
+		$anim.play_backwards("drug")
+		opened = false
 
 func flask_change_name():
 	$flaskk/CollisionShape/probirka/target.target_name = flask

@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://assets/models/notebook.obj" type="ArrayMesh" id=1]
-[ext_resource path="res://objects/target.tscn" type="PackedScene" id=2]
+[ext_resource path="res://scenes/main/interactive.tscn" type="PackedScene" id=2]
 [ext_resource path="res://scripts/objects/interactive/notebook.gd" type="Script" id=3]
 [ext_resource path="res://scripts/objects/interactive/notebook_main.gd" type="Script" id=4]
 
@@ -26,9 +26,8 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.99564, -3.30574, 4.83777 )
 mesh = ExtResource( 1 )
 material/1 = SubResource( 2 )
 
-[node name="target" parent="." instance=ExtResource( 2 )]
-transform = Transform( 0.590051, 0, 0, 0, 0.055014, 0, 0, 0, 0.407929, 0, 0.0784091, 0 )
-target_name = "Лабораторный журнал"
-target_id = "9002"
-target_other = "(Без пометок)"
-delete_parent = false
+[node name="interactive" parent="." instance=ExtResource( 2 )]
+transform = Transform( 0.537793, 0, 0, 0, 0.189953, 0, 0, 0, 0.500875, 0, 0, 0 )
+label = "Тетрадь"
+left_click_action = "show_notes"
+left_click_label = "Посмотреть"

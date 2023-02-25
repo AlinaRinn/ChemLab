@@ -1,13 +1,11 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://assets/models/distiller_big_main.obj" type="ArrayMesh" id=1]
 [ext_resource path="res://assets/models/distiller_big_check.obj" type="ArrayMesh" id=2]
-[ext_resource path="res://objects/target.tscn" type="PackedScene" id=3]
+[ext_resource path="res://objects/interactive/distiller.gd" type="Script" id=3]
 [ext_resource path="res://assets/particle/water_particle.png" type="Texture" id=4]
-[ext_resource path="res://scripts/objects/interactive/distiller_check.gd" type="Script" id=5]
-[ext_resource path="res://scripts/objects/interactive/checker.gd" type="Script" id=6]
 [ext_resource path="res://objects/liquid.tscn" type="PackedScene" id=7]
-
+[ext_resource path="res://scenes/main/interactive.tscn" type="PackedScene" id=8]
 
 [sub_resource type="SpatialMaterial" id=1]
 albedo_color = Color( 0.709804, 0.709804, 0.709804, 1 )
@@ -68,19 +66,15 @@ tracks/1/keys = {
 
 [node name="Spatial" type="Spatial"]
 transform = Transform( 0.882, 0, 0, 0, 0.882, 0, 0, 0, 0.882, 0, 0, 0 )
+script = ExtResource( 3 )
 
 [node name="distiller_body" type="StaticBody" parent="."]
 transform = Transform( 1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, 0, 0, 0 )
-script = ExtResource( 5 )
 
 [node name="discil_main" type="MeshInstance" parent="distiller_body"]
 transform = Transform( -3.0598e-08, 0, 0.7, 0, 0.7, 0, -0.7, 0, -3.0598e-08, 0, 0, 0 )
 mesh = ExtResource( 1 )
 material/0 = SubResource( 1 )
-
-[node name="target" parent="distiller_body/discil_main" instance=ExtResource( 3 )]
-transform = Transform( 1.12307, 0, 0, 0, 2.85088, 0, 0, 0, 1.12307, 0, 1.47869, 0 )
-target_name = "Дистиллятор"
 
 [node name="CollisionShape" type="CollisionShape" parent="distiller_body"]
 transform = Transform( 0.752929, 0, 0, 0, 2.47057, 0, -1.42109e-14, 0, 0.759919, 0, 1.14877, 0 )
@@ -88,14 +82,9 @@ shape = SubResource( 2 )
 
 [node name="checker" type="StaticBody" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.61215, 0.385868, 0 )
-script = ExtResource( 6 )
 
 [node name="CollisionShape" type="CollisionShape" parent="checker"]
 shape = SubResource( 3 )
-
-[node name="target" parent="checker" instance=ExtResource( 3 )]
-transform = Transform( 0.312711, 0, 2.87092e-08, 0, 0.350873, 0, -1.11373e-07, 0, 0.334466, 0.00197792, 0.0190729, -2.46261e-07 )
-target_name = "Включить дистиллятор"
 
 [node name="CPUParticles" type="CPUParticles" parent="checker"]
 transform = Transform( 0.7, 0, 1.22392e-07, 0, 0.7, 0, -1.22392e-07, 0, 0.7, 0.25615, -0.213338, -2.44997e-07 )
@@ -126,3 +115,13 @@ material/1 = SubResource( 7 )
 
 [node name="anim" type="AnimationPlayer" parent="checker/check_rotate"]
 anims/rotate = SubResource( 8 )
+
+[node name="interactive" parent="." instance=ExtResource( 8 )]
+transform = Transform( 1.03822, 0, 0, 0, 1.93991, 0, 0, 0, 1, 0.247042, 1.10552, 0 )
+label = "Дистиллятор"
+
+[node name="interactive2" parent="." instance=ExtResource( 8 )]
+transform = Transform( 0.278153, 0, 0, 0, 0.251164, 0, 0, 0, 0.271931, 1.64459, 0.337286, 0 )
+label = "Дистиллятор"
+left_click_action = "press"
+left_click_label = "Открыть/Закрыть"

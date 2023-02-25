@@ -1,14 +1,34 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=11 format=2]
 
-[ext_resource path="res://objects/target.tscn" type="PackedScene" id=1]
-[ext_resource path="res://objects/temp.tscn" type="PackedScene" id=2]
 [ext_resource path="res://assets/models/spirit_lamp.obj" type="ArrayMesh" id=3]
 [ext_resource path="res://assets/particle/burn_particle.png" type="Texture" id=4]
 [ext_resource path="res://scripts/objects/interactive/burnerr_main.gd" type="Script" id=5]
-[ext_resource path="res://scripts/objects/interactive/burnerr.gd" type="Script" id=6]
+[ext_resource path="res://scenes/main/interactive.tscn" type="PackedScene" id=7]
 
 [sub_resource type="BoxShape" id=1]
 extents = Vector3( 0.171085, 0.20831, 0.174081 )
+
+[sub_resource type="SpatialMaterial" id=6]
+flags_transparent = true
+flags_unshaded = true
+vertex_color_use_as_albedo = true
+params_billboard_mode = 3
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+albedo_texture = ExtResource( 4 )
+
+[sub_resource type="QuadMesh" id=7]
+material = SubResource( 6 )
+size = Vector2( 0.1, 0.1 )
+
+[sub_resource type="Curve" id=8]
+min_value = 0.5
+_data = [ Vector2( 0, 0.5 ), 0.0, 0.0, 0, 0, Vector2( 0.5, 1 ), 0.0, 0.0, 0, 0, Vector2( 1, 0.5 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="Gradient" id=9]
+offsets = PoolRealArray( 0, 0.403974, 0.761589, 1 )
+colors = PoolColorArray( 0.0535278, 0.729421, 0.856445, 1, 0.875849, 0.911586, 0.417073, 1, 0.96582, 0.477465, 0.056591, 1, 0.9375, 0.334682, 0.150146, 0.254902 )
 
 [sub_resource type="Animation" id=5]
 resource_name = "burn"
@@ -37,33 +57,10 @@ tracks/1/keys = {
 "values": [ false, true ]
 }
 
-[sub_resource type="SpatialMaterial" id=6]
-flags_transparent = true
-flags_unshaded = true
-vertex_color_use_as_albedo = true
-params_billboard_mode = 3
-particles_anim_h_frames = 1
-particles_anim_v_frames = 1
-particles_anim_loop = false
-albedo_texture = ExtResource( 4 )
-
-[sub_resource type="QuadMesh" id=7]
-material = SubResource( 6 )
-size = Vector2( 0.1, 0.1 )
-
-[sub_resource type="Curve" id=8]
-min_value = 0.5
-_data = [ Vector2( 0, 0.5 ), 0.0, 0.0, 0, 0, Vector2( 0.5, 1 ), 0.0, 0.0, 0, 0, Vector2( 1, 0.5 ), 0.0, 0.0, 0, 0 ]
-
-[sub_resource type="Gradient" id=9]
-offsets = PoolRealArray( 0, 0.403974, 0.761589, 1 )
-colors = PoolColorArray( 0.0535278, 0.729421, 0.856445, 1, 0.875849, 0.911586, 0.417073, 1, 0.96582, 0.477465, 0.056591, 1, 0.9375, 0.334682, 0.150146, 0.254902 )
-
 [node name="Spatial" type="Spatial"]
 script = ExtResource( 5 )
 
 [node name="burnerr" type="StaticBody" parent="."]
-script = ExtResource( 6 )
 
 [node name="CollisionShape" type="CollisionShape" parent="burnerr"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.209288, 0 )
@@ -77,9 +74,6 @@ mesh = ExtResource( 3 )
 transform = Transform( 1.17382, 0, 0, 0, 1.17382, 0, 0, 0, 1.17382, -2.47659, -3.71357, 2.84082 )
 visible = false
 mesh = ExtResource( 3 )
-
-[node name="anim" type="AnimationPlayer" parent="burnerr"]
-anims/burn = SubResource( 5 )
 
 [node name="CPUParticles" type="CPUParticles" parent="burnerr"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.437926, 0 )
@@ -100,13 +94,11 @@ light_energy = 0.0
 shadow_enabled = true
 shadow_color = Color( 0.2, 0.2, 0.168627, 1 )
 
-[node name="temp" parent="burnerr" instance=ExtResource( 2 )]
-transform = Transform( 0.0992558, 0, 0, 0, 0.335397, 0, 0, 0, 0.0992558, 0, 0.736515, 0 )
-area_temp = "1550 °C"
-area_id = "22"
+[node name="interactive" parent="." instance=ExtResource( 7 )]
+label = "Горелка"
+left_click_action = "burn"
+left_click_label = "Зажечь/Потушить"
 
-[node name="target" parent="burnerr" instance=ExtResource( 1 )]
-transform = Transform( 0.20123, 0, 0, 0, 0.247242, 0, 0, 0, 0.20123, 0, 0.214223, 0 )
-target_name = "Горелка"
-target_other = "(Без пометок)"
-delete_parent = false
+[node name="anim" type="AnimationPlayer" parent="."]
+root_node = NodePath("../burnerr")
+anims/burn = SubResource( 5 )
