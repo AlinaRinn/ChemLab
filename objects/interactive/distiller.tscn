@@ -5,7 +5,7 @@
 [ext_resource path="res://scripts/objects/interactive/distiller.gd" type="Script" id=3]
 [ext_resource path="res://assets/particle/water_particle.png" type="Texture" id=4]
 [ext_resource path="res://objects/liquid.tscn" type="PackedScene" id=7]
-[ext_resource path="res://scenes/main/interactive.tscn" type="PackedScene" id=8]
+[ext_resource path="res://objects/interaction.tscn" type="PackedScene" id=8]
 
 [sub_resource type="BoxShape" id=2]
 extents = Vector3( 1, 0.865262, 1 )
@@ -117,11 +117,11 @@ emission_box_extents = Vector3( 0.1, 0.1, 0.1 )
 scale_amount = 2.0
 scale_amount_random = 1.0
 
-[node name="interactive" parent="." instance=ExtResource( 8 )]
+[node name="interaction_1" parent="." instance=ExtResource( 8 )]
 transform = Transform( 1.03822, 0, 0, 0, 1.93991, 0, 0, 0, 1, 0.247042, 1.10552, 0 )
 label = "Дистиллятор"
 
-[node name="interactive2" parent="." instance=ExtResource( 8 )]
+[node name="interaction_2" parent="." instance=ExtResource( 8 )]
 transform = Transform( 0.278153, 0, 0, 0, 0.251164, 0, 0, 0, 0.271931, 1.64459, 0.337286, 0 )
 label = "Дистиллятор"
 left_click_action = "press"

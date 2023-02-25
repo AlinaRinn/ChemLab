@@ -1,8 +1,8 @@
 [gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://assets/models/tube_type_0.obj" type="ArrayMesh" id=1]
-[ext_resource path="res://scenes/main/interactive.tscn" type="PackedScene" id=3]
-[ext_resource path="res://scripts/objects/interactive/flask_input.gd" type="Script" id=4]
+[ext_resource path="res://objects/interaction.tscn" type="PackedScene" id=3]
+[ext_resource path="res://scripts/objects/interactive/flask.gd" type="Script" id=4]
 [ext_resource path="res://objects/elements/water.tscn" type="PackedScene" id=5]
 
 [sub_resource type="BoxShape" id=1]
@@ -62,7 +62,7 @@ visible = false
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 3.12313, 3.67419, -3.19543 )
 visible = false
 
-[node name="interactive" parent="." instance=ExtResource( 3 )]
+[node name="interaction" parent="." instance=ExtResource( 3 )]
 transform = Transform( 0.160006, 0, 0, 0, 0.49701, 0, 0, 0, 0.142285, 0, 0, 0 )
 label = "Пробирка"
 left_click_action = "drug"
