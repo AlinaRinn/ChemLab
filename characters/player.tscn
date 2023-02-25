@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=3 format=2]
 
 [sub_resource type="GDScript" id=1]
 script/source = "extends KinematicBody
@@ -110,8 +110,6 @@ func _input(e):
 radius = 0.303878
 height = 1.7
 
-[sub_resource type="CubeMesh" id=3]
-
 [node name="player" type="KinematicBody"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.84756, 0 )
 collision_layer = 2
@@ -134,9 +132,4 @@ collide_with_areas = true
 [node name="Camera" type="Camera" parent="head"]
 
 [node name="player_hand" type="Spatial" parent="head"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.22945, -0.453396, -2 )
-
-[node name="test_vis" type="MeshInstance" parent="head/player_hand"]
-transform = Transform( 0.03, 0, 0, 0, 0.03, 0, 0, 0, 0.03, 0, 0, 0 )
-visible = false
-mesh = SubResource( 3 )
+transform = Transform( 0.0985865, 0.0167543, 0, -0.0167543, 0.0985865, 0, 0, 0, 0.1, 0.0801525, -0.0562506, -0.0885729 )
