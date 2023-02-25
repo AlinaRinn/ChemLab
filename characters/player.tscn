@@ -1,4 +1,4 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=5 format=2]
 
 [sub_resource type="GDScript" id=1]
 script/source = "extends KinematicBody
@@ -25,6 +25,7 @@ func action():
 	if cast:
 		cast.action()
 
+
 func get_to_hand(object):
 	# Если в руках что то есть, очищает
 	if in_hand_object:
@@ -34,9 +35,11 @@ func get_to_hand(object):
 	in_hand_object = object
 	$head/player_hand.add_child(object)
 
+
 func _ready():
 	# Прячет курсор при загрузке на уровень
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+
 
 func _physics_process(_delta):
 	# Обработка быстрых кнопок
@@ -58,7 +61,11 @@ func _physics_process(_delta):
 	if Input.is_action_just_pressed(\"ui_select\") && is_on_floor():
 		vel.y = J_SPEED 
 	if Input.is_action_pressed(\"ui_run\"):
+		$AnimationPlayer.play(\"step\")
 		speed = SPEED_RUN
+	elif $AnimationPlayer.is_playing():
+		$AnimationPlayer.stop()
+		$AnimationPlayer.seek(0, true)
 		
 	if pl:
 		# Вращение
@@ -93,6 +100,7 @@ func _physics_process(_delta):
 		G.label_1.text
 		G.label_2.text
 
+
 func _input(e):
 	# Обрабатываем движение мышкой
 	if e is InputEventMouseMotion:
@@ -114,6 +122,74 @@ func _input(e):
 [sub_resource type="CapsuleShape" id=2]
 radius = 0.303878
 height = 1.7
+
+[sub_resource type="Animation" id=3]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("head/Camera:translation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("head:translation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector3( 0, 2.32333, 0 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("head/player_hand:translation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector3( 0.0801525, -0.0562506, -0.0885729 ) ]
+}
+
+[sub_resource type="Animation" id=4]
+resource_name = "step"
+length = 0.8
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("head:translation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0, 2.32333, 0 ), Vector3( 0.019, 2.423, 0.007 ), Vector3( 0, 2.323, 0 ), Vector3( -0.016, 2.241, -0.005 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("head/player_hand:translation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.3, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0.0801525, -0.0562506, -0.0885729 ), Vector3( 0.084, -0.053, -0.09 ), Vector3( 0.083, -0.057, -0.09 ) ]
+}
 
 [node name="player" type="KinematicBody"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.84756, 0 )
@@ -138,3 +214,7 @@ collide_with_areas = true
 
 [node name="player_hand" type="Spatial" parent="head"]
 transform = Transform( 0.0985865, 0.0167543, 0, -0.0167543, 0.0985865, 0, 0, 0, 0.1, 0.0801525, -0.0562506, -0.0885729 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/RESET = SubResource( 3 )
+anims/step = SubResource( 4 )
