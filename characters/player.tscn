@@ -82,9 +82,11 @@ func _physics_process(_delta):
 		cast = null
 	
 	if cast:
-		G.label.text = cast.label + ' ('+cast.left_click_label+')'
+		G.label_1.text = cast.label + ' ('+cast.left_click_label+')'
+		G.label_2.text = cast.label + ' ('+cast.right_click_label+')'
 	else:
-		G.label.text
+		G.label_1.text
+		G.label_2.text
 
 func _input(e):
 	# Обрабатываем движение мышкой

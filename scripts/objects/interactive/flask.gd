@@ -24,7 +24,7 @@ func flask_init():
 
 
 func take():
-	G.player.get_to_hand("res://objects/complite/interactive/flask.tscn")
+	G.player.get_to_hand("res://objects/interactive/tube.tscn")
 	queue_free()
 	
 func drug():

@@ -67,6 +67,8 @@ transform = Transform( 0.160006, 0, 0, 0, 0.49701, 0, 0, 0, 0.142285, 0, 0, 0 )
 label = "Пробирка"
 left_click_action = "drug"
 left_click_label = "Поднять/Опустить"
+right_click_action = "take"
+right_click_label = "Взять"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 root_node = NodePath("../StaticBody")

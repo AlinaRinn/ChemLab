@@ -18,7 +18,8 @@ var temp_object = null
 var player
 
 var game
-var label =''
+var label_1 =''
+var label_2 =''
 
 
 func pause(p=true):
