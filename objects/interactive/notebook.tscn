@@ -27,7 +27,7 @@ mesh = ExtResource( 1 )
 material/1 = SubResource( 2 )
 
 [node name="interaction" parent="." instance=ExtResource( 2 )]
-transform = Transform( 0.537793, 0, 0, 0, 0.189953, 0, 0, 0, 0.500875, 0, 0, 0 )
+transform = Transform( 0.523015, 0, 0, 0, 0.0804492, 0, 0, 0, 0.389296, -0.0264087, 0.0679076, 0 )
 label = "Тетрадь"
 left_click_action = "show_notes"
 left_click_label = "Посмотреть"

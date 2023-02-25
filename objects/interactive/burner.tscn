@@ -71,6 +71,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.11186, -3.1802, 2.41765 )
 mesh = ExtResource( 3 )
 
 [node name="interaction" parent="." instance=ExtResource( 7 )]
+transform = Transform( 0.180822, 0, 0, 0, 0.20381, 0, 0, 0, 0.187598, 0, 0.204414, 0 )
 label = "Горелка"
 left_click_action = "burn"
 left_click_label = "Зажечь/Потушить"
