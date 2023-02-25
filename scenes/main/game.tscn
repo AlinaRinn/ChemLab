@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://scenes/main/gui.tscn" type="PackedScene" id=1]
 [ext_resource path="res://characters/player.tscn" type="PackedScene" id=2]
@@ -12,13 +12,6 @@ func _ready():
 	G.player = $player
 "
 
-[sub_resource type="GDScript" id=2]
-script/source = "extends InterpolatedCamera
-
-func _ready():
-	target = '../player/head'
-"
-
 [node name="game" type="Node"]
 script = SubResource( 1 )
 
@@ -28,11 +21,5 @@ script = SubResource( 1 )
 
 [node name="player" parent="." instance=ExtResource( 2 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.22369, 0 )
-
-[node name="camera" type="InterpolatedCamera" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.04115, -0.0164283 )
-speed = 13.0
-enabled = true
-script = SubResource( 2 )
 
 [node name="notebook" type="Node" parent="."]
