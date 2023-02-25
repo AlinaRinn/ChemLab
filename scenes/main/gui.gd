@@ -1,5 +1,8 @@
 extends Control
 
+func _ready():
+	G.label = $target_name
+
 func set_target_name(name, _other):
 	$target_name.text = name
 	$target_other.text = ''

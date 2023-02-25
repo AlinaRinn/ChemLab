@@ -21,7 +21,7 @@ func flask_init():
 
 
 func get_flask():
-	G.player.get_to_hand("res://objects/complite/interactive/flask.tscn")
+	#G.player.get_to_hand("res://objects/complite/interactive/flask.tscn")
 	queue_free()
 
 
