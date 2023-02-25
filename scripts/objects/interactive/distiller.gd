@@ -1,13 +1,15 @@
 extends Spatial
 
+
 var active = false
+
 
 func press():
 	if !active:
-		$checker/check_rotate/anim.play("rotate")
+		$valve/valve_rotate/AnimationPlayer.play("rotate")
+		$valve/liquid.liquid_active = true
 		active = true
-		$checker/liquid.liquid_active = true
 	else:
-		$checker/check_rotate/anim.play_backwards("rotate")
+		$valve/valve_rotate/AnimationPlayer.play_backwards("rotate")
+		$valve/liquid.liquid_active = false
 		active = false
-		$checker/liquid.liquid_active = false

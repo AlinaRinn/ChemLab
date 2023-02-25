@@ -1,6 +1,8 @@
 extends StaticBody
 
+
 var active = false
+
 
 func burn():
 	# Отвечает за анимацию горения

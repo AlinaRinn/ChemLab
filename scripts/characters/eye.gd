@@ -1,6 +1,8 @@
 extends RayCast
 
+
 var object = null
+
 
 func _physics_process(_delta):
 	var n = get_collider()

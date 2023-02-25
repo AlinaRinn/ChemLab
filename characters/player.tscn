@@ -29,8 +29,6 @@ func get_to_hand(path):
 	# Грузит объект в ручки
 	in_hand_object = load(path).instance()
 	$head/player_hand.add_child(in_hand_object)
-	print(in_hand_object.name)
-	
 	get_node(\"head/player_hand/\" + in_hand_object.name + 
 			\"/StaticBody/CollisionShape\").disabled = true
 

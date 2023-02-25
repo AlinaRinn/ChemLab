@@ -1,5 +1,6 @@
 extends Area
 
+
 export var label = ''
 export var left_click_action = ''
 export var left_click_label = ''
@@ -19,4 +20,3 @@ func action():
 			prt.call(left_click_action)
 		else:
 			print(left_click_action+' не существует')
-

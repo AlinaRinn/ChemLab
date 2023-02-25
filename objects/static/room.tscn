@@ -90,7 +90,7 @@ surfaces/0 = {
 "vertex_count": 24
 }
 
-[node name="Room" type="Spatial"]
+[node name="room" type="Spatial"]
 
 [node name="floor" type="MeshInstance" parent="."]
 transform = Transform( 0.0254, 0, 0, 0, 0.0254, 0, 0, 0, 0.0254, 7.64903, 0.254, -12.7 )

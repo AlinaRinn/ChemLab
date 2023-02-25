@@ -5,8 +5,6 @@
 [ext_resource path="res://assets/textures/gofr.jpg" type="Texture" id=3]
 [ext_resource path="res://assets/models/air_vent.obj" type="ArrayMesh" id=4]
 
-
-
 [sub_resource type="SpatialMaterial" id=1]
 
 [sub_resource type="SpatialMaterial" id=2]
@@ -19,9 +17,9 @@ albedo_texture = ExtResource( 2 )
 [sub_resource type="SpatialMaterial" id=4]
 albedo_texture = ExtResource( 3 )
 
-[node name="Spatial" type="Spatial"]
+[node name="hood" type="Spatial"]
 
-[node name="vitazhka" type="MeshInstance" parent="."]
+[node name="MeshInstance" type="MeshInstance" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -7.71095, -0.923472, 8.88438 )
 mesh = ExtResource( 4 )
 material/0 = SubResource( 1 )

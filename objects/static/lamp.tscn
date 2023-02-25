@@ -8,7 +8,7 @@ albedo_texture = ExtResource( 1 )
 
 [node name="lamp" type="Spatial"]
 
-[node name="lamp" type="MeshInstance" parent="."]
+[node name="MeshInstance" type="MeshInstance" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -3.39054, -8.58258, -2.452 )
 mesh = ExtResource( 2 )
 material/0 = SubResource( 1 )

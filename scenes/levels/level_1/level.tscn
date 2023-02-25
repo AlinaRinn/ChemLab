@@ -12,10 +12,10 @@
 [ext_resource path="res://objects/interactive/tube.tscn" type="PackedScene" id=10]
 [ext_resource path="res://objects/interactive/notebook.tscn" type="PackedScene" id=11]
 [ext_resource path="res://objects/static/long_pipe.tscn" type="PackedScene" id=12]
-[ext_resource path="res://objects/static/book_1.tscn" type="PackedScene" id=13]
+[ext_resource path="res://objects/static/book_blue.tscn" type="PackedScene" id=13]
 [ext_resource path="res://objects/static/conditioner.tscn" type="PackedScene" id=14]
 [ext_resource path="res://objects/static/board_wall.tscn" type="PackedScene" id=15]
-[ext_resource path="res://objects/static/book_2.tscn" type="PackedScene" id=16]
+[ext_resource path="res://objects/static/book_purple.tscn" type="PackedScene" id=16]
 [ext_resource path="res://objects/interactive/burner.tscn" type="PackedScene" id=17]
 [ext_resource path="res://objects/interactive/distiller.tscn" type="PackedScene" id=19]
 [ext_resource path="res://objects/static/shelf.tscn" type="PackedScene" id=20]
@@ -207,7 +207,6 @@ note_other = "Журнал по теме бромирование ацетиле
 
 [node name="SpiritLamp1" parent="staffs" instance=ExtResource( 17 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.584816, 2.26228, -5.73009 )
-burn_other = "Температура данной горелки: 100"
 
 [node name="SpiritLamp2" parent="staffs" instance=ExtResource( 17 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 13.3202, 2.26228, 7.05166 )

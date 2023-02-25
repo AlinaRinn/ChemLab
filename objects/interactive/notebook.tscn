@@ -11,17 +11,17 @@ extents = Vector3( 0.470603, 0.0341372, 0.33507 )
 [sub_resource type="SpatialMaterial" id=2]
 albedo_color = Color( 0.145098, 0.52549, 0.223529, 1 )
 
-[node name="Spatial" type="Spatial"]
+[node name="notebook" type="Spatial"]
 script = ExtResource( 4 )
 
-[node name="notebook" type="StaticBody" parent="."]
+[node name="StaticBody" type="StaticBody" parent="."]
 script = ExtResource( 3 )
 
-[node name="CollisionShape" type="CollisionShape" parent="notebook"]
+[node name="CollisionShape" type="CollisionShape" parent="StaticBody"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0776436, 0 )
 shape = SubResource( 1 )
 
-[node name="tetrad" type="MeshInstance" parent="notebook/CollisionShape"]
+[node name="MeshInstance" type="MeshInstance" parent="StaticBody/CollisionShape"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.99564, -3.30574, 4.83777 )
 mesh = ExtResource( 1 )
 material/1 = SubResource( 2 )

@@ -1,9 +1,11 @@
 extends Spatial
 
+
 export var note_number = ""
 export var note_other = ""
 
 var active = false
+
 
 func show_notes():
 	return

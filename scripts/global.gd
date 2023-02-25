@@ -1,6 +1,5 @@
 extends Node
 
-# This script - singlton, G - entry point
 
 var level = 1
 
@@ -21,21 +20,25 @@ var player
 var game
 var label =''
 
+
 func pause(p=true):
 	get_tree().paused = p
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED if p else Input.MOUSE_MODE_VISIBLE)
 
+
 func to(scene):
 	get_tree().change_scene("res://scenes/main/"+scene+".tscn")
+
 
 func load_level():
 	root_level = load("res://scenes/levels/level_"+str(level)+"/level.tscn").instance()
 	root_game.get_node('level').add_child(root_level)
 
+
 func load_notes():
 	active_note = load("res://scenes/levels/level_"+str(level)+"/notebooks/notebook_"+str(note)+".tscn").instance()
 	root_game.get_node('notebook').add_child(active_note)
 
+
 func blank_notes():
 	root_game.get_node('notebook').remove_child(active_note)
-

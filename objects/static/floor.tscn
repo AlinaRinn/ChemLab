@@ -4,7 +4,6 @@
 [ext_resource path="res://assets/materials/tile.material" type="Material" id=2]
 [ext_resource path="res://assets/models/floor.obj" type="ArrayMesh" id=3]
 
-
 [node name="Spatial" type="Spatial"]
 
 [node name="pol" type="MeshInstance" parent="."]

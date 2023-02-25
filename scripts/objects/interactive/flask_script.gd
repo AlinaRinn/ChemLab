@@ -1,6 +1,8 @@
 extends StaticBody
 
+
 var opened = false
+
 
 func drug():
 	if !opened:
