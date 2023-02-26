@@ -1,0 +1,109 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://scripts/gui.gd" type="Script" id=1]
+[ext_resource path="res://assets/fonts/font_4.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://assets/images/target.png" type="Texture" id=3]
+
+[sub_resource type="DynamicFont" id=1]
+size = 40
+outline_size = 2
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 30
+outline_size = 2
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 2 )
+
+[node name="gui" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 1.50732
+margin_right = 1.50732
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect2" type="ColorRect" parent="."]
+visible = false
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -382.0
+margin_top = -80.0
+margin_right = 382.0
+color = Color( 0.513726, 0.360784, 0.360784, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="target_name" type="Label" parent="."]
+anchor_left = 0.761
+anchor_top = 0.594
+anchor_right = 0.995
+anchor_bottom = 0.685
+margin_left = -0.120117
+margin_top = 0.47998
+margin_right = -0.400146
+margin_bottom = 0.199951
+custom_fonts/font = SubResource( 1 )
+align = 1
+valign = 2
+
+[node name="ColorRect" type="ColorRect" parent="target_name"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = -2.0
+margin_bottom = -14.0
+color = Color( 0.803922, 0.776471, 0.776471, 1 )
+
+[node name="target_other" type="Label" parent="."]
+anchor_left = 0.76
+anchor_top = 0.685
+anchor_right = 0.995
+anchor_bottom = 1.009
+margin_left = 0.799927
+margin_top = 0.199951
+margin_right = -0.400146
+margin_bottom = 0.279907
+custom_fonts/font = SubResource( 2 )
+autowrap = true
+
+[node name="ColorRect" type="ColorRect" parent="target_other"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="center" type="ColorRect" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -2.5
+margin_top = -2.5
+margin_right = 2.5
+margin_bottom = 2.5
+color = Color( 0, 0, 0, 0 )
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="target" type="Sprite" parent="center"]
+position = Vector2( 1.49219, 1.9668 )
+scale = Vector2( 0.0254624, 0.0254624 )
+texture = ExtResource( 3 )
+
+[node name="Label" type="Label" parent="."]
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_top = -84.0
+margin_right = 242.0
+text = "MUCTR chemical laboratory"
+align = 1
+valign = 1

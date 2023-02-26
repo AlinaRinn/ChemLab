@@ -7,7 +7,7 @@ albedo_color = Color( 0.105882, 0.384314, 0.815686, 0.6 )
 metallic_specular = 0.0
 roughness = 0.05
 
-[node name="Spatial" type="Spatial"]
+[node name="water" type="Spatial"]
 
 [node name="MeshInstance" type="MeshInstance" parent="."]
 transform = Transform( 0.0613559, 0, 0, 0, 0.0460169, 0, 0, 0, 0.0613559, 0, 0, 0 )

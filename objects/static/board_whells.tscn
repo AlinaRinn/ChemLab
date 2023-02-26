@@ -1,0 +1,46 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://assets/models/board_wheels.glb" type="PackedScene" id=1]
+[ext_resource path="res://assets/materials/metal_darkgrey.material" type="Material" id=2]
+[ext_resource path="res://assets/materials/board.material" type="Material" id=3]
+[ext_resource path="res://assets/materials/plastic_black.material" type="Material" id=4]
+[ext_resource path="res://assets/materials/metal.material" type="Material" id=5]
+
+
+[node name="board" instance=ExtResource( 1 )]
+transform = Transform( 0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0 )
+
+[node name="Box01" parent="." index="0"]
+material/0 = ExtResource( 3 )
+
+[node name="Box03" parent="." index="1"]
+transform = Transform( 0.968165, 0, -0.250312, 0, 1, 0, 0.250312, 0, 0.968165, -77.5107, -664.794, -32.1561 )
+material/0 = ExtResource( 2 )
+
+[node name="Box02" parent="." index="2"]
+material/0 = ExtResource( 4 )
+
+[node name="Line01" parent="." index="3"]
+transform = Transform( 0.968165, 0, -0.250312, 0, 1, 0, 0.250312, 0, 0.968165, -79.5723, -663.95, -29.1968 )
+material/0 = ExtResource( 4 )
+
+[node name="Line001" parent="." index="4"]
+transform = Transform( 0.968165, 0, -0.250312, 0, 1, 0, 0.250312, 0, 0.968165, -79.5723, -663.95, -29.1968 )
+material/0 = ExtResource( 4 )
+
+[node name="Line003" parent="." index="5"]
+transform = Transform( 0.968165, 0, -0.250312, 0, 1, 0, 0.250312, 0, 0.968165, -79.5723, -663.95, -29.1968 )
+material/0 = ExtResource( 4 )
+
+[node name="Line03" parent="." index="6"]
+transform = Transform( 0.968165, 0, -0.250312, 0, 1, 0, 0.250312, 0, 0.968165, -79.5723, -663.95, -29.1968 )
+material/0 = ExtResource( 4 )
+
+[node name="Box04" parent="." index="7"]
+material/0 = ExtResource( 4 )
+
+[node name="Cylinder01" parent="." index="8"]
+material/0 = ExtResource( 5 )
+
+[node name="Cylinder02" parent="." index="9"]
+material/0 = ExtResource( 5 )

@@ -1,0 +1,33 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://assets/models/notebook.obj" type="ArrayMesh" id=1]
+[ext_resource path="res://objects/interaction.tscn" type="PackedScene" id=2]
+[ext_resource path="res://scripts/objects/interactive/notebook.gd" type="Script" id=3]
+[ext_resource path="res://scripts/objects/interactive/notebook_main.gd" type="Script" id=4]
+
+[sub_resource type="BoxShape" id=1]
+extents = Vector3( 0.470603, 0.0341372, 0.33507 )
+
+[sub_resource type="SpatialMaterial" id=2]
+albedo_color = Color( 0.145098, 0.52549, 0.223529, 1 )
+
+[node name="notebook" type="Spatial"]
+script = ExtResource( 4 )
+
+[node name="StaticBody" type="StaticBody" parent="."]
+script = ExtResource( 3 )
+
+[node name="CollisionShape" type="CollisionShape" parent="StaticBody"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0776436, 0 )
+shape = SubResource( 1 )
+
+[node name="MeshInstance" type="MeshInstance" parent="StaticBody/CollisionShape"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.99564, -3.30574, 4.83777 )
+mesh = ExtResource( 1 )
+material/1 = SubResource( 2 )
+
+[node name="interaction" parent="." instance=ExtResource( 2 )]
+transform = Transform( 0.523015, 0, 0, 0, 0.0804492, 0, 0, 0, 0.389296, -0.0264087, 0.0679076, 0 )
+label = "Тетрадь"
+left_click_action = "show_notes"
+left_click_label = "Посмотреть"
