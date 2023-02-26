@@ -81,7 +81,9 @@ shape = SubResource( 2 )
 
 [node name="interactive" parent="frame_005/door_005" index="4" instance=ExtResource( 5 )]
 transform = Transform( 0.0860259, 0, 0, 0, 1.06432, 0, 0, 0, 0.604128, -0.0801218, -0.0415261, -0.41936 )
+label = "Дверь"
 left_click_action = "open"
+left_click_label = "Открыть/Закрыть"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="frame_005/door_005" index="5"]
 root_node = NodePath("../../..")
