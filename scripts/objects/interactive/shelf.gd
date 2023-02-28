@@ -1,13 +1,13 @@
 extends MeshInstance
 
 
-var isOpen = false
+var active = false
 
 
 func open():
-	if !isOpen:
-		isOpen = true
+	if !active:
+		active = true
 		$AnimationPlayer.play("open")
-	elif isOpen:
-		isOpen = false
+	else:
+		active = false
 		$AnimationPlayer.play_backwards("open")

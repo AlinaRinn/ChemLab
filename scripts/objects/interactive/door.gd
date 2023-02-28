@@ -1,6 +1,13 @@
-extends Spatial
+extends MeshInstance
 
 
-func exit():
-	G.to('main_menu')
-	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+var active = false
+
+
+func open():
+	if !active:
+		active = true
+		$AnimationPlayer.play("open")
+	else:
+		active = false
+		$AnimationPlayer.play_backwards("open")
