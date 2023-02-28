@@ -1,0 +1,89 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://assets/materials/plastic_black.material" type="Material" id=1]
+[ext_resource path="res://assets/materials/wood_brown_scaled.material" type="Material" id=2]
+[ext_resource path="res://assets/materials/plastic_white.material" type="Material" id=3]
+[ext_resource path="res://assets/materials/glass_gray.material" type="Material" id=4]
+[ext_resource path="res://assets/models/window.glb" type="PackedScene" id=5]
+[ext_resource path="res://objects/interaction.tscn" type="PackedScene" id=6]
+
+[sub_resource type="GDScript" id=1]
+script/source = "extends Spatial
+
+
+var active = false
+
+
+func open():
+	if !active:
+		active = true
+		$AnimationPlayer.play(\"open\")
+	else:
+		active = false
+		$AnimationPlayer.play_backwards(\"open\")
+"
+
+[sub_resource type="Animation" id=2]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("blinds/BLIND:translation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector3( 103.91, -1.19196, 30.4661 ) ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "open"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("blinds/BLIND:translation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector3( 103.91, -1.19196, 30.4661 ), Vector3( 103.91, 70, 30.466 ) ]
+}
+
+[node name="window" instance=ExtResource( 5 )]
+script = SubResource( 1 )
+
+[node name="Line05" parent="bottom_frame" index="0"]
+material/0 = ExtResource( 3 )
+
+[node name="Line06" parent="bottom_frame" index="1"]
+material/0 = ExtResource( 4 )
+
+[node name="Line04" parent="up_frame" index="0"]
+material/0 = ExtResource( 3 )
+
+[node name="Line07" parent="up_frame" index="1"]
+material/0 = ExtResource( 4 )
+
+[node name="deflector" parent="." index="2"]
+material/0 = ExtResource( 1 )
+
+[node name="main_frame" parent="." index="3"]
+material/0 = ExtResource( 3 )
+
+[node name="BLIND" parent="blinds" index="0"]
+material/0 = ExtResource( 2 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="5"]
+anims/RESET = SubResource( 2 )
+anims/open = SubResource( 3 )
+
+[node name="interactive" parent="." index="6" instance=ExtResource( 6 )]
+transform = Transform( 7.26773, 0, 0, 0, 27.0563, 0, 0, 0, 28.1205, 0, 0, 0 )
+label = "Окно"
+left_click_action = "open"
+left_click_label = "Поднять/Опустить"
