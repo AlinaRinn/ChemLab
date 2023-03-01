@@ -1,6 +1,6 @@
 extends Spatial
 
-
+var id_obj = "tube"
 var first_init = true
 var flask = []
 var opened = false
