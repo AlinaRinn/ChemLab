@@ -23,13 +23,20 @@ var cast = null
 
 
 func get_to_hand(object):
-	# Если в руках что то есть, очищает
+	# Если в руках что то есть, меняет местами
+	var swap_obj = null
 	if in_hand_object:
-		in_hand_object.queue_free()
-		
+		swap_obj = in_hand_object
+		swap_obj.translation = object.translation
+		$head/player_hand.remove_child(in_hand_object)
+	
 	# Грузит объект в ручки
-	in_hand_object = object
+	object.get_parent().remove_child(object)
+	object.translation = Vector3(0, 0, 0)
 	$head/player_hand.add_child(object)
+	in_hand_object = object
+	
+	return swap_obj
 
 
 func get_info_object():
@@ -56,7 +63,6 @@ func get_object():
 func get_input():
 	var dir = Vector3()
 	var speed = SPEED
-	
 	# Обработка быстрых кнопок
 	if Input.is_action_just_pressed(\"ui_cancel\"):
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
@@ -84,7 +90,7 @@ func get_input():
 	elif state == \"sit\":
 		state = \"stay\"
 		anim.play_backwards(\"sit\")
-		
+	
 	elif Input.is_action_pressed(\"ui_shift\"):
 		anim.play(\"run\")
 		speed = SPEED_RUN

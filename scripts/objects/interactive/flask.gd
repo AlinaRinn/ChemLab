@@ -24,9 +24,11 @@ func flask_init():
 
 
 func take():
-	get_parent().remove_child(self)	
-	self.translation = Vector3(0, 0, 0)
-	G.player.get_to_hand(self)
+	var parent = get_parent()
+	var object = G.player.get_to_hand(self)
+	if object:
+		parent.add_child(object)
+	
 	
 func drug():
 	if !opened:

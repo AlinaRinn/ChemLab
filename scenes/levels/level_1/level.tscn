@@ -21,7 +21,6 @@
 [ext_resource path="res://objects/static/shelf.tscn" type="PackedScene" id=20]
 [ext_resource path="res://objects/interactive/bottle.tscn" type="PackedScene" id=21]
 
-
 [node name="Main" type="Spatial"]
 
 [node name="Floors" type="Spatial" parent="."]
