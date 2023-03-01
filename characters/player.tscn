@@ -3,30 +3,23 @@
 [sub_resource type="GDScript" id=1]
 script/source = "extends KinematicBody
 
-const ROT = 0.005
-const gr = 0.4
+const ROTATION = 0.005
+const GRAVITY = 0.4
 const SPEED = 6
 const SPEED_RUN = 12
-const J_SPEED = 10
+const SPEED_JUMP = 10
+
 var vel = Vector3()
 
-var state = 0
-
-
+var state = \"stay\"
 var rot_x = 0
 var rot_y = 0
 
 onready var rc = $head/eye
-
-var action_object = null
+onready var anim = $AnimationPlayer
 
 var in_hand_object = null
 var cast = null
-
-func action():
-	# Для взаимодействия с объектами
-	if cast:
-		cast.action()
 
 
 func get_to_hand(object):
@@ -39,69 +32,7 @@ func get_to_hand(object):
 	$head/player_hand.add_child(object)
 
 
-func _ready():
-	# Прячет курсор при загрузке на уровень
-	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
-
-
-func _physics_process(_delta):
-	# Обработка быстрых кнопок
-	if Input.is_action_just_pressed(\"ui_cancel\"):
-		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
-		G.to('main_menu')
-	
-	# Обработка кнопок движения и прыжок
-	var pl = Vector3()
-	var speed = SPEED
-	if Input.is_action_pressed(\"ui_left\"):
-		pl.x = -1
-	if Input.is_action_pressed(\"ui_right\"):
-		pl.x = 1
-	if Input.is_action_pressed(\"ui_up\"):
-		pl.z = -1
-	if Input.is_action_pressed(\"ui_down\"):
-		pl.z = 1
-	if Input.is_action_just_pressed(\"ui_select\") && is_on_floor():
-		vel.y = J_SPEED 
-	
-	if Input.is_action_pressed(\"ui_ctrl\"):
-		if state == 0:
-			$AnimationPlayer.play(\"sit\")
-			state = -1
-	elif state == -1:
-		state = 0
-		$AnimationPlayer.play_backwards(\"sit\")
-			
-	elif Input.is_action_pressed(\"ui_run\"):
-		$AnimationPlayer.play(\"step\")
-		speed = SPEED_RUN
-	elif $AnimationPlayer.is_playing():
-		$AnimationPlayer.stop()
-		$AnimationPlayer.seek(0, true)
-		
-	if pl:
-		# Вращение
-		pl = pl.rotated(Vector3.UP, rotation.y) * speed 
-		
-		# Взаимодействие с блокнотами
-		if G.active_note:
-			G.blank_notes()
-			G.active_note = null
-	
-	# Движение
-	vel.y -= gr 
-	vel.x = pl.x
-	vel.z = pl.z	
-	vel = move_and_slide(vel, Vector3.UP)
-	
-	
-	if rc.is_colliding():
-		cast = rc.get_collider()
-		if !('label' in cast):
-			cast = null
-	else:
-		cast = null
-	
+func get_info_object():
 	if cast:
 		G.label_1.text = cast.label
 		if cast.left_click_label != \"\":
@@ -113,11 +44,91 @@ func _physics_process(_delta):
 		G.label_2.text
 
 
+func get_object():
+	if rc.is_colliding():
+		cast = rc.get_collider()
+		if !('label' in cast):
+			cast = null
+	else:
+		cast = null
+
+
+func get_input():
+	var dir = Vector3()
+	var speed = SPEED
+	
+	# Обработка быстрых кнопок
+	if Input.is_action_just_pressed(\"ui_cancel\"):
+		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+		G.to('main_menu')
+		
+	# Обработка кнопок движения
+	if Input.is_action_pressed(\"ui_left\"):
+		dir.x = -1
+	if Input.is_action_pressed(\"ui_right\"):
+		dir.x = 1
+	if Input.is_action_pressed(\"ui_up\"):
+		dir.z = -1
+	if Input.is_action_pressed(\"ui_down\"):
+		dir.z = 1
+	
+	# Обработка кнопоки прыжка
+	if Input.is_action_just_pressed(\"ui_select\") && is_on_floor():
+		vel.y = SPEED_JUMP 
+	
+	# Обработка кнопок приседнация и бега
+	if Input.is_action_pressed(\"ui_ctrl\"):
+		if state == \"stay\":
+			anim.play(\"sit\")
+			state = \"sit\"
+	elif state == \"sit\":
+		state = \"stay\"
+		anim.play_backwards(\"sit\")
+		
+	elif Input.is_action_pressed(\"ui_shift\"):
+		anim.play(\"run\")
+		speed = SPEED_RUN
+	elif anim.is_playing():
+		anim.stop()
+		anim.seek(0, true)
+		
+	# Вращение
+	if dir:
+		dir = dir.rotated(Vector3.UP, rotation.y) * speed 
+		# Взаимодействие с блокнотами
+		#if G.active_note:
+			#G.blank_notes()
+			#G.active_note = null
+			
+	# Движение
+	vel.y -= GRAVITY 
+	vel.x = dir.x
+	vel.z = dir.z	
+
+	
+func _physics_process(_delta):
+	get_input();
+	vel = move_and_slide(vel, Vector3.UP)
+	get_object()
+	get_info_object()
+
+
+func action():
+	# Для взаимодействия с объектами
+	if cast:
+		cast.action()
+
+
+func _ready():
+	# Прячет курсор при загрузке на уровень
+	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+
+
 func _input(e):
 	# Обрабатываем движение мышкой
 	if e is InputEventMouseMotion:
-		rot_y -= e.relative.x * ROT
-		rot_x -= e.relative.y * ROT
+		rot_y -= e.relative.x * ROTATION
+		rot_x -= e.relative.y * ROTATION
 		
 		if rot_x < -1.2: rot_x = -1.2
 		elif rot_x > 1.2: rot_x = 1.2
@@ -198,6 +209,35 @@ tracks/4/keys = {
 "values": [ Vector3( 0, 0.310886, 0 ) ]
 }
 
+[sub_resource type="Animation" id=4]
+resource_name = "run"
+length = 0.8
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("head:translation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0, 2.32333, 0 ), Vector3( 0.019, 2.423, 0.007 ), Vector3( 0, 2.323, 0 ), Vector3( -0.016, 2.241, -0.005 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("head/player_hand:translation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.3, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0.0801525, -0.0562506, -0.0885729 ), Vector3( 0.084, -0.053, -0.09 ), Vector3( 0.083, -0.057, -0.09 ) ]
+}
+
 [sub_resource type="Animation" id=5]
 resource_name = "sit"
 length = 0.1
@@ -238,35 +278,6 @@ tracks/2/keys = {
 "values": [ Vector3( 0, 0.310886, 0 ), Vector3( 0, -0.124742, -3.15647e-08 ) ]
 }
 
-[sub_resource type="Animation" id=4]
-resource_name = "step"
-length = 0.8
-loop = true
-tracks/0/type = "value"
-tracks/0/path = NodePath("head:translation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 0.2, 0.4, 0.6 ),
-"transitions": PoolRealArray( 1, 1, 1, 1 ),
-"update": 0,
-"values": [ Vector3( 0, 2.32333, 0 ), Vector3( 0.019, 2.423, 0.007 ), Vector3( 0, 2.323, 0 ), Vector3( -0.016, 2.241, -0.005 ) ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("head/player_hand:translation")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0, 0.3, 0.6 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
-"update": 0,
-"values": [ Vector3( 0.0801525, -0.0562506, -0.0885729 ), Vector3( 0.084, -0.053, -0.09 ), Vector3( 0.083, -0.057, -0.09 ) ]
-}
-
 [node name="player" type="KinematicBody"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.84756, 0 )
 collision_layer = 2
@@ -293,5 +304,5 @@ transform = Transform( 0.0985865, 0.0167543, 0, -0.0167543, 0.0985865, 0, 0, 0, 
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/RESET = SubResource( 3 )
+anims/run = SubResource( 4 )
 anims/sit = SubResource( 5 )
-anims/step = SubResource( 4 )
