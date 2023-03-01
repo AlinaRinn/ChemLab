@@ -3,17 +3,15 @@
 [sub_resource type="GDScript" id=1]
 script/source = "extends KinematicBody
 
-const ROTATION = 0.005
 const GRAVITY = 0.4
 const SPEED = 6
 const SPEED_RUN = 12
 const SPEED_JUMP = 10
+const SPEED_TURN = 0.005
 
 var vel = Vector3()
 
 var state = \"stay\"
-var rot_x = 0
-var rot_y = 0
 
 onready var rc = $head/eye
 onready var anim = $AnimationPlayer
@@ -27,12 +25,12 @@ func get_to_hand(object):
 	# Если в руках что то есть, меняет местами
 	var swap_obj = null
 	if in_hand_object:
-		#if in_hand_object_id == object.id_obj:
+		if in_hand_object_id == object.id_obj:
 			swap_obj = in_hand_object
 			swap_obj.translation = object.translation
 			$head/player_hand.remove_child(in_hand_object)
-		#else:
-			#in_hand_object.queue_free()
+		else:
+			in_hand_object.queue_free()
 	
 	# Грузит объект в ручки
 	in_hand_object_id = object.id_obj
@@ -138,14 +136,8 @@ func _ready():
 func _input(e):
 	# Обрабатываем движение мышкой
 	if e is InputEventMouseMotion:
-		rot_y -= e.relative.x * ROTATION
-		rot_x -= e.relative.y * ROTATION
-		
-		if rot_x < -1.2: rot_x = -1.2
-		elif rot_x > 1.2: rot_x = 1.2
-		
-		transform.basis = Basis(Vector3(0,1,0), rot_y)
-		$head.transform.basis = Basis(Vector3(1,0,0), rot_x)
+		rotation.y -= e.relative.x * SPEED_TURN
+		$head.rotation.x = clamp($head.rotation.x-e.relative.y* SPEED_TURN,-1.3, 1.2)
 	
 	# Обрабатываем нажатия мышкой
 	if e is InputEventMouse:
