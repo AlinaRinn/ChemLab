@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://objects/static/room.tscn" type="PackedScene" id=1]
 [ext_resource path="res://objects/static/lamp.tscn" type="PackedScene" id=2]
@@ -12,7 +12,7 @@
 [ext_resource path="res://objects/static/table_1.tscn" type="PackedScene" id=10]
 [ext_resource path="res://objects/static/board_whells.tscn" type="PackedScene" id=11]
 [ext_resource path="res://objects/static/wall_picture.tscn" type="PackedScene" id=12]
-
+[ext_resource path="res://objects/static/table_2.tscn" type="PackedScene" id=13]
 
 [node name="level_area" type="Spatial"]
 
@@ -68,7 +68,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 10.4545, 6.95606, -20.8414 )
 transform = Transform( -1.39876e-10, 0, -0.0032, 0, 0.0032, 0, 0.0032, 0, -1.39876e-10, 12.7806, 2.63915, -24.2625 )
 
 [node name="stool" parent="furniture" instance=ExtResource( 10 )]
-transform = Transform( 0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 0.907363, 0.490563, -24.3578 )
+transform = Transform( 0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 5.42045, 0.490563, -12.6525 )
 
 [node name="shelf" parent="furniture" instance=ExtResource( 9 )]
 transform = Transform( 0.025, 0, 0, 0, 0.025, 0, 0, 0, 0.025, 7.66502, 3.74918, -24.5282 )
@@ -77,7 +77,7 @@ transform = Transform( 0.025, 0, 0, 0, 0.025, 0, 0, 0, 0.025, 7.66502, 3.74918, 
 transform = Transform( -0.75, 0, -6.55671e-08, 0, 0.75, 0, 6.55671e-08, 0, -0.75, 9.92959, 0.0874946, -14.7056 )
 
 [node name="chair" parent="furniture" instance=ExtResource( 3 )]
-transform = Transform( -0.75, 0, -6.55671e-08, 0, 0.75, 0, 6.55671e-08, 0, -0.75, 4.53475, 0.0874946, -14.7056 )
+transform = Transform( -0.75, 0, -6.55671e-08, 0, 0.75, 0, 6.55671e-08, 0, -0.75, 1.34056, 0.0874946, -23.7731 )
 
 [node name="things" type="Spatial" parent="."]
 
@@ -87,3 +87,6 @@ mesh = ExtResource( 4 )
 skeleton = NodePath("../../room")
 material/0 = ExtResource( 6 )
 material/1 = ExtResource( 7 )
+
+[node name="table_2" parent="." instance=ExtResource( 13 )]
+transform = Transform( -0.03, 0, -2.62268e-09, 0, 0.03, 0, 2.62268e-09, 0, -0.03, 1.9746, 1.73664, -22.1807 )
