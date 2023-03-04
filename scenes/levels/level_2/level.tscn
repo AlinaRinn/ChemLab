@@ -8,10 +8,11 @@
 [ext_resource path="res://assets/materials/plastic_black.material" type="Material" id=6]
 [ext_resource path="res://assets/materials/glass_gray.material" type="Material" id=7]
 [ext_resource path="res://objects/interactive/door.tscn" type="PackedScene" id=8]
-[ext_resource path="res://objects/interactive/shelf.tscn" type="PackedScene" id=9]
+[ext_resource path="res://objects/interactive/fume_hood.tscn" type="PackedScene" id=9]
 [ext_resource path="res://objects/static/table_1.tscn" type="PackedScene" id=10]
 [ext_resource path="res://objects/static/board_whells.tscn" type="PackedScene" id=11]
 [ext_resource path="res://objects/static/wall_picture.tscn" type="PackedScene" id=12]
+
 
 [node name="level_area" type="Spatial"]
 
