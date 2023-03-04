@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=21 format=2]
 
 [ext_resource path="res://assets/models/shelf.glb" type="PackedScene" id=1]
 [ext_resource path="res://assets/materials/tile_table.material" type="Material" id=2]
@@ -10,6 +10,7 @@
 [ext_resource path="res://objects/interaction.tscn" type="PackedScene" id=8]
 [ext_resource path="res://objects/collide.tscn" type="PackedScene" id=9]
 [ext_resource path="res://assets/models/fume_hood_left_door.obj" type="ArrayMesh" id=10]
+[ext_resource path="res://assets/models/fume_hood_right_door.obj" type="ArrayMesh" id=11]
 
 [sub_resource type="GDScript" id=1]
 script/source = "extends MeshInstance
@@ -54,6 +55,51 @@ tracks/0/keys = {
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
 "values": [ Vector3( 0, -6, 28.5 ), Vector3( 0, 43.6, 28.5 ) ]
+}
+
+[sub_resource type="GDScript" id=7]
+script/source = "extends MeshInstance
+
+var active = false
+
+func open():
+	if !active:
+		active = true
+		$OpenAnimation.play(\"open\")
+	else:
+		active = false
+		$OpenAnimation.play_backwards(\"open\")
+"
+
+[sub_resource type="Animation" id=8]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector3( 0, 90, 0 ) ]
+}
+
+[sub_resource type="Animation" id=9]
+resource_name = "open"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0, 90, 0 ), Vector3( 0, 180, 0 ) ]
 }
 
 [sub_resource type="GDScript" id=4]
@@ -139,15 +185,34 @@ material/0 = ExtResource( 5 )
 
 [node name="DoorRight" parent="." index="2"]
 transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 70.5, -82.5, 28.5 )
+visible = false
 material/0 = ExtResource( 7 )
 
 [node name="HandleDR" parent="DoorRight" index="0"]
+visible = false
 material/0 = ExtResource( 6 )
 
-[node name="BoxCollider" parent="DoorRight" index="1" instance=ExtResource( 9 )]
-transform = Transform( 29.1872, 0, 0, 0, 0.999999, 1.12152e-05, 0, 1.12152e-05, 32.3599, 0, 0.873459, 0 )
+[node name="DoorRightBicycleOBJ" type="MeshInstance" parent="." index="3"]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 100, -82.5, 28.5 )
+mesh = ExtResource( 11 )
+material/0 = ExtResource( 6 )
+material/1 = ExtResource( 7 )
+script = SubResource( 7 )
 
-[node name="DoorMiddle" parent="." index="3"]
+[node name="BoxCollider" parent="DoorRightBicycleOBJ" index="0" instance=ExtResource( 9 )]
+transform = Transform( -1.76334e-06, 0.760986, -2.72171e-07, 0, -1.15389e-05, -32.2652, -29.3619, -2.27853e-08, 8.14929e-15, -1.03862, 0.118713, -29.616 )
+
+[node name="interactive" parent="DoorRightBicycleOBJ" index="1" instance=ExtResource( 8 )]
+transform = Transform( 1, 0, -1.25124e-06, 0, 32.5056, 0, -1.25124e-06, 0, 29.6251, -1.0761, 0, -29.6028 )
+label = "Дверца"
+left_click_action = "open"
+left_click_label = "Открыть/Закрыть"
+
+[node name="OpenAnimation" type="AnimationPlayer" parent="DoorRightBicycleOBJ" index="2"]
+anims/RESET = SubResource( 8 )
+anims/open = SubResource( 9 )
+
+[node name="DoorMiddle" parent="." index="4"]
 material/0 = ExtResource( 7 )
 
 [node name="HandleDM" parent="DoorMiddle" index="0"]
@@ -156,76 +221,77 @@ material/0 = ExtResource( 6 )
 [node name="BoxCollider" parent="DoorMiddle" index="1" instance=ExtResource( 9 )]
 transform = Transform( 34.8171, 0, 0, 0, 0.999999, 1.11842e-05, 0, 1.11841e-05, 32.2732, 0, 0.898819, 0 )
 
-[node name="BottomOverlay" parent="." index="4"]
+[node name="BottomOverlay" parent="." index="5"]
 material/0 = ExtResource( 6 )
 
 [node name="BoxCollider" parent="BottomOverlay" index="0" instance=ExtResource( 9 )]
 transform = Transform( 99.425, 0, 0, 0, 0.931365, -1.60926e-05, 0, -3.82955e-07, -5.86014, 0, 0.986099, 1.52588e-05 )
 
-[node name="DoorLeft" parent="." index="5"]
+[node name="DoorLeft" parent="." index="6"]
 visible = false
 material/0 = ExtResource( 7 )
 
 [node name="HandleDL" parent="DoorLeft" index="0"]
+visible = false
 material/0 = ExtResource( 6 )
 
-[node name="DoorLeftbicycleOBJ" type="MeshInstance" parent="." index="6"]
+[node name="DoorLeftBicycleOBJ" type="MeshInstance" parent="." index="7"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -100, -82.5, 28.5 )
 mesh = ExtResource( 10 )
 material/0 = ExtResource( 6 )
 material/1 = ExtResource( 7 )
 script = SubResource( 4 )
 
-[node name="BoxCollider" parent="DoorLeftbicycleOBJ" index="0" instance=ExtResource( 9 )]
+[node name="BoxCollider" parent="DoorLeftBicycleOBJ" index="0" instance=ExtResource( 9 )]
 transform = Transform( 34.8512, 0, 0, 0, -1.15389e-05, -32.2652, 0, 0.760986, -2.72171e-07, 34.9582, 0.118713, 0.99279 )
 
-[node name="interactive" parent="DoorLeftbicycleOBJ" index="1" instance=ExtResource( 8 )]
+[node name="interactive" parent="DoorLeftBicycleOBJ" index="1" instance=ExtResource( 8 )]
 transform = Transform( 35.0529, 0, 0, 0, 32.3948, 8.92294e-13, 0, 8.92294e-13, 0.999999, 34.9459, 0, 0.886154 )
 label = "Дверца"
 left_click_action = "open"
 left_click_label = "Открыть/Закрыть"
 
-[node name="OpenAnimation" type="AnimationPlayer" parent="DoorLeftbicycleOBJ" index="2"]
+[node name="OpenAnimation" type="AnimationPlayer" parent="DoorLeftBicycleOBJ" index="2"]
 anims/RESET = SubResource( 5 )
 anims/open = SubResource( 6 )
 
-[node name="Tabletop" parent="." index="7"]
+[node name="Tabletop" parent="." index="8"]
 material/0 = ExtResource( 2 )
 
 [node name="BoxCollider" parent="Tabletop" index="0" instance=ExtResource( 9 )]
 transform = Transform( 95.8868, 0, 0, 0, 28.4356, -9.27453e-06, 0, -9.27455e-06, 2.5021, 0, 26.3492, -7.62939e-06 )
 
-[node name="TopOverlay" parent="." index="8"]
+[node name="TopOverlay" parent="." index="9"]
 material/0 = ExtResource( 6 )
 
 [node name="BoxCollider" parent="TopOverlay" index="0" instance=ExtResource( 9 )]
 transform = Transform( 98.98, 0, 0, 0, 0.999999, 8.54771e-06, 0, 8.5477e-06, 24.9011, 0, 2.0465, 0 )
 
-[node name="BottomBox" parent="." index="9"]
+[node name="BottomBox" parent="." index="10"]
 material/0 = ExtResource( 6 )
 
 [node name="BoxCollider" parent="BottomBox" index="0" instance=ExtResource( 9 )]
 transform = Transform( 99.5166, 0, -1.05957e-05, 0, 1.20743, 0, -1.05957e-05, 0, 29.3447, 6.77138e-08, 1.30967, 0.448448 )
 
-[node name="RightBox" parent="." index="10"]
+[node name="RightBox" parent="." index="11"]
 material/0 = ExtResource( 6 )
 
 [node name="BoxCollider" parent="RightBox" index="0" instance=ExtResource( 9 )]
 transform = Transform( 27.0217, 0, 0, 0, 2.2528, 0, 0, 0, 94.6678, 0, -2.41481, 0 )
 
-[node name="LeftBox" parent="." index="11"]
+[node name="LeftBox" parent="." index="12"]
 material/0 = ExtResource( 6 )
 
 [node name="BoxCollider" parent="LeftBox" index="0" instance=ExtResource( 9 )]
 transform = Transform( 27.0217, 0, 0, 0, 2.2528, 0, 0, 0, 94.6678, 0, -2.41481, 0 )
 
-[node name="BackBox" parent="." index="12"]
+[node name="BackBox" parent="." index="13"]
 material/0 = ExtResource( 6 )
 
 [node name="BoxCollider" parent="BackBox" index="0" instance=ExtResource( 9 )]
 transform = Transform( 99.4308, 0, 0, 0, 2.2528, 7.27596e-12, 0, -1.7053e-13, 94.6678, 0, 2.1139, 0 )
 
-[node name="TopBox" parent="." index="13"]
+[node name="TopBox" parent="." index="14"]
 material/0 = ExtResource( 6 )
 
 [node name="BoxCollider" parent="TopBox" index="0" instance=ExtResource( 9 )]

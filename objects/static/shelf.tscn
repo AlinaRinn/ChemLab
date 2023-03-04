@@ -2,17 +2,14 @@
 
 [ext_resource path="res://assets/models/shelf.obj" type="ArrayMesh" id=1]
 [ext_resource path="res://objects/collide.tscn" type="PackedScene" id=2]
-
-[sub_resource type="SpatialMaterial" id=1]
-albedo_color = Color( 0.611765, 0.611765, 0.611765, 1 )
-metallic = 0.25
+[ext_resource path="res://assets/materials/wood_light.material" type="Material" id=3]
 
 [node name="shelf" type="Spatial"]
 
 [node name="MeshInstance" type="MeshInstance" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -3.85022, -3, 3.12583 )
 mesh = ExtResource( 1 )
-material/0 = SubResource( 1 )
+material/0 = ExtResource( 3 )
 
 [node name="Spatial" parent="." instance=ExtResource( 2 )]
 transform = Transform( 0.699685, 0, 0, 0, 1, 0, 0, 0, 2.12829, 0, 0.997945, -0.138991 )
