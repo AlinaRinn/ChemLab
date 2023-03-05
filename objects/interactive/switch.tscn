@@ -1,0 +1,80 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://assets/models/trigger.obj" type="ArrayMesh" id=1]
+[ext_resource path="res://assets/models/switch.glb" type="PackedScene" id=2]
+[ext_resource path="res://assets/materials/tile_table.material" type="Material" id=3]
+[ext_resource path="res://assets/materials/metal.material" type="Material" id=4]
+[ext_resource path="res://objects/interaction.tscn" type="PackedScene" id=5]
+
+[sub_resource type="GDScript" id=3]
+script/source = "extends MeshInstance
+
+var active = false
+
+func switch():
+	if !active:
+		active = true
+		$SwitchAnimation.play(\"switch\")
+	else:
+		active = false
+		$SwitchAnimation.play_backwards(\"switch\")
+"
+
+[sub_resource type="Animation" id=1]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("trigger:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0, 0 ) ]
+}
+
+[sub_resource type="Animation" id=2]
+resource_name = "switch"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("trigger:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0, 0 ), Vector3( -65, 0, 0 ) ]
+}
+
+[node name="switch" instance=ExtResource( 2 )]
+
+[node name="screw1" parent="." index="0"]
+material/0 = ExtResource( 4 )
+
+[node name="screw2" parent="." index="1"]
+material/0 = ExtResource( 4 )
+
+[node name="switchbutton" parent="." index="3"]
+visible = false
+
+[node name="trigger" type="MeshInstance" parent="." index="4"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00367272, 0.00633752, -0.0096726 )
+mesh = ExtResource( 1 )
+material/0 = ExtResource( 3 )
+script = SubResource( 3 )
+
+[node name="SwitchAnimation" type="AnimationPlayer" parent="trigger" index="0"]
+root_node = NodePath("../..")
+anims/RESET = SubResource( 1 )
+anims/switch = SubResource( 2 )
+
+[node name="interactive" parent="trigger" index="1" instance=ExtResource( 5 )]
+transform = Transform( 0.538773, 0, 0, 0, 0.107304, 0, 0, 0, 0.668104, -0.00367272, 0.306013, 0.0096726 )
+label = "Выключатель"
+left_click_action = "switch"
+left_click_label = "Вкл/Выкл свет"
