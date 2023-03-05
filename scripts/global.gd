@@ -1,5 +1,7 @@
 extends Node
 
+signal lightOn
+signal lightOff
 
 var level = 1
 
@@ -20,7 +22,6 @@ var player
 var game
 var label_1 =''
 var label_2 =''
-
 
 func pause(p=true):
 	get_tree().paused = p

@@ -15,9 +15,12 @@ func switch():
 	if !active:
 		active = true
 		$SwitchAnimation.play(\"switch\")
+		G.emit_signal(\"lightOff\")
 	else:
 		active = false
 		$SwitchAnimation.play_backwards(\"switch\")
+		G.emit_signal(\"lightOn\")
+
 "
 
 [sub_resource type="Animation" id=1]
