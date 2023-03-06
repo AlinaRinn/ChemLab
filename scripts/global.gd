@@ -2,6 +2,7 @@ extends Node
 
 signal lightOn
 signal lightOff
+signal paused
 
 var level = 1
 
@@ -31,12 +32,12 @@ func pause(p=true):
 func to(scene):
 	get_tree().change_scene("res://scenes/main/"+scene+".tscn")
 
-
+# Вставляет в путь к уровню значение переменной level, которая меняется через функции кнопок меню 
 func load_level():
 	root_level = load("res://scenes/levels/level_"+str(level)+"/level.tscn").instance()
 	root_game.get_node('level').add_child(root_level)
 
-
+# Тож самое для книжек, меняется при нажатии на нее
 func load_notes():
 	active_note = load("res://scenes/levels/level_"+str(level)+"/notebooks/notebook_"+str(note)+".tscn").instance()
 	root_game.get_node('notebook').add_child(active_note)

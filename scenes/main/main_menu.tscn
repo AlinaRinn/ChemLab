@@ -1,9 +1,8 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://assets/images/menu_background.png" type="Texture" id=1]
-[ext_resource path="res://scripts/continue.gd" type="Script" id=2]
-[ext_resource path="res://scripts/exit.gd" type="Script" id=3]
 [ext_resource path="res://assets/fonts/font_1.otf" type="DynamicFontData" id=4]
+[ext_resource path="res://scripts/settings.gd" type="Script" id=5]
 
 [sub_resource type="GDScript" id=1]
 script/source = "extends Node
@@ -25,6 +24,21 @@ func _pressed():
 [sub_resource type="DynamicFont" id=3]
 size = 34
 font_data = ExtResource( 4 )
+
+[sub_resource type="GDScript" id=6]
+script/source = "extends Button
+
+func _pressed():
+	G.to('cut_scene')
+	G.level = 2
+"
+
+[sub_resource type="GDScript" id=5]
+script/source = "extends Button
+
+func _pressed():
+	get_tree().quit()
+"
 
 [sub_resource type="DynamicFont" id=4]
 size = 40
@@ -93,7 +107,7 @@ margin_left = 64.0
 margin_top = 160.0
 margin_right = 448.0
 margin_bottom = 224.0
-script = ExtResource( 2 )
+script = SubResource( 6 )
 
 [node name="ColorRect2" type="ColorRect" parent="main/menu/lab_2"]
 anchor_right = 1.0
@@ -117,46 +131,14 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="lab_3" type="Button" parent="main/menu"]
-margin_left = 64.0
-margin_top = 256.0
-margin_right = 448.0
-margin_bottom = 320.0
-script = ExtResource( 3 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="ColorRect2" type="ColorRect" parent="main/menu/lab_3"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-mouse_filter = 2
-color = Color( 0.0862745, 0.419608, 0.529412, 0.329412 )
-__meta__ = {
-"_edit_lock_": true,
-"_edit_use_anchors_": false
-}
-
-[node name="Label2" type="Label" parent="main/menu/lab_3"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_left = 15.0
-custom_fonts/font = SubResource( 3 )
-text = "Лаборатория 3 (пустая)"
-valign = 1
-__meta__ = {
-"_edit_lock_": true,
-"_edit_use_anchors_": false
-}
-
-[node name="exit2" type="Button" parent="main/menu"]
+[node name="exit" type="Button" parent="main/menu"]
 margin_left = 69.0
 margin_top = 895.0
 margin_right = 448.0
 margin_bottom = 959.0
-script = ExtResource( 3 )
+script = SubResource( 5 )
 
-[node name="ColorRect2" type="ColorRect" parent="main/menu/exit2"]
+[node name="ColorRect2" type="ColorRect" parent="main/menu/exit"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 mouse_filter = 2
@@ -166,7 +148,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Label2" type="Label" parent="main/menu/exit2"]
+[node name="Label2" type="Label" parent="main/menu/exit"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 15.0
@@ -178,7 +160,36 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="name" type="Label" parent="main"]
+[node name="settings" type="Button" parent="main/menu"]
+margin_left = 69.0
+margin_top = 805.0
+margin_right = 448.0
+margin_bottom = 869.0
+script = ExtResource( 5 )
+
+[node name="ColorRect2" type="ColorRect" parent="main/menu/settings"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+color = Color( 0.0862745, 0.419608, 0.529412, 0.329412 )
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="Label2" type="Label" parent="main/menu/settings"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 15.0
+custom_fonts/font = SubResource( 3 )
+text = "Настройки"
+valign = 1
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="version" type="Label" parent="main"]
 anchor_left = 0.5
 anchor_right = 0.5
 margin_left = 698.052

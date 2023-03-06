@@ -66,10 +66,12 @@ func get_object():
 func get_input():
 	var dir = Vector3()
 	var speed = SPEED
-	# Обработка быстрых кнопок
+	
+	# Выход в меню
 	if Input.is_action_just_pressed(\"ui_cancel\"):
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
-		G.to('main_menu')
+		G.emit_signal(\"paused\")
+		get_tree().paused = true
 		
 	# Обработка кнопок движения
 	if Input.is_action_pressed(\"ui_left\"):
@@ -81,11 +83,11 @@ func get_input():
 	if Input.is_action_pressed(\"ui_down\"):
 		dir.z = 1
 	
-	# Обработка кнопоки прыжка
+	# Обработка кнопки прыжка
 	if Input.is_action_just_pressed(\"ui_select\") && is_on_floor():
 		vel.y = SPEED_JUMP 
 	
-	# Обработка кнопок приседнация и бега
+	# Обработка кнопки приседания 
 	if Input.is_action_pressed(\"ui_ctrl\"):
 		if state == \"stay\":
 			anim.play(\"sit\")
@@ -94,6 +96,7 @@ func get_input():
 		state = \"stay\"
 		anim.play_backwards(\"sit\")
 	
+	# и бега
 	elif Input.is_action_pressed(\"ui_shift\"):
 		anim.play(\"run\")
 		speed = SPEED_RUN
@@ -104,7 +107,8 @@ func get_input():
 	# Вращение
 	if dir:
 		dir = dir.rotated(Vector3.UP, rotation.y) * speed 
-		# Взаимодействие с блокнотами
+		
+	# Взаимодействие с блокнотами
 		#if G.active_note:
 			#G.blank_notes()
 			#G.active_note = null
