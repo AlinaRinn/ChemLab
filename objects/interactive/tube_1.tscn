@@ -1,0 +1,22 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://assets/models/tube_type_1.obj" type="ArrayMesh" id=1]
+[ext_resource path="res://objects/collide.tscn" type="PackedScene" id=2]
+[ext_resource path="res://objects/interaction.tscn" type="PackedScene" id=3]
+[ext_resource path="res://assets/materials/glass_tube.material" type="Material" id=4]
+[ext_resource path="res://objects/elements/water.tscn" type="PackedScene" id=5]
+
+[node name="tube" type="Spatial"]
+
+[node name="tube_type_1" type="MeshInstance" parent="."]
+mesh = ExtResource( 1 )
+material/0 = ExtResource( 4 )
+
+[node name="BoxCollider" parent="tube_type_1" instance=ExtResource( 2 )]
+transform = Transform( 0.280799, -0.034287, -8.39867e-05, 0.00466605, 2.06336, 0.00505425, 0, -0.0430452, 0.260753, 0, 0, 0 )
+
+[node name="water" parent="tube_type_1" instance=ExtResource( 5 )]
+transform = Transform( 3.63534, -0.588281, -0.0146512, 0.790613, 28.4645, 0.669191, -0.0170731, -0.764766, 3.69927, 0.00358957, -0.516517, 0.00807852 )
+
+[node name="interactive" parent="." instance=ExtResource( 3 )]
+transform = Transform( 0.282561, -0.0292169, -7.51434e-05, 0.00398008, 2.07422, 0.00533472, 0, -0.0401569, 0.275608, 0, 0, 0 )
