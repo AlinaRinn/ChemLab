@@ -1,0 +1,59 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://assets/models/shelf_animated.glb" type="PackedScene" id=1]
+[ext_resource path="res://assets/materials/wardrobe.material" type="Material" id=2]
+[ext_resource path="res://objects/interaction.tscn" type="PackedScene" id=3]
+
+[sub_resource type="GDScript" id=10]
+script/source = "extends Spatial
+
+var active = false
+
+func open():
+	if !active:
+		active = true
+		$AnimationPlayer.play(\"open\")
+	else:
+		active = false
+		$AnimationPlayer.play_backwards(\"open\")
+"
+
+[sub_resource type="Animation" id=9]
+resource_name = "open"
+tracks/0/type = "transform"
+tracks/0/path = NodePath("Armature/Skeleton:Dummy001")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = PoolRealArray( 0, 1, 0, 0, -2.38419e-07, -2.18557e-08, 0, 0, 1, 1, 1, 1, 0.0666667, 1, 0, 0, -2.38419e-07, -2.18535e-08, 3.10876e-10, 0.014224, 0.999899, 1, 1, 1, 0.2, 1, 0, 0, -2.38419e-07, -2.14354e-08, 4.26569e-09, 0.195175, 0.980769, 1, 1, 1, 0.4, 1, 0, 0, -2.38419e-07, -2.0458e-08, 7.69049e-09, 0.351876, 0.936047, 1, 1, 1, 0.6, 1, 0, 0, -2.38419e-07, -1.8918e-08, 1.09445e-08, 0.500762, 0.865585, 1, 1, 1, 0.8, 1, 0, 0, -2.38419e-07, -1.65363e-08, 1.42907e-08, 0.653866, 0.756611, 1, 1, 1, 0.9, 1, 0, 0, -2.38419e-07, -1.56726e-08, 1.52329e-08, 0.696977, 0.717093, 1, 1, 1, 1, 1, 0, 0, -2.38419e-07, -1.54543e-08, 1.54543e-08, 0.707107, 0.707107, 1, 1, 1 )
+tracks/1/type = "transform"
+tracks/1/path = NodePath("Armature/Skeleton:Dummy002")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = PoolRealArray( 0, 1, 0, 0, -2.38419e-07, -2.18557e-08, 0, 0, 1, 1, 1, 1, 0.0666667, 1, 0, 0, -2.38419e-07, -2.18535e-08, -3.10876e-10, -0.014224, 0.999899, 1, 1, 1, 0.2, 1, 0, 0, -2.38419e-07, -2.14354e-08, -4.26569e-09, -0.195175, 0.980769, 1, 1, 1, 0.4, 1, 0, 0, -2.38419e-07, -2.0458e-08, -7.69049e-09, -0.351876, 0.936047, 1, 1, 1, 0.6, 1, 0, 0, -2.38419e-07, -1.8918e-08, -1.09445e-08, -0.500762, 0.865585, 1, 1, 1, 0.8, 1, 0, 0, -2.38419e-07, -1.65363e-08, -1.42907e-08, -0.653866, 0.756611, 1, 1, 1, 0.9, 1, 0, 0, -2.38419e-07, -1.56726e-08, -1.52329e-08, -0.696977, 0.717093, 1, 1, 1, 1, 1, 0, 0, -2.38419e-07, -1.54543e-08, -1.54543e-08, -0.707107, 0.707107, 1, 1, 1 )
+
+[node name="shelf_animated" instance=ExtResource( 1 )]
+script = SubResource( 10 )
+
+[node name="Wardrobe" parent="." index="0"]
+material/0 = ExtResource( 2 )
+
+[node name="Door_left" parent="Armature/Skeleton" index="0"]
+transform = Transform( 1, 0, 0, 0, 1, -5.68434e-14, 0, 5.68434e-14, 1, 0, 0, 0 )
+material/0 = ExtResource( 2 )
+
+[node name="Door_right" parent="Armature/Skeleton" index="1"]
+transform = Transform( 1, 0, 0, 0, 1, -5.68434e-14, 0, 5.68434e-14, 1, 0, 0, 0 )
+material/0 = ExtResource( 2 )
+
+[node name="AnimationPlayer" parent="." index="2"]
+anims/open = SubResource( 9 )
+
+[node name="interactive" parent="." index="3" instance=ExtResource( 3 )]
+transform = Transform( 0.496492, 0, 0, 0, -3.54077e-07, -0.990071, 0, 0.0098435, -3.52267e-09, 0, 1.00437, 0.283143 )
+label = "Шкаф с посудой"
+left_click_action = "open"
+left_click_label = "Открыть/Закрыть"
