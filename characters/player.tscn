@@ -16,7 +16,9 @@ var state = \"stay\"
 onready var rc = $head/eye
 onready var anim = $AnimationPlayer
 onready var hand = $head/player_hand
+onready var hold_object = $head/hold_position
 
+var held_object: Object
 var in_hand_object = null
 var in_hand_object_id = null
 var cast = null
@@ -141,6 +143,18 @@ func get_input():
 	# Вращение
 	if dir:
 		dir = dir.rotated(Vector3.UP, rotation.y) * speed 
+	
+	if Input.is_action_just_pressed(\"ui_f\"):
+		if held_object:
+			held_object.mode = RigidBody.MODE_RIGID
+			held_object = null
+		else:
+			if rc.get_collider():
+				held_object = rc.get_collider()
+				held_object.mode = RigidBody.MODE_KINEMATIC
+	
+	if held_object:
+		held_object.global_transform.origin = hold_object.global_transform.origin
 		
 	# Взаимодействие с блокнотами
 		#if G.active_note:
@@ -351,13 +365,16 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.32333, 0 )
 [node name="eye" type="RayCast" parent="head"]
 enabled = true
 cast_to = Vector3( 0, 0, -3 )
-collision_mask = 4
+collision_mask = 5
 collide_with_areas = true
 
 [node name="Camera" type="Camera" parent="head"]
 
 [node name="player_hand" type="Spatial" parent="head"]
 transform = Transform( 0.0985865, 0.0167543, 0, -0.0167543, 0.0985865, 0, 0, 0, 0.1, 0.0801525, -0.0562506, -0.0885729 )
+
+[node name="hold_position" type="Spatial" parent="head"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2.82868 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/RESET = SubResource( 3 )
