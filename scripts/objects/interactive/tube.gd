@@ -4,7 +4,7 @@ onready var el = $StaticBody/CollisionShape/MeshInstance
 
 var elements_tube = null
 var opened = false
-var id_obj = "tube"
+var id = "tube"
 var amount_liquid = 0
 
 export var level_1 = ""

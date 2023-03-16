@@ -25,7 +25,7 @@ func get_to_hand(object):
 	# Если в руках что то есть, меняет местами
 	var swap_obj = null
 	if in_hand_object:
-		if in_hand_object_id == object.id_obj:
+		if in_hand_object_id == object.id:
 			swap_obj = in_hand_object
 			swap_obj.translation = object.translation
 			$head/player_hand.remove_child(in_hand_object)
@@ -33,7 +33,7 @@ func get_to_hand(object):
 			in_hand_object.queue_free()
 	
 	# Грузит объект в ручки
-	in_hand_object_id = object.id_obj
+	in_hand_object_id = object.id
 	object.get_parent().remove_child(object)
 	object.translation = Vector3(0, 0, 0)
 	$head/player_hand.add_child(object)

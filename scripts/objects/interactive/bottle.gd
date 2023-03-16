@@ -1,7 +1,7 @@
 extends Spatial
 
 
-var id_obj = "bottle"
+var id = "bottle"
 
 
 func take():
