@@ -23,7 +23,8 @@ var cast = null
 
 
 func get_to_hand(object):
-	# Если в руках что то есть, меняет местами
+	# Если в руках что то есть, и это тот же предмет, меняем местами
+	# Иначе, что в руках выкидываем, и берем новый
 	var swap_obj = null
 	if in_hand_object:
 		if in_hand_object_id == object.id:
@@ -33,37 +34,42 @@ func get_to_hand(object):
 		else:
 			drop()
 	
-	# Грузит объект в ручки
+	# Удаляет obj из старой сцены, скидывает положение и поворот
+	# Добавляет в руки новый obj
 	object.get_parent().remove_child(object)
 	object.translation = Vector3(0, 0, 0)
 	object.rotation = Vector3(0, 0, 0)
-	
 	
 	hand.add_child(object)
 	in_hand_object = object
 	in_hand_object_id = object.id
 	
 	return swap_obj
-	
 
-#var label_compounds =''
 
 func get_info_object():
+	# Выводим инфо о слоях пробирке в руке
 	if in_hand_object_id == \"tube\":
 		var list = in_hand_object.name_liquid
 		for i in range(list.size() - 1, -1, -1):
 			G.label_compounds.text += str(i + 1) + \") \" + list[i] + \"\\n\"
-			
+	
+	
 	if cast:
+		# Название предмета на который навелись
 		G.label_name.text = cast.label
 		
+		# Содержимое пробирки на которую навелись
 		if cast.get_owner().get(\"id\") == \"tube\":
 			var list = cast.get_owner().name_liquid
 			for i in range(list.size() - 1, -1, -1):
 				G.label_compounds2.text += str(i + 1) + \") \" + list[i] + \"\\n\"
 		
+		# Пишет какой предмет нужен для взамиодействия
 		if in_hand_object_id != cast.need && cast.need_label != \"\":
 			G.label_bindings.text += cast.need_label + \"\\n\"
+			
+		# Пишет кнопки взамиодействия
 		else:
 			if cast.left_click_label != \"\":
 				G.label_bindings.text += \"ЛКМ - \" + cast.left_click_label + \"\\n\"
@@ -75,6 +81,7 @@ func get_info_object():
 
 
 func get_object():
+	# Пускает луч для определенния предмета
 	if rc.is_colliding():
 		cast = rc.get_collider()
 		if !('label' in cast):
@@ -103,6 +110,7 @@ func get_input():
 	if Input.is_action_pressed(\"ui_down\"):
 		dir.z = 1
 	
+	# Дроп предмета в руке
 	if Input.is_action_just_pressed(\"ui_g\"):
 		drop()
 	
@@ -150,18 +158,20 @@ func _physics_process(_delta):
 
 
 func drop():
+	# Проверяем есть ли предмет в руке
 	if !in_hand_object:
 			return
-			
+	
+	# Удаляем предмет из рук, и добавляем его на сцену
 	var drop_obj = in_hand_object
 	drop_obj.translation = G.player.translation
 
 	hand.remove_child(in_hand_object)
+	G.root_level.add_child(drop_obj)
+	
 	in_hand_object = null
 	in_hand_object_id = null
 	
-	G.root_level.add_child(drop_obj)
-
 
 func action():
 	# Для взаимодействия с объектами

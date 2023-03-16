@@ -15,6 +15,9 @@ func _ready():
 
 
 func binding(prt):
+	# Взаимодействиие с объектами
+	# Проверяем есть ли команда на ЛКМ и ПКМ
+	# Если есть делаем, иначе пишем лог в консоль
 	if left_click_action && Input.is_action_pressed("ui_lmb"):
 		if prt.has_method(left_click_action):
 			prt.call(left_click_action)
@@ -29,13 +32,13 @@ func binding(prt):
 	
 	
 func action():
+	# Если для взаимодействия нужен другой предмет, и он у нас есть, делаем
+	# Иначе ничего не делаем
+	# Если для взаимодействия ничего не надо, просто делаем
 	var prt = get_parent()
 	
 	if need:
 		if G.player.in_hand_object_id == need:
 			binding(prt)
-		return
-		
-	binding(prt)
-
-
+	else:
+		 binding(prt)

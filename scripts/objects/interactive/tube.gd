@@ -17,21 +17,24 @@ export var level_4 = ""
 export var level_5 = ""
 
 
-func add_water(liq):
+
+func add_liquid(liq):
+	# Добавляем слой жидкости
 	elements_tube[amount_liquid].show()
 	name_liquid[amount_liquid] = liq
 	amount_liquid = amount_liquid if amount_liquid == MAX_AMOUNT_LIQUID \
 		else amount_liquid + 1
 
 
-func remove_water():
-	print(name_liquid)
+func remove_liquid():
+	# Удаляем слой
 	elements_tube[amount_liquid].hide()
 	name_liquid[amount_liquid] = ""
 	amount_liquid = amount_liquid if amount_liquid == 0 else amount_liquid - 1
 
 
 func take():
+	# Подбирание
 	var parent = get_parent()
 	var object = G.player.get_to_hand(self)
 	if object:
@@ -39,6 +42,7 @@ func take():
 	
 	
 func drug():
+	# Поднять опустить
 	if !opened:
 		$AnimationPlayer.play("drug")
 		opened = true
@@ -61,6 +65,7 @@ func _physics_process(_delta):
 
 
 func _ready():
+	# При создании получаем кол-во слоев
 	elements_tube = el.get_children()
 	for i in range(MAX_AMOUNT_LIQUID + 1):
 		name_liquid.append("")

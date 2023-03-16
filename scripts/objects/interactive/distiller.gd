@@ -5,6 +5,7 @@ var active = false
 
 
 func press():
+	# Открыть закрыть вентель
 	if !active:
 		$valve/valve_rotate/AnimationPlayer.play("rotate")
 		active = true

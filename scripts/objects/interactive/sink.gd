@@ -2,7 +2,9 @@ extends Spatial
 
 
 func pour():
-	G.player.in_hand_object.add_water("water")
+	# Налить слой воды
+	G.player.in_hand_object.add_liquid("water")
 
 func drain():
-	G.player.in_hand_object.remove_water()
+	# Удалить слой воды
+	G.player.in_hand_object.remove_liquid()

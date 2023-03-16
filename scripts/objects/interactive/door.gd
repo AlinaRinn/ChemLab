@@ -5,6 +5,7 @@ var active = false
 
 
 func open():
+	# Открыт или закрыть дверь
 	if !active:
 		active = true
 		$AnimationPlayer.play("open")
