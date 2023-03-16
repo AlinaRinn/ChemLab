@@ -20,6 +20,8 @@ tracks/0/enabled = true
 tracks/0/keys = PoolRealArray( 0, 1, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 0, 0.300043, 0, 0, 0, 0, 1, 1, 1, 1 )
 
 [node name="tube" type="RigidBody"]
+mass = 2.0
+gravity_scale = 0.8
 script = ExtResource( 4 )
 
 [node name="CollisionShape" type="CollisionShape" parent="."]

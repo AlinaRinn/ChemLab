@@ -15,6 +15,7 @@ var state = \"stay\"
 
 onready var rc = $head/eye
 onready var anim = $AnimationPlayer
+onready var hand = $head/player_hand
 
 var in_hand_object = null
 var in_hand_object_id = null
@@ -28,16 +29,17 @@ func get_to_hand(object):
 		if in_hand_object_id == object.id:
 			swap_obj = in_hand_object
 			swap_obj.translation = object.translation
-			$head/player_hand.remove_child(in_hand_object)
+			hand.remove_child(in_hand_object)
 		else:
 			in_hand_object.queue_free()
 	
 	# Грузит объект в ручки
-	in_hand_object_id = object.id
 	object.get_parent().remove_child(object)
 	object.translation = Vector3(0, 0, 0)
-	$head/player_hand.add_child(object)
+	
+	hand.add_child(object)
 	in_hand_object = object
+	in_hand_object_id = object.id
 	
 	return swap_obj
 
@@ -46,9 +48,9 @@ func get_info_object():
 	if cast:
 		G.label_1.text = cast.label
 		if cast.left_click_label != \"\":
-			G.label_2.text += \"LMB - \" + cast.left_click_label + \"\\n\"
+			G.label_2.text += \"ЛКМ - \" + cast.left_click_label + \"\\n\"
 		if cast.right_click_label != \"\":
-			G.label_2.text += \"RMB - \" + cast.right_click_label + \"\\n\"
+			G.label_2.text += \"ПКМ - \" + cast.right_click_label + \"\\n\"
 	else:
 		G.label_1.text
 		G.label_2.text
@@ -90,7 +92,7 @@ func get_input():
 		var drop_obj = null
 		drop_obj = in_hand_object
 		drop_obj.translation = G.player.translation
-		$head/player_hand.remove_child(in_hand_object)
+		hand.remove_child(in_hand_object)
 		in_hand_object = null
 		G.root_level.add_child(drop_obj)
 				

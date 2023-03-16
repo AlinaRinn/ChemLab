@@ -20,3 +20,4 @@ transform = Transform( 3.63534, -0.588281, -0.0146512, 0.790613, 28.4645, 0.6691
 
 [node name="interactive" parent="." instance=ExtResource( 3 )]
 transform = Transform( 0.282561, -0.0292169, -7.51434e-05, 0.00398008, 2.07422, 0.00533472, 0, -0.0401569, 0.275608, 0, 0, 0 )
+visible = false

@@ -9,6 +9,7 @@
 extents = Vector3( 0.162647, 0.208818, 0.165549 )
 
 [node name="bottle" type="RigidBody"]
+mass = 2.0
 gravity_scale = 0.8
 script = ExtResource( 2 )
 
