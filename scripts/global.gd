@@ -21,8 +21,10 @@ var temp_object = null
 var player
 
 var game
-var label_1 =''
-var label_2 =''
+var label_name =''
+var label_bindings =''
+var label_compounds =''
+var label_compounds2 =''
 
 func pause(p=true):
 	get_tree().paused = p

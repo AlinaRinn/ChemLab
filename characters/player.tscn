@@ -44,22 +44,34 @@ func get_to_hand(object):
 	in_hand_object_id = object.id
 	
 	return swap_obj
+	
 
+#var label_compounds =''
 
 func get_info_object():
+	if in_hand_object_id == \"tube\":
+		var list = in_hand_object.name_liquid
+		for i in range(list.size() - 1, -1, -1):
+			G.label_compounds.text += str(i + 1) + \") \" + list[i] + \"\\n\"
+			
 	if cast:
-		G.label_1.text = cast.label
+		G.label_name.text = cast.label
+		
+		if cast.get_owner().get(\"id\") == \"tube\":
+			var list = cast.get_owner().name_liquid
+			for i in range(list.size() - 1, -1, -1):
+				G.label_compounds2.text += str(i + 1) + \") \" + list[i] + \"\\n\"
 		
 		if in_hand_object_id != cast.need && cast.need_label != \"\":
-			G.label_2.text += cast.need_label + \"\\n\"
+			G.label_bindings.text += cast.need_label + \"\\n\"
 		else:
 			if cast.left_click_label != \"\":
-				G.label_2.text += \"ЛКМ - \" + cast.left_click_label + \"\\n\"
+				G.label_bindings.text += \"ЛКМ - \" + cast.left_click_label + \"\\n\"
 			if cast.right_click_label != \"\":
-				G.label_2.text += \"ПКМ - \" + cast.right_click_label + \"\\n\"
+				G.label_bindings.text += \"ПКМ - \" + cast.right_click_label + \"\\n\"
 	else:
-		G.label_1.text
-		G.label_2.text
+		G.label_name.text
+		G.label_bindings.text
 
 
 func get_object():
