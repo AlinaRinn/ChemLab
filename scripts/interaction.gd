@@ -3,6 +3,7 @@ extends Area
 
 export var label = ''
 export var need = ''
+export var need_label = ''
 export var left_click_action = ''
 export var left_click_label = ''
 export var right_click_action = ''
