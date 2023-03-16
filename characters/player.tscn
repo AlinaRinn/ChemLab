@@ -31,7 +31,7 @@ func get_to_hand(object):
 			swap_obj.translation = object.translation
 			hand.remove_child(in_hand_object)
 		else:
-			in_hand_object.queue_free()
+			drop()
 	
 	# Грузит объект в ручки
 	object.get_parent().remove_child(object)
@@ -50,7 +50,7 @@ func get_info_object():
 	if cast:
 		G.label_1.text = cast.label
 		
-		if in_hand_object_id != cast.need && cast.left_click_label != \"\":
+		if (in_hand_object_id != cast.need) && (cast.left_click_label != \"\"):
 			G.label_2.text += cast.need_label + \"\\n\"
 		else:
 			if cast.left_click_label != \"\":
@@ -92,16 +92,7 @@ func get_input():
 		dir.z = 1
 	
 	if Input.is_action_just_pressed(\"ui_g\"):
-		if !in_hand_object:
-			return
-			
-		var drop_obj = null
-		drop_obj = in_hand_object
-		drop_obj.translation = G.player.translation
-		hand.remove_child(in_hand_object)
-		in_hand_object = null
-		G.root_level.add_child(drop_obj)
-				
+		drop()
 	
 	# Обработка кнопки прыжка
 	if Input.is_action_just_pressed(\"ui_select\") && is_on_floor():
@@ -144,6 +135,20 @@ func _physics_process(_delta):
 	vel = move_and_slide(vel, Vector3.UP)
 	get_object()
 	get_info_object()
+
+
+func drop():
+	if !in_hand_object:
+			return
+			
+	var drop_obj = in_hand_object
+	drop_obj.translation = G.player.translation
+
+	hand.remove_child(in_hand_object)
+	in_hand_object = null
+	in_hand_object_id = null
+	
+	G.root_level.add_child(drop_obj)
 
 
 func action():
