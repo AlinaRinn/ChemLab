@@ -1,6 +1,6 @@
 extends Spatial
 
-
+export var liquid = ""
 var id = "bottle"
 
 
@@ -10,3 +10,7 @@ func take():
 	var object = G.player.get_to_hand(self)
 	if object:
 		parent.add_child(object)
+
+func pour():
+	# Налить слой воды
+	G.player.in_hand_object.add_liquid(liquid)

@@ -58,6 +58,9 @@ func get_info_object():
 	if cast:
 		# Название предмета на который навелись
 		G.label_name.text = cast.label
+		var liquid_obj = cast.get_owner().get(\"liquid\")
+		if liquid_obj != \"\" && liquid_obj:
+			G.label_name.text += ' \"' + liquid_obj + '\"'
 		
 		# Содержимое пробирки на которую навелись
 		if cast.get_owner().get(\"id\") == \"tube\":

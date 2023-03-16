@@ -27,5 +27,7 @@ material/0 = ExtResource( 3 )
 transform = Transform( 0.172918, 0, 0, 0, 0.325296, 0, 0, 0, 0.165751, 0.0177526, 0.272175, 0.0295882 )
 visible = false
 label = "Бутылка"
+left_click_action = "pour"
+left_click_label = "Набрать жидкость"
 right_click_action = "take"
 right_click_label = "Взять"
