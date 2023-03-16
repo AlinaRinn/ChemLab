@@ -1,9 +1,11 @@
 extends Spatial
 
-var id_obj = "tube"
-var first_init = true
-var flask = []
+onready var el = $StaticBody/CollisionShape/MeshInstance
+
+var elements_tube = null
 var opened = false
+var id_obj = "tube"
+var amount_liquid = 0
 
 export var level_1 = ""
 export var level_2 = ""
@@ -12,15 +14,14 @@ export var level_4 = ""
 export var level_5 = ""
 
 
-func flask_init():
-	flask.clear()
-	flask.append(level_1)
-	flask.append(level_2)
-	flask.append(level_3)
-	flask.append(level_4)
-	flask.append(level_5)
-	print(flask)
-	#flask_change_name()
+func add_water():
+	elements_tube[amount_liquid].show()
+	amount_liquid = amount_liquid if amount_liquid == 4 else amount_liquid + 1
+
+
+func remove_water():
+	elements_tube[amount_liquid].hide()
+	amount_liquid = amount_liquid if amount_liquid == 0 else amount_liquid - 1
 
 
 func take():
@@ -39,14 +40,6 @@ func drug():
 		opened = false
 
 
-func flask_change_name():
-	$StaticBody/CollisionShape/MeshInstance/target.target_name = flask
-	for i in flask:
-		var name = "\n."
-		#print(flask[i])
-		$StaticBody/CollisionShape/MeshInstance/target.target_name += name
-
-
 func _physics_process(_delta):
 	if level_1:
 		$StaticBody/CollisionShape/MeshInstance/element_1.visible = true
@@ -61,4 +54,4 @@ func _physics_process(_delta):
 
 
 func _ready():
-	flask_init()
+	elements_tube = el.get_children()

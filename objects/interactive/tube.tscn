@@ -3,7 +3,7 @@
 [ext_resource path="res://assets/models/tube_type_0.obj" type="ArrayMesh" id=1]
 [ext_resource path="res://assets/materials/tube.material" type="Material" id=2]
 [ext_resource path="res://objects/interaction.tscn" type="PackedScene" id=3]
-[ext_resource path="res://scripts/objects/interactive/flask.gd" type="Script" id=4]
+[ext_resource path="res://scripts/objects/interactive/tube.gd" type="Script" id=4]
 [ext_resource path="res://objects/elements/water.tscn" type="PackedScene" id=5]
 
 [sub_resource type="BoxShape" id=1]
@@ -56,6 +56,7 @@ visible = false
 
 [node name="interaction" parent="." instance=ExtResource( 3 )]
 transform = Transform( 0.0842691, 0, 0, 0, 0.325166, 0, 0, 0, 0.0835238, 0.00632, 0.0921887, -0.00947995 )
+visible = false
 label = "Пробирка"
 left_click_action = "drug"
 left_click_label = "Поднять/Опустить"

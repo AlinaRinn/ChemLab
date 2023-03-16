@@ -1,11 +1,14 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://assets/models/sink.glb" type="PackedScene" id=1]
 [ext_resource path="res://assets/materials/metal.material" type="Material" id=2]
 [ext_resource path="res://assets/materials/metal_gold.material" type="Material" id=3]
+[ext_resource path="res://objects/interaction.tscn" type="PackedScene" id=4]
+[ext_resource path="res://objects/interactive/sink.gd" type="Script" id=5]
 
 [node name="sink" instance=ExtResource( 1 )]
 transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0 )
+script = ExtResource( 5 )
 
 [node name="KitchenSink" parent="." index="0"]
 material/0 = ExtResource( 2 )
@@ -18,3 +21,15 @@ material/0 = ExtResource( 3 )
 
 [node name="KitchenSinkHandleL" parent="." index="3"]
 material/0 = ExtResource( 3 )
+
+[node name="interactive_1" parent="." index="4" instance=ExtResource( 4 )]
+transform = Transform( 25.426, 0, 0, 0, 40.2958, -1.23922e-06, 0, -1.23922e-06, 11.9457, 0, 4.72767e-07, 10.8156 )
+label = "Раковина"
+left_click_action = "drain"
+left_click_label = "Слить воду"
+
+[node name="interactive_2" parent="." index="5" instance=ExtResource( 4 )]
+transform = Transform( 12.4384, 0, 0, 0, 2.36999, 5.34073e-07, 0, 5.34073e-07, 14.5882, -15.2231, -8.43835e-07, -19.3047 )
+label = "Кран"
+left_click_action = "pour"
+left_click_label = "Набрать воду"

@@ -143,3 +143,6 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 14.4538, 2.81113, -14.1175 )
 
 [node name="stand" parent="things" instance=ExtResource( 21 )]
 transform = Transform( 0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 14.9963, 2.84733, -1.29036 )
+
+[node name="tube" parent="." instance=ExtResource( 18 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 12.3297, 3.57116, -4.1201 )
