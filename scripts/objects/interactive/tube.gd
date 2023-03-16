@@ -1,11 +1,11 @@
 extends Spatial
 
-onready var el = $StaticBody/CollisionShape/MeshInstance
+onready var el = $CollisionShape/MeshInstance
 
 var elements_tube = null
+var amount_liquid = 0
 var opened = false
 var id = "tube"
-var amount_liquid = 0
 
 export var level_1 = ""
 export var level_2 = ""
