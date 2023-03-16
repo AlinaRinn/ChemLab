@@ -36,6 +36,8 @@ func get_to_hand(object):
 	# Грузит объект в ручки
 	object.get_parent().remove_child(object)
 	object.translation = Vector3(0, 0, 0)
+	object.rotation = Vector3(0, 0, 0)
+	
 	
 	hand.add_child(object)
 	in_hand_object = object
