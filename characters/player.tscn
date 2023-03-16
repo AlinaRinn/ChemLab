@@ -50,7 +50,7 @@ func get_info_object():
 	if cast:
 		G.label_1.text = cast.label
 		
-		if (in_hand_object_id != cast.need) && (cast.left_click_label != \"\"):
+		if in_hand_object_id != cast.need && cast.need_label != \"\":
 			G.label_2.text += cast.need_label + \"\\n\"
 		else:
 			if cast.left_click_label != \"\":
