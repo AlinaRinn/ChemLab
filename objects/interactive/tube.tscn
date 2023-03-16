@@ -57,8 +57,6 @@ visible = false
 transform = Transform( 0.0842691, 0, 0, 0, 0.325166, 0, 0, 0, 0.0835238, 0.00632, 0.172919, -0.00947995 )
 visible = false
 label = "Пробирка"
-left_click_action = "drug"
-left_click_label = "Поднять/Опустить"
 right_click_action = "take"
 right_click_label = "Взять"
 

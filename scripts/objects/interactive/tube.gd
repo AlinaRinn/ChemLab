@@ -56,16 +56,6 @@ func take():
 	var object = G.player.get_to_hand(self)
 	if object:
 		parent.add_child(object)
-	
-	
-func drug():
-	# Поднять опустить
-	if !opened:
-		$AnimationPlayer.play("drug")
-		opened = true
-	else:
-		$AnimationPlayer.play_backwards("drug")
-		opened = false
 
 
 func _physics_process(_delta):
