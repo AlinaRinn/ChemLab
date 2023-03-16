@@ -83,6 +83,18 @@ func get_input():
 	if Input.is_action_pressed(\"ui_down\"):
 		dir.z = 1
 	
+	if Input.is_action_just_pressed(\"ui_g\"):
+		if !in_hand_object:
+			return
+			
+		var drop_obj = null
+		drop_obj = in_hand_object
+		drop_obj.translation = G.player.translation
+		$head/player_hand.remove_child(in_hand_object)
+		in_hand_object = null
+		G.root_level.add_child(drop_obj)
+				
+	
 	# Обработка кнопки прыжка
 	if Input.is_action_just_pressed(\"ui_select\") && is_on_floor():
 		vel.y = SPEED_JUMP 

@@ -64,5 +64,5 @@ right_click_action = "take"
 right_click_label = "Взять"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-root_node = NodePath("../StaticBody")
+root_node = NodePath("")
 anims/drug = SubResource( 3 )
