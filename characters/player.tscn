@@ -52,28 +52,25 @@ func get_to_hand(object):
 
 func get_info_object():
 	# Выводим инфо о слоях пробирке в руке
-	if in_hand_object_id == \"tube\":
-		var list = in_hand_object.name_liquid
-		for i in range(list.size() - 1, -1, -1):
-			G.label_compounds.text += str(i + 1) + \") \" + list[i] + \"\\n\"
-	
+	if in_hand_object != null && in_hand_object.has_method(\"get_info\"):
+		G.label_compounds.text += in_hand_object.get_info()
 	
 	if cast:
+		var owner = cast.get_owner()
+		
 		# Название предмета на который навелись
 		G.label_name.text = cast.label
-		var liquid_obj = cast.get_owner().get(\"liquid\")
+		var liquid_obj = owner.get(\"liquid\")
 		if liquid_obj != \"\" && liquid_obj:
 			G.label_name.text += ' \"' + liquid_obj + '\"'
 		
 		# Содержимое пробирки на которую навелись
-		if cast.get_owner().get(\"id\") == \"tube\":
-			var list = cast.get_owner().name_liquid
-			for i in range(list.size() - 1, -1, -1):
-				G.label_compounds2.text += str(i + 1) + \") \" + list[i] + \"\\n\"
+		if owner.has_method(\"get_info\"):
+			G.label_compounds2.text += owner.get_info()
 		
 		# Пишет какой предмет нужен для взамиодействия
-		if in_hand_object_id != cast.need && cast.need_label != \"\":
-			G.label_bindings.text += cast.need_label + \"\\n\"
+		if cast.need_label != \"\":
+			G.label_bindings.text += \"Взаимодействует с \" + cast.need_label + \"\\n\"
 			
 		# Пишет кнопки взамиодействия
 		else:
@@ -145,10 +142,10 @@ func get_input():
 	if dir:
 		dir = dir.rotated(Vector3.UP, rotation.y) * speed 
 		
-	
+	# Пзволяет передвигать предметы
 	if Input.is_action_just_pressed(\"ui_f\"):
 		if picked_object == null:
-			var collider = cast.get_owner()
+			var collider = cast.get_owner() if cast else null 
 			if collider != null and collider is RigidBody:
 				picked_object = collider
 		elif picked_object != null:
@@ -165,7 +162,7 @@ func get_input():
 	vel.x = dir.x
 	vel.z = dir.z	
 
-	
+
 func _physics_process(_delta):
 	get_input();
 	vel = move_and_slide(vel, Vector3.UP)
@@ -188,11 +185,11 @@ func drop():
 	drop_obj.translation = G.player.translation
 
 	hand.remove_child(in_hand_object)
-	G.root_level.add_child(drop_obj)
-	
 	in_hand_object = null
 	in_hand_object_id = null
 	
+	G.root_level.add_child(drop_obj)
+
 
 func action():
 	# Для взаимодействия с объектами

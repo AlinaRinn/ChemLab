@@ -76,3 +76,9 @@ func _ready():
 	elements_tube = el.get_children()
 	for i in range(MAX_AMOUNT_LIQUID + 1):
 		name_liquid.append("")
+
+func get_info():
+	var sting = " "
+	for i in range(name_liquid.size() - 1, -1, -1): 
+		sting += str(i + 1) + ") " + name_liquid[i] + "\n"
+	return sting
