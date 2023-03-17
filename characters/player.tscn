@@ -16,9 +16,10 @@ var state = \"stay\"
 onready var rc = $head/eye
 onready var anim = $AnimationPlayer
 onready var hand = $head/player_hand
-onready var hold_object = $head/hold_position
+onready var hand1 = $head/hand
 
-var held_object: Object
+var picked_object
+var pull_power = 4
 var in_hand_object = null
 var in_hand_object_id = null
 var cast = null
@@ -143,19 +144,17 @@ func get_input():
 	# Вращение
 	if dir:
 		dir = dir.rotated(Vector3.UP, rotation.y) * speed 
+		
 	
 	if Input.is_action_just_pressed(\"ui_f\"):
-		if held_object:
-			held_object.mode = RigidBody.MODE_RIGID
-			held_object = null
-		else:
-			if rc.get_collider():
-				held_object = rc.get_collider()
-				held_object.mode = RigidBody.MODE_KINEMATIC
+		if picked_object == null:
+			var collider = cast.get_owner()
+			if collider != null and collider is RigidBody:
+				picked_object = collider
+		elif picked_object != null:
+			picked_object = null
+
 	
-	if held_object:
-		held_object.global_transform.origin = hold_object.global_transform.origin
-		
 	# Взаимодействие с блокнотами
 		#if G.active_note:
 			#G.blank_notes()
@@ -172,6 +171,11 @@ func _physics_process(_delta):
 	vel = move_and_slide(vel, Vector3.UP)
 	get_object()
 	get_info_object()
+	
+	if picked_object != null:
+		var a = picked_object.global_transform.origin
+		var b = hand1.global_transform.origin
+		picked_object.set_linear_velocity((b-a)*pull_power)
 
 
 func drop():
@@ -365,7 +369,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.32333, 0 )
 [node name="eye" type="RayCast" parent="head"]
 enabled = true
 cast_to = Vector3( 0, 0, -3 )
-collision_mask = 5
+collision_mask = 4
 collide_with_areas = true
 
 [node name="Camera" type="Camera" parent="head"]
@@ -373,8 +377,8 @@ collide_with_areas = true
 [node name="player_hand" type="Spatial" parent="head"]
 transform = Transform( 0.0985865, 0.0167543, 0, -0.0167543, 0.0985865, 0, 0, 0, 0.1, 0.0801525, -0.0562506, -0.0885729 )
 
-[node name="hold_position" type="Spatial" parent="head"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2.82868 )
+[node name="hand" type="Position3D" parent="head"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.9579 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/RESET = SubResource( 3 )
