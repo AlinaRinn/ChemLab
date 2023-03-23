@@ -7,7 +7,7 @@ const GRAVITY = 0.4
 const SPEED = 6
 const SPEED_RUN = 12
 const SPEED_JUMP = 10
-const SPEED_TURN = 0.005
+var SPEED_TURN
 
 var vel = Vector3()
 
@@ -200,7 +200,7 @@ func action():
 func _ready():
 	# Прячет курсор при загрузке на уровень
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
-
+	SPEED_TURN = G.sensitivity
 
 func _input(e):
 	# Обрабатываем движение мышкой

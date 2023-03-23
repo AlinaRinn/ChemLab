@@ -25,11 +25,11 @@ var label_name =''
 var label_bindings =''
 var label_compounds =''
 var label_compounds2 =''
+var sensitivity = 0.005
 
 func pause(p=true):
 	get_tree().paused = p
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED if p else Input.MOUSE_MODE_VISIBLE)
-
 
 func to(scene):
 	get_tree().change_scene("res://scenes/main/"+scene+".tscn")
@@ -43,7 +43,6 @@ func load_level():
 func load_notes():
 	active_note = load("res://scenes/levels/level_"+str(level)+"/notebooks/notebook_"+str(note)+".tscn").instance()
 	root_game.get_node('notebook').add_child(active_note)
-
 
 func blank_notes():
 	root_game.get_node('notebook').remove_child(active_note)
