@@ -68,11 +68,11 @@ func get_info_object():
 		if owner.has_method(\"get_info\"):
 			G.label_compounds2.text += owner.get_info()
 		
-		# Пишет какой предмет нужен для взамиодействия
+		# Пишет какой предмет нужен для взаимодействия
 		if cast.need_label != \"\":
 			G.label_bindings.text += \"Взаимодействует с \" + cast.need_label + \"\\n\"
 			
-		# Пишет кнопки взамиодействия
+		# Пишет кнопки взаимодействия
 		else:
 			if cast.left_click_label != \"\":
 				G.label_bindings.text += \"ЛКМ - \" + cast.left_click_label + \"\\n\"

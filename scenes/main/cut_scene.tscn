@@ -71,7 +71,7 @@ margin_bottom = 107.5
 
 [node name="text" type="Label" parent="cut/ColorRect/scroll"]
 margin_right = 967.0
-margin_bottom = 24.0
+margin_bottom = 29.0
 size_flags_horizontal = 3
 text = "Welcome to the lab, buddy!"
 align = 1
