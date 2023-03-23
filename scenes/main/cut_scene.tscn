@@ -35,7 +35,7 @@ margin_left = -658.0
 margin_top = -319.0
 margin_right = -408.0
 margin_bottom = -244.0
-text = "Пропустить"
+text = "Далее"
 script = SubResource( 1 )
 
 [node name="ColorRect2" type="ColorRect" parent="cut/skip"]

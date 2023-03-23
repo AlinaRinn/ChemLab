@@ -74,4 +74,16 @@ material/0 = ExtResource( 2 )
 material/0 = ExtResource( 2 )
 
 [node name="BoxCollider" parent="." index="22" instance=ExtResource( 4 )]
-transform = Transform( 2.49457, 0, 0, 0, 1, 0, 0, 0, 0.663517, 0, 0, -0.213157 )
+transform = Transform( 2.49457, 0, 0, 0, 0.704985, 0, 0, 0, 0.663517, 0, -0.590074, -0.213157 )
+
+[node name="BoxCollider2" parent="." index="23" instance=ExtResource( 4 )]
+transform = Transform( 0.858015, 0, 0, 0, 0.704985, 0, 0, 0, 0.663517, -1.6619, 0.308284, -0.213157 )
+
+[node name="BoxCollider3" parent="." index="24" instance=ExtResource( 4 )]
+transform = Transform( 0.858015, 0, 0, 0, 0.704985, 0, 0, 0, 0.663517, 1.64841, 0.308284, -0.213157 )
+
+[node name="BoxCollider4" parent="." index="25" instance=ExtResource( 4 )]
+transform = Transform( 0.858015, 0, 0, 0, 0.704985, 0, 0, 0, 0.136217, 0.00442302, 0.308284, -0.757711 )
+
+[node name="BoxCollider5" parent="." index="26" instance=ExtResource( 4 )]
+transform = Transform( 0.858015, 0, 0, 0, 0.704985, 0, 0, 0, 0.0702405, 0.00442302, 0.308284, 0.384009 )
