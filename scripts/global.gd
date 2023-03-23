@@ -25,7 +25,10 @@ var label_name =''
 var label_bindings =''
 var label_compounds =''
 var label_compounds2 =''
+
+# settings
 var sensitivity = 0.005
+var screenState = true
 
 func pause(p=true):
 	get_tree().paused = p
