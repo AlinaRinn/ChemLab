@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://scripts/gui.gd" type="Script" id=1]
 [ext_resource path="res://assets/fonts/font_4.ttf" type="DynamicFontData" id=2]
 [ext_resource path="res://assets/images/target.png" type="Texture" id=3]
+[ext_resource path="res://dialog_theme.tres" type="Theme" id=4]
 
 [sub_resource type="DynamicFont" id=1]
 size = 40
@@ -15,6 +16,30 @@ size = 30
 outline_size = 2
 outline_color = Color( 0, 0, 0, 1 )
 font_data = ExtResource( 2 )
+
+[sub_resource type="GDScript" id=5]
+script/source = "extends WindowDialog
+
+func _ready():
+	G.connect(\"paused\", self, \"show\")
+"
+
+[sub_resource type="GDScript" id=3]
+script/source = "extends Button
+
+func _pressed():
+	G.to('main_menu')
+	get_node(\"/root/game/player\").get_tree().paused = false
+"
+
+[sub_resource type="GDScript" id=4]
+script/source = "extends Button
+
+func _pressed():
+	get_node(\"/root/game/player\").get_tree().paused = false
+	get_parent().hide()
+	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+"
 
 [node name="gui" type="Control"]
 anchor_right = 1.0
@@ -46,10 +71,10 @@ anchor_left = 0.761
 anchor_top = 0.594
 anchor_right = 0.995
 anchor_bottom = 0.685
-margin_left = -0.120117
-margin_top = 0.47998
-margin_right = -0.400146
-margin_bottom = 0.199951
+margin_left = -1.62744
+margin_top = -401.52
+margin_right = -1.90747
+margin_bottom = -401.8
 custom_fonts/font = SubResource( 1 )
 align = 1
 valign = 2
@@ -58,23 +83,57 @@ valign = 2
 visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_top = -2.0
-margin_bottom = -14.0
+margin_left = 2.0
+margin_top = 173.0
+margin_right = 2.0
+margin_bottom = 161.0
 color = Color( 0.803922, 0.776471, 0.776471, 1 )
 
-[node name="target_other" type="Label" parent="."]
+[node name="target_bindings" type="Label" parent="."]
 anchor_left = 0.76
 anchor_top = 0.685
 anchor_right = 0.995
 anchor_bottom = 1.009
-margin_left = 0.799927
-margin_top = 0.199951
-margin_right = -0.400146
-margin_bottom = 0.279907
+margin_left = -0.707397
+margin_top = -401.8
+margin_right = -1.90747
+margin_bottom = -401.72
 custom_fonts/font = SubResource( 2 )
 autowrap = true
 
-[node name="ColorRect" type="ColorRect" parent="target_other"]
+[node name="ColorRect" type="ColorRect" parent="target_bindings"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 2.0
+margin_top = 175.0
+margin_right = 2.0
+margin_bottom = 32.0001
+
+[node name="target_compounds" type="Label" parent="."]
+anchor_top = 0.685
+anchor_right = 0.199
+anchor_bottom = 0.936
+custom_fonts/font = SubResource( 2 )
+autowrap = true
+
+[node name="ColorRect" type="ColorRect" parent="target_compounds"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="target_compounds2" type="Label" parent="."]
+anchor_top = 0.685
+anchor_right = 0.199
+anchor_bottom = 0.936
+margin_left = 2.49268
+margin_top = -287.8
+margin_right = 2.49268
+margin_bottom = -287.8
+custom_fonts/font = SubResource( 2 )
+autowrap = true
+
+[node name="ColorRect" type="ColorRect" parent="target_compounds2"]
 visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -107,3 +166,46 @@ margin_right = 242.0
 text = "MUCTR chemical laboratory"
 align = 1
 valign = 1
+
+[node name="ExitDialog" type="WindowDialog" parent="."]
+pause_mode = 2
+visible = true
+anchor_left = 0.45
+anchor_top = 0.45
+anchor_right = 0.45
+anchor_bottom = 0.45
+margin_right = 300.0
+margin_bottom = 100.0
+rect_clip_content = true
+theme = ExtResource( 4 )
+popup_exclusive = true
+window_title = "Выход"
+script = SubResource( 5 )
+
+[node name="Label" type="Label" parent="ExitDialog"]
+margin_left = 4.0
+margin_top = 7.0
+margin_right = 296.0
+margin_bottom = 56.0
+theme = ExtResource( 4 )
+text = "Выйти в главное меню?"
+align = 1
+valign = 1
+
+[node name="Exit" type="Button" parent="ExitDialog"]
+margin_left = 14.0
+margin_top = 64.0
+margin_right = 124.0
+margin_bottom = 89.0
+theme = ExtResource( 4 )
+text = "Да"
+script = SubResource( 3 )
+
+[node name="Cancel" type="Button" parent="ExitDialog"]
+margin_left = 177.0
+margin_top = 64.0
+margin_right = 287.0
+margin_bottom = 89.0
+theme = ExtResource( 4 )
+text = "Нет"
+script = SubResource( 4 )

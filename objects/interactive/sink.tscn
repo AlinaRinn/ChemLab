@@ -1,14 +1,39 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://assets/models/sink.glb" type="PackedScene" id=1]
 [ext_resource path="res://assets/materials/metal.material" type="Material" id=2]
 [ext_resource path="res://assets/materials/metal_gold.material" type="Material" id=3]
+[ext_resource path="res://objects/interaction.tscn" type="PackedScene" id=4]
+[ext_resource path="res://scripts/objects/interactive/sink.gd" type="Script" id=5]
+[ext_resource path="res://objects/collide.tscn" type="PackedScene" id=6]
 
 [node name="sink" instance=ExtResource( 1 )]
 transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0 )
+script = ExtResource( 5 )
 
 [node name="KitchenSink" parent="." index="0"]
 material/0 = ExtResource( 2 )
+
+[node name="BoxCollider" parent="KitchenSink" index="0" instance=ExtResource( 6 )]
+transform = Transform( 25.9, 0, 0, 0, 2.2, 5.05807e-07, 0, 5.05807e-07, 13.7715, 0, 6.55671e-07, 15 )
+
+[node name="BoxCollider2" parent="KitchenSink" index="1" instance=ExtResource( 6 )]
+transform = Transform( 25.9, 0, 0, 0, 2.2, 5.05807e-07, 0, 5.05807e-07, 13.7715, 0, 39.7021, 13.5183 )
+
+[node name="BoxCollider3" parent="KitchenSink" index="2" instance=ExtResource( 6 )]
+transform = Transform( 25.9, 0, 0, 0, 2.2, 5.05807e-07, 0, 5.05807e-07, 13.7715, 0, -39.6721, 15 )
+
+[node name="BoxCollider4" parent="KitchenSink" index="3" instance=ExtResource( 6 )]
+transform = Transform( -1.13213e-06, -2.2, 9.6165e-08, 41.3001, -1.53345e-07, 6.01972e-07, -1.80528e-06, 6.01972e-07, 13.7715, -21.4969, 5.30551e-07, 12.1376 )
+
+[node name="BoxCollider5" parent="KitchenSink" index="4" instance=ExtResource( 6 )]
+transform = Transform( -1.13213e-06, -2.2, 9.6165e-08, 41.3001, -1.53345e-07, 6.01972e-07, -1.80528e-06, 6.01972e-07, 13.7715, 25.4483, 5.65272e-07, 12.9319 )
+
+[node name="BoxCollider6" parent="KitchenSink" index="5" instance=ExtResource( 6 )]
+transform = Transform( 8.54365e-14, 1.2053e-06, 23.7759, 38.3966, -1.23415e-07, -6.07658e-15, -1.45294e-06, 0.438073, -1.39016e-07, 1.67522, 1.15034e-06, 26.3166 )
+
+[node name="BoxCollider7" parent="KitchenSink" index="6" instance=ExtResource( 6 )]
+transform = Transform( 6.68713, 0, 0, 0, 2.2, 5.05807e-07, 0, 5.05807e-07, 13.7715, -20.3964, -0.0306767, -19.2765 )
 
 [node name="KitchenSinkFaucet" parent="." index="1"]
 material/0 = ExtResource( 3 )
@@ -18,3 +43,13 @@ material/0 = ExtResource( 3 )
 
 [node name="KitchenSinkHandleL" parent="." index="3"]
 material/0 = ExtResource( 3 )
+
+[node name="interactive" parent="." index="4" instance=ExtResource( 4 )]
+transform = Transform( 12.4384, 0, 0, 0, 2.36999, 5.34073e-07, 0, 5.34073e-07, 14.5882, -15.2231, -8.43835e-07, -19.3047 )
+label = "Раковина"
+need = "tube"
+need_label = "пробиркой"
+left_click_action = "pour"
+left_click_label = "Набрать воду"
+right_click_action = "drain"
+right_click_label = "Слить воду"

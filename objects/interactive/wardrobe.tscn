@@ -1,0 +1,171 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://assets/models/wardrobe.glb" type="PackedScene" id=1]
+[ext_resource path="res://assets/materials/wardrobe.material" type="Material" id=2]
+[ext_resource path="res://objects/interaction.tscn" type="PackedScene" id=3]
+[ext_resource path="res://objects/collide.tscn" type="PackedScene" id=4]
+[ext_resource path="res://assets/materials/wood_light.material" type="Material" id=5]
+
+[sub_resource type="GDScript" id=12]
+script/source = "extends MeshInstance
+
+var active = false
+
+func open():
+	if !active:
+		active = true
+		get_parent().get_parent().get_parent().get_node(\"AnimationPlayer\").play(\"open\")
+	else:
+		active = false
+		get_parent().get_parent().get_parent().get_node(\"AnimationPlayer\").play_backwards(\"open\")
+"
+
+[sub_resource type="GDScript" id=11]
+script/source = "extends MeshInstance
+
+var active = false
+
+func open():
+	if !active:
+		active = true
+		get_parent().get_parent().get_parent().get_node(\"AnimationPlayer\").play(\"open\")
+	else:
+		active = false
+		get_parent().get_parent().get_parent().get_node(\"AnimationPlayer\").play_backwards(\"open\")
+"
+
+[sub_resource type="Animation" id=9]
+resource_name = "open"
+tracks/0/type = "transform"
+tracks/0/path = NodePath("Armature/Skeleton:Dummy001")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = PoolRealArray( 0, 1, 0, 0, -2.38419e-07, -2.18557e-08, 0, 0, 1, 1, 1, 1, 0.0666667, 1, 0, 0, -2.38419e-07, -2.18535e-08, 3.10876e-10, 0.014224, 0.999899, 1, 1, 1, 0.2, 1, 0, 0, -2.38419e-07, -2.14354e-08, 4.26569e-09, 0.195175, 0.980769, 1, 1, 1, 0.4, 1, 0, 0, -2.38419e-07, -2.0458e-08, 7.69049e-09, 0.351876, 0.936047, 1, 1, 1, 0.6, 1, 0, 0, -2.38419e-07, -1.8918e-08, 1.09445e-08, 0.500762, 0.865585, 1, 1, 1, 0.8, 1, 0, 0, -2.38419e-07, -1.65363e-08, 1.42907e-08, 0.653866, 0.756611, 1, 1, 1, 0.9, 1, 0, 0, -2.38419e-07, -1.56726e-08, 1.52329e-08, 0.696977, 0.717093, 1, 1, 1, 1, 1, 0, 0, -2.38419e-07, -1.54543e-08, 1.54543e-08, 0.707107, 0.707107, 1, 1, 1 )
+tracks/1/type = "transform"
+tracks/1/path = NodePath("Armature/Skeleton:Dummy002")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = PoolRealArray( 0, 1, 0, 0, -2.38419e-07, -2.18557e-08, 0, 0, 1, 1, 1, 1, 0.0666667, 1, 0, 0, -2.38419e-07, -2.18535e-08, -3.10876e-10, -0.014224, 0.999899, 1, 1, 1, 0.2, 1, 0, 0, -2.38419e-07, -2.14354e-08, -4.26569e-09, -0.195175, 0.980769, 1, 1, 1, 0.4, 1, 0, 0, -2.38419e-07, -2.0458e-08, -7.69049e-09, -0.351876, 0.936047, 1, 1, 1, 0.6, 1, 0, 0, -2.38419e-07, -1.8918e-08, -1.09445e-08, -0.500762, 0.865585, 1, 1, 1, 0.8, 1, 0, 0, -2.38419e-07, -1.65363e-08, -1.42907e-08, -0.653866, 0.756611, 1, 1, 1, 0.9, 1, 0, 0, -2.38419e-07, -1.56726e-08, -1.52329e-08, -0.696977, 0.717093, 1, 1, 1, 1, 1, 0, 0, -2.38419e-07, -1.54543e-08, -1.54543e-08, -0.707107, 0.707107, 1, 1, 1 )
+tracks/2/type = "value"
+tracks/2/path = NodePath("Armature/Skeleton/Door_left/interactive:rotation_degrees")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0.002, 0, 0 ), Vector3( 0.002, 0, 90 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Armature/Skeleton/Door_left/interactive:translation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector3( -246.747, 283.142, -1004.37 ), Vector3( -405.271, 456.578, -986.166 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Armature/Skeleton/Door_right/interactive:rotation_degrees")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0.002, 0, 0 ), Vector3( 0.002, 0, -90 ) ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("Armature/Skeleton/Door_right/interactive:translation")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector3( 245.936, 283.142, -1004.37 ), Vector3( 410.699, 456.964, -1004.37 ) ]
+}
+
+[node name="shelf_animated" instance=ExtResource( 1 )]
+
+[node name="Wardrobe" parent="." index="0"]
+material/0 = ExtResource( 2 )
+
+[node name="Cube1" parent="Wardrobe" index="0"]
+material/0 = ExtResource( 5 )
+
+[node name="BoxCollider" parent="Wardrobe/Cube1" index="0" instance=ExtResource( 4 )]
+
+[node name="Cube2" parent="Wardrobe" index="1"]
+material/0 = ExtResource( 5 )
+
+[node name="BoxCollider" parent="Wardrobe/Cube2" index="0" instance=ExtResource( 4 )]
+
+[node name="Cube3" parent="Wardrobe" index="2"]
+material/0 = ExtResource( 5 )
+
+[node name="BoxCollider" parent="Wardrobe/Cube3" index="0" instance=ExtResource( 4 )]
+
+[node name="Cube4" parent="Wardrobe" index="3"]
+material/0 = ExtResource( 5 )
+
+[node name="BoxCollider" parent="Wardrobe/Cube4" index="0" instance=ExtResource( 4 )]
+
+[node name="BoxCollider" parent="Wardrobe" index="4" instance=ExtResource( 4 )]
+transform = Transform( 492.056, 0, 0, 0, 7.96738, 0, 0, 0, 287.721, 0.856489, 655.387, 0 )
+
+[node name="BoxCollider2" parent="Wardrobe" index="5" instance=ExtResource( 4 )]
+transform = Transform( 492.056, 0, 0, 0, 7.96738, 0, 0, 0, 287.721, 0.856489, 991.741, 0 )
+
+[node name="BoxCollider3" parent="Wardrobe" index="6" instance=ExtResource( 4 )]
+transform = Transform( 492.056, 0, 0, 0, 7.96738, 0, 0, 0, 287.721, 0.856489, -991.671, 0 )
+
+[node name="BoxCollider4" parent="Wardrobe" index="7" instance=ExtResource( 4 )]
+transform = Transform( -1.49567e-08, 9.00794, 0.0015109, -991.029, -0.00114042, -1.91283e-07, 0, -0.00202631, 287.801, 488.072, 0.479492, -5.15479 )
+
+[node name="BoxCollider5" parent="Wardrobe" index="8" instance=ExtResource( 4 )]
+transform = Transform( -1.49567e-08, 9.00794, 0.0015109, -991.029, -0.00114042, -1.91283e-07, 0, -0.00202631, 287.801, -489.912, 0.479492, -5.15479 )
+
+[node name="Door_left" parent="Armature/Skeleton" index="0"]
+transform = Transform( 1, 0, 0, 0, 1, -5.68434e-14, 0, 5.68434e-14, 1, 0, 0, 0 )
+material/0 = ExtResource( 2 )
+script = SubResource( 12 )
+
+[node name="interactive" parent="Armature/Skeleton/Door_left" index="0" instance=ExtResource( 3 )]
+transform = Transform( 246.325, 0, 0, 0, 9.84348, -0.03456, 0, 0.000343602, 990.07, -246.747, 283.142, -1004.37 )
+label = "Шкаф с посудой"
+left_click_action = "open"
+left_click_label = "Открыть/Закрыть"
+
+[node name="BoxCollider" parent="Armature/Skeleton/Door_left/interactive" index="2" instance=ExtResource( 4 )]
+transform = Transform( -1.39336e-09, 0.839176, 0.000140755, -0.797678, -9.17925e-07, -1.53964e-10, 0, -7.00665e-06, 0.995169, 0.1624, 0.479492, 0.00701767 )
+
+[node name="Door_right" parent="Armature/Skeleton" index="1"]
+transform = Transform( 1, 0, 0, 0, 1, -5.68434e-14, 0, 5.68434e-14, 1, 0, 0, 0 )
+material/0 = ExtResource( 2 )
+script = SubResource( 11 )
+
+[node name="interactive" parent="Armature/Skeleton/Door_right" index="0" instance=ExtResource( 3 )]
+transform = Transform( 246.325, 0, 0, 0, 9.84348, -0.0345599, 0, 0.000343602, 990.069, 245.936, 283.142, -1004.37 )
+label = "Шкаф с посудой"
+left_click_action = "open"
+left_click_label = "Открыть/Закрыть"
+
+[node name="BoxCollider" parent="Armature/Skeleton/Door_right/interactive" index="2" instance=ExtResource( 4 )]
+transform = Transform( -1.39336e-09, 0.839177, 0.000140755, -0.797678, -9.17925e-07, -1.53964e-10, -1.69407e-21, -7.00665e-06, 0.995169, -0.128226, -0.181664, 0.0163482 )
+
+[node name="AnimationPlayer" parent="." index="2"]
+anims/open = SubResource( 9 )

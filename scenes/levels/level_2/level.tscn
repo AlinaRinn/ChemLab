@@ -1,17 +1,26 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=22 format=2]
 
 [ext_resource path="res://objects/static/room.tscn" type="PackedScene" id=1]
 [ext_resource path="res://objects/static/lamp.tscn" type="PackedScene" id=2]
 [ext_resource path="res://objects/static/chair.tscn" type="PackedScene" id=3]
-[ext_resource path="res://assets/models/distiller.obj" type="ArrayMesh" id=4]
-[ext_resource path="res://objects/static/window.tscn" type="PackedScene" id=5]
-[ext_resource path="res://assets/materials/plastic_black.material" type="Material" id=6]
-[ext_resource path="res://assets/materials/glass_gray.material" type="Material" id=7]
-[ext_resource path="res://objects/static/door.tscn" type="PackedScene" id=8]
-[ext_resource path="res://objects/interactive/shelf.tscn" type="PackedScene" id=9]
+[ext_resource path="res://objects/interactive/tube_1.tscn" type="PackedScene" id=4]
+[ext_resource path="res://objects/interactive/window.tscn" type="PackedScene" id=5]
+[ext_resource path="res://objects/interactive/door.tscn" type="PackedScene" id=8]
+[ext_resource path="res://objects/interactive/fume_hood.tscn" type="PackedScene" id=9]
 [ext_resource path="res://objects/static/table_1.tscn" type="PackedScene" id=10]
 [ext_resource path="res://objects/static/board_whells.tscn" type="PackedScene" id=11]
 [ext_resource path="res://objects/static/wall_picture.tscn" type="PackedScene" id=12]
+[ext_resource path="res://objects/static/table_2.tscn" type="PackedScene" id=13]
+[ext_resource path="res://objects/static/table_hole.tscn" type="PackedScene" id=14]
+[ext_resource path="res://objects/interactive/sink.tscn" type="PackedScene" id=15]
+[ext_resource path="res://objects/static/table_4.tscn" type="PackedScene" id=16]
+[ext_resource path="res://objects/static/table_5.tscn" type="PackedScene" id=17]
+[ext_resource path="res://objects/interactive/tube.tscn" type="PackedScene" id=18]
+[ext_resource path="res://objects/interactive/burner.tscn" type="PackedScene" id=19]
+[ext_resource path="res://objects/interactive/bottle.tscn" type="PackedScene" id=20]
+[ext_resource path="res://objects/static/shelf.tscn" type="PackedScene" id=21]
+[ext_resource path="res://objects/interactive/switch.tscn" type="PackedScene" id=22]
+[ext_resource path="res://objects/interactive/wardrobe.tscn" type="PackedScene" id=23]
 
 [node name="level_area" type="Spatial"]
 
@@ -61,28 +70,82 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4.72909, 6.95606, -20.8634 )
 [node name="lamp8" parent="light" instance=ExtResource( 2 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 10.4545, 6.95606, -20.8414 )
 
+[node name="switch" parent="light" instance=ExtResource( 22 )]
+transform = Transform( 0.25, 0, 0, 0, -1.09278e-08, 0.25, 0, -0.25, -1.09278e-08, 4.45755, 3.7129, 0.0432042 )
+
 [node name="furniture" type="Spatial" parent="."]
 
 [node name="board" parent="furniture" instance=ExtResource( 11 )]
-transform = Transform( -1.39876e-10, 0, -0.0032, 0, 0.0032, 0, 0.0032, 0, -1.39876e-10, 12.7806, 2.63915, -24.2625 )
+transform = Transform( -1.39876e-10, 0, -0.0032, 0, 0.0032, 0, 0.0032, 0, -1.39876e-10, 7.47772, 2.63915, -24.2625 )
 
 [node name="stool" parent="furniture" instance=ExtResource( 10 )]
-transform = Transform( 0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 0.907363, 0.490563, -24.3578 )
+transform = Transform( 0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 14.5933, 0.490563, -24.4123 )
 
 [node name="shelf" parent="furniture" instance=ExtResource( 9 )]
-transform = Transform( 0.025, 0, 0, 0, 0.025, 0, 0, 0, 0.025, 7.66502, 3.74918, -24.5282 )
+transform = Transform( -1.09278e-09, 0, -0.025, 0, 0.025, 0, 0.025, 0, -1.09278e-09, 14.4708, 3.74918, -12.9786 )
 
 [node name="chair2" parent="furniture" instance=ExtResource( 3 )]
-transform = Transform( -0.75, 0, -6.55671e-08, 0, 0.75, 0, 6.55671e-08, 0, -0.75, 9.92959, 0.0874946, -14.7056 )
+transform = Transform( 0.675, 0, 1.18021e-07, 0, 0.675, 0, -1.18021e-07, 0, 0.675, 7.44946, 0.142294, -18.5253 )
 
 [node name="chair" parent="furniture" instance=ExtResource( 3 )]
-transform = Transform( -0.75, 0, -6.55671e-08, 0, 0.75, 0, 6.55671e-08, 0, -0.75, 4.53475, 0.0874946, -14.7056 )
+transform = Transform( -0.675, 0, -5.90104e-08, 0, 0.675, 0, 5.90104e-08, 0, -0.675, 1.34056, 0.142135, -23.7731 )
+
+[node name="table_hole" parent="furniture" instance=ExtResource( 14 )]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 14.3688, 1.80263, -3.01032 )
+
+[node name="sink" parent="furniture/table_hole" instance=ExtResource( 15 )]
+transform = Transform( -8.59475e-10, -0.0196625, 8.59475e-10, 0, -8.59475e-10, -0.0196625, 0.0196625, -8.59475e-10, 3.75689e-17, -0.0216169, 1.01382, -0.166395 )
+
+[node name="table_2" parent="furniture" instance=ExtResource( 13 )]
+transform = Transform( -0.03, 0, -2.62268e-09, 0, 0.03, 0, 2.62268e-09, 0, -0.03, 1.9746, 1.73664, -22.1807 )
+
+[node name="table_3" parent="furniture" instance=ExtResource( 16 )]
+transform = Transform( -0.0225, 0, 1.04774e-09, 0, 0.0225, 0, -1.04774e-09, 0, -0.0225, 14.6357, 1.5269, -8.00339 )
+
+[node name="wardrobe" parent="furniture" instance=ExtResource( 23 )]
+transform = Transform( 2.5, 0, 4.37114e-07, 0, 2.5, 0, -4.37114e-07, 0, 2.5, 11.9892, 0.543426, -24.6584 )
+
+[node name="table_5n" parent="furniture" instance=ExtResource( 17 )]
+transform = Transform( -2.7216, 0, 2.3793e-07, 0, 2.7216, 0, -2.3793e-07, 0, -2.7216, 7.40997, 0.49917, -19.8037 )
 
 [node name="things" type="Spatial" parent="."]
 
-[node name="distiller" type="MeshInstance" parent="things"]
-transform = Transform( -0.2, 0, -1.74846e-08, 0, 0.2, 0, 1.74846e-08, 0, -0.2, 7.16183, 1.0504, -15.4773 )
-mesh = ExtResource( 4 )
-skeleton = NodePath("../../room")
-material/0 = ExtResource( 6 )
-material/1 = ExtResource( 7 )
+[node name="bottles" type="Spatial" parent="things"]
+
+[node name="bottle" parent="things/bottles" instance=ExtResource( 20 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 7.36867, 1.63552, -18.3259 )
+
+[node name="bottle2" parent="things/bottles" instance=ExtResource( 20 )]
+transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 14.8828, 3.22955, -1.60145 )
+liquid = "не кислота"
+
+[node name="bottle3" parent="things/bottles" instance=ExtResource( 20 )]
+transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 14.8828, 3.22955, -1.37531 )
+liquid = "металллллл"
+
+[node name="bottle4" parent="things/bottles" instance=ExtResource( 20 )]
+transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 14.7788, 2.33059, -2.59416 )
+
+[node name="bottle5" parent="things/bottles" instance=ExtResource( 20 )]
+transform = Transform( 0.353553, 0.353553, 1.54543e-08, 0, -2.18557e-08, 0.5, 0.353553, -0.353553, -1.54543e-08, 14.3293, 2.88796, -1.37531 )
+liquid = "кислота"
+
+[node name="tubes" type="Spatial" parent="things"]
+
+[node name="tube" parent="things/tubes" instance=ExtResource( 18 )]
+transform = Transform( 0.0271697, 0.860251, 0.509147, -0.999502, 0.0315677, 0, -0.0160726, -0.508893, 0.86068, 2.32396, 3.03777, -21.9375 )
+
+[node name="tube2" parent="things/tubes" instance=ExtResource( 4 )]
+transform = Transform( -4.37114e-09, 0.1, 0, -0.1, -4.37114e-09, 0, 0, 0, 0.1, 6.78476, 2.51395, -20.2214 )
+
+[node name="burner" parent="things" instance=ExtResource( 19 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.746281, 2.97493, -21.1674 )
+
+[node name="burner2" parent="things" instance=ExtResource( 19 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 14.4538, 2.81113, -14.1175 )
+
+[node name="stand" parent="things" instance=ExtResource( 21 )]
+transform = Transform( 0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 14.9963, 2.84733, -1.29036 )
+
+[node name="tube" parent="." instance=ExtResource( 18 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 12.3297, 3.57116, -4.1201 )

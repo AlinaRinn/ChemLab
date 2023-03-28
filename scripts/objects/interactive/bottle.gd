@@ -1,7 +1,16 @@
 extends Spatial
 
+export var liquid = ""
+var id = "bottle"
+
 
 func take():
-	get_parent().remove_child(self)	
-	self.translation = Vector3(0, 0, 0)
-	G.player.get_to_hand(self)
+	# Подбирание предмета
+	var parent = get_parent()
+	var object = G.player.get_to_hand(self)
+	if object:
+		parent.add_child(object)
+
+func pour():
+	# Налить слой воды
+	G.player.in_hand_object.add_liquid(liquid)

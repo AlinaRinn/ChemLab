@@ -147,4 +147,4 @@ skeleton = NodePath("")
 material/0 = ExtResource( 4 )
 
 [node name="BoxCollider" parent="roof" instance=ExtResource( 6 )]
-transform = Transform( -4.84554e-07, -308.056, 0, 4.85611, -5.89881e-06, 0, 0, 0, 506.836, 0.209259, 4.79487, 0 )
+transform = Transform( -4.84554e-07, -308.056, -5.82077e-11, 4.85611, -5.89881e-06, 0, 0, -2.91038e-11, 506.836, 0.209259, 50.063, 0 )

@@ -1,10 +1,9 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://assets/models/distiller_big_main.obj" type="ArrayMesh" id=1]
 [ext_resource path="res://assets/models/distiller_big_check.obj" type="ArrayMesh" id=2]
 [ext_resource path="res://scripts/objects/interactive/distiller.gd" type="Script" id=3]
 [ext_resource path="res://assets/particle/water_particle.png" type="Texture" id=4]
-[ext_resource path="res://objects/liquid.tscn" type="PackedScene" id=7]
 [ext_resource path="res://objects/interaction.tscn" type="PackedScene" id=8]
 
 [sub_resource type="BoxShape" id=2]
@@ -98,10 +97,6 @@ material/1 = SubResource( 7 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="valve/valve_rotate"]
 anims/rotate = SubResource( 8 )
-
-[node name="liquid" parent="valve" instance=ExtResource( 7 )]
-transform = Transform( 0.226287, 0, 0, 0, 0.836209, 0, 0, 0, 0.226287, 0.230312, -1.21806, 0 )
-liquid = "water"
 
 [node name="CPUParticles" type="CPUParticles" parent="valve"]
 transform = Transform( 0.7, 0, 1.22392e-07, 0, 0.7, 0, -1.22392e-07, 0, 0.7, 0.25615, -0.213338, -2.4504e-07 )

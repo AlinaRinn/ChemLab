@@ -5,7 +5,7 @@ var active = false
 
 
 func burn():
-	# Отвечает за анимацию горения
+	# Вкл и выкл анимации горения
 	if !active:
 		$AnimationPlayer.play("burn")
 		active = true

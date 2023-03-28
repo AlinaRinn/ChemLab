@@ -8,7 +8,7 @@ script/source = "extends Node
 
 func _ready():
 	G.root_game = self
-	G.load_level()
+	G.load_level() # Загружает уровень
 	G.player = $player
 "
 

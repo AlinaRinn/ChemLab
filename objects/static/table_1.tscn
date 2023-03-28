@@ -7,7 +7,6 @@
 [ext_resource path="res://objects/collide.tscn" type="PackedScene" id=5]
 [ext_resource path="res://assets/materials/wood_brown.material" type="Material" id=6]
 
-
 [node name="stool" instance=ExtResource( 1 )]
 
 [node name="Truss a" parent="." index="0"]

@@ -1,24 +1,195 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [sub_resource type="GDScript" id=1]
 script/source = "extends KinematicBody
 
-const ROT = 0.005
-const gr = 0.4
+const GRAVITY = 0.4
 const SPEED = 6
 const SPEED_RUN = 12
-const J_SPEED = 10
+const SPEED_JUMP = 10
+var SPEED_TURN
+
 var vel = Vector3()
 
-var rot_x = 0
-var rot_y = 0
+var state = \"stay\"
 
 onready var rc = $head/eye
+onready var anim = $AnimationPlayer
+onready var hand = $head/player_hand
+onready var hand1 = $head/hand
 
-var action_object = null
-
+var picked_object
+var pull_power = 4
 var in_hand_object = null
+var in_hand_object_id = null
 var cast = null
+
+
+func get_to_hand(object):
+	# Если в руках что то есть, и это тот же предмет, меняем местами
+	# Иначе, что в руках выкидываем, и берем новый
+	var swap_obj = null
+	if in_hand_object:
+		if in_hand_object_id == object.id:
+			swap_obj = in_hand_object
+			swap_obj.translation = object.translation
+			hand.remove_child(in_hand_object)
+		else:
+			drop()
+	
+	# Удаляет obj из старой сцены, скидывает положение и поворот
+	# Добавляет в руки новый obj
+	object.get_parent().remove_child(object)
+	object.translation = Vector3(0, 0, 0)
+	object.rotation = Vector3(0, 0, 0)
+	
+	hand.add_child(object)
+	in_hand_object = object
+	in_hand_object_id = object.id
+	
+	return swap_obj
+
+
+func get_info_object():
+	# Выводим инфо о слоях пробирке в руке
+	if in_hand_object != null && in_hand_object.has_method(\"get_info\"):
+		G.label_compounds.text += in_hand_object.get_info()
+	
+	if cast:
+		var owner = cast.get_owner()
+		
+		# Название предмета на который навелись
+		G.label_name.text = cast.label
+		var liquid_obj = owner.get(\"liquid\")
+		if liquid_obj != \"\" && liquid_obj:
+			G.label_name.text += ' \"' + liquid_obj + '\"'
+		
+		# Содержимое пробирки на которую навелись
+		if owner.has_method(\"get_info\"):
+			G.label_compounds2.text += owner.get_info()
+		
+		# Пишет какой предмет нужен для взаимодействия
+		if cast.need_label != \"\":
+			G.label_bindings.text += \"Взаимодействует с \" + cast.need_label + \"\\n\"
+			
+		# Пишет кнопки взаимодействия
+		else:
+			if cast.left_click_label != \"\":
+				G.label_bindings.text += \"ЛКМ - \" + cast.left_click_label + \"\\n\"
+			if cast.right_click_label != \"\":
+				G.label_bindings.text += \"ПКМ - \" + cast.right_click_label + \"\\n\"
+	else:
+		G.label_name.text
+		G.label_bindings.text
+
+
+func get_object():
+	# Пускает луч для определенния предмета
+	if rc.is_colliding():
+		cast = rc.get_collider()
+		if !('label' in cast):
+			cast = null
+	else:
+		cast = null
+
+
+func get_input():
+	var dir = Vector3()
+	var speed = SPEED
+	
+	# Выход в меню
+	if Input.is_action_just_pressed(\"ui_cancel\"):
+		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+		G.emit_signal(\"paused\")
+		get_tree().paused = true
+		
+	# Обработка кнопок движения
+	if Input.is_action_pressed(\"ui_left\"):
+		dir.x = -1
+	if Input.is_action_pressed(\"ui_right\"):
+		dir.x = 1
+	if Input.is_action_pressed(\"ui_up\"):
+		dir.z = -1
+	if Input.is_action_pressed(\"ui_down\"):
+		dir.z = 1
+	
+	# Дроп предмета в руке
+	if Input.is_action_just_pressed(\"ui_g\"):
+		drop()
+	
+	# Обработка кнопки прыжка
+	if Input.is_action_just_pressed(\"ui_select\") && is_on_floor():
+		vel.y = SPEED_JUMP 
+	
+	# Обработка кнопки приседания 
+	if Input.is_action_pressed(\"ui_ctrl\"):
+		if state == \"stay\":
+			anim.play(\"sit\")
+			state = \"sit\"
+	elif state == \"sit\":
+		state = \"stay\"
+		anim.play_backwards(\"sit\")
+	
+	# и бега
+	elif Input.is_action_pressed(\"ui_shift\"):
+		anim.play(\"run\")
+		speed = SPEED_RUN
+	elif anim.is_playing():
+		anim.stop()
+		anim.seek(0, true)
+		
+	# Вращение
+	if dir:
+		dir = dir.rotated(Vector3.UP, rotation.y) * speed 
+		
+	# Пзволяет передвигать предметы
+	if Input.is_action_just_pressed(\"ui_f\"):
+		if picked_object == null:
+			var collider = cast.get_owner() if cast else null 
+			if collider != null and collider is RigidBody:
+				picked_object = collider
+		elif picked_object != null:
+			picked_object = null
+
+	
+	# Взаимодействие с блокнотами
+		#if G.active_note:
+			#G.blank_notes()
+			#G.active_note = null
+			
+	# Движение
+	vel.y -= GRAVITY 
+	vel.x = dir.x
+	vel.z = dir.z	
+
+
+func _physics_process(_delta):
+	get_input();
+	vel = move_and_slide(vel, Vector3.UP)
+	get_object()
+	get_info_object()
+	
+	if picked_object != null:
+		var a = picked_object.global_transform.origin
+		var b = hand1.global_transform.origin
+		picked_object.set_linear_velocity((b-a)*pull_power)
+
+
+func drop():
+	# Проверяем есть ли предмет в руке
+	if !in_hand_object:
+			return
+	
+	# Удаляем предмет из рук, и добавляем его на сцену
+	var drop_obj = in_hand_object
+	drop_obj.translation = G.player.translation
+
+	hand.remove_child(in_hand_object)
+	in_hand_object = null
+	in_hand_object_id = null
+	
+	G.root_level.add_child(drop_obj)
+
 
 func action():
 	# Для взаимодействия с объектами
@@ -26,92 +197,16 @@ func action():
 		cast.action()
 
 
-func get_to_hand(object):
-	# Если в руках что то есть, очищает
-	if in_hand_object:
-		in_hand_object.queue_free()
-		
-	# Грузит объект в ручки
-	in_hand_object = object
-	$head/player_hand.add_child(object)
-
-
 func _ready():
 	# Прячет курсор при загрузке на уровень
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
-
-
-func _physics_process(_delta):
-	# Обработка быстрых кнопок
-	if Input.is_action_just_pressed(\"ui_cancel\"):
-		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
-		G.to('main_menu')
-	
-	# Обработка кнопок движения и прыжок
-	var pl = Vector3()
-	var speed = SPEED
-	if Input.is_action_pressed(\"ui_left\"):
-		pl.x = -1
-	if Input.is_action_pressed(\"ui_right\"):
-		pl.x = 1
-	if Input.is_action_pressed(\"ui_up\"):
-		pl.z = -1
-	if Input.is_action_pressed(\"ui_down\"):
-		pl.z = 1
-	if Input.is_action_just_pressed(\"ui_select\") && is_on_floor():
-		vel.y = J_SPEED 
-	if Input.is_action_pressed(\"ui_run\"):
-		$AnimationPlayer.play(\"step\")
-		speed = SPEED_RUN
-	elif $AnimationPlayer.is_playing():
-		$AnimationPlayer.stop()
-		$AnimationPlayer.seek(0, true)
-		
-	if pl:
-		# Вращение
-		pl = pl.rotated(Vector3.UP, rotation.y) * speed 
-		
-		# Взаимодействие с блокнотами
-		if G.active_note:
-			G.blank_notes()
-			G.active_note = null
-	
-	# Движение
-	vel.y -= gr 
-	vel.x = pl.x
-	vel.z = pl.z	
-	vel = move_and_slide(vel, Vector3.UP)
-	
-	
-	if rc.is_colliding():
-		cast = rc.get_collider()
-		if !('label' in cast):
-			cast = null
-	else:
-		cast = null
-	
-	if cast:
-		G.label_1.text = cast.label
-		if cast.left_click_label != \"\":
-			G.label_2.text += \"LMB - \" + cast.left_click_label + \"\\n\"
-		if cast.right_click_label != \"\":
-			G.label_2.text += \"RMB - \" + cast.right_click_label + \"\\n\"
-	else:
-		G.label_1.text
-		G.label_2.text
-
+	SPEED_TURN = G.sensitivity
 
 func _input(e):
 	# Обрабатываем движение мышкой
 	if e is InputEventMouseMotion:
-		rot_y -= e.relative.x * ROT
-		rot_x -= e.relative.y * ROT
-		
-		if rot_x < -1.2: rot_x = -1.2
-		elif rot_x > 1.2: rot_x = 1.2
-		
-		transform.basis = Basis(Vector3(0,1,0), rot_y)
-		$head.transform.basis = Basis(Vector3(1,0,0), rot_x)
+		rotation.y -= e.relative.x * SPEED_TURN
+		$head.rotation.x = clamp($head.rotation.x-e.relative.y* SPEED_TURN,-1.3, 1.2)
 	
 	# Обрабатываем нажатия мышкой
 	if e is InputEventMouse:
@@ -161,9 +256,33 @@ tracks/2/keys = {
 "update": 0,
 "values": [ Vector3( 0.0801525, -0.0562506, -0.0885729 ) ]
 }
+tracks/3/type = "value"
+tracks/3/path = NodePath("shape:shape:height")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 1.7 ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("shape:translation")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0.310886, 0 ) ]
+}
 
 [sub_resource type="Animation" id=4]
-resource_name = "step"
+resource_name = "run"
 length = 0.8
 loop = true
 tracks/0/type = "value"
@@ -191,6 +310,46 @@ tracks/1/keys = {
 "values": [ Vector3( 0.0801525, -0.0562506, -0.0885729 ), Vector3( 0.084, -0.053, -0.09 ), Vector3( 0.083, -0.057, -0.09 ) ]
 }
 
+[sub_resource type="Animation" id=5]
+resource_name = "sit"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("head:translation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0, 2.32333, 0 ), Vector3( 0, 1.2, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("shape:shape:height")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 1.7, 0.8 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("shape:translation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0.310886, 0 ), Vector3( 0, -0.124742, -3.15647e-08 ) ]
+}
+
 [node name="player" type="KinematicBody"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.84756, 0 )
 collision_layer = 2
@@ -215,6 +374,10 @@ collide_with_areas = true
 [node name="player_hand" type="Spatial" parent="head"]
 transform = Transform( 0.0985865, 0.0167543, 0, -0.0167543, 0.0985865, 0, 0, 0, 0.1, 0.0801525, -0.0562506, -0.0885729 )
 
+[node name="hand" type="Position3D" parent="head"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.9579 )
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/RESET = SubResource( 3 )
-anims/step = SubResource( 4 )
+anims/run = SubResource( 4 )
+anims/sit = SubResource( 5 )
