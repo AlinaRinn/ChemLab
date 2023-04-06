@@ -117,18 +117,18 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 7.36867, 1.63552, -18.3259 )
 
 [node name="bottle2" parent="things/bottles" instance=ExtResource( 20 )]
 transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 14.8828, 3.22955, -1.60145 )
-liquid = "не кислота"
+liquid = "acid"
 
 [node name="bottle3" parent="things/bottles" instance=ExtResource( 20 )]
 transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 14.8828, 3.22955, -1.37531 )
-liquid = "металллллл"
+liquid = "alkali"
 
 [node name="bottle4" parent="things/bottles" instance=ExtResource( 20 )]
 transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 14.7788, 2.33059, -2.59416 )
 
 [node name="bottle5" parent="things/bottles" instance=ExtResource( 20 )]
 transform = Transform( 0.353553, 0.353553, 1.54543e-08, 0, -2.18557e-08, 0.5, 0.353553, -0.353553, -1.54543e-08, 14.3293, 2.88796, -1.37531 )
-liquid = "кислота"
+liquid = "water"
 
 [node name="tubes" type="Spatial" parent="things"]
 

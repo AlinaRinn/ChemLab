@@ -1,8 +1,9 @@
 extends Spatial
 
-export var liquid = ""
-var id = "bottle"
+var substance = load("res://scripts/substance.res").sub
+export(String, "acid", "alkali", "water") var liquid
 
+var id = "bottle"
 
 func take():
 	# Подбирание предмета
@@ -13,4 +14,4 @@ func take():
 
 func pour():
 	# Налить слой воды
-	G.player.in_hand_object.add_liquid(liquid)
+	G.player.in_hand_object.add_liquid(substance[liquid])

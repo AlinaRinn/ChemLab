@@ -17,6 +17,7 @@ onready var rc = $head/eye
 onready var anim = $AnimationPlayer
 onready var hand = $head/player_hand
 onready var hand1 = $head/hand
+var substance = load(\"res://scripts/substance.res\").sub
 
 var picked_object
 var pull_power = 4
@@ -62,7 +63,7 @@ func get_info_object():
 		G.label_name.text = cast.label
 		var liquid_obj = owner.get(\"liquid\")
 		if liquid_obj != \"\" && liquid_obj:
-			G.label_name.text += ' \"' + liquid_obj + '\"'
+			G.label_name.text += ' \"' + substance[liquid_obj][\"name\"] + '\"'
 		
 		# Содержимое пробирки на которую навелись
 		if owner.has_method(\"get_info\"):

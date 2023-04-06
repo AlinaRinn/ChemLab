@@ -17,29 +17,18 @@ export var level_4 = ""
 export var level_5 = ""
 
 
-func change_color(liq):
-	var layer = elements_tube[amount_liquid].get_children()[0]
-	var material = layer.get_surface_material(0).duplicate()
-	
-	match liq:
-		"не кислота":
-			material.albedo_color = Color.olive
-		"металллллл":
-			material.albedo_color = Color.silver
-		"кислота":
-			material.albedo_color = Color.orange
-		"вода":
-			material.albedo_color = Color.blue
-			
-	layer.set_surface_material(0, material)
-
 
 func add_liquid(liq):
 	# Добавляем слой жидкости
 	elements_tube[amount_liquid].show()
-	name_liquid[amount_liquid] = liq
-	change_color(liq
-	)
+	name_liquid[amount_liquid] = liq["name"]
+	
+	# Меняем цвет
+	var layer = elements_tube[amount_liquid].get_children()[0]
+	var material = layer.get_surface_material(0).duplicate()
+	material.albedo_color = liq["color"]
+	layer.set_surface_material(0, material)
+	
 	amount_liquid = amount_liquid if amount_liquid == MAX_AMOUNT_LIQUID \
 		else amount_liquid + 1
 
