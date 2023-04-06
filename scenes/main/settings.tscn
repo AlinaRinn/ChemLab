@@ -89,35 +89,53 @@ margin_bottom = 336.0
 tab_align = 0
 
 [node name="Графика" type="Tabs" parent="menu/TabContainer"]
-visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_top = 34.0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="menu/TabContainer/Графика"]
-margin_right = 692.0
+anchor_right = 0.33
+margin_right = 469.0
 margin_bottom = 300.0
 
-[node name="ColorRect" type="ColorRect" parent="menu/TabContainer/Графика/VBoxContainer"]
-margin_right = 692.0
-color = Color( 0.0627451, 0.203922, 0.258824, 1 )
+[node name="ScreenMode" type="Control" parent="menu/TabContainer/Графика/VBoxContainer"]
+margin_right = 700.0
 
-[node name="Label" type="Label" parent="menu/TabContainer/Графика/VBoxContainer/ColorRect"]
+[node name="Label" type="Label" parent="menu/TabContainer/Графика/VBoxContainer/ScreenMode"]
 margin_left = 30.0
 margin_top = 15.0
-margin_right = 266.0
-margin_bottom = 33.0
+margin_right = 296.0
+margin_bottom = 45.0
 text = "Полноэкранный режим"
 
-[node name="CheckButton" type="CheckButton" parent="menu/TabContainer/Графика/VBoxContainer/ColorRect"]
+[node name="CheckButton" type="CheckButton" parent="menu/TabContainer/Графика/VBoxContainer/ScreenMode"]
 margin_left = 609.0
-margin_top = 8.0
+margin_top = 10.0
 margin_right = 685.0
-margin_bottom = 54.0
+margin_bottom = 56.0
 pressed = true
 script = SubResource( 2 )
 
+[node name="Resolution" type="Control" parent="menu/TabContainer/Графика/VBoxContainer"]
+margin_top = 60.0
+margin_right = 700.0
+margin_bottom = 60.0
+
+[node name="Label" type="Label" parent="menu/TabContainer/Графика/VBoxContainer/Resolution"]
+margin_left = 30.0
+margin_top = 10.0
+margin_right = 268.0
+margin_bottom = 40.0
+text = "Разрешение экрана"
+
+[node name="OptionButton" type="OptionButton" parent="menu/TabContainer/Графика/VBoxContainer/Resolution"]
+margin_left = 420.0
+margin_top = 5.0
+margin_right = 670.0
+margin_bottom = 49.0
+
 [node name="Управление" type="Tabs" parent="menu/TabContainer"]
+visible = false
 margin_top = 35.0
 margin_right = 700.0
 margin_bottom = 335.0
@@ -155,5 +173,5 @@ value = 0.005
 tick_count = 20
 script = SubResource( 3 )
 
-[connection signal="toggled" from="menu/TabContainer/Графика/VBoxContainer/ColorRect/CheckButton" to="menu/TabContainer/Графика/VBoxContainer/ColorRect/CheckButton" method="_on_CheckButton_toggled"]
+[connection signal="toggled" from="menu/TabContainer/Графика/VBoxContainer/ScreenMode/CheckButton" to="menu/TabContainer/Графика/VBoxContainer/ScreenMode/CheckButton" method="_on_CheckButton_toggled"]
 [connection signal="value_changed" from="menu/TabContainer/Управление/VBoxContainer/ColorRect/sensitivity" to="menu/TabContainer/Управление/VBoxContainer/ColorRect/sensitivity" method="_on_HSlider_value_changed"]
