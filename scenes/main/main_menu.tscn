@@ -17,15 +17,15 @@ func _physics_process(_delta):
 script/source = "extends Button
 
 func _pressed():
-	G.to('cut_scene')
 	G.level = 2
+	G.to('game')
 "
 
 [sub_resource type="GDScript" id=2]
 script/source = "extends Button
 
 func _pressed():
-	G.to('cut_scene')
+	G.to('cut_scene_sandbox')
 	G.level = 1
 "
 
