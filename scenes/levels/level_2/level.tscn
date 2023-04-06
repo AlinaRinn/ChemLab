@@ -138,6 +138,9 @@ transform = Transform( 0.0271697, 0.860251, 0.509147, -0.999502, 0.0315677, 0, -
 [node name="tube2" parent="things/tubes" instance=ExtResource( 4 )]
 transform = Transform( -4.37114e-09, 0.1, 0, -0.1, -4.37114e-09, 0, 0, 0, 0.1, 6.78476, 2.51395, -20.2214 )
 
+[node name="tube3" parent="things/tubes" instance=ExtResource( 18 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 12.3297, 3.57116, -4.1201 )
+
 [node name="burner" parent="things" instance=ExtResource( 19 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.746281, 2.97493, -21.1674 )
 
@@ -146,6 +149,3 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 14.4538, 2.81113, -14.1175 )
 
 [node name="stand" parent="things" instance=ExtResource( 21 )]
 transform = Transform( 0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 14.9963, 2.84733, -1.29036 )
-
-[node name="tube" parent="." instance=ExtResource( 18 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 12.3297, 3.57116, -4.1201 )
