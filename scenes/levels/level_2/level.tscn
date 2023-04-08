@@ -1,10 +1,11 @@
-[gd_scene load_steps=22 format=2]
+[gd_scene load_steps=23 format=2]
 
 [ext_resource path="res://objects/static/room.tscn" type="PackedScene" id=1]
 [ext_resource path="res://objects/static/lamp.tscn" type="PackedScene" id=2]
 [ext_resource path="res://objects/static/chair.tscn" type="PackedScene" id=3]
 [ext_resource path="res://objects/interactive/tube_1.tscn" type="PackedScene" id=4]
 [ext_resource path="res://objects/interactive/window.tscn" type="PackedScene" id=5]
+[ext_resource path="res://objects/static/mendeleev.tscn" type="PackedScene" id=6]
 [ext_resource path="res://objects/interactive/door.tscn" type="PackedScene" id=8]
 [ext_resource path="res://objects/interactive/fume_hood.tscn" type="PackedScene" id=9]
 [ext_resource path="res://objects/static/table_1.tscn" type="PackedScene" id=10]
@@ -44,6 +45,9 @@ transform = Transform( 0.06075, 0, 1.12902e-08, 0, 0.0530739, 0, -1.12902e-08, 0
 [node name="door" parent="room" instance=ExtResource( 8 )]
 transform = Transform( -1.03531e-07, 0, -2.36852, 0, 2.44842, 0, 1.749, 0, -7.64512e-08, -2.0096, 0.488957, 6.64957 )
 
+[node name="mendeleev" parent="room" instance=ExtResource( 6 )]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 3.10468, 3.77459, -25.3721 )
+
 [node name="light" type="Spatial" parent="."]
 
 [node name="lamp" parent="light" instance=ExtResource( 2 )]
@@ -76,7 +80,7 @@ transform = Transform( 0.25, 0, 0, 0, -1.09278e-08, 0.25, 0, -0.25, -1.09278e-08
 [node name="furniture" type="Spatial" parent="."]
 
 [node name="board" parent="furniture" instance=ExtResource( 11 )]
-transform = Transform( -1.39876e-10, 0, -0.0032, 0, 0.0032, 0, 0.0032, 0, -1.39876e-10, 7.47772, 2.63915, -24.2625 )
+transform = Transform( -1.39876e-10, 0, -0.0032, 0, 0.0032, 0, 0.0032, 0, -1.39876e-10, 8.5797, 2.63915, -24.2625 )
 
 [node name="stool" parent="furniture" instance=ExtResource( 10 )]
 transform = Transform( 0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 14.5933, 0.490563, -24.4123 )
@@ -103,7 +107,7 @@ transform = Transform( -0.03, 0, -2.62268e-09, 0, 0.03, 0, 2.62268e-09, 0, -0.03
 transform = Transform( -0.0225, 0, 1.04774e-09, 0, 0.0225, 0, -1.04774e-09, 0, -0.0225, 14.6357, 1.5269, -8.00339 )
 
 [node name="wardrobe" parent="furniture" instance=ExtResource( 23 )]
-transform = Transform( 2.5, 0, 4.37114e-07, 0, 2.5, 0, -4.37114e-07, 0, 2.5, 11.9892, 0.543426, -24.6584 )
+transform = Transform( 2.5, 0, 4.37114e-07, 0, 2.5, 0, -4.37114e-07, 0, 2.5, 12.4157, 0.543426, -24.6584 )
 
 [node name="table_5n" parent="furniture" instance=ExtResource( 17 )]
 transform = Transform( -2.7216, 0, 2.3793e-07, 0, 2.7216, 0, -2.3793e-07, 0, -2.7216, 7.40997, 0.49917, -19.8037 )
