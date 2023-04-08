@@ -5,7 +5,21 @@
 [ext_resource path="res://assets/materials/plastic_black.material" type="Material" id=3]
 [ext_resource path="res://assets/materials/metal.material" type="Material" id=4]
 [ext_resource path="res://objects/interaction.tscn" type="PackedScene" id=5]
-[ext_resource path="res://scripts/objects/interactive/door.gd" type="Script" id=6]
+
+[sub_resource type="GDScript" id=6]
+script/source = "extends MeshInstance
+
+var active = false
+
+func open():
+	# Открыт или закрыть дверь
+	if !active:
+		active = true
+		$AnimationPlayer.play(\"open\")
+	else:
+		active = false
+		$AnimationPlayer.play_backwards(\"open\")
+"
 
 [sub_resource type="BoxShape" id=2]
 extents = Vector3( 0.0304566, 1, 0.533192 )
@@ -37,7 +51,7 @@ material/0 = ExtResource( 4 )
 [node name="door_005" parent="frame_005" index="0"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00694728, 1.06113, 0.913118 )
 material/0 = ExtResource( 2 )
-script = ExtResource( 6 )
+script = SubResource( 6 )
 
 [node name="kick_plate_005" parent="frame_005/door_005" index="0"]
 material/0 = ExtResource( 4 )

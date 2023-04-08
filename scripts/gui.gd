@@ -1,6 +1,4 @@
-
 extends Control
-
 
 func _ready():
 	G.label_name = $ItemInfo/TargetName/label
