@@ -17,8 +17,6 @@ func _physics_process(_delta):
 script/source = "extends Button
 
 func _pressed():
-	#G.level = 2
-	#G.to('game')
 	G.to('chapter_select')
 "
 

@@ -1,23 +1,24 @@
 [gd_scene load_steps=8 format=2]
 
-[ext_resource path="res://assets/images/menu_background.png" type="Texture" id=1]
-[ext_resource path="res://menu_theme.tres" type="Theme" id=2]
+[ext_resource path="res://menu_theme.tres" type="Theme" id=1]
+[ext_resource path="res://scripts/plug.gd" type="Script" id=2]
 [ext_resource path="res://assets/fonts/Cascadia/CascadiaMono-Bold.otf" type="DynamicFontData" id=3]
-[ext_resource path="res://scripts/plug.gd" type="Script" id=4]
+[ext_resource path="res://assets/images/menu_background.png" type="Texture" id=4]
 
 [sub_resource type="GDScript" id=3]
 script/source = "extends Control
 
 func _input(event):
 	if Input.is_action_just_pressed(\"ui_cancel\"):
-		G.to(\"main_menu\")
+		G.to(\"chapter_select\")
 "
 
 [sub_resource type="GDScript" id=4]
 script/source = "extends Button
 
 func _pressed():
-	G.to('level_select_1')
+	G.level = 2
+	G.to('game')
 "
 
 [sub_resource type="DynamicFont" id=2]
@@ -26,11 +27,11 @@ outline_size = 5
 outline_color = Color( 0.0509804, 0.101961, 0.129412, 1 )
 font_data = ExtResource( 3 )
 
-[node name="chapter" type="Control"]
+[node name="level" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 rect_pivot_offset = Vector2( -856, -306 )
-theme = ExtResource( 2 )
+theme = ExtResource( 1 )
 script = SubResource( 3 )
 
 [node name="ColorRect" type="ColorRect" parent="."]
@@ -41,7 +42,7 @@ color = Color( 0, 0, 0, 1 )
 [node name="Sprite" type="Sprite" parent="ColorRect"]
 position = Vector2( 960, 540 )
 scale = Vector2( 1.35402, 1.17137 )
-texture = ExtResource( 1 )
+texture = ExtResource( 4 )
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 anchor_left = 0.28
@@ -69,7 +70,7 @@ anchor_bottom = 0.9
 margin_right = 0.115967
 margin_bottom = 0.0199966
 custom_fonts/font = SubResource( 2 )
-text = "Глава 1: temporary_name_for_text_margin_setting_up"
+text = "1. temporary_name_for_text_margin_setting_up"
 valign = 1
 
 [node name="ColorRect2" type="ColorRect" parent="VBoxContainer/chapter1/chapter"]
@@ -91,7 +92,7 @@ margin_bottom = 75.0
 margin_right = 900.0
 margin_bottom = 70.0
 align = 0
-script = ExtResource( 4 )
+script = ExtResource( 2 )
 
 [node name="Label" type="Label" parent="VBoxContainer/chapter2/chapter"]
 anchor_left = 0.05
@@ -101,7 +102,7 @@ anchor_bottom = 0.9
 margin_right = 0.115967
 margin_bottom = 0.0199966
 custom_fonts/font = SubResource( 2 )
-text = "Глава 2: temporary_name_for_text_margin_setting_up"
+text = "2. temporary_name_for_text_margin_setting_up"
 valign = 1
 
 [node name="ColorRect2" type="ColorRect" parent="VBoxContainer/chapter2/chapter"]
@@ -123,7 +124,7 @@ margin_bottom = 150.0
 margin_right = 900.0
 margin_bottom = 70.0
 align = 0
-script = ExtResource( 4 )
+script = ExtResource( 2 )
 
 [node name="Label" type="Label" parent="VBoxContainer/chapter3/chapter"]
 anchor_left = 0.05
@@ -133,7 +134,7 @@ anchor_bottom = 0.9
 margin_right = 0.115967
 margin_bottom = 0.0199966
 custom_fonts/font = SubResource( 2 )
-text = "Глава 3: temporary_name_for_text_margin_setting_up"
+text = "3. temporary_name_for_text_margin_setting_up"
 valign = 1
 
 [node name="ColorRect2" type="ColorRect" parent="VBoxContainer/chapter3/chapter"]
@@ -155,7 +156,7 @@ margin_bottom = 225.0
 margin_right = 900.0
 margin_bottom = 70.0
 align = 0
-script = ExtResource( 4 )
+script = ExtResource( 2 )
 
 [node name="Label" type="Label" parent="VBoxContainer/chapter4/chapter"]
 anchor_left = 0.05
@@ -165,7 +166,7 @@ anchor_bottom = 0.9
 margin_right = 0.115967
 margin_bottom = 0.0199966
 custom_fonts/font = SubResource( 2 )
-text = "Глава 4: temporary_name_for_text_margin_setting_up"
+text = "4. temporary_name_for_text_margin_setting_up"
 valign = 1
 
 [node name="ColorRect2" type="ColorRect" parent="VBoxContainer/chapter4/chapter"]
@@ -187,7 +188,7 @@ margin_bottom = 300.0
 margin_right = 900.0
 margin_bottom = 70.0
 align = 0
-script = ExtResource( 4 )
+script = ExtResource( 2 )
 
 [node name="Label" type="Label" parent="VBoxContainer/chapter5/chapter"]
 anchor_left = 0.05
@@ -197,7 +198,7 @@ anchor_bottom = 0.9
 margin_right = 0.115967
 margin_bottom = 0.0199966
 custom_fonts/font = SubResource( 2 )
-text = "Глава 5: temporary_name_for_text_margin_setting_up"
+text = "5. temporary_name_for_text_margin_setting_up"
 valign = 1
 
 [node name="ColorRect2" type="ColorRect" parent="VBoxContainer/chapter5/chapter"]
@@ -219,7 +220,7 @@ margin_bottom = 375.0
 margin_right = 900.0
 margin_bottom = 70.0
 align = 0
-script = ExtResource( 4 )
+script = ExtResource( 2 )
 
 [node name="Label" type="Label" parent="VBoxContainer/chapter6/chapter"]
 anchor_left = 0.05
@@ -229,7 +230,7 @@ anchor_bottom = 0.9
 margin_right = 0.115967
 margin_bottom = 0.0199966
 custom_fonts/font = SubResource( 2 )
-text = "Глава 6: temporary_name_for_text_margin_setting_up"
+text = "6. temporary_name_for_text_margin_setting_up"
 valign = 1
 
 [node name="ColorRect2" type="ColorRect" parent="VBoxContainer/chapter6/chapter"]
@@ -251,7 +252,7 @@ margin_bottom = 450.0
 margin_right = 900.0
 margin_bottom = 70.0
 align = 0
-script = ExtResource( 4 )
+script = ExtResource( 2 )
 
 [node name="Label" type="Label" parent="VBoxContainer/chapter7/chapter"]
 anchor_left = 0.05
@@ -261,7 +262,7 @@ anchor_bottom = 0.9
 margin_right = 0.115967
 margin_bottom = 0.0199966
 custom_fonts/font = SubResource( 2 )
-text = "Глава 7: temporary_name_for_text_margin_setting_up"
+text = "7. temporary_name_for_text_margin_setting_up"
 valign = 1
 
 [node name="ColorRect2" type="ColorRect" parent="VBoxContainer/chapter7/chapter"]
@@ -283,7 +284,7 @@ margin_bottom = 525.0
 margin_right = 900.0
 margin_bottom = 70.0
 align = 0
-script = ExtResource( 4 )
+script = ExtResource( 2 )
 
 [node name="Label" type="Label" parent="VBoxContainer/chapter8/chapter"]
 anchor_left = 0.05
@@ -293,7 +294,7 @@ anchor_bottom = 0.9
 margin_right = 0.115967
 margin_bottom = 0.0199966
 custom_fonts/font = SubResource( 2 )
-text = "Глава 8: temporary_name_for_text_margin_setting_up"
+text = "8. temporary_name_for_text_margin_setting_up"
 valign = 1
 
 [node name="ColorRect2" type="ColorRect" parent="VBoxContainer/chapter8/chapter"]
@@ -315,7 +316,7 @@ margin_bottom = 600.0
 margin_right = 900.0
 margin_bottom = 70.0
 align = 0
-script = ExtResource( 4 )
+script = ExtResource( 2 )
 
 [node name="Label" type="Label" parent="VBoxContainer/chapter9/chapter"]
 anchor_left = 0.05
@@ -325,7 +326,7 @@ anchor_bottom = 0.9
 margin_right = 0.115967
 margin_bottom = 0.0199966
 custom_fonts/font = SubResource( 2 )
-text = "Глава 9: temporary_name_for_text_margin_setting_up"
+text = "9. temporary_name_for_text_margin_setting_up"
 valign = 1
 
 [node name="ColorRect2" type="ColorRect" parent="VBoxContainer/chapter9/chapter"]
@@ -347,7 +348,7 @@ margin_bottom = 675.0
 margin_right = 900.0
 margin_bottom = 70.0
 align = 0
-script = ExtResource( 4 )
+script = ExtResource( 2 )
 
 [node name="Label" type="Label" parent="VBoxContainer/chapter10/chapter"]
 anchor_left = 0.05
@@ -357,10 +358,42 @@ anchor_bottom = 0.9
 margin_right = 6.0
 margin_bottom = 0.0199966
 custom_fonts/font = SubResource( 2 )
-text = "Глава 10: temporary_name_for_text_margin_setting_up"
+text = "10. temporary_name_for_text_margin_setting_up"
 valign = 1
 
 [node name="ColorRect2" type="ColorRect" parent="VBoxContainer/chapter10/chapter"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+color = Color( 0.0862745, 0.419608, 0.529412, 0.329412 )
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="chapter11" type="Control" parent="VBoxContainer"]
+margin_top = 750.0
+margin_right = 900.0
+margin_bottom = 750.0
+
+[node name="chapter" type="Button" parent="VBoxContainer/chapter11"]
+margin_right = 900.0
+margin_bottom = 70.0
+align = 0
+script = ExtResource( 2 )
+
+[node name="Label" type="Label" parent="VBoxContainer/chapter11/chapter"]
+anchor_left = 0.05
+anchor_top = 0.1
+anchor_right = 0.95
+anchor_bottom = 0.9
+margin_right = 6.0
+margin_bottom = 0.0199966
+custom_fonts/font = SubResource( 2 )
+text = "11. temporary_name_for_text_margin_setting_up"
+valign = 1
+
+[node name="ColorRect2" type="ColorRect" parent="VBoxContainer/chapter11/chapter"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 mouse_filter = 2
