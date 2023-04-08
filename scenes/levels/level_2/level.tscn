@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=2]
+[gd_scene load_steps=24 format=2]
 
 [ext_resource path="res://objects/static/room.tscn" type="PackedScene" id=1]
 [ext_resource path="res://objects/static/lamp.tscn" type="PackedScene" id=2]
@@ -23,7 +23,22 @@
 [ext_resource path="res://objects/interactive/switch.tscn" type="PackedScene" id=22]
 [ext_resource path="res://objects/interactive/wardrobe.tscn" type="PackedScene" id=23]
 
+[sub_resource type="GDScript" id=1]
+script/source = "extends Spatial
+
+func _ready():
+	if G.load_item == '11':
+		var item1 = load('res://objects/interactive/bottle.tscn').instance()
+		$things.add_child(item1)
+		item1.liquid = \"acid\"
+		item1.global_transform.origin = Vector3(7, 3, -18)
+		
+			#get_node('things').add_child(item1)
+	#item1.position3D = Vector3(1, 1, 1)
+"
+
 [node name="level_area" type="Spatial"]
+script = SubResource( 1 )
 
 [node name="room" parent="." instance=ExtResource( 1 )]
 

@@ -21,6 +21,7 @@ var temp_object = null
 var player
 
 var game
+var load_item
 var label_name =''
 var label_bindings =''
 var label_compounds =''

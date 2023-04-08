@@ -19,6 +19,8 @@ script/source = "extends Button
 func _pressed():
 	G.level = 2
 	G.to('game')
+	G.load_item = '11'
+	
 "
 
 [sub_resource type="DynamicFont" id=2]
