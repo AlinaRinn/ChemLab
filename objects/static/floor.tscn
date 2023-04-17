@@ -12,4 +12,4 @@ mesh = ExtResource( 3 )
 material/0 = ExtResource( 2 )
 
 [node name="Spatial" parent="." instance=ExtResource( 1 )]
-transform = Transform( 6.55469, 0, 0, 0, 0.302134, 0, 0, 0, 9.21759, -0.0763793, 0.669884, -0.0458746 )
+transform = Transform( 6.02914, 0, 0, 0, 0.0974499, 0, 0, 0, 9.21759, 0.170096, 0.744168, -0.0458746 )

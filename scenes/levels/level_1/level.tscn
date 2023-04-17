@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=2]
+[gd_scene load_steps=23 format=2]
 
 [ext_resource path="res://objects/static/wall_shot.tscn" type="PackedScene" id=1]
 [ext_resource path="res://objects/static/floor.tscn" type="PackedScene" id=2]
@@ -21,6 +21,7 @@
 [ext_resource path="res://objects/interactive/distiller.tscn" type="PackedScene" id=19]
 [ext_resource path="res://objects/static/shelf.tscn" type="PackedScene" id=20]
 [ext_resource path="res://objects/interactive/bottle.tscn" type="PackedScene" id=21]
+[ext_resource path="res://objects/interactive/petri.tscn" type="PackedScene" id=22]
 
 [node name="Main" type="Spatial"]
 
@@ -219,3 +220,6 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 12.4082, 2.31318, 5.84636 )
 
 [node name="Bottle" parent="staffs" instance=ExtResource( 21 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 11.3903, 2.17882, -5.2812 )
+
+[node name="petri" parent="staffs" instance=ExtResource( 22 )]
+transform = Transform( 0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 13.9052, 2.23202, 5.7421 )
