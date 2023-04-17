@@ -1,6 +1,5 @@
 extends Area
 
-
 export var label = ''
 export var need = ''
 export var need_label = ''
@@ -9,10 +8,8 @@ export var left_click_label = ''
 export var right_click_action = ''
 export var right_click_label = ''
 
-
 func _ready():
 	$MeshInstance.hide()
-
 
 func binding(prt):
 	# Взаимодействиие с объектами
@@ -29,7 +26,6 @@ func binding(prt):
 			prt.call(right_click_action)
 		else:
 			print(right_click_action+' не существует')
-	
 	
 func action():
 	# Если для взаимодействия нужен другой предмет, и он у нас есть, делаем

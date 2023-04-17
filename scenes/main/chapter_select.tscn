@@ -69,7 +69,7 @@ anchor_bottom = 0.9
 margin_right = 0.115967
 margin_bottom = 0.0199966
 custom_fonts/font = SubResource( 2 )
-text = "Глава 1: temporary_name_for_text_margin_setting_up"
+text = "Глава 1: Щелочные и щелочноземельные металлы"
 valign = 1
 
 [node name="ColorRect2" type="ColorRect" parent="VBoxContainer/chapter1/chapter"]

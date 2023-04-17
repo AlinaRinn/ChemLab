@@ -33,8 +33,6 @@ func _ready():
 		item1.liquid = \"acid\"
 		item1.global_transform.origin = Vector3(7, 3, -18)
 		
-			#get_node('things').add_child(item1)
-	#item1.position3D = Vector3(1, 1, 1)
 "
 
 [node name="level_area" type="Spatial"]

@@ -24,8 +24,8 @@ func _pressed():
 "
 
 [sub_resource type="DynamicFont" id=2]
-size = 28
-outline_size = 5
+size = 24
+outline_size = 4
 outline_color = Color( 0.0509804, 0.101961, 0.129412, 1 )
 font_data = ExtResource( 3 )
 
@@ -48,9 +48,9 @@ texture = ExtResource( 4 )
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 anchor_left = 0.28
-anchor_top = 0.15
+anchor_top = 0.12
 anchor_right = 0.749
-anchor_bottom = 0.798
+anchor_bottom = 0.12
 margin_right = -0.480103
 margin_bottom = 0.159973
 custom_constants/separation = 75
@@ -72,7 +72,7 @@ anchor_bottom = 0.9
 margin_right = 0.115967
 margin_bottom = 0.0199966
 custom_fonts/font = SubResource( 2 )
-text = "1. temporary_name_for_text_margin_setting_up"
+text = "1. Взаимодействие щелочных металлов с водой"
 valign = 1
 
 [node name="ColorRect2" type="ColorRect" parent="VBoxContainer/chapter1/chapter"]
@@ -104,7 +104,7 @@ anchor_bottom = 0.9
 margin_right = 0.115967
 margin_bottom = 0.0199966
 custom_fonts/font = SubResource( 2 )
-text = "2. temporary_name_for_text_margin_setting_up"
+text = "2. Взаимодействие щелочных металлов с кислородом воздуха"
 valign = 1
 
 [node name="ColorRect2" type="ColorRect" parent="VBoxContainer/chapter2/chapter"]
@@ -136,7 +136,7 @@ anchor_bottom = 0.9
 margin_right = 0.115967
 margin_bottom = 0.0199966
 custom_fonts/font = SubResource( 2 )
-text = "3. temporary_name_for_text_margin_setting_up"
+text = "3. Окрашивание пламени горелки солями щелочных металлов"
 valign = 1
 
 [node name="ColorRect2" type="ColorRect" parent="VBoxContainer/chapter3/chapter"]
@@ -168,7 +168,7 @@ anchor_bottom = 0.9
 margin_right = 0.115967
 margin_bottom = 0.0199966
 custom_fonts/font = SubResource( 2 )
-text = "4. temporary_name_for_text_margin_setting_up"
+text = "4. Получение малорастворимых солей щелочных металлов"
 valign = 1
 
 [node name="ColorRect2" type="ColorRect" parent="VBoxContainer/chapter4/chapter"]
@@ -200,7 +200,7 @@ anchor_bottom = 0.9
 margin_right = 0.115967
 margin_bottom = 0.0199966
 custom_fonts/font = SubResource( 2 )
-text = "5. temporary_name_for_text_margin_setting_up"
+text = "5. Взаимодействие щелочноземельных металлов с водой"
 valign = 1
 
 [node name="ColorRect2" type="ColorRect" parent="VBoxContainer/chapter5/chapter"]
@@ -232,7 +232,7 @@ anchor_bottom = 0.9
 margin_right = 0.115967
 margin_bottom = 0.0199966
 custom_fonts/font = SubResource( 2 )
-text = "6. temporary_name_for_text_margin_setting_up"
+text = "6. Восстановление магнием оксида углерода"
 valign = 1
 
 [node name="ColorRect2" type="ColorRect" parent="VBoxContainer/chapter6/chapter"]
@@ -264,7 +264,7 @@ anchor_bottom = 0.9
 margin_right = 0.115967
 margin_bottom = 0.0199966
 custom_fonts/font = SubResource( 2 )
-text = "7. temporary_name_for_text_margin_setting_up"
+text = "7. Получение кислородных соединений магния и кальция"
 valign = 1
 
 [node name="ColorRect2" type="ColorRect" parent="VBoxContainer/chapter7/chapter"]
@@ -296,7 +296,7 @@ anchor_bottom = 0.9
 margin_right = 0.115967
 margin_bottom = 0.0199966
 custom_fonts/font = SubResource( 2 )
-text = "8. temporary_name_for_text_margin_setting_up"
+text = "8. Окрашивание пламени солями щелочноземельных металлов"
 valign = 1
 
 [node name="ColorRect2" type="ColorRect" parent="VBoxContainer/chapter8/chapter"]
@@ -328,7 +328,7 @@ anchor_bottom = 0.9
 margin_right = 0.115967
 margin_bottom = 0.0199966
 custom_fonts/font = SubResource( 2 )
-text = "9. temporary_name_for_text_margin_setting_up"
+text = "9. Получение карбонатов щелочноземельных металлов и магния"
 valign = 1
 
 [node name="ColorRect2" type="ColorRect" parent="VBoxContainer/chapter9/chapter"]
@@ -360,7 +360,7 @@ anchor_bottom = 0.9
 margin_right = 6.0
 margin_bottom = 0.0199966
 custom_fonts/font = SubResource( 2 )
-text = "10. temporary_name_for_text_margin_setting_up"
+text = "10. Получение сульфатов щелочноземельных металлов"
 valign = 1
 
 [node name="ColorRect2" type="ColorRect" parent="VBoxContainer/chapter10/chapter"]
@@ -392,7 +392,7 @@ anchor_bottom = 0.9
 margin_right = 6.0
 margin_bottom = 0.0199966
 custom_fonts/font = SubResource( 2 )
-text = "11. temporary_name_for_text_margin_setting_up"
+text = "11. Получение хроматов щелочноземельных металлов"
 valign = 1
 
 [node name="ColorRect2" type="ColorRect" parent="VBoxContainer/chapter11/chapter"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://assets/models/wardrobe.glb" type="PackedScene" id=1]
 [ext_resource path="res://assets/materials/wardrobe.material" type="Material" id=2]
@@ -6,32 +6,36 @@
 [ext_resource path="res://objects/collide.tscn" type="PackedScene" id=4]
 [ext_resource path="res://assets/materials/wood_light.material" type="Material" id=5]
 
+[sub_resource type="GDScript" id=13]
+script/source = "extends Skeleton
+
+var active = false
+"
+
 [sub_resource type="GDScript" id=12]
 script/source = "extends MeshInstance
 
-var active = false
-
 func open():
-	if !active:
-		active = true
+	if !get_parent().active:
+		get_parent().active = true
 		get_parent().get_parent().get_parent().get_node(\"AnimationPlayer\").play(\"open\")
 	else:
-		active = false
+		get_parent().active = false
 		get_parent().get_parent().get_parent().get_node(\"AnimationPlayer\").play_backwards(\"open\")
+	
 "
 
 [sub_resource type="GDScript" id=11]
 script/source = "extends MeshInstance
 
-var active = false
-
 func open():
-	if !active:
-		active = true
+	if !get_parent().active:
+		get_parent().active = true
 		get_parent().get_parent().get_parent().get_node(\"AnimationPlayer\").play(\"open\")
 	else:
-		active = false
+		get_parent().active = false
 		get_parent().get_parent().get_parent().get_node(\"AnimationPlayer\").play_backwards(\"open\")
+	
 "
 
 [sub_resource type="Animation" id=9]
@@ -138,6 +142,9 @@ transform = Transform( -1.49567e-08, 9.00794, 0.0015109, -991.029, -0.00114042, 
 
 [node name="BoxCollider5" parent="Wardrobe" index="8" instance=ExtResource( 4 )]
 transform = Transform( -1.49567e-08, 9.00794, 0.0015109, -991.029, -0.00114042, -1.91283e-07, 0, -0.00202631, 287.801, -489.912, 0.479492, -5.15479 )
+
+[node name="Skeleton" parent="Armature" index="0"]
+script = SubResource( 13 )
 
 [node name="Door_left" parent="Armature/Skeleton" index="0"]
 transform = Transform( 1, 0, 0, 0, 1, -5.68434e-14, 0, 5.68434e-14, 1, 0, 0, 0 )
