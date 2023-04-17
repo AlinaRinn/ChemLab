@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=2]
+[gd_scene load_steps=22 format=2]
 
 [ext_resource path="res://objects/static/wall_shot.tscn" type="PackedScene" id=1]
 [ext_resource path="res://objects/static/floor.tscn" type="PackedScene" id=2]
@@ -17,6 +17,7 @@
 [ext_resource path="res://objects/static/board_wall.tscn" type="PackedScene" id=15]
 [ext_resource path="res://objects/static/book_purple.tscn" type="PackedScene" id=16]
 [ext_resource path="res://objects/interactive/burner.tscn" type="PackedScene" id=17]
+[ext_resource path="res://objects/static/tube_stand.tscn" type="PackedScene" id=18]
 [ext_resource path="res://objects/interactive/distiller.tscn" type="PackedScene" id=19]
 [ext_resource path="res://objects/static/shelf.tscn" type="PackedScene" id=20]
 [ext_resource path="res://objects/interactive/bottle.tscn" type="PackedScene" id=21]
@@ -65,9 +66,11 @@ __meta__ = {
 
 [node name="Roof1" parent="Roofs" instance=ExtResource( 4 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8.4014, 0 )
+visible = false
 
 [node name="Roof2" parent="Roofs" instance=ExtResource( 4 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 12.0954, 8.4014, 0 )
+visible = false
 
 [node name="Other" type="Spatial" parent="."]
 
@@ -143,13 +146,16 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0103884, 0.956308, 0.825899 
 [node name="Bottle3" parent="Other/Holder2" instance=ExtResource( 21 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.12992, 1.88561, -0.711114 )
 
+[node name="tube_stand" parent="Other" instance=ExtResource( 18 )]
+transform = Transform( -0.64, 0, -5.59506e-08, 0, 0.768, 0, 5.59506e-08, 0, -0.64, 12.3291, 2.17868, 5.84616 )
+
+[node name="Tube1" parent="Other/tube_stand" instance=ExtResource( 10 )]
+transform = Transform( 1.5625, 0, 7.10543e-14, 0, 1.25, 0, -7.10543e-14, 0, 1.5625, -0.130695, 1.03731, 0.019722 )
+
 [node name="staffs" type="Spatial" parent="."]
 
 [node name="Board" parent="staffs" instance=ExtResource( 8 )]
 transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 5.48298, 3.37457, 8.07273 )
-
-[node name="Tube1" parent="staffs" instance=ExtResource( 10 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 14.5503, 2.52172, 6.48916 )
 
 [node name="Tube2" parent="staffs" instance=ExtResource( 10 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 14.9025, 2.51954, 6.49631 )
@@ -183,11 +189,11 @@ level_3 = "2"
 transform = Transform( -0.414026, 0, 0.910265, 0, 1, 0, -0.910265, 0, -0.414026, 3.14255, 2.29459, -6.15593 )
 
 [node name="Folder1" parent="staffs" instance=ExtResource( 11 )]
-transform = Transform( -0.360095, 0, -0.932916, 0, 1, 0, 0.932916, 0, -0.360095, 12.5722, 2.10609, 6.13785 )
+transform = Transform( -0.360095, 0, -0.932916, 0, 1, 0, 0.932916, 0, -0.360095, 15.3627, 2.02831, -3.08604 )
 note_number = "3"
 
 [node name="Folder2" parent="staffs" instance=ExtResource( 11 )]
-transform = Transform( -0.861151, 0, -0.50835, 0, 1, 0, 0.50835, 0, -0.861151, 15.4476, 2.10609, -1.63524 )
+transform = Transform( -0.861151, 0, -0.50835, 0, 1, 0, 0.50835, 0, -0.861151, 15.4476, 2.01919, -1.63524 )
 note_number = "2"
 note_other = "Тема политкорректных высказываний в Московском метрополитене"
 
@@ -209,7 +215,7 @@ note_other = "Журнал по теме бромирование ацетиле
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.584816, 2.26228, -5.73009 )
 
 [node name="SpiritLamp2" parent="staffs" instance=ExtResource( 17 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 13.3202, 2.26228, 7.05166 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 12.4082, 2.31318, 5.84636 )
 
-[node name="Bottle" parent="." instance=ExtResource( 21 )]
+[node name="Bottle" parent="staffs" instance=ExtResource( 21 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 11.3903, 2.17882, -5.2812 )
