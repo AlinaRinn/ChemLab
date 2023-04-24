@@ -1,13 +1,28 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://menu_theme.tres" type="Theme" id=1]
 [ext_resource path="res://assets/images/menu_background.png" type="Texture" id=2]
+
+[sub_resource type="GDScript" id=3]
+script/source = "extends Control
+
+func _input(_event):
+	if Input.is_action_just_pressed(\"ui_cancel\"):
+		G.to('main_menu')
+"
 
 [sub_resource type="GDScript" id=1]
 script/source = "extends Button
 
 func _pressed():
 	G.to('game')
+"
+
+[sub_resource type="GDScript" id=2]
+script/source = "extends Button
+
+func _pressed():
+	G.to('main_menu')
 "
 
 [node name="cut_scene" type="Node"]
@@ -20,6 +35,7 @@ margin_top = 1.0
 margin_right = 3.0
 margin_bottom = 1.0
 theme = ExtResource( 1 )
+script = SubResource( 3 )
 
 [node name="load_screen_base" type="Sprite" parent="cut"]
 position = Vector2( 957, 538 )
@@ -39,6 +55,28 @@ text = "Начать"
 script = SubResource( 1 )
 
 [node name="ColorRect2" type="ColorRect" parent="cut/skip"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+color = Color( 0.0862745, 0.419608, 0.529412, 0.329412 )
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="back" type="Button" parent="cut"]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -1420.0
+margin_top = -419.0
+margin_right = -1170.0
+margin_bottom = -344.0
+text = "Назад"
+script = SubResource( 2 )
+
+[node name="ColorRect2" type="ColorRect" parent="cut/back"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 mouse_filter = 2

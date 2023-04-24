@@ -1,0 +1,106 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://menu_theme.tres" type="Theme" id=1]
+[ext_resource path="res://assets/images/menu_background.png" type="Texture" id=2]
+
+[sub_resource type="GDScript" id=2]
+script/source = "extends Control
+
+func _ready():
+	$ColorRect/scroll/label.text = G.briefing
+
+
+func _input(_event):
+	if Input.is_action_just_pressed(\"ui_cancel\"):
+		G.to('chapter_select')
+"
+
+[sub_resource type="GDScript" id=1]
+script/source = "extends Button
+
+func _pressed():
+	G.to('game')
+"
+
+[sub_resource type="GDScript" id=3]
+script/source = "extends Button
+
+func _pressed():
+	G.to('chapter_select')
+"
+
+[node name="cut_scene" type="Control"]
+theme = ExtResource( 1 )
+script = SubResource( 2 )
+
+[node name="load_screen" type="Sprite" parent="."]
+position = Vector2( 960, 539 )
+scale = Vector2( 1.354, 1.18 )
+texture = ExtResource( 2 )
+
+[node name="ColorRect" type="ColorRect" parent="."]
+margin_left = 454.0
+margin_top = 150.0
+margin_right = 1454.0
+margin_bottom = 800.0
+color = Color( 0, 0, 0, 0.588235 )
+
+[node name="scroll" type="ScrollContainer" parent="ColorRect"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -460.0
+margin_top = -300.0
+margin_right = 460.0
+margin_bottom = 300.0
+
+[node name="label" type="Label" parent="ColorRect/scroll"]
+margin_right = 920.0
+margin_bottom = 29.0
+size_flags_horizontal = 3
+autowrap = true
+
+[node name="skip" type="Button" parent="."]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 1204.0
+margin_top = 814.0
+margin_right = 1454.0
+margin_bottom = 889.0
+text = "Начать"
+script = SubResource( 1 )
+
+[node name="ColorRect2" type="ColorRect" parent="skip"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+color = Color( 0.0862745, 0.419608, 0.529412, 0.329412 )
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="back" type="Button" parent="."]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 454.0
+margin_top = 814.0
+margin_right = 704.0
+margin_bottom = 889.0
+text = "Назад"
+script = SubResource( 3 )
+
+[node name="ColorRect2" type="ColorRect" parent="back"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+color = Color( 0.0862745, 0.419608, 0.529412, 0.329412 )
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}

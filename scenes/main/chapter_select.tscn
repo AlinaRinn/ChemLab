@@ -8,7 +8,7 @@
 [sub_resource type="GDScript" id=3]
 script/source = "extends Control
 
-func _input(event):
+func _input(_event):
 	if Input.is_action_just_pressed(\"ui_cancel\"):
 		G.to(\"main_menu\")
 "

@@ -184,10 +184,8 @@ func drop():
 	hand.remove_child(in_hand_object)
 	in_hand_object = null
 	in_hand_object_id = null
-	drop_obj.set_mode(0)
+	drop_obj.sleeping = false
 	G.root_level.add_child(drop_obj)
-	
-
 
 func action():
 	# Для взаимодействия с объектами

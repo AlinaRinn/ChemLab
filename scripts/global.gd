@@ -4,24 +4,24 @@ signal lightOn
 signal lightOff
 signal paused
 
-var level = 1
-
+# scenes
 var root_level
 var root_game
 
-var active_note = null
-var note = 1
-
+# objects
+var player
+var game
 var pack = {}
 var target_object = null
-
 var temp_pack = {}
 var temp_object = null
 
-var player
-
-var game
+# data
+var level 
+var note
+var briefing
 var load_item
+var active_note = null
 var label_name 
 var label_bindings 
 var label_compounds 
@@ -35,6 +35,7 @@ func pause(p=true):
 	get_tree().paused = p
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED if p else Input.MOUSE_MODE_VISIBLE)
 
+# Меняет сцену
 func to(scene):
 	get_tree().change_scene("res://scenes/main/"+scene+".tscn")
 
