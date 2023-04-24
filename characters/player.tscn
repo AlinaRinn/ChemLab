@@ -79,9 +79,6 @@ func get_info_object():
 				G.label_bindings.text += \"ЛКМ - \" + cast.left_click_label + \"\\n\"
 			if cast.right_click_label != \"\":
 				G.label_bindings.text += \"ПКМ - \" + cast.right_click_label + \"\\n\"
-	else:
-		G.label_name.text
-		G.label_bindings.text
 
 
 func get_object():
@@ -143,7 +140,7 @@ func get_input():
 	if dir:
 		dir = dir.rotated(Vector3.UP, rotation.y) * speed 
 		
-	# Пзволяет передвигать предметы
+	# Позволяет передвигать предметы
 	if Input.is_action_just_pressed(\"ui_f\"):
 		if picked_object == null:
 			var collider = cast.get_owner() if cast else null 
@@ -165,7 +162,7 @@ func get_input():
 
 
 func _physics_process(_delta):
-	get_input();
+	get_input()
 	vel = move_and_slide(vel, Vector3.UP)
 	get_object()
 	get_info_object()
@@ -180,16 +177,16 @@ func drop():
 	# Проверяем есть ли предмет в руке
 	if !in_hand_object:
 			return
-	
+			
 	# Удаляем предмет из рук, и добавляем его на сцену
 	var drop_obj = in_hand_object
-	drop_obj.translation = G.player.translation
-
+	drop_obj.translation = G.player.get_node('head/hand').global_transform.origin
 	hand.remove_child(in_hand_object)
 	in_hand_object = null
 	in_hand_object_id = null
-	
+	drop_obj.set_mode(0)
 	G.root_level.add_child(drop_obj)
+	
 
 
 func action():

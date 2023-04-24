@@ -22,10 +22,10 @@ var player
 
 var game
 var load_item
-var label_name =''
-var label_bindings =''
-var label_compounds =''
-var label_compounds2 =''
+var label_name 
+var label_bindings 
+var label_compounds 
+var label_compounds2
 
 # settings
 var sensitivity = 0.005

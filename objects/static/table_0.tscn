@@ -22,4 +22,4 @@ material/1 = SubResource( 2 )
 material/2 = SubResource( 3 )
 
 [node name="Spatial" parent="." instance=ExtResource( 1 )]
-transform = Transform( 1.73459, 0, 0, 0, 1.14468, 0, 0, 0, 2.31511, -0.0328954, 0.727075, 0 )
+transform = Transform( 1.59035, 0, 0, 0, 1.14468, 0, 0, 0, 2.23001, -0.0684341, 0.727075, 0 )

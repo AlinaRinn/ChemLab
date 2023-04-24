@@ -75,90 +75,96 @@ visible = false
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 12.0954, 8.4014, 0 )
 visible = false
 
-[node name="Other" type="Spatial" parent="."]
+[node name="Furniture" type="Spatial" parent="."]
 
-[node name="Door" parent="Other" instance=ExtResource( 5 )]
+[node name="Door" parent="Furniture" instance=ExtResource( 5 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -5.49819, 0.264481, 1.45195 )
 
-[node name="Table1" parent="Other" instance=ExtResource( 6 )]
+[node name="Table1" parent="Furniture" instance=ExtResource( 6 )]
 transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.250247, 0.306923, -6.6123 )
 
-[node name="Table2" parent="Other" instance=ExtResource( 6 )]
+[node name="Table2" parent="Furniture" instance=ExtResource( 6 )]
 transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 4.36924, 0.306902, -6.61232 )
 
-[node name="Table3" parent="Other" instance=ExtResource( 6 )]
+[node name="Table3" parent="Furniture" instance=ExtResource( 6 )]
 transform = Transform( 1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, 13.6607, 0.306923, 6.5234 )
 
-[node name="Table4" parent="Other" instance=ExtResource( 7 )]
+[node name="Table4" parent="Furniture" instance=ExtResource( 7 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 16.4319, 0.0297137, -2.76071 )
 
-[node name="Table5" parent="Other" instance=ExtResource( 6 )]
+[node name="Table5" parent="Furniture" instance=ExtResource( 6 )]
 transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -3.85439, 0.475899, -2.53929 )
 
-[node name="Pipe1" parent="Other" instance=ExtResource( 12 )]
+[node name="Pipe1" parent="Furniture" instance=ExtResource( 12 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.36015, 6.5855, -7.39014 )
 
-[node name="Pipe2" parent="Other" instance=ExtResource( 12 )]
-transform = Transform( -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -4.88495, -1.65735, -7.39014 )
+[node name="Pipe2" parent="Furniture" instance=ExtResource( 12 )]
+transform = Transform( -4.37114e-08, 1, 0, -0.582575, -2.54652e-08, 0, 0, 0, 1, -4.88495, 1.85585, -7.39014 )
 
-[node name="Pipe3" parent="Other" instance=ExtResource( 12 )]
+[node name="Pipe3" parent="Furniture" instance=ExtResource( 12 )]
 transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -4.8912, 6.56277, 0.839668 )
 
-[node name="Pipe4" parent="Other" instance=ExtResource( 12 )]
+[node name="Pipe4" parent="Furniture" instance=ExtResource( 12 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 18.592, 6.5855, -7.39014 )
 
-[node name="Сonditioner" parent="Other" instance=ExtResource( 14 )]
+[node name="Сonditioner" parent="Furniture" instance=ExtResource( 14 )]
 transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -1.58555, 5.89495, 7.46854 )
 
-[node name="Board" parent="Other" instance=ExtResource( 15 )]
+[node name="Board" parent="Furniture" instance=ExtResource( 15 )]
 transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 11.1932, 2.15103, -8.1095 )
 
-[node name="Distiller" parent="Other" instance=ExtResource( 19 )]
+[node name="Distiller" parent="Furniture" instance=ExtResource( 19 )]
 transform = Transform( 1, 0, -8.9407e-08, 0, 1, 0, 8.9407e-08, 0, 1, -3.55717, 3.21209, -1.80439 )
 
-[node name="Holder1" parent="Other" instance=ExtResource( 20 )]
+[node name="Holder1" parent="Furniture" instance=ExtResource( 20 )]
 transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -0.284925, 2.2298, -7.29399 )
 
-[node name="Bottle1" parent="Other/Holder1" instance=ExtResource( 21 )]
+[node name="Bottle1" parent="Furniture/Holder1" instance=ExtResource( 21 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0306711, 1.88561, 1.27428 )
 
-[node name="Bottle2" parent="Other/Holder1" instance=ExtResource( 21 )]
+[node name="Bottle2" parent="Furniture/Holder1" instance=ExtResource( 21 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.170469, 1.88561, 0.743261 )
 
-[node name="Bottle3" parent="Other/Holder1" instance=ExtResource( 21 )]
+[node name="Bottle3" parent="Furniture/Holder1" instance=ExtResource( 21 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0440907, 1.88561, -0.235379 )
 
-[node name="Bottle4" parent="Other/Holder1" instance=ExtResource( 21 )]
+[node name="Bottle4" parent="Furniture/Holder1" instance=ExtResource( 21 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00233507, 0.956308, 0.59095 )
 
-[node name="Bottle5" parent="Other/Holder1" instance=ExtResource( 21 )]
+[node name="Bottle5" parent="Furniture/Holder1" instance=ExtResource( 21 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0726342, 0.956308, -0.925476 )
 
-[node name="Bottle6" parent="Other/Holder1" instance=ExtResource( 21 )]
+[node name="Bottle6" parent="Furniture/Holder1" instance=ExtResource( 21 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.330531, 0.956308, -1.50851 )
+liquid = "acid"
 
-[node name="Holder2" parent="Other" instance=ExtResource( 20 )]
+[node name="Holder2" parent="Furniture" instance=ExtResource( 20 )]
 transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 4.19006, 2.2298, -7.29399 )
 
-[node name="Bottle1" parent="Other/Holder2" instance=ExtResource( 21 )]
+[node name="Bottle1" parent="Furniture/Holder2" instance=ExtResource( 21 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0920434, 0.956308, 1.31937 )
 
-[node name="Bottle2" parent="Other/Holder2" instance=ExtResource( 21 )]
+[node name="Bottle2" parent="Furniture/Holder2" instance=ExtResource( 21 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0103884, 0.956308, 0.825899 )
 
-[node name="Bottle3" parent="Other/Holder2" instance=ExtResource( 21 )]
+[node name="Bottle3" parent="Furniture/Holder2" instance=ExtResource( 21 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.12992, 1.88561, -0.711114 )
+liquid = "alkali"
 
-[node name="tube_stand" parent="Other" instance=ExtResource( 18 )]
+[node name="tube_stand" parent="Furniture" instance=ExtResource( 18 )]
 transform = Transform( -0.64, 0, -5.59506e-08, 0, 0.768, 0, 5.59506e-08, 0, -0.64, 12.3291, 2.17868, 5.84616 )
 
-[node name="Tube1" parent="Other/tube_stand" instance=ExtResource( 10 )]
+[node name="Tube1" parent="Furniture/tube_stand" instance=ExtResource( 10 )]
 transform = Transform( 1.5625, 0, 7.10543e-14, 0, 1.25, 0, -7.10543e-14, 0, 1.5625, -0.130695, 1.03731, 0.019722 )
+
+[node name="Board2" parent="Furniture" instance=ExtResource( 8 )]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 5.48298, 3.37457, 8.07273 )
 
 [node name="staffs" type="Spatial" parent="."]
 
-[node name="Board" parent="staffs" instance=ExtResource( 8 )]
-transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 5.48298, 3.37457, 8.07273 )
+[node name="bottle" parent="staffs" instance=ExtResource( 21 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4.46698, 2.23178, -6.44182 )
+liquid = "acid"
 
 [node name="Tube2" parent="staffs" instance=ExtResource( 10 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 14.9025, 2.51954, 6.49631 )
@@ -221,7 +227,8 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.584816, 2.26228, -5.73009 )
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 12.4082, 2.31318, 5.84636 )
 
 [node name="Bottle" parent="staffs" instance=ExtResource( 21 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 11.3903, 2.17882, -5.2812 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 5.58572, 2.23178, -5.2812 )
+liquid = "water"
 
 [node name="petri" parent="staffs" instance=ExtResource( 22 )]
 transform = Transform( 0.08, 0, 0, 0, 0.08, 0, 0, 0, 0.08, 13.9052, 2.23202, 5.7421 )
