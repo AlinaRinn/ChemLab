@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://assets/materials/plastic_black.material" type="Material" id=1]
+[ext_resource path="res://assets/models/pipette.obj" type="ArrayMesh" id=2]
+
+[node name="Spatial" type="Spatial"]
+
+[node name="pipette" type="MeshInstance" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0105991, 0, 0.0124743 )
+mesh = ExtResource( 2 )
+material/0 = ExtResource( 1 )

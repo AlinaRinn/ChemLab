@@ -49,6 +49,11 @@ func _ready():
 		item5.global_transform.origin = Vector3(14.5, 3, -1.5)
 		item5.scale = Vector3(0.2, 0.2, 0.2)	
 		#item1.set_mode(0)
+		
+		var item6 = load('res://objects/interactive/paper.tscn').instance()
+		$things.add_child(item6)
+		item6.global_transform.origin = Vector3(14.5, 2.82, -2)
+		#item6.scale = Vector3(0.2, 0.2, 0.2)
 "
 
 [node name="level_area" type="Spatial"]
