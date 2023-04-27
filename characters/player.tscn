@@ -1,4 +1,7 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://objects/interactive/pipette.tscn" type="PackedScene" id=1]
+[ext_resource path="res://objects/interactive/pincet.tscn" type="PackedScene" id=2]
 
 [sub_resource type="GDScript" id=1]
 script/source = "extends KinematicBody
@@ -27,6 +30,8 @@ var cast = null
 
 
 func get_to_hand(object):
+	$head/pincet.visible = false
+	$head/pipette.visible = false
 	# Если в руках что то есть, и это тот же предмет, меняем местами
 	# Иначе, что в руках выкидываем, и берем новый
 	var swap_obj = null
@@ -47,6 +52,13 @@ func get_to_hand(object):
 	hand.add_child(object)
 	in_hand_object = object
 	in_hand_object_id = object.id
+	
+	if object.get(\"isMetal\") != null:
+		if (in_hand_object.isMetal):
+			$head/pincet.visible = true
+		else:
+			$head/pipette.visible = true
+		
 	
 	return swap_obj
 
@@ -372,6 +384,13 @@ transform = Transform( 0.0985865, 0.0167543, 0, -0.0167543, 0.0985865, 0, 0, 0, 
 
 [node name="hand" type="Position3D" parent="head"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.9579 )
+
+[node name="pincet" parent="head" instance=ExtResource( 2 )]
+transform = Transform( -0.0303, 0.0301773, -0.0903949, -0.0690003, 0.0584793, 0.0426513, 0.0657333, 0.0752961, 0.00310321, -0.263766, -0.111748, -0.331101 )
+visible = false
+
+[node name="pipette" parent="head" instance=ExtResource( 1 )]
+transform = Transform( 0.036273, -0.0267965, 0.0215921, 2.069e-06, -0.0313701, -0.0389348, 0.0344133, 0.0282465, -0.0227566, -0.402337, -0.12437, -0.517703 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/RESET = SubResource( 3 )
