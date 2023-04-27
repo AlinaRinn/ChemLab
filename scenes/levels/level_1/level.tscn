@@ -163,8 +163,9 @@ transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 5.48298
 [node name="staffs" type="Spatial" parent="."]
 
 [node name="bottle" parent="staffs" instance=ExtResource( 21 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4.46698, 2.23178, -6.44182 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4.46698, 2.23178, -5.3601 )
 liquid = "acid"
+isMetal = true
 
 [node name="Tube2" parent="staffs" instance=ExtResource( 10 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 14.9025, 2.51954, 6.49631 )

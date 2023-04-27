@@ -2,6 +2,7 @@ extends Spatial
 
 var substance = load("res://scripts/substance.res").sub
 export(String, "acid", "alkali", "water") var liquid
+export(bool) var isMetal
 
 var id = "bottle"
 
@@ -15,3 +16,8 @@ func take():
 func pour():
 	# Налить слой воды
 	G.player.in_hand_object.add_liquid(substance[liquid])
+
+func _ready():
+	# При создании получаем кол-во слоев
+	if (!isMetal):
+		$metal.visible = false
