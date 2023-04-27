@@ -2,11 +2,11 @@ extends Spatial
 
 onready var el = $CollisionShape/MeshInstance
 
-var MAX_AMOUNT_LIQUID = 4
+var MAX_AMOUNT_SUBSTANCE = 4
 
-var elements_tube = null
-var name_liquid = []
-var amount_liquid = 0
+var elements = null
+var name_substance = []
+var amount_substance = 0
 var opened = false
 var id = "tube"
 
@@ -18,25 +18,25 @@ export var level_5 = ""
 
 
 
-func add_liquid(liq):
+func add_substance(sub):
 	# Добавляем слой жидкости
-	elements_tube[amount_liquid].show()
-	name_liquid[amount_liquid] = liq["name"]
+	elements[amount_substance].show()
+	name_substance[amount_substance] = sub["name"]
 	
 	# Меняем цвет
-	var layer = elements_tube[amount_liquid].get_children()[0]
+	var layer = elements[amount_substance].get_children()[0]
 	var material = layer.get_surface_material(0).duplicate()
-	material.albedo_color = liq["color"]
+	material.albedo_color = sub["color"]
 	layer.set_surface_material(0, material)
 	
-	amount_liquid = amount_liquid if amount_liquid == MAX_AMOUNT_LIQUID \
-		else amount_liquid + 1
+	amount_substance = amount_substance if amount_substance == MAX_AMOUNT_SUBSTANCE \
+		else amount_substance + 1
 
-func remove_liquid():
+func remove_substance():
 	# Удаляем слой
-	elements_tube[amount_liquid].hide()
-	name_liquid[amount_liquid] = ""
-	amount_liquid = amount_liquid if amount_liquid == 0 else amount_liquid - 1
+	elements[amount_substance].hide()
+	name_substance[amount_substance] = ""
+	amount_substance = amount_substance if amount_substance == 0 else amount_substance - 1
 
 
 func take():
@@ -62,13 +62,13 @@ func _physics_process(_delta):
 
 func _ready():
 	# При создании получаем кол-во слоев
-	elements_tube = el.get_children()
-	for i in range(MAX_AMOUNT_LIQUID + 1):
-		name_liquid.append("")
+	elements = el.get_children()
+	for i in range(MAX_AMOUNT_SUBSTANCE + 1):
+		name_substance.append("")
 
 func get_info():
 	# Информация о содежимом в интерфейс
 	var sting = ""
-	for i in range(name_liquid.size() - 1, -1, -1): 
-		sting += name_liquid[i] + "\n"
+	for i in range(name_substance.size() - 1, -1, -1): 
+		sting += name_substance[i] + "\n"
 	return sting

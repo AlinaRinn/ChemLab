@@ -15,7 +15,7 @@ func take():
 
 func pour():
 	# Налить слой воды
-	G.player.in_hand_object.add_liquid(substance[liquid])
+	G.player.in_hand_object.add_substance(substance[liquid])
 
 func _ready():
 	# При создании получаем кол-во слоев
