@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=2]
+[gd_scene load_steps=23 format=2]
 
 [ext_resource path="res://objects/static/room.tscn" type="PackedScene" id=1]
 [ext_resource path="res://objects/static/lamp.tscn" type="PackedScene" id=2]
@@ -16,6 +16,7 @@
 [ext_resource path="res://objects/static/table_hole.tscn" type="PackedScene" id=14]
 [ext_resource path="res://objects/interactive/sink.tscn" type="PackedScene" id=15]
 [ext_resource path="res://objects/static/table_4.tscn" type="PackedScene" id=16]
+[ext_resource path="res://objects/interactive/bottle.tscn" type="PackedScene" id=17]
 [ext_resource path="res://objects/interactive/burner.tscn" type="PackedScene" id=19]
 [ext_resource path="res://objects/static/shelf.tscn" type="PackedScene" id=21]
 [ext_resource path="res://objects/interactive/switch.tscn" type="PackedScene" id=22]
@@ -155,3 +156,12 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 14.6331, 2.81661, -4.96918 )
 
 [node name="petri" parent="." instance=ExtResource( 4 )]
 transform = Transform( 0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 14.3957, 2.94777, -4.38386 )
+
+[node name="bottle" parent="." instance=ExtResource( 17 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 14.3865, 2.54313, -8.50072 )
+liquid = "acid"
+isMetal = true
+
+[node name="bottle2" parent="." instance=ExtResource( 17 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 14.4624, 2.54313, -7.76187 )
+liquid = "water"
