@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://assets/models/petri.obj" type="ArrayMesh" id=1]
 [ext_resource path="res://assets/materials/glass_tube.material" type="Material" id=2]
@@ -23,6 +23,7 @@ var name_substance_liq = []
 var amount_substance_liq = 0
 
 var id = \"petri\"
+
 
 func take():
 	# Подбирание предмета
@@ -69,6 +70,13 @@ func remove_substance_met():
 	amount_substance_liq = amount_substance_liq if amount_substance_liq == 0 else amount_substance_liq - 1
 
 
+func reaction():
+	print(elements_met.has(\"Кислота\"))
+	print(elements_liq.has(\"Вода\"))
+	if name_substance_met.has(\"Кислота\") and name_substance_liq.has(\"Вода\"):
+		$Particles.emitting = true
+	
+	
 func _ready():
 	# При создании получаем кол-во слоев
 	elements_met = el.get_children()
@@ -91,6 +99,14 @@ func get_info():
 "
 
 [sub_resource type="BoxShape" id=3]
+
+[sub_resource type="ParticlesMaterial" id=4]
+gravity = Vector3( 0, 3, 0 )
+initial_velocity = 2.0
+
+[sub_resource type="SphereMesh" id=5]
+radius = 0.3
+height = 0.6
 
 [node name="petri" type="RigidBody"]
 transform = Transform( 0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0 )
@@ -139,3 +155,12 @@ transform = Transform( 2.80528, 0, 0, 0, 0.112423, 0, 0, 0, 2.82172, 0, -0.44446
 label = "чашка Петри"
 right_click_action = "take"
 right_click_label = "Взять"
+test_click_action = "reaction"
+
+[node name="Particles" type="Particles" parent="."]
+emitting = false
+amount = 50
+lifetime = 10.0
+one_shot = true
+process_material = SubResource( 4 )
+draw_pass_1 = SubResource( 5 )
