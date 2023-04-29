@@ -17,7 +17,6 @@ export var level_4 = ""
 export var level_5 = ""
 
 
-
 func add_substance(sub):
 	# Добавляем слой жидкости
 	elements[amount_substance].show()
@@ -31,6 +30,7 @@ func add_substance(sub):
 	
 	amount_substance = amount_substance if amount_substance == MAX_AMOUNT_SUBSTANCE \
 		else amount_substance + 1
+
 
 func remove_substance():
 	# Удаляем слой
@@ -65,6 +65,7 @@ func _ready():
 	elements = el.get_children()
 	for i in range(MAX_AMOUNT_SUBSTANCE + 1):
 		name_substance.append("")
+
 
 func get_info():
 	# Информация о содежимом в интерфейс
