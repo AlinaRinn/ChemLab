@@ -12,7 +12,7 @@ script/source = "extends RigidBody
 onready var el = $CollisionShape/MeshInstance
 
 var MAX_AMOUNT_SUBSTANCE_MET = 4
-var MAX_AMOUNT_SUBSTANCE_LIQ = 2
+var MAX_AMOUNT_SUBSTANCE_LIQ = 1
 
 var elements_met = null
 var name_substance_met = []
@@ -71,9 +71,28 @@ func remove_substance_met():
 
 
 func reaction():
-	print(elements_met.has(\"Кислота\"))
-	print(elements_liq.has(\"Вода\"))
-	if name_substance_met.has(\"Кислота\") and name_substance_liq.has(\"Вода\"):
+	if name_substance_met == [\"Литий\", \"\", \"\", \"\", \"\"] and \\
+	   name_substance_liq == [\"Вода\", \"Фенолфталеин\"]:
+		var layer = $CollisionShape/MeshInstance/element_1/metal_piece
+		var material = layer.get_surface_material(0).duplicate()
+		material.albedo_color = Color.deeppink
+		layer.set_surface_material(0, material)
+		$Particles.emitting = true
+
+	if name_substance_met == [\"Калий\", \"\", \"\", \"\", \"\"] and \\
+	   name_substance_liq == [\"Вода\", \"Фенолфталеин\"]:
+		var layer = $CollisionShape/MeshInstance/element_1/metal_piece
+		var material = layer.get_surface_material(0).duplicate()
+		material.albedo_color = Color.deeppink
+		layer.set_surface_material(0, material)
+		$Particles.emitting = true
+
+	if name_substance_met == [\"Натрий\", \"\", \"\", \"\", \"\"] and \\
+	   name_substance_liq == [\"Вода\", \"Фенолфталеин\"]:
+		var layer = $CollisionShape/MeshInstance/element_1/metal_piece
+		var material = layer.get_surface_material(0).duplicate()
+		material.albedo_color = Color.deeppink
+		layer.set_surface_material(0, material)
 		$Particles.emitting = true
 	
 	

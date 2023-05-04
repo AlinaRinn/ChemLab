@@ -17,16 +17,20 @@ export var level_4 = ""
 export var level_5 = ""
 
 
+func change_color(color):
+	# Меняем цвет
+	var layer = elements[amount_substance].get_children()[0]
+	var material = layer.get_surface_material(0).duplicate()
+	material.albedo_color = color
+	layer.set_surface_material(0, material)
+
+
 func add_substance(sub):
 	# Добавляем слой жидкости
 	elements[amount_substance].show()
 	name_substance[amount_substance] = sub["name"]
 	
-	# Меняем цвет
-	var layer = elements[amount_substance].get_children()[0]
-	var material = layer.get_surface_material(0).duplicate()
-	material.albedo_color = sub["color"]
-	layer.set_surface_material(0, material)
+	change_color(sub["color"])
 	
 	amount_substance = amount_substance if amount_substance == MAX_AMOUNT_SUBSTANCE \
 		else amount_substance + 1
