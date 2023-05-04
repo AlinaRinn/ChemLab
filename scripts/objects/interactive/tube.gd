@@ -1,6 +1,6 @@
 extends Spatial
 
-onready var el = $CollisionShape/MeshInstance
+onready var el = $CollisionShape/tube/liquid
 
 var MAX_AMOUNT_SUBSTANCE = 4
 
@@ -10,6 +10,7 @@ var amount_substance = 0
 var opened = false
 var id = "tube"
 
+export(bool) var isSpiral
 export var level_1 = ""
 export var level_2 = ""
 export var level_3 = ""
@@ -69,6 +70,11 @@ func _ready():
 	elements = el.get_children()
 	for i in range(MAX_AMOUNT_SUBSTANCE + 1):
 		name_substance.append("")
+
+	if !isSpiral:
+		$CollisionShape/tube/spiral.visible = false
+		$CollisionShape/tube/sediment/element_1.visible = false
+		$CollisionShape/tube/sediment/element_2.visible = false
 
 
 func get_info():
