@@ -81,6 +81,8 @@ transform = Transform( 0.180822, 0, 0, 0, 0.20381, 0, 0, 0, 0.187598, 0, 0.20441
 label = "Горелка"
 left_click_action = "burn"
 left_click_label = "Зажечь/Потушить"
+right_click_action = "spiral"
+right_click_label = "Добавить\\Убрать спираль"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 root_node = NodePath("../StaticBody")
@@ -107,3 +109,4 @@ shadow_color = Color( 0.2, 0.2, 0.168627, 1 )
 
 [node name="spiral" parent="." instance=ExtResource( 8 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0747402, 0.503067, -0.00910415 )
+visible = false

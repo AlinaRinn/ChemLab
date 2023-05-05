@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=2]
+[gd_scene load_steps=24 format=2]
 
 [ext_resource path="res://objects/static/room.tscn" type="PackedScene" id=1]
 [ext_resource path="res://objects/static/lamp.tscn" type="PackedScene" id=2]
@@ -17,6 +17,7 @@
 [ext_resource path="res://objects/interactive/sink.tscn" type="PackedScene" id=15]
 [ext_resource path="res://objects/static/table_4.tscn" type="PackedScene" id=16]
 [ext_resource path="res://objects/interactive/bottle.tscn" type="PackedScene" id=17]
+[ext_resource path="res://objects/interactive/tube_spiral.tscn" type="PackedScene" id=18]
 [ext_resource path="res://objects/interactive/burner.tscn" type="PackedScene" id=19]
 [ext_resource path="res://objects/static/shelf.tscn" type="PackedScene" id=21]
 [ext_resource path="res://objects/interactive/switch.tscn" type="PackedScene" id=22]
@@ -147,7 +148,6 @@ transform = Transform( 2.5, 0, 4.37114e-07, 0, 2.5, 0, -4.37114e-07, 0, 2.5, 12.
 
 [node name="burner" parent="things" instance=ExtResource( 19 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 14.4538, 2.81113, -14.1175 )
-isSpiral = true
 
 [node name="stand" parent="things" instance=ExtResource( 21 )]
 transform = Transform( 0.4, 0, 0, 0, 0.48, 0, 0, 0, 0.4, 14.9963, 2.84733, -1.29036 )
@@ -180,3 +180,15 @@ isMetal = true
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 14.3745, 2.6143, -7.06816 )
 subs = "K"
 isMetal = true
+
+[node name="tube3" parent="." instance=ExtResource( 18 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 14.2896, 2.90279, -11.5016 )
+e = "K"
+
+[node name="tube4" parent="." instance=ExtResource( 18 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 14.2896, 2.90279, -10.9704 )
+e = "Na"
+
+[node name="tube5" parent="." instance=ExtResource( 18 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 14.2896, 2.90279, -12.0528 )
+e = "Li"
