@@ -163,23 +163,31 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 14.6331, 2.81661, -5.29216 )
 transform = Transform( 0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 14.3957, 2.94777, -4.38386 )
 
 [node name="bottle" parent="." instance=ExtResource( 17 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 14.3865, 2.54313, -8.50072 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 14.3865, 2.54313, -9.68583 )
 subs = "Na"
 isMetal = true
 
 [node name="bottle2" parent="." instance=ExtResource( 17 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 14.4624, 2.54313, -7.76187 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 14.4624, 2.54313, -9.43683 )
 subs = "Phenolphthalein"
 
 [node name="bottle3" parent="." instance=ExtResource( 17 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 14.3865, 2.54313, -9.0275 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 14.3865, 2.54313, -9.94839 )
 subs = "Li"
 isMetal = true
 
 [node name="bottle4" parent="." instance=ExtResource( 17 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 14.3745, 2.6143, -7.06816 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 14.3745, 2.6143, -9.12914 )
 subs = "K"
 isMetal = true
+
+[node name="bottle5" parent="." instance=ExtResource( 17 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 14.3745, 2.6143, -6.39945 )
+subs = "Na2CO3"
+
+[node name="bottle6" parent="." instance=ExtResource( 17 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 14.3745, 2.6143, -6.66126 )
+subs = "LiCl"
 
 [node name="tube3" parent="." instance=ExtResource( 18 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 14.2896, 2.90279, -11.5016 )

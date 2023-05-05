@@ -1,7 +1,8 @@
 extends Spatial
 
 var substance = load("res://scripts/substance.res").sub
-export(String, "acid", "alkali", "water", "Na", "Li", "K", "Phenolphthalein") var subs
+export(String, "acid", "alkali", "water", "Na", "Li", "K", "Phenolphthalein",
+"LiCl", "Na2CO3") var subs
 export(bool) var isMetal
 
 var id = "bottle"
