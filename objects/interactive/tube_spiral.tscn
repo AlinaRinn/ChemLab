@@ -3,10 +3,32 @@
 [ext_resource path="res://assets/models/tube_type_0.obj" type="ArrayMesh" id=1]
 [ext_resource path="res://assets/materials/tube.material" type="Material" id=2]
 [ext_resource path="res://objects/interaction.tscn" type="PackedScene" id=3]
-[ext_resource path="res://objects/interactive/tube_spiral.gd" type="Script" id=4]
 [ext_resource path="res://objects/elements/water.tscn" type="PackedScene" id=5]
 [ext_resource path="res://objects/interactive/spiral.tscn" type="PackedScene" id=6]
 [ext_resource path="res://objects/elements/sediment.tscn" type="PackedScene" id=7]
+
+[sub_resource type="GDScript" id=5]
+script/source = "extends RigidBody
+
+
+var id = \"tube_spiral\"
+export var e = \"\"
+var h = true
+func take():
+	# Подбирание
+	var parent = get_parent()
+	var object = G.player.get_to_hand(self)
+	if object:
+		parent.add_child(object)
+		
+func hide():
+	if h:
+		h = false
+		$spiral.visible = h
+	else:
+		h = true
+		$spiral.visible = h
+"
 
 [sub_resource type="CylinderShape" id=4]
 height = 0.540256
@@ -25,7 +47,7 @@ tracks/0/keys = PoolRealArray( 0, 1, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 0, 0.30
 [node name="tube" type="RigidBody"]
 mass = 2.0
 gravity_scale = 0.8
-script = ExtResource( 4 )
+script = SubResource( 5 )
 
 [node name="CollisionShape" type="CollisionShape" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.185462, -0.00997448 )
