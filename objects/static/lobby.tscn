@@ -1,0 +1,116 @@
+[gd_scene load_steps=13 format=2]
+
+[ext_resource path="res://assets/models/wall_shot.obj" type="ArrayMesh" id=1]
+[ext_resource path="res://assets/models/wall_long.obj" type="ArrayMesh" id=2]
+[ext_resource path="res://assets/models/floor.obj" type="ArrayMesh" id=3]
+[ext_resource path="res://objects/static/lamp.tscn" type="PackedScene" id=4]
+[ext_resource path="res://assets/materials/carpet.material" type="Material" id=5]
+
+[sub_resource type="ConvexPolygonShape" id=1]
+points = PoolVector3Array( 9.3946, 8.90472, -11.8645, 9.3946, 8.90472, -11.994, -3.15074, 8.90472, -11.8645, 9.3946, -1.23042, -11.8645, 9.3946, -1.23042, -11.994, -3.15074, 8.90472, -11.994, -3.15074, -1.23042, -11.8645, -3.15074, -1.23042, -11.994 )
+
+[sub_resource type="ConvexPolygonShape" id=2]
+points = PoolVector3Array( 9.3946, 8.90472, -11.8645, 9.3946, 8.90472, -11.994, -3.15074, 8.90472, -11.8645, 9.3946, -1.23042, -11.8645, 9.3946, -1.23042, -11.994, -3.15074, 8.90472, -11.994, -3.15074, -1.23042, -11.8645, -3.15074, -1.23042, -11.994 )
+
+[sub_resource type="ConvexPolygonShape" id=3]
+points = PoolVector3Array( 9.18231, 0.83491, 5.56147, 9.18231, 0.652675, 5.56147, 9.18231, 0.83491, -11.9541, -2.93963, 0.83491, 5.56147, -2.93963, 0.652675, 5.56147, 9.18231, 0.652675, -11.9541, -2.93963, 0.83491, -11.9541, -2.93963, 0.652675, -11.9541 )
+
+[sub_resource type="ConvexPolygonShape" id=4]
+points = PoolVector3Array( 9.18042, -1.23042, -12.5687, 9.30988, -1.23042, -12.5687, 9.18042, -1.23042, 6.17614, 9.18042, 8.90472, -12.5687, 9.30988, 8.90472, -12.5687, 9.30988, -1.23042, 6.17614, 9.18042, 8.90472, 6.17614, 9.30988, 8.90472, 6.17614 )
+
+[sub_resource type="ConvexPolygonShape" id=5]
+points = PoolVector3Array( 9.18231, 0.83491, 5.56147, 9.18231, 0.652675, 5.56147, 9.18231, 0.83491, -11.9541, -2.93963, 0.83491, 5.56147, -2.93963, 0.652675, 5.56147, 9.18231, 0.652675, -11.9541, -2.93963, 0.83491, -11.9541, -2.93963, 0.652675, -11.9541 )
+
+[sub_resource type="GDScript" id=6]
+script/source = "extends Area
+
+
+func _on_Area_body_entered(body):
+	if body.name == \"player\":
+		G.emit_signal(\"escape\")
+"
+
+[sub_resource type="BoxShape" id=7]
+extents = Vector3( 0.197558, 0.218099, 0.209893 )
+
+[node name="lobby" type="Spatial"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.78101, 0, -1.04135 )
+
+[node name="wall_shot" type="MeshInstance" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.101454, 0, 0.162325 )
+mesh = ExtResource( 1 )
+
+[node name="StaticBody" type="StaticBody" parent="wall_shot"]
+
+[node name="CollisionShape" type="CollisionShape" parent="wall_shot/StaticBody"]
+shape = SubResource( 1 )
+
+[node name="wall_shot2" type="MeshInstance" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.112667, 0, 18.7649 )
+mesh = ExtResource( 1 )
+
+[node name="StaticBody" type="StaticBody" parent="wall_shot2"]
+
+[node name="CollisionShape" type="CollisionShape" parent="wall_shot2/StaticBody"]
+shape = SubResource( 2 )
+
+[node name="roof" type="MeshInstance" parent="."]
+transform = Transform( 1.03315, 0, 0, 0, 1, 0, 0, 0, 1.06155, -0.207863, 8.07699, 0.963766 )
+mesh = ExtResource( 3 )
+skeleton = NodePath("../wall_shot")
+
+[node name="StaticBody" type="StaticBody" parent="roof"]
+
+[node name="CollisionShape" type="CollisionShape" parent="roof/StaticBody"]
+shape = SubResource( 3 )
+
+[node name="lamp" parent="roof" instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.667363, 0.7504, -7.07062 )
+
+[node name="lamp2" parent="roof" instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 5.58995, 0.7504, -7.07062 )
+
+[node name="lamp3" parent="roof" instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.644454, 0.7504, 0.444724 )
+
+[node name="lamp4" parent="roof" instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 5.85604, 0.7504, 0.444724 )
+
+[node name="wall_long" type="MeshInstance" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.730459 )
+mesh = ExtResource( 2 )
+skeleton = NodePath("../wall_shot")
+
+[node name="StaticBody" type="StaticBody" parent="wall_long"]
+
+[node name="CollisionShape" type="CollisionShape" parent="wall_long/StaticBody"]
+shape = SubResource( 4 )
+
+[node name="floor" type="MeshInstance" parent="."]
+transform = Transform( 1.03315, 0, 0, 0, 1, 0, 0, 0, 1.06155, -0.207863, -1.88419, 0.963766 )
+mesh = ExtResource( 3 )
+skeleton = NodePath("../wall_shot")
+material/0 = ExtResource( 5 )
+
+[node name="StaticBody" type="StaticBody" parent="floor"]
+
+[node name="CollisionShape" type="CollisionShape" parent="floor/StaticBody"]
+shape = SubResource( 5 )
+
+[node name="wall_shot3" type="MeshInstance" parent="."]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -15.1136, 0, -2.49147 )
+mesh = ExtResource( 1 )
+
+[node name="StaticBody" type="StaticBody" parent="wall_shot3"]
+
+[node name="CollisionShape" type="CollisionShape" parent="wall_shot3/StaticBody"]
+shape = SubResource( 1 )
+
+[node name="Area" type="Area" parent="."]
+transform = Transform( 16.9431, 0, 0, 0, 1.40388, 0, 0, 0, 44.0964, 5.10089, -0.642094, -2.5681 )
+script = SubResource( 6 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Area"]
+shape = SubResource( 7 )
+
+[connection signal="body_entered" from="Area" to="Area" method="_on_Area_body_entered"]

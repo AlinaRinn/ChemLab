@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=2]
+[gd_scene load_steps=25 format=2]
 
 [ext_resource path="res://objects/static/room.tscn" type="PackedScene" id=1]
 [ext_resource path="res://objects/static/lamp.tscn" type="PackedScene" id=2]
@@ -19,6 +19,7 @@
 [ext_resource path="res://objects/interactive/bottle.tscn" type="PackedScene" id=17]
 [ext_resource path="res://objects/interactive/tube_spiral.tscn" type="PackedScene" id=18]
 [ext_resource path="res://objects/interactive/burner.tscn" type="PackedScene" id=19]
+[ext_resource path="res://objects/static/lobby.tscn" type="PackedScene" id=20]
 [ext_resource path="res://objects/static/shelf.tscn" type="PackedScene" id=21]
 [ext_resource path="res://objects/interactive/switch.tscn" type="PackedScene" id=22]
 [ext_resource path="res://objects/interactive/wardrobe.tscn" type="PackedScene" id=23]
@@ -27,6 +28,8 @@
 script/source = "extends Spatial
 
 func _ready():
+	G.connect(\"escape\", self, \"exit\")
+	
 	if G.load_item == '11':
 		var item1 = load('res://objects/interactive/bottle.tscn').instance()
 		$things.add_child(item1)
@@ -58,6 +61,10 @@ func _ready():
 		$things.add_child(item6)
 		item6.global_transform.origin = Vector3(14.5, 2.82, -2)
 		#item6.scale = Vector3(0.2, 0.2, 0.2)
+
+func exit():
+	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+	G.to(\"main_menu\")
 "
 
 [node name="level_area" type="Spatial"]
@@ -151,6 +158,9 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 14.4538, 2.81113, -14.1175 )
 
 [node name="stand" parent="things" instance=ExtResource( 21 )]
 transform = Transform( 0.4, 0, 0, 0, 0.48, 0, 0, 0, 0.4, 14.9963, 2.84733, -1.29036 )
+
+[node name="lobby" parent="." instance=ExtResource( 20 )]
+transform = Transform( -4.37114e-08, 0, -1, 0, 0.62, 0, 1, 0, -4.37114e-08, -5.85772, 1.15397, 3.37713 )
 
 [node name="tube" parent="." instance=ExtResource( 7 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 14.6331, 2.81661, -4.96918 )

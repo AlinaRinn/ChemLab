@@ -3,6 +3,7 @@ extends Node
 signal lightOn
 signal lightOff
 signal paused
+signal escape
 
 # scenes
 var root_level
