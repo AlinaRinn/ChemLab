@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://assets/images/menu_background.png" type="Texture" id=1]
 [ext_resource path="res://menu_theme.tres" type="Theme" id=2]
@@ -22,6 +22,39 @@ func _on_CheckButton_toggled(button_pressed):
 	OS.window_size = OS.get_screen_size()
 "
 
+[sub_resource type="GDScript" id=4]
+script/source = "extends Control
+
+
+var Resolitions: Dictionary = {\"3840x2160\":Vector2(3840, 2160),
+								\"2560x1440\":Vector2(2560, 1440),
+								\"1920x1080\":Vector2(1920, 1080),
+								\"1680x1050\":Vector2(1680, 1050),
+								\"1440x900\":Vector2(1440, 900),
+								\"1366x768\":Vector2(1366, 768), 
+								\"1280x720\":Vector2(1280, 720),
+								\"800x600\":Vector2(800, 600)}
+
+func _ready():
+	AddResolutions()
+
+
+func AddResolutions():
+	var current = get_viewport().get_size()
+	var index = 0
+	for i in Resolitions:
+		$OptionButton.add_item(i, index)
+		if Resolitions[i] == current:
+			$OptionButton._select_int(index)
+		index += 1
+		
+		
+func _on_OptionButton_item_selected(index):
+	var size = Resolitions.get($OptionButton.get_item_text(index))
+	OS.set_window_size(size)
+	get_tree().set_screen_stretch(SceneTree.STRETCH_MODE_VIEWPORT, SceneTree.STRETCH_ASPECT_KEEP, size)
+"
+
 [sub_resource type="GDScript" id=3]
 script/source = "extends HSlider
 
@@ -35,25 +68,29 @@ func _on_HSlider_value_changed(value):
 [node name="settings" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_right = -1920.0
-margin_bottom = -1080.0
 rect_pivot_offset = Vector2( 960, 540 )
 
-[node name="background" type="ColorRect" parent="."]
+[node name="TextureRect" type="TextureRect" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
-color = Color( 0, 0, 0, 1 )
-
-[node name="Sprite" type="Sprite" parent="background"]
-position = Vector2( 960, 540 )
-scale = Vector2( 1.35402, 1.17137 )
 texture = ExtResource( 1 )
+expand = true
+
+[node name="background" type="ColorRect" parent="TextureRect"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0, 0, 0, 0.647059 )
 
 [node name="menu" type="Control" parent="."]
-margin_left = 586.0
-margin_top = 304.0
-margin_right = 1286.0
-margin_bottom = 704.0
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -350.0
+margin_top = -200.0
+margin_right = 350.0
+margin_bottom = 200.0
 rect_pivot_offset = Vector2( 350, 200 )
 theme = ExtResource( 2 )
 
@@ -101,6 +138,12 @@ margin_bottom = 300.0
 [node name="ScreenMode" type="Control" parent="menu/TabContainer/Графика/VBoxContainer"]
 margin_right = 700.0
 
+[node name="ColorRect" type="ColorRect" parent="menu/TabContainer/Графика/VBoxContainer/ScreenMode"]
+margin_top = 60.0
+margin_right = 700.0
+margin_bottom = 62.0
+color = Color( 0.0627451, 0.203922, 0.258824, 1 )
+
 [node name="Label" type="Label" parent="menu/TabContainer/Графика/VBoxContainer/ScreenMode"]
 margin_left = 30.0
 margin_top = 15.0
@@ -109,30 +152,110 @@ margin_bottom = 45.0
 text = "Полноэкранный режим"
 
 [node name="CheckButton" type="CheckButton" parent="menu/TabContainer/Графика/VBoxContainer/ScreenMode"]
-margin_left = 609.0
+margin_left = 610.0
 margin_top = 10.0
 margin_right = 685.0
 margin_bottom = 56.0
 pressed = true
 script = SubResource( 2 )
 
-[node name="Resolution" type="Control" parent="menu/TabContainer/Графика/VBoxContainer"]
+[node name="Vsync" type="Control" parent="menu/TabContainer/Графика/VBoxContainer"]
 margin_top = 60.0
 margin_right = 700.0
 margin_bottom = 60.0
 
+[node name="ColorRect" type="ColorRect" parent="menu/TabContainer/Графика/VBoxContainer/Vsync"]
+margin_top = 60.0
+margin_right = 700.0
+margin_bottom = 62.0
+color = Color( 0.0627451, 0.203922, 0.258824, 1 )
+
+[node name="Label" type="Label" parent="menu/TabContainer/Графика/VBoxContainer/Vsync"]
+margin_left = 30.0
+margin_top = 15.0
+margin_right = 268.0
+margin_bottom = 35.0
+text = "Вертикальная синхронизация"
+
+[node name="CheckButton" type="CheckButton" parent="menu/TabContainer/Графика/VBoxContainer/Vsync"]
+margin_left = 610.0
+margin_top = 10.0
+margin_right = 76.0
+margin_bottom = 46.0
+
+[node name="Resolution" type="Control" parent="menu/TabContainer/Графика/VBoxContainer"]
+margin_top = 120.0
+margin_right = 700.0
+margin_bottom = 120.0
+script = SubResource( 4 )
+
+[node name="ColorRect" type="ColorRect" parent="menu/TabContainer/Графика/VBoxContainer/Resolution"]
+margin_top = 60.0
+margin_right = 700.0
+margin_bottom = 62.0
+color = Color( 0.0627451, 0.203922, 0.258824, 1 )
+
 [node name="Label" type="Label" parent="menu/TabContainer/Графика/VBoxContainer/Resolution"]
 margin_left = 30.0
-margin_top = 10.0
+margin_top = 15.0
 margin_right = 268.0
 margin_bottom = 40.0
 text = "Разрешение экрана"
 
 [node name="OptionButton" type="OptionButton" parent="menu/TabContainer/Графика/VBoxContainer/Resolution"]
 margin_left = 420.0
-margin_top = 5.0
+margin_top = 15.0
 margin_right = 670.0
-margin_bottom = 49.0
+margin_bottom = 45.0
+align = 1
+
+[node name="FXAA" type="Control" parent="menu/TabContainer/Графика/VBoxContainer"]
+margin_top = 180.0
+margin_right = 700.0
+margin_bottom = 180.0
+
+[node name="ColorRect" type="ColorRect" parent="menu/TabContainer/Графика/VBoxContainer/FXAA"]
+margin_top = 60.0
+margin_right = 700.0
+margin_bottom = 62.0
+color = Color( 0.0627451, 0.203922, 0.258824, 1 )
+
+[node name="Label" type="Label" parent="menu/TabContainer/Графика/VBoxContainer/FXAA"]
+margin_left = 30.0
+margin_top = 15.0
+margin_right = 268.0
+margin_bottom = 35.0
+text = "FXAA"
+
+[node name="CheckBox" type="CheckBox" parent="menu/TabContainer/Графика/VBoxContainer/FXAA"]
+margin_left = 635.0
+margin_top = 8.0
+margin_right = 24.0
+margin_bottom = 46.0
+
+[node name="MSAA" type="Control" parent="menu/TabContainer/Графика/VBoxContainer"]
+margin_top = 240.0
+margin_right = 700.0
+margin_bottom = 240.0
+
+[node name="ColorRect" type="ColorRect" parent="menu/TabContainer/Графика/VBoxContainer/MSAA"]
+margin_top = 60.0
+margin_right = 700.0
+margin_bottom = 62.0
+color = Color( 0.0627451, 0.203922, 0.258824, 1 )
+
+[node name="Label" type="Label" parent="menu/TabContainer/Графика/VBoxContainer/MSAA"]
+margin_left = 30.0
+margin_top = 15.0
+margin_right = 268.0
+margin_bottom = 35.0
+text = "MSAA"
+
+[node name="CheckBox" type="CheckBox" parent="menu/TabContainer/Графика/VBoxContainer/MSAA"]
+margin_left = 635.0
+margin_top = 8.0
+margin_right = 24.0
+margin_bottom = 46.0
 
 [node name="Управление" type="Tabs" parent="menu/TabContainer"]
 visible = false
@@ -174,4 +297,5 @@ tick_count = 20
 script = SubResource( 3 )
 
 [connection signal="toggled" from="menu/TabContainer/Графика/VBoxContainer/ScreenMode/CheckButton" to="menu/TabContainer/Графика/VBoxContainer/ScreenMode/CheckButton" method="_on_CheckButton_toggled"]
+[connection signal="item_selected" from="menu/TabContainer/Графика/VBoxContainer/Resolution/OptionButton" to="menu/TabContainer/Графика/VBoxContainer/Resolution" method="_on_OptionButton_item_selected"]
 [connection signal="value_changed" from="menu/TabContainer/Управление/VBoxContainer/ColorRect/sensitivity" to="menu/TabContainer/Управление/VBoxContainer/ColorRect/sensitivity" method="_on_HSlider_value_changed"]
