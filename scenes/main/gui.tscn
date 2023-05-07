@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://scripts/gui.gd" type="Script" id=1]
 [ext_resource path="res://assets/fonts/Cascadia/CascadiaMono-Light.otf" type="DynamicFontData" id=2]
@@ -17,20 +17,6 @@ func _ready():
 	G.connect(\"paused\", self, \"show\")
 "
 
-[sub_resource type="DynamicFont" id=6]
-size = 20
-outline_size = 3
-outline_color = Color( 0.0509804, 0.101961, 0.129412, 1 )
-font_data = ExtResource( 4 )
-
-[sub_resource type="GDScript" id=3]
-script/source = "extends Button
-
-func _pressed():
-	G.to('main_menu')
-	get_node(\"/root/game/player\").get_tree().paused = false
-"
-
 [sub_resource type="DynamicFont" id=7]
 size = 20
 outline_size = 3
@@ -44,6 +30,28 @@ func _pressed():
 	get_node(\"/root/game/player\").get_tree().paused = false
 	get_parent().hide()
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+"
+
+[sub_resource type="GDScript" id=9]
+script/source = "extends Button
+
+func _pressed():
+	G.to('game')
+	get_node(\"/root/game/player\").get_tree().paused = false
+"
+
+[sub_resource type="DynamicFont" id=6]
+size = 20
+outline_size = 3
+outline_color = Color( 0.0509804, 0.101961, 0.129412, 1 )
+font_data = ExtResource( 4 )
+
+[sub_resource type="GDScript" id=3]
+script/source = "extends Button
+
+func _pressed():
+	G.to('main_menu')
+	get_node(\"/root/game/player\").get_tree().paused = false
 "
 
 [node name="gui" type="Control"]
@@ -165,9 +173,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 margin_left = -125.0
-margin_top = -75.0
+margin_top = -97.5
 margin_right = 125.0
-margin_bottom = 75.0
+margin_bottom = 97.5
 rect_clip_content = true
 popup_exclusive = true
 window_title = "Выход"
@@ -192,25 +200,6 @@ text = "Пауза"
 align = 1
 valign = 1
 
-[node name="Exit" type="Button" parent="ExitDialog"]
-margin_left = 15.0
-margin_top = 100.0
-margin_right = 235.0
-margin_bottom = 135.0
-custom_fonts/font = SubResource( 6 )
-text = "Выйти в меню"
-script = SubResource( 3 )
-
-[node name="ColorRect" type="ColorRect" parent="ExitDialog/Exit"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-mouse_filter = 2
-color = Color( 0.0862745, 0.419608, 0.529412, 0.329412 )
-__meta__ = {
-"_edit_lock_": true,
-"_edit_use_anchors_": false
-}
-
 [node name="Resume" type="Button" parent="ExitDialog"]
 margin_left = 15.0
 margin_top = 55.0
@@ -221,6 +210,44 @@ text = "Продолжить"
 script = SubResource( 4 )
 
 [node name="ColorRect" type="ColorRect" parent="ExitDialog/Resume"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+color = Color( 0.0862745, 0.419608, 0.529412, 0.329412 )
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="Restart" type="Button" parent="ExitDialog"]
+margin_left = 15.0
+margin_top = 100.0
+margin_right = 235.0
+margin_bottom = 135.0
+custom_fonts/font = SubResource( 7 )
+text = "Начать заново"
+script = SubResource( 9 )
+
+[node name="ColorRect" type="ColorRect" parent="ExitDialog/Restart"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+color = Color( 0.0862745, 0.419608, 0.529412, 0.329412 )
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="Exit" type="Button" parent="ExitDialog"]
+margin_left = 15.0
+margin_top = 145.0
+margin_right = 235.0
+margin_bottom = 180.0
+custom_fonts/font = SubResource( 6 )
+text = "Выйти в меню"
+script = SubResource( 3 )
+
+[node name="ColorRect" type="ColorRect" parent="ExitDialog/Exit"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 mouse_filter = 2
