@@ -7,7 +7,7 @@
 script/source = "extends Control
 
 func _ready():
-	$ColorRect/scroll/label.text = G.briefing
+	$menu/ColorRect/scroll/label.text = G.briefing
 
 
 func _input(_event):
@@ -30,50 +30,65 @@ func _pressed():
 "
 
 [node name="cut_scene" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
 theme = ExtResource( 1 )
 script = SubResource( 2 )
 
-[node name="load_screen" type="Sprite" parent="."]
-position = Vector2( 960, 539 )
-scale = Vector2( 1.354, 1.18 )
+[node name="TextureRect" type="TextureRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
 texture = ExtResource( 2 )
+expand = true
 
-[node name="ColorRect" type="ColorRect" parent="."]
-margin_left = 454.0
-margin_top = 150.0
-margin_right = 1454.0
-margin_bottom = 800.0
-color = Color( 0, 0, 0, 0.588235 )
+[node name="ColorRect" type="ColorRect" parent="TextureRect"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0.0509804, 0.101961, 0.12549, 0.313726 )
 
-[node name="scroll" type="ScrollContainer" parent="ColorRect"]
+[node name="menu" type="Control" parent="."]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -460.0
+margin_left = -500.0
 margin_top = -300.0
-margin_right = 460.0
+margin_right = 500.0
 margin_bottom = 300.0
 
-[node name="label" type="Label" parent="ColorRect/scroll"]
-margin_right = 920.0
+[node name="ColorRect" type="ColorRect" parent="menu"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -500.0
+margin_right = 500.0
+margin_bottom = 500.0
+color = Color( 0, 0, 0, 0.588235 )
+
+[node name="scroll" type="ScrollContainer" parent="menu/ColorRect"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 20.0
+margin_top = 20.0
+margin_right = -20.0
+margin_bottom = -20.0
+
+[node name="label" type="Label" parent="menu/ColorRect/scroll"]
+margin_right = 960.0
 margin_bottom = 29.0
 size_flags_horizontal = 3
 autowrap = true
 
-[node name="skip" type="Button" parent="."]
+[node name="skip" type="Button" parent="menu"]
 anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 1204.0
-margin_top = 814.0
-margin_right = 1454.0
-margin_bottom = 889.0
+margin_left = -250.0
+margin_top = -80.0
 text = "Начать"
 script = SubResource( 1 )
 
-[node name="ColorRect2" type="ColorRect" parent="skip"]
+[node name="ColorRect2" type="ColorRect" parent="menu/skip"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 mouse_filter = 2
@@ -83,19 +98,15 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="back" type="Button" parent="."]
-anchor_left = 1.0
+[node name="back" type="Button" parent="menu"]
 anchor_top = 1.0
-anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 454.0
-margin_top = 814.0
-margin_right = 704.0
-margin_bottom = 889.0
+margin_top = -80.0
+margin_right = 250.0
 text = "Назад"
 script = SubResource( 3 )
 
-[node name="ColorRect2" type="ColorRect" parent="back"]
+[node name="ColorRect2" type="ColorRect" parent="menu/back"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 mouse_filter = 2

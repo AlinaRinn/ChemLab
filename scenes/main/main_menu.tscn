@@ -53,12 +53,12 @@ anchor_bottom = 1.0
 color = Color( 0.0509804, 0.101961, 0.12549, 0.313726 )
 
 [node name="version" type="Label" parent="."]
-anchor_left = 0.5
-anchor_right = 0.5
-margin_left = 760.0
-margin_top = 1031.0
-margin_right = 957.0
-margin_bottom = 1077.0
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -172.0
+margin_top = -54.0
 theme = ExtResource( 2 )
 custom_colors/font_outline_modulate = Color( 0.0509804, 0.101961, 0.129412, 1 )
 text = "alfa 0.4"
