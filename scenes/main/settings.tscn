@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://assets/images/menu_background.png" type="Texture" id=1]
 [ext_resource path="res://menu_theme.tres" type="Theme" id=2]
@@ -20,6 +20,14 @@ func _on_CheckButton_toggled(button_pressed):
 	OS.set_window_fullscreen(button_pressed)
 	G.screenState = button_pressed
 	OS.window_size = OS.get_screen_size()
+"
+
+[sub_resource type="GDScript" id=5]
+script/source = "extends CheckButton
+
+
+func _on_CheckButton_toggled(button_pressed):
+	OS.set_use_vsync(button_pressed)
 "
 
 [sub_resource type="GDScript" id=4]
@@ -53,6 +61,22 @@ func _on_OptionButton_item_selected(index):
 	var size = Resolitions.get($OptionButton.get_item_text(index))
 	OS.set_window_size(size)
 	get_tree().set_screen_stretch(SceneTree.STRETCH_MODE_VIEWPORT, SceneTree.STRETCH_ASPECT_KEEP, size)
+"
+
+[sub_resource type="GDScript" id=6]
+script/source = "extends CheckBox
+
+
+func _on_CheckBox_toggled(button_pressed):
+	get_viewport().set_use_fxaa(button_pressed)
+"
+
+[sub_resource type="GDScript" id=7]
+script/source = "extends OptionButton
+
+
+func _on_OptionButton_item_selected(index):
+	get_viewport().set_msaa(index)
 "
 
 [sub_resource type="GDScript" id=3]
@@ -182,6 +206,7 @@ margin_left = 610.0
 margin_top = 10.0
 margin_right = 76.0
 margin_bottom = 46.0
+script = SubResource( 5 )
 
 [node name="Resolution" type="Control" parent="menu/TabContainer/Графика/VBoxContainer"]
 margin_top = 120.0
@@ -232,6 +257,7 @@ margin_left = 635.0
 margin_top = 8.0
 margin_right = 24.0
 margin_bottom = 46.0
+script = SubResource( 6 )
 
 [node name="MSAA" type="Control" parent="menu/TabContainer/Графика/VBoxContainer"]
 margin_top = 240.0
@@ -251,11 +277,16 @@ margin_right = 268.0
 margin_bottom = 35.0
 text = "MSAA"
 
-[node name="CheckBox" type="CheckBox" parent="menu/TabContainer/Графика/VBoxContainer/MSAA"]
-margin_left = 635.0
-margin_top = 8.0
-margin_right = 24.0
+[node name="OptionButton" type="OptionButton" parent="menu/TabContainer/Графика/VBoxContainer/MSAA"]
+margin_left = 570.0
+margin_top = 15.0
+margin_right = 670.0
 margin_bottom = 46.0
+text = "Выкл."
+align = 1
+items = [ "Выкл.", null, false, 0, null, "х2", null, false, 1, null, "х4", null, false, 2, null, "х8", null, false, 3, null, "х16", null, false, 4, null ]
+selected = 0
+script = SubResource( 7 )
 
 [node name="Управление" type="Tabs" parent="menu/TabContainer"]
 visible = false
@@ -297,5 +328,8 @@ tick_count = 20
 script = SubResource( 3 )
 
 [connection signal="toggled" from="menu/TabContainer/Графика/VBoxContainer/ScreenMode/CheckButton" to="menu/TabContainer/Графика/VBoxContainer/ScreenMode/CheckButton" method="_on_CheckButton_toggled"]
+[connection signal="toggled" from="menu/TabContainer/Графика/VBoxContainer/Vsync/CheckButton" to="menu/TabContainer/Графика/VBoxContainer/Vsync/CheckButton" method="_on_CheckButton_toggled"]
 [connection signal="item_selected" from="menu/TabContainer/Графика/VBoxContainer/Resolution/OptionButton" to="menu/TabContainer/Графика/VBoxContainer/Resolution" method="_on_OptionButton_item_selected"]
+[connection signal="toggled" from="menu/TabContainer/Графика/VBoxContainer/FXAA/CheckBox" to="menu/TabContainer/Графика/VBoxContainer/FXAA/CheckBox" method="_on_CheckBox_toggled"]
+[connection signal="item_selected" from="menu/TabContainer/Графика/VBoxContainer/MSAA/OptionButton" to="menu/TabContainer/Графика/VBoxContainer/MSAA/OptionButton" method="_on_OptionButton_item_selected"]
 [connection signal="value_changed" from="menu/TabContainer/Управление/VBoxContainer/ColorRect/sensitivity" to="menu/TabContainer/Управление/VBoxContainer/ColorRect/sensitivity" method="_on_HSlider_value_changed"]
