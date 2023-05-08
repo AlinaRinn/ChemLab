@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://menu_theme.tres" type="Theme" id=1]
 [ext_resource path="res://scripts/plug.gd" type="Script" id=2]
@@ -30,6 +30,28 @@ outline_size = 4
 outline_color = Color( 0.0509804, 0.101961, 0.129412, 1 )
 font_data = ExtResource( 3 )
 
+[sub_resource type="GDScript" id=5]
+script/source = "extends Button
+
+
+func _pressed():
+	G.level = 2
+	G.to('cut_scene_practicum')
+	G.briefing = \"Необходимые реактивы и оборудование\\n*растворы солей лития, натрия, калия;\\n*чистые нихромовые спирали;\\n*газовая горелка.\\n\\nХод работы\\nВ каждой из пробирок с солями соответствующих щелочных металлов находятся нихромовые спирали. Спираль, находящуюся в пробирке с солью лития, внести в пламя газовой горелки. Аналогичные действия повторить со спиралями, смоченными солями натрия и калия. Обратить внимание на изменение цвета пламени горелки: качественные реакции на катионы щелочных металлов.\"
+	G.load_item = '13'
+"
+
+[sub_resource type="GDScript" id=6]
+script/source = "extends Button
+
+
+func _pressed():
+	G.level = 2
+	G.to('cut_scene_practicum')
+	G.briefing = \"Необходимые реактивы и оборудование\\n*раствор хлорида лития LiCl;\\n*раствор карбоната натрия Na2CO3;\\n*чашка Петри.\\n\\nХод работы\\nС помощью пипетки перенести несколько капель хлорида лития на чашку Петри. Далее, добавить каплю концентрированного раствора карбоната натрия. Обратить внимание на образование белого осадка.\"
+	G.load_item = '14'
+"
+
 [node name="level" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -59,16 +81,16 @@ margin_right = 450.0
 margin_bottom = 410.0
 custom_constants/separation = 75
 
-[node name="chapter1" type="Control" parent="VBoxContainer"]
+[node name="level1" type="Control" parent="VBoxContainer"]
 margin_right = 900.0
 
-[node name="chapter" type="Button" parent="VBoxContainer/chapter1"]
+[node name="level" type="Button" parent="VBoxContainer/level1"]
 margin_right = 900.0
 margin_bottom = 70.0
 align = 0
 script = SubResource( 4 )
 
-[node name="Label" type="Label" parent="VBoxContainer/chapter1/chapter"]
+[node name="Label" type="Label" parent="VBoxContainer/level1/level"]
 anchor_left = 0.05
 anchor_top = 0.1
 anchor_right = 0.95
@@ -79,7 +101,7 @@ custom_fonts/font = SubResource( 2 )
 text = "1. Взаимодействие щелочных металлов с водой"
 valign = 1
 
-[node name="ColorRect2" type="ColorRect" parent="VBoxContainer/chapter1/chapter"]
+[node name="ColorRect2" type="ColorRect" parent="VBoxContainer/level1/level"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 mouse_filter = 2
@@ -89,18 +111,18 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="chapter2" type="Control" parent="VBoxContainer"]
+[node name="level2" type="Control" parent="VBoxContainer"]
 margin_top = 75.0
 margin_right = 900.0
 margin_bottom = 75.0
 
-[node name="chapter" type="Button" parent="VBoxContainer/chapter2"]
+[node name="level" type="Button" parent="VBoxContainer/level2"]
 margin_right = 900.0
 margin_bottom = 70.0
 align = 0
 script = ExtResource( 2 )
 
-[node name="Label" type="Label" parent="VBoxContainer/chapter2/chapter"]
+[node name="Label" type="Label" parent="VBoxContainer/level2/level"]
 anchor_left = 0.05
 anchor_top = 0.1
 anchor_right = 0.95
@@ -111,7 +133,7 @@ custom_fonts/font = SubResource( 2 )
 text = "2. Взаимодействие щелочных металлов с кислородом воздуха"
 valign = 1
 
-[node name="ColorRect2" type="ColorRect" parent="VBoxContainer/chapter2/chapter"]
+[node name="ColorRect2" type="ColorRect" parent="VBoxContainer/level2/level"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 mouse_filter = 2
@@ -121,18 +143,18 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="chapter3" type="Control" parent="VBoxContainer"]
+[node name="level3" type="Control" parent="VBoxContainer"]
 margin_top = 150.0
 margin_right = 900.0
 margin_bottom = 150.0
 
-[node name="chapter" type="Button" parent="VBoxContainer/chapter3"]
+[node name="level" type="Button" parent="VBoxContainer/level3"]
 margin_right = 900.0
 margin_bottom = 70.0
 align = 0
-script = ExtResource( 2 )
+script = SubResource( 5 )
 
-[node name="Label" type="Label" parent="VBoxContainer/chapter3/chapter"]
+[node name="Label" type="Label" parent="VBoxContainer/level3/level"]
 anchor_left = 0.05
 anchor_top = 0.1
 anchor_right = 0.95
@@ -143,7 +165,7 @@ custom_fonts/font = SubResource( 2 )
 text = "3. Окрашивание пламени горелки солями щелочных металлов"
 valign = 1
 
-[node name="ColorRect2" type="ColorRect" parent="VBoxContainer/chapter3/chapter"]
+[node name="ColorRect2" type="ColorRect" parent="VBoxContainer/level3/level"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 mouse_filter = 2
@@ -153,18 +175,18 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="chapter4" type="Control" parent="VBoxContainer"]
+[node name="level4" type="Control" parent="VBoxContainer"]
 margin_top = 225.0
 margin_right = 900.0
 margin_bottom = 225.0
 
-[node name="chapter" type="Button" parent="VBoxContainer/chapter4"]
+[node name="level" type="Button" parent="VBoxContainer/level4"]
 margin_right = 900.0
 margin_bottom = 70.0
 align = 0
-script = ExtResource( 2 )
+script = SubResource( 6 )
 
-[node name="Label" type="Label" parent="VBoxContainer/chapter4/chapter"]
+[node name="Label" type="Label" parent="VBoxContainer/level4/level"]
 anchor_left = 0.05
 anchor_top = 0.1
 anchor_right = 0.95
@@ -175,7 +197,7 @@ custom_fonts/font = SubResource( 2 )
 text = "4. Получение малорастворимых солей щелочных металлов"
 valign = 1
 
-[node name="ColorRect2" type="ColorRect" parent="VBoxContainer/chapter4/chapter"]
+[node name="ColorRect2" type="ColorRect" parent="VBoxContainer/level4/level"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 mouse_filter = 2
@@ -185,18 +207,18 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="chapter5" type="Control" parent="VBoxContainer"]
+[node name="level5" type="Control" parent="VBoxContainer"]
 margin_top = 300.0
 margin_right = 900.0
 margin_bottom = 300.0
 
-[node name="chapter" type="Button" parent="VBoxContainer/chapter5"]
+[node name="level" type="Button" parent="VBoxContainer/level5"]
 margin_right = 900.0
 margin_bottom = 70.0
 align = 0
 script = ExtResource( 2 )
 
-[node name="Label" type="Label" parent="VBoxContainer/chapter5/chapter"]
+[node name="Label" type="Label" parent="VBoxContainer/level5/level"]
 anchor_left = 0.05
 anchor_top = 0.1
 anchor_right = 0.95
@@ -207,7 +229,7 @@ custom_fonts/font = SubResource( 2 )
 text = "5. Взаимодействие щелочноземельных металлов с водой"
 valign = 1
 
-[node name="ColorRect2" type="ColorRect" parent="VBoxContainer/chapter5/chapter"]
+[node name="ColorRect2" type="ColorRect" parent="VBoxContainer/level5/level"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 mouse_filter = 2
@@ -217,18 +239,18 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="chapter6" type="Control" parent="VBoxContainer"]
+[node name="level6" type="Control" parent="VBoxContainer"]
 margin_top = 375.0
 margin_right = 900.0
 margin_bottom = 375.0
 
-[node name="chapter" type="Button" parent="VBoxContainer/chapter6"]
+[node name="level" type="Button" parent="VBoxContainer/level6"]
 margin_right = 900.0
 margin_bottom = 70.0
 align = 0
 script = ExtResource( 2 )
 
-[node name="Label" type="Label" parent="VBoxContainer/chapter6/chapter"]
+[node name="Label" type="Label" parent="VBoxContainer/level6/level"]
 anchor_left = 0.05
 anchor_top = 0.1
 anchor_right = 0.95
@@ -239,7 +261,7 @@ custom_fonts/font = SubResource( 2 )
 text = "6. Восстановление магнием оксида углерода"
 valign = 1
 
-[node name="ColorRect2" type="ColorRect" parent="VBoxContainer/chapter6/chapter"]
+[node name="ColorRect2" type="ColorRect" parent="VBoxContainer/level6/level"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 mouse_filter = 2
@@ -249,18 +271,18 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="chapter7" type="Control" parent="VBoxContainer"]
+[node name="level7" type="Control" parent="VBoxContainer"]
 margin_top = 450.0
 margin_right = 900.0
 margin_bottom = 450.0
 
-[node name="chapter" type="Button" parent="VBoxContainer/chapter7"]
+[node name="level" type="Button" parent="VBoxContainer/level7"]
 margin_right = 900.0
 margin_bottom = 70.0
 align = 0
 script = ExtResource( 2 )
 
-[node name="Label" type="Label" parent="VBoxContainer/chapter7/chapter"]
+[node name="Label" type="Label" parent="VBoxContainer/level7/level"]
 anchor_left = 0.05
 anchor_top = 0.1
 anchor_right = 0.95
@@ -271,7 +293,7 @@ custom_fonts/font = SubResource( 2 )
 text = "7. Получение кислородных соединений магния и кальция"
 valign = 1
 
-[node name="ColorRect2" type="ColorRect" parent="VBoxContainer/chapter7/chapter"]
+[node name="ColorRect2" type="ColorRect" parent="VBoxContainer/level7/level"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 mouse_filter = 2
@@ -281,18 +303,18 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="chapter8" type="Control" parent="VBoxContainer"]
+[node name="level8" type="Control" parent="VBoxContainer"]
 margin_top = 525.0
 margin_right = 900.0
 margin_bottom = 525.0
 
-[node name="chapter" type="Button" parent="VBoxContainer/chapter8"]
+[node name="level" type="Button" parent="VBoxContainer/level8"]
 margin_right = 900.0
 margin_bottom = 70.0
 align = 0
 script = ExtResource( 2 )
 
-[node name="Label" type="Label" parent="VBoxContainer/chapter8/chapter"]
+[node name="Label" type="Label" parent="VBoxContainer/level8/level"]
 anchor_left = 0.05
 anchor_top = 0.1
 anchor_right = 0.95
@@ -303,7 +325,7 @@ custom_fonts/font = SubResource( 2 )
 text = "8. Окрашивание пламени солями щелочноземельных металлов"
 valign = 1
 
-[node name="ColorRect2" type="ColorRect" parent="VBoxContainer/chapter8/chapter"]
+[node name="ColorRect2" type="ColorRect" parent="VBoxContainer/level8/level"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 mouse_filter = 2
@@ -313,18 +335,18 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="chapter9" type="Control" parent="VBoxContainer"]
+[node name="level9" type="Control" parent="VBoxContainer"]
 margin_top = 600.0
 margin_right = 900.0
 margin_bottom = 600.0
 
-[node name="chapter" type="Button" parent="VBoxContainer/chapter9"]
+[node name="level" type="Button" parent="VBoxContainer/level9"]
 margin_right = 900.0
 margin_bottom = 70.0
 align = 0
 script = ExtResource( 2 )
 
-[node name="Label" type="Label" parent="VBoxContainer/chapter9/chapter"]
+[node name="Label" type="Label" parent="VBoxContainer/level9/level"]
 anchor_left = 0.05
 anchor_top = 0.1
 anchor_right = 0.95
@@ -335,7 +357,7 @@ custom_fonts/font = SubResource( 2 )
 text = "9. Получение карбонатов щелочноземельных металлов и магния"
 valign = 1
 
-[node name="ColorRect2" type="ColorRect" parent="VBoxContainer/chapter9/chapter"]
+[node name="ColorRect2" type="ColorRect" parent="VBoxContainer/level9/level"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 mouse_filter = 2
@@ -345,18 +367,18 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="chapter10" type="Control" parent="VBoxContainer"]
+[node name="level10" type="Control" parent="VBoxContainer"]
 margin_top = 675.0
 margin_right = 900.0
 margin_bottom = 675.0
 
-[node name="chapter" type="Button" parent="VBoxContainer/chapter10"]
+[node name="level" type="Button" parent="VBoxContainer/level10"]
 margin_right = 900.0
 margin_bottom = 70.0
 align = 0
 script = ExtResource( 2 )
 
-[node name="Label" type="Label" parent="VBoxContainer/chapter10/chapter"]
+[node name="Label" type="Label" parent="VBoxContainer/level10/level"]
 anchor_left = 0.05
 anchor_top = 0.1
 anchor_right = 0.95
@@ -367,7 +389,7 @@ custom_fonts/font = SubResource( 2 )
 text = "10. Получение сульфатов щелочноземельных металлов"
 valign = 1
 
-[node name="ColorRect2" type="ColorRect" parent="VBoxContainer/chapter10/chapter"]
+[node name="ColorRect2" type="ColorRect" parent="VBoxContainer/level10/level"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 mouse_filter = 2
@@ -377,18 +399,18 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="chapter11" type="Control" parent="VBoxContainer"]
+[node name="level11" type="Control" parent="VBoxContainer"]
 margin_top = 750.0
 margin_right = 900.0
 margin_bottom = 750.0
 
-[node name="chapter" type="Button" parent="VBoxContainer/chapter11"]
+[node name="level" type="Button" parent="VBoxContainer/level11"]
 margin_right = 900.0
 margin_bottom = 70.0
 align = 0
 script = ExtResource( 2 )
 
-[node name="Label" type="Label" parent="VBoxContainer/chapter11/chapter"]
+[node name="Label" type="Label" parent="VBoxContainer/level11/level"]
 anchor_left = 0.05
 anchor_top = 0.1
 anchor_right = 0.95
@@ -399,7 +421,7 @@ custom_fonts/font = SubResource( 2 )
 text = "11. Получение хроматов щелочноземельных металлов"
 valign = 1
 
-[node name="ColorRect2" type="ColorRect" parent="VBoxContainer/chapter11/chapter"]
+[node name="ColorRect2" type="ColorRect" parent="VBoxContainer/level11/level"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 mouse_filter = 2

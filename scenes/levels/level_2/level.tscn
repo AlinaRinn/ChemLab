@@ -1,9 +1,9 @@
-[gd_scene load_steps=25 format=2]
+[gd_scene load_steps=23 format=2]
 
 [ext_resource path="res://objects/static/room.tscn" type="PackedScene" id=1]
 [ext_resource path="res://objects/static/lamp.tscn" type="PackedScene" id=2]
 [ext_resource path="res://objects/static/chair.tscn" type="PackedScene" id=3]
-[ext_resource path="res://objects/interactive/petri.tscn" type="PackedScene" id=4]
+[ext_resource path="res://objects/static/holder.tscn" type="PackedScene" id=4]
 [ext_resource path="res://objects/interactive/window.tscn" type="PackedScene" id=5]
 [ext_resource path="res://objects/static/mendeleev.tscn" type="PackedScene" id=6]
 [ext_resource path="res://objects/interactive/tube.tscn" type="PackedScene" id=7]
@@ -16,8 +16,6 @@
 [ext_resource path="res://objects/static/table_hole.tscn" type="PackedScene" id=14]
 [ext_resource path="res://objects/interactive/sink.tscn" type="PackedScene" id=15]
 [ext_resource path="res://objects/static/table_4.tscn" type="PackedScene" id=16]
-[ext_resource path="res://objects/interactive/bottle.tscn" type="PackedScene" id=17]
-[ext_resource path="res://objects/interactive/tube_spiral.tscn" type="PackedScene" id=18]
 [ext_resource path="res://objects/interactive/burner.tscn" type="PackedScene" id=19]
 [ext_resource path="res://objects/static/lobby.tscn" type="PackedScene" id=20]
 [ext_resource path="res://objects/static/shelf.tscn" type="PackedScene" id=21]
@@ -33,35 +31,107 @@ func _ready():
 	if G.load_item == '11':
 		var item1 = load('res://objects/interactive/bottle.tscn').instance()
 		$things.add_child(item1)
-		item1.subs = \"acid\"
-		item1.global_transform.origin = Vector3(15, 3.3, -1.3)
+		item1.subs = \"Phenolphthalein\"
+		item1.global_transform.origin = Vector3(15, 3.3, -0.8)
+		
+		var item12 = load('res://objects/interactive/bottle.tscn').instance()
+		$things.add_child(item12)
+		item12.subs = \"Na\"
+		item12.isMetal = true
+		item12.global_transform.origin = Vector3(15, 3.3, -1.1)
+		
+		var item13 = load('res://objects/interactive/bottle.tscn').instance()
+		$things.add_child(item13)
+		item13.subs = \"Li\"
+		item13.isMetal = true
+		item13.global_transform.origin = Vector3(15, 3.3, -1.4)
+		
+		var item14 = load('res://objects/interactive/bottle.tscn').instance()
+		$things.add_child(item14)
+		item14.subs = \"K\"
+		item14.isMetal = true
+		item14.global_transform.origin = Vector3(15, 3.3, -1.7)
 		
 		var item2 = load('res://objects/interactive/petri.tscn').instance()
 		$things.add_child(item2)
-		item2.global_transform.origin = Vector3(14.5, 3, -1.3)
+		item2.global_transform.origin = Vector3(14.5, 3, -0.8)
 		item2.scale = Vector3(0.05, 0.05, 0.05)
 		
 		var item3 = load('res://objects/interactive/petri.tscn').instance()
 		$things.add_child(item3)
-		item3.global_transform.origin = Vector3(14.5, 3, -1)
+		item3.global_transform.origin = Vector3(14.5, 3, -1.2)
 		item3.scale = Vector3(0.05, 0.05, 0.05)
 		
 		var item4 = load('res://objects/interactive/petri.tscn').instance()
 		$things.add_child(item4)
-		item4.global_transform.origin = Vector3(14.5, 3, -0.7)
+		item4.global_transform.origin = Vector3(14.5, 3, -1.6)
 		item4.scale = Vector3(0.05, 0.05, 0.05)
-		
-		var item5 = load('res://objects/interactive/pincet.tscn').instance()
-		$things.add_child(item5)
-		item5.global_transform.origin = Vector3(14.5, 3, -1.5)
-		item5.scale = Vector3(0.2, 0.2, 0.2)	
 		#item1.set_mode(0)
 		
-		var item6 = load('res://objects/interactive/paper.tscn').instance()
-		$things.add_child(item6)
-		item6.global_transform.origin = Vector3(14.5, 2.82, -2)
-		#item6.scale = Vector3(0.2, 0.2, 0.2)
+		var item5 = load('res://objects/interactive/paper.tscn').instance()
+		$things.add_child(item5)
+		item5.global_transform.origin = Vector3(14.5, 2.82, -2)
+				
 
+	if G.load_item == '12':
+		pass
+	
+	if G.load_item == '13':
+		var item1 = load('res://objects/interactive/tube_spiral.tscn').instance()
+		$things.add_child(item1)
+		item1.e = \"K\"
+		item1.global_transform.origin = Vector3(14.3, 3, -12)
+		item1.set_mode(1)
+	
+		var item2 = load('res://objects/interactive/tube_spiral.tscn').instance()
+		$things.add_child(item2)
+		item2.e = \"Na\"
+		item2.global_transform.origin = Vector3(14.3, 3, -11.5)
+		item2.set_mode(1)
+		
+		var item3 = load('res://objects/interactive/tube_spiral.tscn').instance()
+		$things.add_child(item3)
+		item3.e = \"Li\"
+		item3.global_transform.origin = Vector3(14.3, 3, -11)
+		item3.set_mode(1)
+		
+	if G.load_item == '14':
+		var item1 = load('res://objects/interactive/bottle.tscn').instance()
+		$things.add_child(item1)
+		item1.subs = \"Na2CO3\"
+		item1.global_transform.origin = Vector3(15, 3.3, -0.8)
+		
+		var item12 = load('res://objects/interactive/bottle.tscn').instance()
+		$things.add_child(item12)
+		item12.subs = \"LiCl\"
+		item12.global_transform.origin = Vector3(15, 3.3, -1.1)
+		
+		var item2 = load('res://objects/interactive/petri.tscn').instance()
+		$things.add_child(item2)
+		item2.global_transform.origin = Vector3(14.5, 3, -0.8)
+		item2.scale = Vector3(0.05, 0.05, 0.05)	
+	
+	if G.load_item == '15':
+		pass
+	
+	if G.load_item == '16':
+		pass
+		
+	if G.load_item == '17':
+		pass
+		
+	if G.load_item == '18':
+		pass
+		
+	if G.load_item == '19':
+		pass	
+	
+	if G.load_item == '110':
+		pass
+		
+	if G.load_item == '111':
+		pass
+		
 func exit():
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	G.to(\"main_menu\")
@@ -159,54 +229,17 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 14.4538, 2.81113, -14.1175 )
 [node name="stand" parent="things" instance=ExtResource( 21 )]
 transform = Transform( 0.4, 0, 0, 0, 0.48, 0, 0, 0, 0.4, 14.9963, 2.84733, -1.29036 )
 
+[node name="tripod" parent="things" instance=ExtResource( 4 )]
+transform = Transform( 0.55, 0, 0, 0, 0.55, 0, 0, 0, 0.55, 15.02, 2.9292, -5.05513 )
+
+[node name="tube" parent="things/tripod" instance=ExtResource( 7 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00398827, 0.231869, -0.33351 )
+
+[node name="tube2" parent="things/tripod" instance=ExtResource( 7 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00398827, 0.231869, 0.012682 )
+
+[node name="tube3" parent="things/tripod" instance=ExtResource( 7 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00398827, 0.231869, 0.357152 )
+
 [node name="lobby" parent="." instance=ExtResource( 20 )]
 transform = Transform( -4.37114e-08, 0, -1, 0, 0.62, 0, 1, 0, -4.37114e-08, -5.85772, 1.15397, 3.37713 )
-
-[node name="tube" parent="." instance=ExtResource( 7 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 14.6331, 2.81661, -4.96918 )
-isSpiral = true
-
-[node name="tube2" parent="." instance=ExtResource( 7 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 14.6331, 2.81661, -5.29216 )
-
-[node name="petri" parent="." instance=ExtResource( 4 )]
-transform = Transform( 0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 14.3957, 2.94777, -4.38386 )
-
-[node name="bottle" parent="." instance=ExtResource( 17 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 14.3865, 2.54313, -9.68583 )
-subs = "Na"
-isMetal = true
-
-[node name="bottle2" parent="." instance=ExtResource( 17 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 14.4624, 2.54313, -9.43683 )
-subs = "Phenolphthalein"
-
-[node name="bottle3" parent="." instance=ExtResource( 17 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 14.3865, 2.54313, -9.94839 )
-subs = "Li"
-isMetal = true
-
-[node name="bottle4" parent="." instance=ExtResource( 17 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 14.3745, 2.6143, -9.12914 )
-subs = "K"
-isMetal = true
-
-[node name="bottle5" parent="." instance=ExtResource( 17 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 14.3745, 2.6143, -6.39945 )
-subs = "Na2CO3"
-
-[node name="bottle6" parent="." instance=ExtResource( 17 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 14.3745, 2.6143, -6.66126 )
-subs = "LiCl"
-
-[node name="tube3" parent="." instance=ExtResource( 18 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 14.2896, 2.90279, -11.5016 )
-e = "K"
-
-[node name="tube4" parent="." instance=ExtResource( 18 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 14.2896, 2.90279, -10.9704 )
-e = "Na"
-
-[node name="tube5" parent="." instance=ExtResource( 18 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 14.2896, 2.90279, -12.0528 )
-e = "Li"

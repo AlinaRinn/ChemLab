@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://assets/models/tripod.obj" type="ArrayMesh" id=1]
-[ext_resource path="res://assets/materials/plastic_white.material" type="Material" id=2]
+[ext_resource path="res://assets/materials/metal_blue.material" type="Material" id=2]
 [ext_resource path="res://objects/collide.tscn" type="PackedScene" id=3]
 
 [node name="tripod" type="Spatial"]
@@ -21,13 +21,13 @@ transform = Transform( 0.0445971, 0, 0, 0, 0.0190031, 0, 0, 0, 0.591802, 3.24044
 transform = Transform( 0.0445971, 0, 0, 0, 0.0190031, 0, 0, 0, 0.591802, 3.00475, 3.49231, -3.19664 )
 
 [node name="BoxCollider4" parent="MeshInstance" instance=ExtResource( 3 )]
-transform = Transform( 0.0729333, 0, 0, 0, 0.0190031, 0, 0, 0, 0.0877871, 3.1236, 3.49231, -2.68414 )
+transform = Transform( 0.0729333, 0, 0, 0, 0.0190031, 0, 0, 0, 0.0853456, 3.1236, 3.49231, -2.68414 )
 
 [node name="BoxCollider5" parent="MeshInstance" instance=ExtResource( 3 )]
-transform = Transform( 0.0729333, 0, 0, 0, 0.0190031, 0, 0, 0, 0.0877871, 3.1236, 3.49231, -3.02443 )
+transform = Transform( 0.0729333, 0, 0, 0, 0.0190031, 0, 0, 0, 0.0838245, 3.1236, 3.49231, -3.02443 )
 
 [node name="BoxCollider6" parent="MeshInstance" instance=ExtResource( 3 )]
-transform = Transform( 0.0729333, 0, 0, 0, 0.0190031, 0, 0, 0, 0.0877871, 3.1236, 3.49231, -3.36627 )
+transform = Transform( 0.0729333, 0, 0, 0, 0.0190031, 0, 0, 0, 0.0846555, 3.1236, 3.49231, -3.36627 )
 
 [node name="BoxCollider7" parent="MeshInstance" instance=ExtResource( 3 )]
-transform = Transform( 0.0729333, 0, 0, 0, 0.0190031, 0, 0, 0, 0.0877871, 3.1236, 3.49231, -3.71116 )
+transform = Transform( 0.0729333, 0, 0, 0, 0.0190031, 0, 0, 0, 0.0870363, 3.1236, 3.49231, -3.71116 )
