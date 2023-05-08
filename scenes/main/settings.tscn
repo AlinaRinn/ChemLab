@@ -26,6 +26,9 @@ func _on_CheckButton_toggled(button_pressed):
 script/source = "extends CheckButton
 
 
+func _ready():
+	set_pressed_no_signal(OS.is_vsync_enabled())
+
 func _on_CheckButton_toggled(button_pressed):
 	OS.set_use_vsync(button_pressed)
 "
@@ -67,6 +70,9 @@ func _on_OptionButton_item_selected(index):
 script/source = "extends CheckBox
 
 
+func _ready():
+	set_pressed_no_signal(get_viewport().get_use_fxaa())
+
 func _on_CheckBox_toggled(button_pressed):
 	get_viewport().set_use_fxaa(button_pressed)
 "
@@ -75,6 +81,9 @@ func _on_CheckBox_toggled(button_pressed):
 script/source = "extends OptionButton
 
 
+func _ready():
+	selected = get_viewport().get_msaa()
+	
 func _on_OptionButton_item_selected(index):
 	get_viewport().set_msaa(index)
 "
