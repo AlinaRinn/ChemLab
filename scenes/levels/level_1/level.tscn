@@ -118,34 +118,46 @@ transform = Transform( 1, 0, -8.9407e-08, 0, 1, 0, 8.9407e-08, 0, 1, -3.55717, 3
 transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -0.284925, 2.2298, -7.29399 )
 
 [node name="Bottle1" parent="Furniture/Holder1" instance=ExtResource( 21 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0306711, 1.88561, 1.27428 )
+transform = Transform( 1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -0.0306711, 1.88561, 1.27428 )
+subs = "acid"
 
 [node name="Bottle2" parent="Furniture/Holder1" instance=ExtResource( 21 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.170469, 1.88561, 0.743261 )
+transform = Transform( 1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0.170469, 1.88561, 0.743261 )
+subs = "alkali"
 
 [node name="Bottle3" parent="Furniture/Holder1" instance=ExtResource( 21 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0440907, 1.88561, -0.235379 )
+transform = Transform( 1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -0.0440907, 1.88561, -0.235379 )
+subs = "water"
 
 [node name="Bottle4" parent="Furniture/Holder1" instance=ExtResource( 21 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00233507, 0.956308, 0.59095 )
+transform = Transform( 1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0.00233507, 0.956308, 0.59095 )
+subs = "Na"
+isMetal = true
 
 [node name="Bottle5" parent="Furniture/Holder1" instance=ExtResource( 21 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0726342, 0.956308, -0.925476 )
+transform = Transform( 1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -0.0726342, 0.956308, -0.925476 )
+subs = "Li"
+isMetal = true
 
 [node name="Bottle6" parent="Furniture/Holder1" instance=ExtResource( 21 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.330531, 0.956308, -1.50851 )
+transform = Transform( 1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0.330531, 0.956308, -1.50851 )
+subs = "K"
+isMetal = true
 
 [node name="Holder2" parent="Furniture" instance=ExtResource( 20 )]
 transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 4.19006, 2.2298, -7.29399 )
 
 [node name="Bottle1" parent="Furniture/Holder2" instance=ExtResource( 21 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0920434, 0.956308, 1.31937 )
+transform = Transform( 1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0.0920434, 0.956308, 1.31937 )
+subs = "Na2CO3"
 
 [node name="Bottle2" parent="Furniture/Holder2" instance=ExtResource( 21 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0103884, 0.956308, 0.825899 )
+transform = Transform( 1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0.0103884, 0.956308, 0.825899 )
+subs = "LiCl"
 
 [node name="Bottle3" parent="Furniture/Holder2" instance=ExtResource( 21 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.12992, 1.88561, -0.711114 )
+transform = Transform( 1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0.12992, 1.88561, -0.711114 )
+subs = "Phenolphthalein"
 
 [node name="tube_stand" parent="Furniture" instance=ExtResource( 18 )]
 transform = Transform( -0.64, 0, -5.59506e-08, 0, 0.768, 0, 5.59506e-08, 0, -0.64, 12.3291, 2.17868, 5.84616 )
@@ -158,10 +170,6 @@ transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 5.48298
 
 [node name="staffs" type="Spatial" parent="."]
 
-[node name="bottle" parent="staffs" instance=ExtResource( 21 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4.46698, 2.23178, -5.3601 )
-isMetal = true
-
 [node name="Tube2" parent="staffs" instance=ExtResource( 10 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 14.9025, 2.51954, 6.49631 )
 
@@ -169,13 +177,13 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 14.9025, 2.51954, 6.49631 )
 transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 14.8919, 2.29459, 6.4758 )
 
 [node name="Tube3" parent="staffs" instance=ExtResource( 10 )]
-transform = Transform( 0.253606, 0, -0.967308, 0, 1, 0, 0.967308, 0, 0.253606, 15.9874, 2.52172, -3.52441 )
+transform = Transform( 0.253606, 0, -0.967308, 0, 1, 0, 0.967308, 0, 0.253606, 15.9874, 2.42168, -3.52441 )
 
 [node name="Tube4" parent="staffs" instance=ExtResource( 10 )]
-transform = Transform( 0.253606, 0, -0.967308, 0, 1, 0, 0.967308, 0, 0.253606, 16.1574, 2.51954, -2.85764 )
+transform = Transform( 0.253606, 0, -0.967308, 0, 1, 0, 0.967308, 0, 0.253606, 16.1574, 2.42168, -2.85764 )
 
 [node name="Tripod2" parent="staffs" instance=ExtResource( 9 )]
-transform = Transform( 0.967308, 0, 0.253606, 0, 1, 0, -0.253606, 0, 0.967308, 16.0869, 2.29459, -3.19737 )
+transform = Transform( 0.967308, 0, 0.253606, 0, 1, 0, -0.253606, 0, 0.967308, 16.0869, 2.19809, -3.19737 )
 
 [node name="Tube5" parent="staffs" instance=ExtResource( 10 )]
 transform = Transform( 0.910265, 0, 0.414026, 0, 1, 0, -0.414026, 0, 0.910265, 2.83714, 2.52172, -6.00234 )
@@ -205,25 +213,25 @@ transform = Transform( 0.955428, 0, -0.295225, 0, 1, 0, 0.295225, 0, 0.955428, 0
 transform = Transform( 0.363089, 0, 0.931755, 0, 1, 0, -0.931755, 0, 0.363089, -1.60175, 2.47342, -6.14109 )
 
 [node name="Folder6" parent="staffs" instance=ExtResource( 11 )]
-transform = Transform( 0.872973, 0, 0.487768, 0, 1, 0, -0.487768, 0, 0.872973, 5.13897, 2.18368, -5.72482 )
+transform = Transform( 0.872973, 0, 0.487768, 0, 1, 0, -0.487768, 0, 0.872973, 5.13897, 2.12048, -5.72482 )
 note_number = "1"
 note_other = "Журнал по теме бромирование ацетилена в общественном транспорте"
 
 [node name="SpiritLamp1" parent="staffs" instance=ExtResource( 17 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.584816, 2.26228, -5.73009 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.584816, 2.17807, -5.73009 )
 
 [node name="SpiritLamp2" parent="staffs" instance=ExtResource( 17 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 12.4082, 2.31318, 5.84636 )
-
-[node name="Bottle" parent="staffs" instance=ExtResource( 21 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 5.58572, 2.23178, -5.2812 )
 
 [node name="petri" parent="staffs" instance=ExtResource( 22 )]
 transform = Transform( 0.08, 0, 0, 0, 0.08, 0, 0, 0, 0.08, 13.9052, 2.23202, 5.7421 )
 
 [node name="pincet" parent="staffs" instance=ExtResource( 23 )]
-transform = Transform( 0.18, 0, 0, 0, 0.18, 0, 0, 0, 0.18, 13.9673, 2.70253, 5.73484 )
+transform = Transform( 0.18, 0, 0, 0, 0.18, 0, 0, 0, 0.18, 14.7492, 2.17197, 5.43382 )
 
 [node name="Li" parent="staffs" instance=ExtResource( 24 )]
-transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 13.7816, 2.2362, 5.93471 )
+transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 13.9528, 2.2742, 5.75687 )
 mass = 0.05
+
+[node name="petri2" parent="staffs" instance=ExtResource( 22 )]
+transform = Transform( 0.08, 0, 0, 0, 0.08, 0, 0, 0, 0.08, 1.42881, 2.25518, -5.6066 )
