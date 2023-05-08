@@ -106,9 +106,13 @@ scale_amount_random = 1.0
 [node name="interaction_1" parent="." instance=ExtResource( 8 )]
 transform = Transform( 1.03822, 0, 0, 0, 1.93991, 0, 0, 0, 1, 0.247042, 1.10552, 0 )
 label = "Дистиллятор"
+right_click_action = "drain"
+right_click_label = "Слить"
 
 [node name="interaction_2" parent="." instance=ExtResource( 8 )]
 transform = Transform( 0.278153, 0, 0, 0, 0.251164, 0, 0, 0, 0.271931, 1.64459, 0.337286, 0 )
 label = "Дистиллятор"
 left_click_action = "press"
 left_click_label = "Открыть/Закрыть"
+right_click_action = "pour"
+right_click_label = "Наполнить"

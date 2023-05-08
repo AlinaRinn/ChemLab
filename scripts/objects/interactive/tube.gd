@@ -11,12 +11,6 @@ var opened = false
 var id = "tube"
 
 export(bool) var isSpiral
-export var level_1 = ""
-export var level_2 = ""
-export var level_3 = ""
-export var level_4 = ""
-export var level_5 = ""
-
 
 func change_color(color):
 	# Меняем цвет
@@ -50,19 +44,6 @@ func take():
 	var object = G.player.get_to_hand(self)
 	if object:
 		parent.add_child(object)
-
-
-func _physics_process(_delta):
-	if level_1:
-		$CollisionShape/MeshInstance/element_1.visible = true
-	if level_2:
-		$CollisionShape/MeshInstance/element_2.visible = true
-	if level_3:
-		$CollisionShape/MeshInstance/element_3.visible = true
-	if level_4:
-		$CollisionShape/MeshInstance/element_4.visible = true
-	if level_5:
-		$CollisionShape/MeshInstance/element_5.visible = true
 
 
 func _ready():

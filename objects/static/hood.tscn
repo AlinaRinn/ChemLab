@@ -4,12 +4,9 @@
 [ext_resource path="res://assets/textures/pltstol.jpg" type="Texture" id=2]
 [ext_resource path="res://assets/textures/gofr.jpg" type="Texture" id=3]
 [ext_resource path="res://assets/models/air_vent.obj" type="ArrayMesh" id=4]
+[ext_resource path="res://assets/materials/metal.material" type="Material" id=5]
 
 [sub_resource type="SpatialMaterial" id=1]
-
-[sub_resource type="SpatialMaterial" id=2]
-albedo_color = Color( 0.776471, 0.776471, 0.776471, 1 )
-metallic = 1.0
 
 [sub_resource type="SpatialMaterial" id=3]
 albedo_texture = ExtResource( 2 )
@@ -23,7 +20,7 @@ albedo_texture = ExtResource( 3 )
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -7.71095, -0.923472, 8.88438 )
 mesh = ExtResource( 4 )
 material/0 = SubResource( 1 )
-material/1 = SubResource( 2 )
+material/1 = ExtResource( 5 )
 material/2 = SubResource( 3 )
 material/3 = SubResource( 4 )
 
