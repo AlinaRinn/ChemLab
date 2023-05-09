@@ -74,7 +74,7 @@ func remove_substance_met():
 func reaction():
 	if name_substance_met == [\"Литий\", \"\", \"\", \"\", \"\"] and \\
 	   name_substance_liq == [\"Вода\", \"Фенолфталеин\"]:
-		var layer = $CollisionShape/MeshInstance/element_1/metal_piece
+		var layer = $CollisionShape/MeshInstance2/element_2/liq
 		var material = layer.get_surface_material(0).duplicate()
 		material.albedo_color = Color.deeppink
 		layer.set_surface_material(0, material)
@@ -82,12 +82,22 @@ func reaction():
 
 	if name_substance_met == [\"Калий\", \"\", \"\", \"\", \"\"] and \\
 	   name_substance_liq == [\"Вода\", \"Фенолфталеин\"]:
-		var layer = $CollisionShape/MeshInstance/element_1/metal_piece
+		var layer = $CollisionShape/MeshInstance2/element_2/liq
 		var material = layer.get_surface_material(0).duplicate()
 		material.albedo_color = Color.deeppink
 		layer.set_surface_material(0, material)
 		$Particles.emitting = true
-
+		
+		
+	if name_substance_met == [\"Натрий\", \"\", \"\", \"\", \"\"] and \\
+	   name_substance_liq == [\"Вода\", \"Фенолфталеин\"]:
+		var layer = $CollisionShape/MeshInstance2/element_2/liq
+		var material = layer.get_surface_material(0).duplicate()
+		material.albedo_color = Color.deeppink
+		layer.set_surface_material(0, material)
+		$Particles.emitting = true
+		
+		
 	if name_substance_met == [\"\", \"\", \"\", \"\", \"\"] and \\
 	   name_substance_liq == [\"Карбонат натрия\", \"Хлорид лития\"]:
 		name_substance_liq[0] = \"Хлорид Натрия\"
