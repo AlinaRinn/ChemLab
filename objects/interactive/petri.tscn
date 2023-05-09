@@ -5,7 +5,7 @@
 [ext_resource path="res://objects/interaction.tscn" type="PackedScene" id=3]
 [ext_resource path="res://objects/interactive/metal.tscn" type="PackedScene" id=4]
 [ext_resource path="res://objects/elements/water.tscn" type="PackedScene" id=5]
-[ext_resource path="res://objects/elements/sediment.tscn" type="PackedScene" id=6]
+[ext_resource path="res://objects/elements/true_sediment.tscn" type="PackedScene" id=6]
 
 [sub_resource type="GDScript" id=2]
 script/source = "extends RigidBody
@@ -100,9 +100,11 @@ func reaction():
 		
 	if name_substance_met == [\"\", \"\", \"\", \"\", \"\"] and \\
 	   name_substance_liq == [\"Карбонат натрия\", \"Хлорид лития\"]:
+		print(123)
 		name_substance_liq[0] = \"Хлорид Натрия\"
 		name_substance_liq[1] = \"Карбонат Лития\"
-		$CollisionShape/MeshInstance2/element_1.change()
+		$CollisionShape/MeshInstance2/element_2.visible = false
+		$CollisionShape/MeshInstance2/sediment.visible = true
 		
 	
 	
@@ -183,7 +185,7 @@ transform = Transform( 44, 0, 0, 0, 5, 0, 0, 0, 44, 0, 0.215518, 0 )
 visible = false
 
 [node name="sediment" parent="CollisionShape/MeshInstance2" instance=ExtResource( 6 )]
-transform = Transform( 44.2, 0, 0, 0, 3.2, 0, 0, 0, 44.2, 0, -0.324, 0 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0233777, -0.565, -0.100709 )
 visible = false
 
 [node name="interactive" parent="." instance=ExtResource( 3 )]
