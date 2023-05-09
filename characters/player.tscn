@@ -73,7 +73,7 @@ func get_info_object():
 		
 		# Название предмета на который навелись
 		G.label_name.text = cast.label
-		var liquid_obj = owner.get(\"liquid\")
+		var liquid_obj = owner.get(\"subs\")
 		if liquid_obj != \"\" && liquid_obj:
 			G.label_name.text += ' \"' + substance[liquid_obj][\"name\"] + '\"'
 		
