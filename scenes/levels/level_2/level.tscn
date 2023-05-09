@@ -37,19 +37,19 @@ func _ready():
 		var item12 = load('res://objects/interactive/bottle.tscn').instance()
 		$things.add_child(item12)
 		item12.subs = \"Na\"
-		item12.isMetal = true
+		item12.hide()
 		item12.global_transform.origin = Vector3(15, 3.3, -1.1)
 		
 		var item13 = load('res://objects/interactive/bottle.tscn').instance()
 		$things.add_child(item13)
 		item13.subs = \"Li\"
-		item13.isMetal = true
+		item13.hide()
 		item13.global_transform.origin = Vector3(15, 3.3, -1.4)
 		
 		var item14 = load('res://objects/interactive/bottle.tscn').instance()
 		$things.add_child(item14)
 		item14.subs = \"K\"
-		item14.isMetal = true
+		item14.hide()
 		item14.global_transform.origin = Vector3(15, 3.3, -1.7)
 		
 		var item2 = load('res://objects/interactive/petri.tscn').instance()
@@ -80,18 +80,21 @@ func _ready():
 		var item1 = load('res://objects/interactive/tube_spiral.tscn').instance()
 		$things.add_child(item1)
 		item1.e = \"K\"
+		
 		item1.global_transform.origin = Vector3(14.3, 3, -12)
 		item1.set_mode(1)
 	
 		var item2 = load('res://objects/interactive/tube_spiral.tscn').instance()
 		$things.add_child(item2)
 		item2.e = \"Na\"
+		item2.hide()
 		item2.global_transform.origin = Vector3(14.3, 3, -11.5)
 		item2.set_mode(1)
 		
 		var item3 = load('res://objects/interactive/tube_spiral.tscn').instance()
 		$things.add_child(item3)
 		item3.e = \"Li\"
+		item3.hide()
 		item3.global_transform.origin = Vector3(14.3, 3, -11)
 		item3.set_mode(1)
 		

@@ -32,5 +32,14 @@ func pour():
 
 func _ready():
 	# При создании получаем кол-во слоев
-	if (!isMetal):
-		$metal.visible = false
+	if (isMetal):
+		$metal.visible = true
+
+
+func hide():
+	if isMetal:
+		isMetal = false
+		$metal.visible = isMetal
+	else:
+		isMetal = true
+		$metal.visible = isMetal
