@@ -12,7 +12,7 @@ script/source = "extends RigidBody
 
 
 var id = \"tube_spiral\"
-export var e = \"\"
+export var subs = \"\"
 var h = true
 func take():
 	# Подбирание
