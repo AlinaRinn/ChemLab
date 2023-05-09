@@ -121,7 +121,23 @@ func _ready():
 		pass
 		
 	if G.load_item == '18':
-		pass
+		var item1 = load('res://objects/interactive/tube_spiral.tscn').instance()
+		$things.add_child(item1)
+		item1.subs = \"Ca\"
+		item1.global_transform.origin = Vector3(14.3, 3, -12)
+		item1.set_mode(1)
+	
+		var item2 = load('res://objects/interactive/tube_spiral.tscn').instance()
+		$things.add_child(item2)
+		item2.subs = \"Sr\"
+		item2.global_transform.origin = Vector3(14.3, 3, -11.5)
+		item2.set_mode(1)
+		
+		var item3 = load('res://objects/interactive/tube_spiral.tscn').instance()
+		$things.add_child(item3)
+		item3.subs = \"Ba\"
+		item3.global_transform.origin = Vector3(14.3, 3, -11)
+		item3.set_mode(1)
 		
 	if G.load_item == '19':
 		pass	

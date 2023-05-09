@@ -10,4 +10,8 @@ export var sub = {
 	Phenolphthalein = {"name": "Фенолфталеин", "color": Color.darkorchid},
 	LiCl = {"name": "Хлорид лития", "color": Color.whitesmoke},
 	Na2CO3 = {"name": "Карбонат натрия", "color": Color.darkgray},
+	Ca = {"name": "Кальций", "color": Color.silver},
+	Sr = {"name": "Стронций", "color": Color.yellow},
+	Ba = {"name": "Барий", "color": Color.gray},
+	
 }

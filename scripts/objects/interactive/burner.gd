@@ -24,12 +24,18 @@ func spiral():
 		G.player.in_hand_object.hide()
 		isSpiral = true
 		$spiral.visible = isSpiral
-		if G.player.in_hand_object.e == "K":
+		if G.player.in_hand_object.subs == "K":
 			$CPUParticles.color_ramp = load("res://assets/gradient/K.tres")
-		if G.player.in_hand_object.e == "Na":
+		if G.player.in_hand_object.subs == "Na":
 			$CPUParticles.color_ramp = load("res://assets/gradient/Na.tres")
-		if G.player.in_hand_object.e == "Li":
+		if G.player.in_hand_object.subs == "Li":
 			$CPUParticles.color_ramp = load("res://assets/gradient/Li.tres")
+		if G.player.in_hand_object.subs == "Ca":
+			$CPUParticles.color_ramp = load("res://assets/gradient/Ca.tres")
+		if G.player.in_hand_object.subs == "Ba":
+			$CPUParticles.color_ramp = load("res://assets/gradient/Ba.tres")
+		if G.player.in_hand_object.subs == "Sr":
+			$CPUParticles.color_ramp = load("res://assets/gradient/Sr.tres")
 	else:
 		G.player.in_hand_object.hide()
 		isSpiral = false
