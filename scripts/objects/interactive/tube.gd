@@ -64,3 +64,45 @@ func get_info():
 	for i in range(name_substance.size() - 1, -1, -1): 
 		sting += name_substance[i] + "\n"
 	return sting
+
+
+func reaction():
+	if name_substance == ["Магний", "Карбонат натрия", "", "", ""]:
+		$CollisionShape/tube/sediment/sediment.visible = true
+		$CollisionShape/tube/liquid/element_2.visible = false
+		name_substance[0] = "Карбонат Магния"
+		name_substance[1] = "Натрий"
+		var layer = $CollisionShape/tube/liquid/element_1/liq
+		var material = layer.get_surface_material(0).duplicate()
+		material.albedo_color = Color.white
+		layer.set_surface_material(0, material)
+
+	if name_substance == ["Барий", "Карбонат натрия", "", "", ""]:
+		$CollisionShape/tube/sediment/sediment.visible = true
+		$CollisionShape/tube/liquid/element_2.visible = false
+		name_substance[0] = "Карбонат Бария"
+		name_substance[1] = "Натрий"
+		var layer = $CollisionShape/tube/liquid/element_1/liq
+		var material = layer.get_surface_material(0).duplicate()
+		material.albedo_color = Color.white
+		layer.set_surface_material(0, material)
+		
+	if name_substance == ["Стронций", "Карбонат натрия", "", "", ""]:
+		$CollisionShape/tube/sediment/sediment.visible = true
+		$CollisionShape/tube/liquid/element_2.visible = false
+		name_substance[0] = "Карбонат Стронция"
+		name_substance[1] = "Натрий"
+		var layer = $CollisionShape/tube/liquid/element_1/liq
+		var material = layer.get_surface_material(0).duplicate()
+		material.albedo_color = Color.white
+		layer.set_surface_material(0, material)
+		
+	if name_substance == ["Кальций", "Карбонат натрия", "", "", ""]:
+		$CollisionShape/tube/sediment/sediment.visible = true
+		$CollisionShape/tube/liquid/element_2.visible = false
+		name_substance[0] = "Карбонат Кальция"
+		name_substance[1] = "Натрий"
+		var layer = $CollisionShape/tube/liquid/element_1/liq
+		var material = layer.get_surface_material(0).duplicate()
+		material.albedo_color = Color.white
+		layer.set_surface_material(0, material)

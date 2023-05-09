@@ -140,7 +140,30 @@ func _ready():
 		item3.set_mode(1)
 		
 	if G.load_item == '19':
-		pass	
+		var item1 = load('res://objects/interactive/bottle.tscn').instance()
+		$things.add_child(item1)
+		item1.subs = \"Mg\"
+		item1.global_transform.origin = Vector3(15, 3.3, -0.8)
+		
+		var item12 = load('res://objects/interactive/bottle.tscn').instance()
+		$things.add_child(item12)
+		item12.subs = \"Ba\"
+		item12.global_transform.origin = Vector3(15, 3.3, -1.1)
+		
+		var item13 = load('res://objects/interactive/bottle.tscn').instance()
+		$things.add_child(item13)
+		item13.subs = \"Sr\"
+		item13.global_transform.origin = Vector3(15, 3.3, -1.4)
+		
+		var item14 = load('res://objects/interactive/bottle.tscn').instance()
+		$things.add_child(item14)
+		item14.subs = \"Ca\"
+		item14.global_transform.origin = Vector3(15, 3.3, -1.7)
+		
+		var item15 = load('res://objects/interactive/bottle.tscn').instance()
+		$things.add_child(item15)
+		item15.subs = \"Na2CO3\"
+		item15.global_transform.origin = Vector3(15, 3.3, -2.0)
 	
 	if G.load_item == '110':
 		pass

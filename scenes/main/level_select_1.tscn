@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://menu_theme.tres" type="Theme" id=1]
 [ext_resource path="res://scripts/plug.gd" type="Script" id=2]
@@ -51,6 +51,30 @@ func _pressed():
 	G.briefing = \"Необходимые реактивы и оборудование\\n*раствор хлорида лития LiCl;\\n*раствор карбоната натрия Na2CO3;\\n*чашка Петри.\\n\\nХод работы\\nС помощью пипетки перенести несколько капель хлорида лития на чашку Петри. Далее, добавить каплю концентрированного раствора карбоната натрия. Обратить внимание на образование белого осадка.\"
 	G.load_item = '14'
 "
+
+[sub_resource type="GDScript" id=7]
+resource_name = "8"
+script/source = "extends Button
+
+
+func _pressed():
+	G.level = 2
+	G.to('cut_scene_practicum')
+	G.briefing = \"Используемые реактивы и оборудование\\\\n* растворы солей кальция, стронция, бария;\\\\n* нихромовые спирали;\\\\n* газовая горелка;\\\\n\\\\nХод работы \\\\nЧистую нихромовую спираль смочить в растворе соли бария. Внести спираль в пламя газовой горелки. Проследить за окрашиванием пламени горелки. Аналогичные действия провести с солями кальция и стронция.\"
+	G.load_item = '18'
+	
+"
+
+[sub_resource type="GDScript" id=8]
+resource_name = "9"
+script/source = "extends Button
+
+
+func _pressed():
+	G.level = 2
+	G.to('cut_scene_practicum')
+	G.briefing = \"Используемые реактивы и оборудование\\\\n* растворы солей магния, бария, стронция, кальция;\\\\n* концентрированный раствор карбоната натрия Na2CO3;\\\\n* штатив с пробирками;\\\\n\\\\nХод работы \\\\nВ пробирку налить 2-3 мл раствора соли магния. Добавить 1-2 мл концентрированного раствора карбоната натрия. Проследить за осаждением малорастворимого основного карбоната магния. Объяснить почему выпадает кидроксокарбонат магния. Опыт повторить с растворами солей кальция, стронция, бария. Получают малорастворимые соли белого цвета.\"
+	G.load_item = '19'"
 
 [node name="level" type="Control"]
 anchor_right = 1.0
@@ -312,7 +336,7 @@ margin_bottom = 525.0
 margin_right = 900.0
 margin_bottom = 70.0
 align = 0
-script = ExtResource( 2 )
+script = SubResource( 7 )
 
 [node name="Label" type="Label" parent="VBoxContainer/level8/level"]
 anchor_left = 0.05
@@ -344,7 +368,7 @@ margin_bottom = 600.0
 margin_right = 900.0
 margin_bottom = 70.0
 align = 0
-script = ExtResource( 2 )
+script = SubResource( 8 )
 
 [node name="Label" type="Label" parent="VBoxContainer/level9/level"]
 anchor_left = 0.05

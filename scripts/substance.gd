@@ -13,5 +13,5 @@ export var sub = {
 	Ca = {"name": "Кальций", "color": Color.silver},
 	Sr = {"name": "Стронций", "color": Color.yellow},
 	Ba = {"name": "Барий", "color": Color.gray},
-	
+	Mg = {"name": "Магний", "color": Color.silver},
 }
