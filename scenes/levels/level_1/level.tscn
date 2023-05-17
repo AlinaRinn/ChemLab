@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=2]
+[gd_scene load_steps=39 format=2]
 
 [ext_resource path="res://objects/static/wall_shot.tscn" type="PackedScene" id=1]
 [ext_resource path="res://objects/static/floor.tscn" type="PackedScene" id=2]
@@ -37,6 +37,7 @@
 [ext_resource path="res://objects/interactive/flask.tscn" type="PackedScene" id=35]
 [ext_resource path="res://objects/interactive/electric_stove.tscn" type="PackedScene" id=36]
 [ext_resource path="res://objects/interactive/scales.tscn" type="PackedScene" id=37]
+[ext_resource path="res://objects/interactive/wardrobe.tscn" type="PackedScene" id=38]
 
 [node name="Main" type="Spatial"]
 
@@ -89,7 +90,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 12.0954, 8.4014, 0 )
 [node name="Furniture" type="Spatial" parent="."]
 
 [node name="Door" parent="Furniture" instance=ExtResource( 5 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -5.49819, 0.264481, 3.65464 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -5.49819, 0.264481, 2.51305 )
 
 [node name="Table1" parent="Furniture" instance=ExtResource( 6 )]
 transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.250247, 0.306923, -6.6123 )
@@ -180,6 +181,9 @@ transform = Transform( 1.5625, 0, 7.10543e-14, 0, 1.25, 0, -7.10543e-14, 0, 1.56
 
 [node name="Board2" parent="Furniture" instance=ExtResource( 8 )]
 transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 5.48298, 3.37457, 8.07273 )
+
+[node name="shelf_animated" parent="Furniture" instance=ExtResource( 38 )]
+transform = Transform( -1.09278e-07, 0, 2.5, 0, 2.5, 0, -2.5, 0, -1.09278e-07, -4.81415, 0.0587654, 6.54373 )
 
 [node name="staffs" type="Spatial" parent="."]
 
