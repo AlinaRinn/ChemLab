@@ -11,7 +11,7 @@
 [ext_resource path="res://objects/interactive/fume_hood.tscn" type="PackedScene" id=9]
 [ext_resource path="res://objects/static/table_1.tscn" type="PackedScene" id=10]
 [ext_resource path="res://objects/static/board_whells.tscn" type="PackedScene" id=11]
-[ext_resource path="res://objects/static/wall_picture.tscn" type="PackedScene" id=12]
+[ext_resource path="res://cloudy_sky_env.tres" type="Environment" id=12]
 [ext_resource path="res://objects/static/table_2.tscn" type="PackedScene" id=13]
 [ext_resource path="res://objects/static/table_hole.tscn" type="PackedScene" id=14]
 [ext_resource path="res://objects/interactive/sink.tscn" type="PackedScene" id=15]
@@ -190,9 +190,6 @@ transform = Transform( -0.06075, 0, -5.31094e-09, 0, 0.0530739, 0, 5.97929e-09, 
 [node name="window3" parent="room" instance=ExtResource( 5 )]
 transform = Transform( 0.06075, 0, 1.12902e-08, 0, 0.0530739, 0, -1.12902e-08, 0, 0.0683951, 15.4533, 3.94156, -8.02355 )
 
-[node name="view" parent="room/window3" instance=ExtResource( 12 )]
-transform = Transform( 4.74074, 0, -7.82569e-07, 0, 5.4264, 0, 7.82569e-07, 0, 4.21083, 5.86971, -22.6492, 1.77039 )
-
 [node name="window4" parent="room" instance=ExtResource( 5 )]
 transform = Transform( 0.06075, 0, 1.12902e-08, 0, 0.0530739, 0, -1.12902e-08, 0, 0.0683951, 15.4533, 3.94156, -17.9182 )
 
@@ -269,7 +266,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 14.4538, 2.81113, -14.1175 )
 transform = Transform( 0.4, 0, 0, 0, 0.48, 0, 0, 0, 0.4, 14.9963, 2.84733, -1.29036 )
 
 [node name="tripod" parent="things" instance=ExtResource( 4 )]
-transform = Transform( 0.55, 0, 0, 0, 0.55, 0, 0, 0, 0.55, 15.02, 2.9292, -5.05513 )
+transform = Transform( 0.55, 0, 0, 0, 0.55, 0, 0, 0, 0.55, 15.02, 2.87887, -5.05513 )
 
 [node name="tube" parent="things/tripod" instance=ExtResource( 7 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00398827, 0.231869, -0.33351 )
@@ -282,3 +279,6 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00398827, 0.231869, 0.35715
 
 [node name="lobby" parent="." instance=ExtResource( 20 )]
 transform = Transform( -4.37114e-08, 0, -1, 0, 0.62, 0, 1, 0, -4.37114e-08, -5.85772, 1.15397, 3.37713 )
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = ExtResource( 12 )
