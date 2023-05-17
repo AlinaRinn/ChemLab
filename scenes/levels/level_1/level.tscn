@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=2]
+[gd_scene load_steps=38 format=2]
 
 [ext_resource path="res://objects/static/wall_shot.tscn" type="PackedScene" id=1]
 [ext_resource path="res://objects/static/floor.tscn" type="PackedScene" id=2]
@@ -24,6 +24,19 @@
 [ext_resource path="res://objects/interactive/petri.tscn" type="PackedScene" id=22]
 [ext_resource path="res://objects/interactive/pincet.tscn" type="PackedScene" id=23]
 [ext_resource path="res://objects/interactive/Li.tscn" type="PackedScene" id=24]
+[ext_resource path="res://objects/interactive/spiral.tscn" type="PackedScene" id=25]
+[ext_resource path="res://objects/static/cotton.tscn" type="PackedScene" id=26]
+[ext_resource path="res://objects/interactive/wurtz.tscn" type="PackedScene" id=27]
+[ext_resource path="res://objects/interactive/tigel.tscn" type="PackedScene" id=28]
+[ext_resource path="res://objects/static/areometr.tscn" type="PackedScene" id=29]
+[ext_resource path="res://objects/interactive/Kipp.tscn" type="PackedScene" id=30]
+[ext_resource path="res://objects/interactive/luchina.tscn" type="PackedScene" id=31]
+[ext_resource path="res://objects/interactive/ecikator.tscn" type="PackedScene" id=32]
+[ext_resource path="res://objects/interactive/bulb.tscn" type="PackedScene" id=33]
+[ext_resource path="res://objects/interactive/pipette.tscn" type="PackedScene" id=34]
+[ext_resource path="res://objects/interactive/flask.tscn" type="PackedScene" id=35]
+[ext_resource path="res://objects/interactive/electric_stove.tscn" type="PackedScene" id=36]
+[ext_resource path="res://objects/interactive/scales.tscn" type="PackedScene" id=37]
 
 [node name="Main" type="Spatial"]
 
@@ -204,16 +217,16 @@ note_number = "2"
 note_other = "Тема политкорректных высказываний в Московском метрополитене"
 
 [node name="Folder3" parent="staffs" instance=ExtResource( 13 )]
-transform = Transform( 0.77686, 0, 0.629673, 0, 1, 0, -0.629673, 0, 0.77686, -1.60423, 2.32115, -6.18138 )
+transform = Transform( 0.77686, 0, 0.629673, 0, 1, 0, -0.629673, 0, 0.77686, -0.862248, 2.32115, -7.254 )
 
 [node name="Folder4" parent="staffs" instance=ExtResource( 13 )]
 transform = Transform( 0.955428, 0, -0.295225, 0, 1, 0, 0.295225, 0, 0.955428, 0.56983, 2.32115, -7.21976 )
 
 [node name="Folder5" parent="staffs" instance=ExtResource( 16 )]
-transform = Transform( 0.363089, 0, 0.931755, 0, 1, 0, -0.931755, 0, 0.363089, -1.60175, 2.47342, -6.14109 )
+transform = Transform( 0.363089, 0, 0.931755, 0, 1, 0, -0.931755, 0, 0.363089, -0.859768, 2.47342, -7.21371 )
 
 [node name="Folder6" parent="staffs" instance=ExtResource( 11 )]
-transform = Transform( 0.872973, 0, 0.487768, 0, 1, 0, -0.487768, 0, 0.872973, 5.13897, 2.12048, -5.72482 )
+transform = Transform( -0.487768, 0, 0.872973, 0, 1, 0, -0.872973, 0, -0.487768, -4.68157, 2.28142, -1.06636 )
 note_number = "1"
 note_other = "Журнал по теме бромирование ацетилена в общественном транспорте"
 
@@ -230,8 +243,47 @@ transform = Transform( 0.08, 0, 0, 0, 0.08, 0, 0, 0, 0.08, 13.9052, 2.23202, 5.7
 transform = Transform( 0.18, 0, 0, 0, 0.18, 0, 0, 0, 0.18, 14.7492, 2.17197, 5.43382 )
 
 [node name="Li" parent="staffs" instance=ExtResource( 24 )]
-transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 13.9528, 2.2742, 5.75687 )
+transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -0.962808, 2.19768, -5.67439 )
 mass = 0.05
 
 [node name="petri2" parent="staffs" instance=ExtResource( 22 )]
 transform = Transform( 0.08, 0, 0, 0, 0.08, 0, 0, 0, 0.08, 1.42881, 2.25518, -5.6066 )
+
+[node name="cotton" parent="staffs" instance=ExtResource( 26 )]
+transform = Transform( 1.8, 0, 0, 0, 1.8, 0, 0, 0, 1.8, 4.76907, 2.17866, -5.81835 )
+
+[node name="areometr" parent="staffs" instance=ExtResource( 29 )]
+transform = Transform( 0.212132, 0, -0.212132, 0, 0.3, 0, 0.212132, 0, 0.212132, 2.84256, 2.2099, -5.09499 )
+
+[node name="bulb" parent="staffs" instance=ExtResource( 33 )]
+transform = Transform( 0.54, 0, 0, 0, 0.54, 0, 0, 0, 0.54, 4.66205, 2.3707, -6.19101 )
+
+[node name="ecikator" parent="staffs" instance=ExtResource( 32 )]
+transform = Transform( 0.162, 0, 0, 0, 0.162, 0, 0, 0, 0.162, 5.1843, 2.1799, -5.45337 )
+
+[node name="flask" parent="staffs" instance=ExtResource( 35 )]
+transform = Transform( 0.0486, 0, 0, 0, 0.0486, 0, 0, 0, 0.0486, -2.54648, 2.3608, -2.6582 )
+
+[node name="wurtz" parent="staffs" instance=ExtResource( 27 )]
+transform = Transform( -3.93402e-09, 0, -0.09, 0, 0.09, 0, 0.09, 0, -3.93402e-09, 5.20433, 2.4267, -6.35172 )
+
+[node name="electric_stove" parent="staffs" instance=ExtResource( 36 )]
+transform = Transform( 1.35, 0, -2.33827, 0, 2.7, 0, 2.33827, 0, 1.35, 4.14946, 2.17866, -5.5942 )
+
+[node name="Kipp" parent="staffs" instance=ExtResource( 30 )]
+transform = Transform( 0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, -3.69382, 2.31352, -3.82609 )
+
+[node name="pip" parent="staffs" instance=ExtResource( 34 )]
+transform = Transform( 0.00519257, -0.0497296, 0, 0.0497296, 0.00519257, 0, 0, 0, 0.05, -0.908233, 2.22225, -5.16971 )
+
+[node name="luchina" parent="staffs" instance=ExtResource( 31 )]
+transform = Transform( -6.18172e-09, -0.141421, 0.141421, 0.2, -8.74228e-09, 0, 6.18172e-09, 0.141421, 0.141421, -1.27436, 2.20168, -5.60606 )
+
+[node name="spiral" parent="staffs" instance=ExtResource( 25 )]
+transform = Transform( -3.70903e-08, -0.848528, 0.848528, 1.2, -5.24537e-08, 0, 3.70903e-08, 0.848528, 0.848528, -1.60149, 2.21699, -5.96068 )
+
+[node name="Spatial" parent="staffs" instance=ExtResource( 28 )]
+transform = Transform( 0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, -2.60431, 2.32542, -4.33837 )
+
+[node name="scales" parent="staffs" instance=ExtResource( 37 )]
+transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 6, 2.17866, -6 )

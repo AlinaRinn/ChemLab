@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=2]
 
-[ext_resource path="res://assets/models/scales.gltf" type="PackedScene" id=1]
+[ext_resource path="res://assets/models/scales.glb" type="PackedScene" id=1]
 [ext_resource path="res://assets/materials/scales/screen.material" type="Material" id=2]
 [ext_resource path="res://assets/materials/scales/box.material" type="Material" id=3]
 [ext_resource path="res://assets/materials/scales/start_button.material" type="Material" id=4]
