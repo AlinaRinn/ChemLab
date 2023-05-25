@@ -5,7 +5,18 @@
 [sub_resource type="CylinderMesh" id=1]
 
 [sub_resource type="SpatialMaterial" id=2]
+render_priority = -1
+albedo_color = Color( 1, 1, 1, 0.588235 )
 albedo_texture = ExtResource( 1 )
+roughness = 0.2
+roughness_texture = ExtResource( 1 )
+ao_enabled = true
+ao_light_affect = 0.0
+ao_on_uv2 = false
+ao_texture_channel = 0
+refraction_enabled = true
+refraction_scale = 0.05
+refraction_texture_channel = 0
 
 [node name="Spatial" type="Spatial"]
 

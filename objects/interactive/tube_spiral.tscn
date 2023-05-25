@@ -63,23 +63,18 @@ visible = false
 
 [node name="element_1" parent="CollisionShape/tube/liquid" instance=ExtResource( 5 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 3.12313, 3.30867, -3.19543 )
-visible = false
 
 [node name="element_2" parent="CollisionShape/tube/liquid" instance=ExtResource( 5 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 3.12313, 3.40021, -3.19543 )
-visible = false
 
 [node name="element_3" parent="CollisionShape/tube/liquid" instance=ExtResource( 5 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 3.12313, 3.49199, -3.19543 )
-visible = false
 
 [node name="element_4" parent="CollisionShape/tube/liquid" instance=ExtResource( 5 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 3.12313, 3.58267, -3.19543 )
-visible = false
 
 [node name="element_5" parent="CollisionShape/tube/liquid" instance=ExtResource( 5 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 3.12313, 3.67419, -3.19543 )
-visible = false
 
 [node name="sediment" type="Spatial" parent="CollisionShape/tube"]
 

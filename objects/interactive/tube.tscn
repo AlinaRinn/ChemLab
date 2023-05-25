@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://assets/models/tube_type_0.obj" type="ArrayMesh" id=1]
 [ext_resource path="res://assets/materials/tube.material" type="Material" id=2]
@@ -8,6 +8,7 @@
 [ext_resource path="res://objects/interactive/spiral.tscn" type="PackedScene" id=6]
 [ext_resource path="res://objects/elements/sediment.tscn" type="PackedScene" id=7]
 [ext_resource path="res://objects/elements/true_sediment.tscn" type="PackedScene" id=8]
+[ext_resource path="res://assets/materials/water.material" type="Material" id=9]
 
 [sub_resource type="BoxShape" id=4]
 extents = Vector3( 0.0754434, 0.269444, 0.0703902 )
@@ -39,23 +40,29 @@ material/0 = ExtResource( 2 )
 [node name="liquid" type="Spatial" parent="CollisionShape/tube"]
 
 [node name="element_1" parent="CollisionShape/tube/liquid" instance=ExtResource( 5 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 3.12313, 3.31956, -3.19543 )
-visible = false
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 3.122, 3.32, -3.196 )
+
+[node name="CSGSphere" type="CSGSphere" parent="CollisionShape/tube/liquid/element_1"]
+transform = Transform( 1, 0, 0, 0, 0.877698, 0, 0, 0, 1, 0, -0.0427787, -0.000138847 )
+radius = 0.0612399
+radial_segments = 40
+rings = 25
+material = ExtResource( 9 )
 
 [node name="element_2" parent="CollisionShape/tube/liquid" instance=ExtResource( 5 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 3.12313, 3.4111, -3.19543 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 3.122, 3.411, -3.196 )
 visible = false
 
 [node name="element_3" parent="CollisionShape/tube/liquid" instance=ExtResource( 5 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 3.12313, 3.50288, -3.19543 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 3.122, 3.503, -3.196 )
 visible = false
 
 [node name="element_4" parent="CollisionShape/tube/liquid" instance=ExtResource( 5 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 3.12313, 3.59356, -3.19543 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 3.122, 3.594, -3.196 )
 visible = false
 
 [node name="element_5" parent="CollisionShape/tube/liquid" instance=ExtResource( 5 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 3.12313, 3.68508, -3.19543 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 3.122, 3.685, -3.196 )
 visible = false
 
 [node name="spiral" parent="CollisionShape/tube" instance=ExtResource( 6 )]
@@ -63,17 +70,18 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 3.122, 3.26914, -3.194 )
 visible = false
 
 [node name="sediment" type="Spatial" parent="CollisionShape/tube"]
+visible = false
 
 [node name="element_1" parent="CollisionShape/tube/sediment" instance=ExtResource( 7 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 3.123, 3.41089, -3.195 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 3.122, 3.411, -3.196 )
 visible = false
 
 [node name="element_2" parent="CollisionShape/tube/sediment" instance=ExtResource( 7 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 3.123, 3.31989, -3.195 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 3.122, 3.32, -3.196 )
 visible = false
 
 [node name="sediment" parent="CollisionShape/tube/sediment" instance=ExtResource( 8 )]
-transform = Transform( -0.029, -6.79481e-09, 0, 4.37888e-09, -0.045, 0, 0, 0, 0.029, 3.12303, 3.27512, -3.19564 )
+transform = Transform( -0.027215, -6.37658e-09, 0, 4.37888e-09, -0.045, 0, 0, 0, 0.0272851, 3.12303, 3.27512, -3.19564 )
 visible = false
 
 [node name="interaction" parent="." instance=ExtResource( 3 )]

@@ -123,6 +123,11 @@ func get_input():
 	if Input.is_action_pressed(\"ui_down\"):
 		dir.z = 1
 	
+	# 
+	if Input.is_action_pressed(\"ui_alt\"):
+		$head/Camera.transform.origin.z = -1
+	else: $head/Camera.transform.origin.z = 0
+	
 	# Дроп предмета в руке
 	if Input.is_action_just_pressed(\"ui_g\"):
 		drop()
@@ -378,6 +383,7 @@ collision_mask = 4
 collide_with_areas = true
 
 [node name="Camera" type="Camera" parent="head"]
+near = 0.01
 
 [node name="player_hand" type="Spatial" parent="head"]
 transform = Transform( 0.0985865, 0.0167543, 0, -0.0167543, 0.0985865, 0, 0, 0, 0.1, 0.0801525, -0.0562506, -0.0885729 )
