@@ -4,6 +4,7 @@
 [ext_resource path="res://assets/textures/SEDIMENTIvory.jpg" type="Texture" id=2]
 
 [sub_resource type="SpatialMaterial" id=1]
+render_priority = 2
 albedo_texture = ExtResource( 2 )
 
 [node name="Spatial" type="Spatial"]

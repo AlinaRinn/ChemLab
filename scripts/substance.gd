@@ -1,7 +1,7 @@
 extends Resource
 
 export var sub = {
-	water = {"name": "Вода", "color": Color.blue},
+	water = {"name": "Вода", "color": Color( 0, 0, 1, 0.5 )},
 	acid = {"name": "Кислота", "color": Color.orange},
 	alkali = {"name": "Щелочь", "color": Color.olive},
 	Li = {"name": "Литий", "color": Color.slategray},

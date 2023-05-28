@@ -17,6 +17,7 @@ func change_color(color):
 	var layer = elements[amount_substance].get_children()[0]
 	var material = layer.get_surface_material(0).duplicate()
 	material.albedo_color = color
+	material.refraction_enabled = true
 	layer.set_surface_material(0, material)
 
 

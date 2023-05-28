@@ -71,11 +71,10 @@ func _ready():
 		var item5 = load('res://objects/interactive/paper.tscn').instance()
 		$things.add_child(item5)
 		item5.global_transform.origin = Vector3(14.5, 2.82, -2)
-				
 
 	if G.load_item == '12':
 		pass
-	
+
 	if G.load_item == '13':
 		var item1 = load('res://objects/interactive/tube_spiral.tscn').instance()
 		$things.add_child(item1)

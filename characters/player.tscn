@@ -123,7 +123,7 @@ func get_input():
 	if Input.is_action_pressed(\"ui_down\"):
 		dir.z = 1
 	
-	# 
+	# Зум камеры
 	if Input.is_action_pressed(\"ui_alt\"):
 		$head/Camera.transform.origin.z = -1
 	else: $head/Camera.transform.origin.z = 0

@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://scripts/gui.gd" type="Script" id=1]
 [ext_resource path="res://assets/fonts/Cascadia/CascadiaMono-Light.otf" type="DynamicFontData" id=2]
@@ -54,6 +54,12 @@ func _pressed():
 	get_node(\"/root/game/player\").get_tree().paused = false
 "
 
+[sub_resource type="DynamicFont" id=10]
+size = 18
+outline_size = 2
+outline_color = Color( 0.0627451, 0.203922, 0.258824, 1 )
+font_data = ExtResource( 2 )
+
 [node name="gui" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -67,11 +73,12 @@ __meta__ = {
 }
 
 [node name="ItemInfo" type="VBoxContainer" parent="."]
-anchor_left = 0.8
-anchor_right = 0.8
-margin_top = 25.0
-margin_right = 350.0
-margin_bottom = 225.0
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -380.0
+margin_top = 30.0
+margin_right = -30.0
+margin_bottom = 230.0
 
 [node name="TargetName" type="Control" parent="ItemInfo"]
 margin_right = 350.0
@@ -92,18 +99,18 @@ margin_bottom = 50.0
 autowrap = true
 
 [node name="ItemContent" type="VBoxContainer" parent="."]
-anchor_left = 0.021
-anchor_top = 0.023
-anchor_right = 0.203
-anchor_bottom = 0.208
-margin_left = -0.320004
-margin_top = 0.159998
-margin_right = 0.23999
-margin_bottom = 0.360001
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_left = -380.0
+margin_top = -240.0
+margin_right = -30.0
+margin_bottom = -20.0
 custom_constants/separation = 220
 
 [node name="ContentHand" type="Control" parent="ItemContent"]
-margin_right = 349.0
+margin_right = 350.0
 
 [node name="title" type="Label" parent="ItemContent/ContentHand"]
 visible = false
@@ -122,7 +129,7 @@ autowrap = true
 
 [node name="ContentOutside" type="Control" parent="ItemContent"]
 margin_top = 220.0
-margin_right = 349.0
+margin_right = 350.0
 margin_bottom = 220.0
 
 [node name="label" type="Label" parent="ItemContent/ContentOutside"]
@@ -256,3 +263,123 @@ __meta__ = {
 "_edit_lock_": true,
 "_edit_use_anchors_": false
 }
+
+[node name="LevelProgress" type="VBoxContainer" parent="."]
+margin_left = 20.0
+margin_top = 35.0
+margin_right = 320.0
+margin_bottom = 275.0
+custom_constants/separation = 25
+
+[node name="Check1" type="Control" parent="LevelProgress"]
+margin_right = 300.0
+
+[node name="CheckBox" type="CheckBox" parent="LevelProgress/Check1"]
+visible = false
+anchor_top = 0.5
+anchor_bottom = 0.5
+margin_top = -23.0
+margin_right = 24.0
+margin_bottom = 23.0
+disabled = true
+
+[node name="Label" type="Label" parent="LevelProgress/Check1/CheckBox"]
+anchor_top = 0.5
+anchor_bottom = 0.5
+margin_left = 30.0
+margin_top = -13.0
+margin_right = 430.0
+margin_bottom = 16.0
+custom_fonts/font = SubResource( 10 )
+
+[node name="Check2" type="Control" parent="LevelProgress"]
+margin_top = 25.0
+margin_right = 300.0
+margin_bottom = 25.0
+
+[node name="CheckBox" type="CheckBox" parent="LevelProgress/Check2"]
+visible = false
+anchor_top = 0.5
+anchor_bottom = 0.5
+margin_top = -23.0
+margin_right = 24.0
+margin_bottom = 23.0
+disabled = true
+
+[node name="Label" type="Label" parent="LevelProgress/Check2/CheckBox"]
+anchor_top = 0.5
+anchor_bottom = 0.5
+margin_left = 30.0
+margin_top = -13.0
+margin_right = 430.0
+margin_bottom = 16.0
+custom_fonts/font = SubResource( 10 )
+
+[node name="Check3" type="Control" parent="LevelProgress"]
+margin_top = 50.0
+margin_right = 300.0
+margin_bottom = 50.0
+
+[node name="CheckBox" type="CheckBox" parent="LevelProgress/Check3"]
+visible = false
+anchor_top = 0.5
+anchor_bottom = 0.5
+margin_top = -23.0
+margin_right = 24.0
+margin_bottom = 23.0
+disabled = true
+
+[node name="Label" type="Label" parent="LevelProgress/Check3/CheckBox"]
+anchor_top = 0.5
+anchor_bottom = 0.5
+margin_left = 30.0
+margin_top = -13.0
+margin_right = 430.0
+margin_bottom = 16.0
+custom_fonts/font = SubResource( 10 )
+
+[node name="Check4" type="Control" parent="LevelProgress"]
+margin_top = 75.0
+margin_right = 300.0
+margin_bottom = 75.0
+
+[node name="CheckBox" type="CheckBox" parent="LevelProgress/Check4"]
+visible = false
+anchor_top = 0.5
+anchor_bottom = 0.5
+margin_top = -23.0
+margin_right = 24.0
+margin_bottom = 23.0
+disabled = true
+
+[node name="Label" type="Label" parent="LevelProgress/Check4/CheckBox"]
+anchor_top = 0.5
+anchor_bottom = 0.5
+margin_left = 30.0
+margin_top = -13.0
+margin_right = 430.0
+margin_bottom = 16.0
+custom_fonts/font = SubResource( 10 )
+
+[node name="Check5" type="Control" parent="LevelProgress"]
+margin_top = 100.0
+margin_right = 300.0
+margin_bottom = 100.0
+
+[node name="CheckBox" type="CheckBox" parent="LevelProgress/Check5"]
+visible = false
+anchor_top = 0.5
+anchor_bottom = 0.5
+margin_top = -23.0
+margin_right = 24.0
+margin_bottom = 23.0
+disabled = true
+
+[node name="Label" type="Label" parent="LevelProgress/Check5/CheckBox"]
+anchor_top = 0.5
+anchor_bottom = 0.5
+margin_left = 30.0
+margin_top = -13.0
+margin_right = 430.0
+margin_bottom = 16.0
+custom_fonts/font = SubResource( 10 )
