@@ -18,6 +18,7 @@ var root_game
 # objects
 var player
 var game
+var handler
 var pack = {}
 var target_object = null
 var temp_pack = {}

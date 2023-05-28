@@ -73,27 +73,33 @@ func remove_substance_met():
 
 func reaction():
 	if name_substance_met == [\"Литий\", \"\", \"\", \"\", \"\"] and \\
-	   name_substance_liq == [\"Вода\", \"Фенолфталеин\"]:
+	   (name_substance_liq == [\"Вода\", \"Фенолфталеин\"] or name_substance_liq == [\"Фенолфталеин\", \"Вода\"]):
 		var layer = $CollisionShape/MeshInstance2/element_2/liq
 		var material = layer.get_surface_material(0).duplicate()
-		material.albedo_color = Color.deeppink
+		material.albedo_color = Color(1, 0.0784314, 0.576471, 0.5)
+		layer.set_surface_material(0, material)
+		layer = $CollisionShape/MeshInstance2/element_1/liq
 		layer.set_surface_material(0, material)
 		$Particles.emitting = true
 
 	if name_substance_met == [\"Калий\", \"\", \"\", \"\", \"\"] and \\
-	   name_substance_liq == [\"Вода\", \"Фенолфталеин\"]:
+	   (name_substance_liq == [\"Вода\", \"Фенолфталеин\"] or name_substance_liq == [\"Фенолфталеин\", \"Вода\"]):
 		var layer = $CollisionShape/MeshInstance2/element_2/liq
 		var material = layer.get_surface_material(0).duplicate()
-		material.albedo_color = Color.deeppink
+		material.albedo_color = Color(1, 0.0784314, 0.576471, 0.5)
+		layer.set_surface_material(0, material)
+		layer = $CollisionShape/MeshInstance2/element_1/liq
 		layer.set_surface_material(0, material)
 		$Particles.emitting = true
 		
 		
 	if name_substance_met == [\"Натрий\", \"\", \"\", \"\", \"\"] and \\
-	   name_substance_liq == [\"Вода\", \"Фенолфталеин\"]:
+	   (name_substance_liq == [\"Вода\", \"Фенолфталеин\"] or name_substance_liq == [\"Фенолфталеин\", \"Вода\"]):
 		var layer = $CollisionShape/MeshInstance2/element_2/liq
 		var material = layer.get_surface_material(0).duplicate()
-		material.albedo_color = Color.deeppink
+		material.albedo_color = Color(1, 0.0784314, 0.576471, 0.5)
+		layer.set_surface_material(0, material)
+		layer = $CollisionShape/MeshInstance2/element_1/liq
 		layer.set_surface_material(0, material)
 		$Particles.emitting = true
 		
@@ -138,8 +144,10 @@ gravity = Vector3( 0, 3, 0 )
 initial_velocity = 2.0
 
 [sub_resource type="SphereMesh" id=5]
-radius = 0.3
-height = 0.6
+radius = 0.15
+height = 0.3
+radial_segments = 12
+rings = 12
 
 [node name="petri" type="RigidBody"]
 transform = Transform( 0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0 )
@@ -197,7 +205,7 @@ test_click_action = "reaction"
 
 [node name="Particles" type="Particles" parent="."]
 emitting = false
-amount = 50
+amount = 200
 lifetime = 10.0
 one_shot = true
 process_material = SubResource( 4 )

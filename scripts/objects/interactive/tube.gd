@@ -19,7 +19,8 @@ func change_color(color):
 	material.albedo_color = color
 	material.refraction_enabled = true
 	layer.set_surface_material(0, material)
-
+	if amount_substance == 0:
+		$CollisionShape/tube/liquid/element_1/Sphere.material = material
 
 func add_substance(sub):
 	# Добавляем слой жидкости
@@ -28,15 +29,17 @@ func add_substance(sub):
 	
 	change_color(sub["color"])
 	
-	amount_substance = amount_substance if amount_substance == MAX_AMOUNT_SUBSTANCE \
-		else amount_substance + 1
-
+	amount_substance = amount_substance if amount_substance == MAX_AMOUNT_SUBSTANCE else amount_substance + 1
 
 func remove_substance():
 	# Удаляем слой
-	elements[amount_substance].hide()
-	name_substance[amount_substance] = ""
-	amount_substance = amount_substance if amount_substance == 0 else amount_substance - 1
+	for i in range(0, MAX_AMOUNT_SUBSTANCE+1, 1):
+		elements[i].hide()
+		name_substance[i] = ""
+	#elements[amount_substance].hide()
+	#name_substance[amount_substance] = ""
+	#amount_substance = amount_substance if amount_substance == 0 else amount_substance - 1
+	amount_substance = 0
 
 
 func take():

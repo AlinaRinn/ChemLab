@@ -76,6 +76,8 @@ func _ready():
 		$things.add_child(item5)
 		item5.global_transform.origin = Vector3(14.5, 2.82, -2)
 
+		G.handler = load('res://scenes/levels/level_2/level.tscn::1')
+		
 	if G.load_item == '12':
 		pass
 
@@ -109,7 +111,7 @@ func _ready():
 		item12.subs = \"LiCl\"
 		item12.global_transform.origin = Vector3(15, 3.3, -1.1)
 		
-		var item2 = load('res://objects/interactive/petri.tscn').instance()
+		item2 = load('res://objects/interactive/petri.tscn').instance()
 		$things.add_child(item2)
 		item2.global_transform.origin = Vector3(14.5, 3, -0.8)
 		item2.scale = Vector3(0.05, 0.05, 0.05)	
@@ -168,18 +170,18 @@ func _ready():
 		item15.subs = \"Na2CO3\"
 		item15.global_transform.origin = Vector3(15, 3.3, -2.0)
 	
-	if G.load_item == '110':
+	if G.load_item == '20':
 		pass
 		
-	if G.load_item == '111':
+	if G.load_item == '21':
 		pass
 		
 func exit():
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	G.to(\"main_menu\")
 
-func _physics_process(delta):
-	handler_11()
+func _physics_process(_delta):
+	pass
 	
 func handler_11():
 	if (item2.name_substance_liq == [\"Вода\", \"Фенолфталеин\"] or item2.name_substance_liq == [\"Фенолфталеин\", \"Вода\"]) and (item3.name_substance_liq == [\"Вода\", \"Фенолфталеин\"] or item3.name_substance_liq == [\"Фенолфталеин\", \"Вода\"]) and (item4.name_substance_liq == [\"Вода\", \"Фенолфталеин\"] or item4.name_substance_liq == [\"Фенолфталеин\", \"Вода\"]):
@@ -191,6 +193,8 @@ func handler_11():
 	if (item2.name_substance_met == [\"Натрий\", \"\", \"\", \"\", \"\"] or item3.name_substance_met == [\"Натрий\", \"\", \"\", \"\", \"\"] or item4.name_substance_met == [\"Натрий\", \"\", \"\", \"\", \"\"]):
 		G.emit_signal(\"level_check_4\")
 		
+func handler_13():
+	pass
 "
 
 [node name="level_area" type="Spatial"]

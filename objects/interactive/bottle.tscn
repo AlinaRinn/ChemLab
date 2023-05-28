@@ -31,9 +31,9 @@ transform = Transform( 2.41727, 0, 0, 0, 2.63187, 0, 0, 0, 2.44943, 3.57077, 4.0
 transform = Transform( 0.0907442, 0, 0, 0, 0.182292, 0, 0, 0, 0.0946747, -0.00154418, 0.166892, -0.00156694 )
 label = "Бутылка"
 left_click_action = "pour"
-left_click_label = "Набрать жидкость"
+left_click_label = "Набрать"
 right_click_action = "take"
-right_click_label = "Взять"
+right_click_label = "Взять бутылку"
 
 [node name="CollisionShape" type="CollisionShape" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.000278652, 0.128143, -0.00195086 )
