@@ -383,3 +383,26 @@ margin_top = -13.0
 margin_right = 430.0
 margin_bottom = 16.0
 custom_fonts/font = SubResource( 10 )
+
+[node name="Check5051" type="Control" parent="LevelProgress"]
+margin_top = 125.0
+margin_right = 300.0
+margin_bottom = 125.0
+
+[node name="CheckBox" type="CheckBox" parent="LevelProgress/Check5051"]
+visible = false
+anchor_top = 0.5
+anchor_bottom = 0.5
+margin_top = -23.0
+margin_right = 24.0
+margin_bottom = 23.0
+disabled = true
+
+[node name="Label" type="Label" parent="LevelProgress/Check5051/CheckBox"]
+anchor_top = 0.5
+anchor_bottom = 0.5
+margin_left = 30.0
+margin_top = -13.0
+margin_right = 430.0
+margin_bottom = 16.0
+custom_fonts/font = SubResource( 10 )

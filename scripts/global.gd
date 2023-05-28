@@ -9,6 +9,7 @@ signal level_check_2
 signal level_check_3
 signal level_check_4
 signal level_check_5
+signal level_check_finish
 
 # scenes
 var root_level
@@ -32,6 +33,7 @@ var level_check_2_text
 var level_check_3_text
 var level_check_4_text
 var level_check_5_text
+var level_check_finish_text
 var active_note = null
 var label_name 
 var label_bindings 

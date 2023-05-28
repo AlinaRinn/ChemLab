@@ -11,7 +11,7 @@
 [ext_resource path="res://objects/interactive/fume_hood.tscn" type="PackedScene" id=9]
 [ext_resource path="res://objects/static/table_1.tscn" type="PackedScene" id=10]
 [ext_resource path="res://objects/static/board_whells.tscn" type="PackedScene" id=11]
-[ext_resource path="res://cloudy_sky_env.tres" type="Environment" id=12]
+[ext_resource path="res://default_env.tres" type="Environment" id=12]
 [ext_resource path="res://objects/static/table_2.tscn" type="PackedScene" id=13]
 [ext_resource path="res://objects/static/table_hole.tscn" type="PackedScene" id=14]
 [ext_resource path="res://objects/interactive/sink.tscn" type="PackedScene" id=15]
@@ -24,6 +24,10 @@
 
 [sub_resource type="GDScript" id=1]
 script/source = "extends Spatial
+
+var item2
+var item3
+var item4
 
 func _ready():
 	G.connect(\"escape\", self, \"exit\")
@@ -52,17 +56,17 @@ func _ready():
 		item14.hide()
 		item14.global_transform.origin = Vector3(15, 3.3, -1.7)
 		
-		var item2 = load('res://objects/interactive/petri.tscn').instance()
+		item2 = load('res://objects/interactive/petri.tscn').instance()
 		$things.add_child(item2)
 		item2.global_transform.origin = Vector3(14.5, 3, -0.8)
 		item2.scale = Vector3(0.05, 0.05, 0.05)
 		
-		var item3 = load('res://objects/interactive/petri.tscn').instance()
+		item3 = load('res://objects/interactive/petri.tscn').instance()
 		$things.add_child(item3)
 		item3.global_transform.origin = Vector3(14.5, 3, -1.2)
 		item3.scale = Vector3(0.05, 0.05, 0.05)
 		
-		var item4 = load('res://objects/interactive/petri.tscn').instance()
+		item4 = load('res://objects/interactive/petri.tscn').instance()
 		$things.add_child(item4)
 		item4.global_transform.origin = Vector3(14.5, 3, -1.6)
 		item4.scale = Vector3(0.05, 0.05, 0.05)
@@ -82,13 +86,13 @@ func _ready():
 		item1.global_transform.origin = Vector3(14.3, 3, -12)
 		item1.set_mode(1)
 	
-		var item2 = load('res://objects/interactive/tube_spiral.tscn').instance()
+		item2 = load('res://objects/interactive/tube_spiral.tscn').instance()
 		$things.add_child(item2)
 		item2.subs = \"Na\"
 		item2.global_transform.origin = Vector3(14.3, 3, -11.5)
 		item2.set_mode(1)
 		
-		var item3 = load('res://objects/interactive/tube_spiral.tscn').instance()
+		item3 = load('res://objects/interactive/tube_spiral.tscn').instance()
 		$things.add_child(item3)
 		item3.subs = \"Li\"
 		item3.global_transform.origin = Vector3(14.3, 3, -11)
@@ -126,13 +130,13 @@ func _ready():
 		item1.global_transform.origin = Vector3(14.3, 3, -12)
 		item1.set_mode(1)
 	
-		var item2 = load('res://objects/interactive/tube_spiral.tscn').instance()
+		item2 = load('res://objects/interactive/tube_spiral.tscn').instance()
 		$things.add_child(item2)
 		item2.subs = \"Sr\"
 		item2.global_transform.origin = Vector3(14.3, 3, -11.5)
 		item2.set_mode(1)
 		
-		var item3 = load('res://objects/interactive/tube_spiral.tscn').instance()
+		item3 = load('res://objects/interactive/tube_spiral.tscn').instance()
 		$things.add_child(item3)
 		item3.subs = \"Ba\"
 		item3.global_transform.origin = Vector3(14.3, 3, -11)
@@ -173,6 +177,20 @@ func _ready():
 func exit():
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	G.to(\"main_menu\")
+
+func _physics_process(delta):
+	handler_11()
+	
+func handler_11():
+	if (item2.name_substance_liq == [\"Вода\", \"Фенолфталеин\"] or item2.name_substance_liq == [\"Фенолфталеин\", \"Вода\"]) and (item3.name_substance_liq == [\"Вода\", \"Фенолфталеин\"] or item3.name_substance_liq == [\"Фенолфталеин\", \"Вода\"]) and (item4.name_substance_liq == [\"Вода\", \"Фенолфталеин\"] or item4.name_substance_liq == [\"Фенолфталеин\", \"Вода\"]):
+		G.emit_signal(\"level_check_1\")
+	if (item2.name_substance_met == [\"Литий\", \"\", \"\", \"\", \"\"] or item3.name_substance_met == [\"Литий\", \"\", \"\", \"\", \"\"] or item4.name_substance_met == [\"Литий\", \"\", \"\", \"\", \"\"]):
+		G.emit_signal(\"level_check_2\")
+	if (item2.name_substance_met == [\"Калий\", \"\", \"\", \"\", \"\"] or item3.name_substance_met == [\"Калий\", \"\", \"\", \"\", \"\"] or item4.name_substance_met == [\"Калий\", \"\", \"\", \"\", \"\"]):
+		G.emit_signal(\"level_check_3\")
+	if (item2.name_substance_met == [\"Натрий\", \"\", \"\", \"\", \"\"] or item3.name_substance_met == [\"Натрий\", \"\", \"\", \"\", \"\"] or item4.name_substance_met == [\"Натрий\", \"\", \"\", \"\", \"\"]):
+		G.emit_signal(\"level_check_4\")
+		
 "
 
 [node name="level_area" type="Spatial"]

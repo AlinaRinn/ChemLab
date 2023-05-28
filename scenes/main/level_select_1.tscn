@@ -25,6 +25,7 @@ func _pressed():
 	G.level_check_2_text = \"положить литий в одну из чашек Петри\"
 	G.level_check_3_text = \"положить калий в одну из чашек Петри\"
 	G.level_check_4_text = \"положить натрий в одну из чашек Петри\"
+	G.level_check_finish_text = \"наблюдать протекание реакций\"
 "
 
 [sub_resource type="DynamicFont" id=2]

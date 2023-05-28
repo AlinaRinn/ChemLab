@@ -19,6 +19,7 @@ func binding(prt):
 	if test_click_action && Input.is_action_pressed("ui_reaction"):
 		if prt.has_method(test_click_action):
 			prt.call(test_click_action)
+			G.emit_signal("level_check_finish")
 	
 	if left_click_action && Input.is_action_pressed("ui_lmb"):
 		if prt.has_method(left_click_action):

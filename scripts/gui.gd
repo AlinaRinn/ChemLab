@@ -9,7 +9,6 @@ func _ready():
 		$LevelProgress/Check1/CheckBox/Label.text = G.level_check_1_text
 		$LevelProgress/Check1/CheckBox.visible = true
 		G.connect("level_check_1", self, "check", [1])
-		G.emit_signal("level_check_2")
 
 	if G.level_check_2_text != null:
 		$LevelProgress/Check2/CheckBox/Label.text = G.level_check_2_text
@@ -30,6 +29,11 @@ func _ready():
 		$LevelProgress/Check5/CheckBox/Label.text = G.level_check_5_text
 		$LevelProgress/Check5/CheckBox.visible = true
 		G.connect("level_check_5", self, "check", [5])
+		
+	if G.level_check_finish_text != null:
+		$LevelProgress/Check5051/CheckBox/Label.text = G.level_check_finish_text
+		$LevelProgress/Check5051/CheckBox.visible = true
+		G.connect("level_check_finish", self, "check", [5051])
 		
 func set_target_name(name, _other):
 	$ItemInfo/TargetName/label.text = name
