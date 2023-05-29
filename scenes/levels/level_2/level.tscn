@@ -28,6 +28,7 @@ script/source = "extends Spatial
 var item2
 var item3
 var item4
+var handler
 
 func _ready():
 	G.connect(\"escape\", self, \"exit\")
@@ -181,7 +182,7 @@ func exit():
 	G.to(\"main_menu\")
 
 func _physics_process(_delta):
-	pass
+	call(\"handler_\"+str(G.load_item))
 	
 func handler_11():
 	if (item2.name_substance_liq == [\"Вода\", \"Фенолфталеин\"] or item2.name_substance_liq == [\"Фенолфталеин\", \"Вода\"]) and (item3.name_substance_liq == [\"Вода\", \"Фенолфталеин\"] or item3.name_substance_liq == [\"Фенолфталеин\", \"Вода\"]) and (item4.name_substance_liq == [\"Вода\", \"Фенолфталеин\"] or item4.name_substance_liq == [\"Фенолфталеин\", \"Вода\"]):
@@ -194,6 +195,7 @@ func handler_11():
 		G.emit_signal(\"level_check_4\")
 		
 func handler_13():
+	print(\"hello world\")
 	pass
 "
 

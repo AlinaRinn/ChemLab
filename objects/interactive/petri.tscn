@@ -185,15 +185,15 @@ visible = false
 [node name="MeshInstance2" type="MeshInstance" parent="CollisionShape"]
 
 [node name="element_1" parent="CollisionShape/MeshInstance2" instance=ExtResource( 5 )]
-transform = Transform( 44, 0, 0, 0, 5, 0, 0, 0, 44, 0, -0.240455, 0 )
+transform = Transform( 44, 0, 0, 0, 6.2315, 0, 0, 0, 44, 0, -0.385994, 0 )
 visible = false
 
 [node name="element_2" parent="CollisionShape/MeshInstance2" instance=ExtResource( 5 )]
-transform = Transform( 44, 0, 0, 0, 5, 0, 0, 0, 44, 0, 0.215518, 0 )
+transform = Transform( 44, 0, 0, 0, 5.92244, 0, 0, 0, 44, 0, 0.173095, 0 )
 visible = false
 
 [node name="sediment" parent="CollisionShape/MeshInstance2" instance=ExtResource( 6 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0233777, -0.565, -0.100709 )
+transform = Transform( 1, 0, 0, 0, 0.725795, 0, 0, 0, 1, 0.0233777, -0.696604, -0.100709 )
 visible = false
 
 [node name="interactive" parent="." instance=ExtResource( 3 )]
