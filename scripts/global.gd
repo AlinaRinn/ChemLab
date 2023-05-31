@@ -3,6 +3,8 @@ extends Node
 signal lightOn
 signal lightOff
 signal paused
+signal hide_tasks
+signal show_tasks
 signal escape
 signal level_check_1
 signal level_check_2

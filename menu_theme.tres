@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=16 format=2]
+[gd_resource type="Theme" load_steps=18 format=2]
 
 [ext_resource path="res://assets/fonts/Cascadia/CascadiaMono-Light.otf" type="DynamicFontData" id=1]
 [ext_resource path="res://assets/fonts/Cascadia/CascadiaMono-Bold.otf" type="DynamicFontData" id=2]
@@ -54,6 +54,18 @@ corner_radius_bottom_left = 2
 shadow_size = 2
 shadow_offset = Vector2( 2, 2 )
 
+[sub_resource type="DynamicFont" id=17]
+size = 32
+outline_size = 5
+outline_color = Color( 0.00784314, 0.152941, 0.329412, 1 )
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=18]
+size = 24
+outline_size = 3
+outline_color = Color( 0.00784314, 0.152941, 0.329412, 1 )
+font_data = ExtResource( 1 )
+
 [sub_resource type="DynamicFont" id=10]
 size = 20
 outline_size = 2
@@ -108,6 +120,8 @@ Label/fonts/font = SubResource( 4 )
 Label/styles/normal = null
 OptionButton/fonts/font = SubResource( 14 )
 OptionButton/styles/normal = SubResource( 15 )
+RichTextLabel/fonts/bold_font = SubResource( 17 )
+RichTextLabel/fonts/normal_font = SubResource( 18 )
 TabContainer/fonts/font = SubResource( 10 )
 TabContainer/styles/panel = SubResource( 11 )
 TabContainer/styles/tab_bg = SubResource( 12 )

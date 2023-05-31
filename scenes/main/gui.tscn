@@ -1,10 +1,18 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://scripts/gui.gd" type="Script" id=1]
 [ext_resource path="res://assets/fonts/Cascadia/CascadiaMono-Light.otf" type="DynamicFontData" id=2]
 [ext_resource path="res://assets/images/target.png" type="Texture" id=3]
 [ext_resource path="res://assets/fonts/Cascadia/CascadiaMono-Bold.otf" type="DynamicFontData" id=4]
 [ext_resource path="res://gui_theme.tres" type="Theme" id=5]
+
+[sub_resource type="GDScript" id=11]
+script/source = "extends VBoxContainer
+
+func _ready():
+	G.connect(\"hide_tasks\", self, \"hide\")
+	G.connect(\"show_tasks\", self, \"show\")
+"
 
 [sub_resource type="DynamicFont" id=10]
 size = 18
@@ -144,6 +152,7 @@ margin_top = 35.0
 margin_right = 320.0
 margin_bottom = 275.0
 custom_constants/separation = 25
+script = SubResource( 11 )
 
 [node name="Check1" type="Control" parent="LevelProgress"]
 margin_right = 300.0

@@ -15,6 +15,7 @@ var SPEED_TURN
 var vel = Vector3()
 
 var state = \"stay\"
+var task_state = true
 
 onready var rc = $head/eye
 onready var anim = $AnimationPlayer
@@ -127,6 +128,14 @@ func get_input():
 	if Input.is_action_pressed(\"ui_alt\"):
 		$head/Camera.transform.origin.z = -1
 	else: $head/Camera.transform.origin.z = 0
+	
+	# Видимость задач
+	if Input.is_action_just_pressed(\"ui_t\") and task_state:
+		G.emit_signal(\"hide_tasks\")
+		task_state = false
+	elif Input.is_action_just_pressed(\"ui_t\") and !task_state:
+		G.emit_signal(\"show_tasks\")
+		task_state = true
 	
 	# Дроп предмета в руке
 	if Input.is_action_just_pressed(\"ui_g\"):
