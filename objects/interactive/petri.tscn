@@ -24,7 +24,7 @@ var name_substance_liq = []
 var amount_substance_liq = 0
 
 var id = \"petri\"
-
+var reaction = false
 
 func take():
 	# Подбирание предмета
@@ -64,6 +64,12 @@ func add_liquid(sub):
 		else amount_substance_liq + 1
 
 
+func remove_liquid():
+	for i in range(0, MAX_AMOUNT_SUBSTANCE_LIQ+1, 1):
+		elements_liq[i].hide()
+		name_substance_liq[i] = \"\"
+	amount_substance_liq = 0
+
 func remove_substance_met():
 	# Удаляем слой
 	elements_liq[amount_substance_liq].hide()
@@ -81,6 +87,7 @@ func reaction():
 		layer = $CollisionShape/MeshInstance2/element_1/liq
 		layer.set_surface_material(0, material)
 		$Particles.emitting = true
+		reaction = true
 
 	if name_substance_met == [\"Калий\", \"\", \"\", \"\", \"\"] and \\
 	   (name_substance_liq == [\"Вода\", \"Фенолфталеин\"] or name_substance_liq == [\"Фенолфталеин\", \"Вода\"]):
@@ -91,7 +98,7 @@ func reaction():
 		layer = $CollisionShape/MeshInstance2/element_1/liq
 		layer.set_surface_material(0, material)
 		$Particles.emitting = true
-		
+		reaction = true
 		
 	if name_substance_met == [\"Натрий\", \"\", \"\", \"\", \"\"] and \\
 	   (name_substance_liq == [\"Вода\", \"Фенолфталеин\"] or name_substance_liq == [\"Фенолфталеин\", \"Вода\"]):
@@ -102,17 +109,16 @@ func reaction():
 		layer = $CollisionShape/MeshInstance2/element_1/liq
 		layer.set_surface_material(0, material)
 		$Particles.emitting = true
-		
+		reaction = true
 		
 	if name_substance_met == [\"\", \"\", \"\", \"\", \"\"] and \\
-	   name_substance_liq == [\"Карбонат натрия\", \"Хлорид лития\"]:
+	   (name_substance_liq == [\"Карбонат натрия\", \"Хлорид лития\"] or name_substance_liq == [\"Хлорид лития\", \"Карбонат натрия\"]):
 		print(123)
 		name_substance_liq[0] = \"Хлорид Натрия\"
 		name_substance_liq[1] = \"Карбонат Лития\"
 		$CollisionShape/MeshInstance2/element_2.visible = false
 		$CollisionShape/MeshInstance2/sediment.visible = true
-		
-	
+		reaction = true
 	
 	
 func _ready():

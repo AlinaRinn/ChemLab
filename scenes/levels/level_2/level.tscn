@@ -28,7 +28,10 @@ script/source = "extends Spatial
 var item2
 var item3
 var item4
-var handler
+var switch1
+var switch2
+var switch3
+var switch4
 
 func _ready():
 	G.connect(\"escape\", self, \"exit\")
@@ -76,30 +79,28 @@ func _ready():
 		var item5 = load('res://objects/interactive/paper.tscn').instance()
 		$things.add_child(item5)
 		item5.global_transform.origin = Vector3(14.5, 2.82, -2)
-
-		G.handler = load('res://scenes/levels/level_2/level.tscn::1')
 		
 	if G.load_item == '12':
 		pass
 
 	if G.load_item == '13':
-		var item1 = load('res://objects/interactive/tube_spiral.tscn').instance()
-		$things.add_child(item1)
-		item1.subs = \"K\"
-		item1.global_transform.origin = Vector3(14.3, 3, -12)
-		item1.set_mode(1)
-	
 		item2 = load('res://objects/interactive/tube_spiral.tscn').instance()
 		$things.add_child(item2)
-		item2.subs = \"Na\"
-		item2.global_transform.origin = Vector3(14.3, 3, -11.5)
+		item2.subs = \"K\"
+		item2.global_transform.origin = Vector3(14.3, 3, -12)
 		item2.set_mode(1)
-		
+	
 		item3 = load('res://objects/interactive/tube_spiral.tscn').instance()
 		$things.add_child(item3)
-		item3.subs = \"Li\"
-		item3.global_transform.origin = Vector3(14.3, 3, -11)
+		item3.subs = \"Na\"
+		item3.global_transform.origin = Vector3(14.3, 3, -11.5)
 		item3.set_mode(1)
+		
+		item4 = load('res://objects/interactive/tube_spiral.tscn').instance()
+		$things.add_child(item4)
+		item4.subs = \"Li\"
+		item4.global_transform.origin = Vector3(14.3, 3, -11)
+		item4.set_mode(1)
 		
 	if G.load_item == '14':
 		var item1 = load('res://objects/interactive/bottle.tscn').instance()
@@ -127,23 +128,23 @@ func _ready():
 		pass
 		
 	if G.load_item == '18':
-		var item1 = load('res://objects/interactive/tube_spiral.tscn').instance()
-		$things.add_child(item1)
-		item1.subs = \"Ca\"
-		item1.global_transform.origin = Vector3(14.3, 3, -12)
-		item1.set_mode(1)
-	
 		item2 = load('res://objects/interactive/tube_spiral.tscn').instance()
 		$things.add_child(item2)
-		item2.subs = \"Sr\"
-		item2.global_transform.origin = Vector3(14.3, 3, -11.5)
+		item2.subs = \"Ca\"
+		item2.global_transform.origin = Vector3(14.3, 3, -12)
 		item2.set_mode(1)
-		
+	
 		item3 = load('res://objects/interactive/tube_spiral.tscn').instance()
 		$things.add_child(item3)
-		item3.subs = \"Ba\"
-		item3.global_transform.origin = Vector3(14.3, 3, -11)
+		item3.subs = \"Sr\"
+		item3.global_transform.origin = Vector3(14.3, 3, -11.5)
 		item3.set_mode(1)
+		
+		item4 = load('res://objects/interactive/tube_spiral.tscn').instance()
+		$things.add_child(item4)
+		item4.subs = \"Ba\"
+		item4.global_transform.origin = Vector3(14.3, 3, -11)
+		item4.set_mode(1)
 		
 	if G.load_item == '19':
 		var item1 = load('res://objects/interactive/bottle.tscn').instance()
@@ -181,7 +182,7 @@ func exit():
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	G.to(\"main_menu\")
 
-func _physics_process(_delta):
+func _input(event):
 	call(\"handler_\"+str(G.load_item))
 	
 func handler_11():
@@ -193,10 +194,61 @@ func handler_11():
 		G.emit_signal(\"level_check_3\")
 	if (item2.name_substance_met == [\"Натрий\", \"\", \"\", \"\", \"\"] or item3.name_substance_met == [\"Натрий\", \"\", \"\", \"\", \"\"] or item4.name_substance_met == [\"Натрий\", \"\", \"\", \"\", \"\"]):
 		G.emit_signal(\"level_check_4\")
+	if item2.reaction and item3.reaction and item4.reaction:
+		G.emit_signal(\"level_check_finish\")
+		
 		
 func handler_13():
-	print(\"hello world\")
+	if $things/burner.active and !switch1:
+		G.emit_signal(\"level_check_1\")
+		switch1 = true
+	if !item2.h and !switch2:
+		G.emit_signal(\"level_check_2\")
+		switch2 = true
+	if !item3.h and !switch3:
+		G.emit_signal(\"level_check_3\")
+		switch3 = true
+	if !item4.h and !switch4:
+		G.emit_signal(\"level_check_4\")
+		switch4 = true
+	if switch1 and switch2 and switch3 and switch4:
+		G.emit_signal(\"level_check_finish\")
+
+func handler_14():
+	if item2.name_substance_liq == [\"Хлорид лития\", \"\"]:
+		G.emit_signal(\"level_check_1\")
+	elif item2.name_substance_liq == [\"Карбонат натрия\", \"\"]:
+		G.emit_signal(\"level_check_2\")
+		
+	if item2.name_substance_liq == [\"Хлорид лития\", \"Карбонат натрия\"]:
+		G.emit_signal(\"level_check_2\")
+	elif item2.name_substance_liq == [\"Карбонат натрия\", \"Хлорид лития\"]:
+		G.emit_signal(\"level_check_1\")
+		
+	if item2.reaction:
+		G.emit_signal(\"level_check_finish\")
+
+
+func handler_18():
+	if $things/burner.active and !switch1:
+		G.emit_signal(\"level_check_1\")
+		switch1 = true
+	if !item2.h and !switch2:
+		G.emit_signal(\"level_check_2\")
+		switch2 = true
+	if !item3.h and !switch3:
+		G.emit_signal(\"level_check_3\")
+		switch3 = true
+	if !item4.h and !switch4:
+		G.emit_signal(\"level_check_4\")
+		switch4 = true
+	if switch1 and switch2 and switch3 and switch4:
+		G.emit_signal(\"level_check_finish\")
+
+
+func handler_19():
 	pass
+	
 "
 
 [node name="level_area" type="Spatial"]
