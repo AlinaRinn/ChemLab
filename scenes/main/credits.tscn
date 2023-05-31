@@ -9,8 +9,12 @@ script/source = "extends Control
 
 
 func _ready():
-	$AnimationSlide.play(\"slide\")
-
+	#$AnimationSlide.play(\"slide\")
+	
+	for i in range(0, 2400, 1):
+		$slider.rect_position.y -= 1
+		yield(get_tree().create_timer(0.00012), \"timeout\")
+	
 func _input(_event):
 	if Input.is_action_just_pressed(\"ui_cancel\"):
 		G.to('main_menu')
@@ -19,7 +23,7 @@ func _input(_event):
 [sub_resource type="Animation" id=2]
 length = 0.001
 tracks/0/type = "value"
-tracks/0/path = NodePath("RichTextLabel:rect_position")
+tracks/0/path = NodePath("slider:rect_position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -28,14 +32,14 @@ tracks/0/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Vector2( 660, 1079 ) ]
+"values": [ Vector2( 960, 1080 ) ]
 }
 
 [sub_resource type="Animation" id=3]
 resource_name = "slide"
 length = 30.0
 tracks/0/type = "value"
-tracks/0/path = NodePath("RichTextLabel:rect_position")
+tracks/0/path = NodePath("slider:rect_position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -44,7 +48,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 30 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ Vector2( 660, 1079 ), Vector2( 660, -700 ) ]
+"values": [ Vector2( 960, 1100 ), Vector2( 960, -700 ) ]
 }
 
 [node name="credits" type="Control"]
@@ -59,15 +63,18 @@ anchor_bottom = 1.0
 texture = ExtResource( 2 )
 expand = true
 
-[node name="RichTextLabel" type="RichTextLabel" parent="."]
+[node name="slider" type="Control" parent="."]
 anchor_left = 0.5
-anchor_top = 0.5
+anchor_top = 1.0
 anchor_right = 0.5
-anchor_bottom = 0.5
+anchor_bottom = 1.0
+
+[node name="RichTextLabel" type="RichTextLabel" parent="slider"]
+anchor_left = 0.5
+anchor_right = 0.5
 margin_left = -300.0
-margin_top = 539.0
 margin_right = 300.0
-margin_bottom = 1339.0
+margin_bottom = 800.002
 bbcode_enabled = true
 bbcode_text = "[center][b]Программирование[/b]
 
