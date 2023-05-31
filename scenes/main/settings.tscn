@@ -161,6 +161,7 @@ margin_bottom = 336.0
 tab_align = 0
 
 [node name="Графика" type="Tabs" parent="menu/TabContainer"]
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_top = 34.0
@@ -300,37 +301,42 @@ selected = 0
 script = SubResource( 7 )
 
 [node name="Управление" type="Tabs" parent="menu/TabContainer"]
-visible = false
 margin_top = 35.0
 margin_right = 700.0
 margin_bottom = 335.0
 
-[node name="VBoxContainer" type="VBoxContainer" parent="menu/TabContainer/Управление"]
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -350.0
-margin_top = -150.0
-margin_right = 350.0
-margin_bottom = 152.0
-
-[node name="ColorRect" type="ColorRect" parent="menu/TabContainer/Управление/VBoxContainer"]
+[node name="ScrollContainer" type="ScrollContainer" parent="menu/TabContainer/Управление"]
 margin_right = 700.0
-color = Color( 0.0627451, 0.203922, 0.258824, 1 )
+margin_bottom = 300.0
+scroll_horizontal_enabled = false
 
-[node name="Label" type="Label" parent="menu/TabContainer/Управление/VBoxContainer/ColorRect"]
+[node name="VBoxContainer" type="VBoxContainer" parent="menu/TabContainer/Управление/ScrollContainer"]
+margin_bottom = 420.0
+
+[node name="Section1" type="Control" parent="menu/TabContainer/Управление/ScrollContainer/VBoxContainer"]
+
+[node name="Sensitivity" type="Control" parent="menu/TabContainer/Управление/ScrollContainer/VBoxContainer/Section1"]
+margin_right = 700.0
+margin_bottom = 60.0
+
+[node name="Label" type="Label" parent="menu/TabContainer/Управление/ScrollContainer/VBoxContainer/Section1/Sensitivity"]
+anchor_top = 0.5
+anchor_bottom = 0.5
 margin_left = 20.0
-margin_top = 15.0
-margin_right = 324.0
-margin_bottom = 44.0
+margin_top = -14.5
+margin_right = 294.0
+margin_bottom = 14.5
 text = "Чувствительность мыши"
 
-[node name="sensitivity" type="HSlider" parent="menu/TabContainer/Управление/VBoxContainer/ColorRect"]
-margin_left = 402.0
-margin_top = 23.0
-margin_right = 652.0
-margin_bottom = 39.0
+[node name="sensitivity" type="HSlider" parent="menu/TabContainer/Управление/ScrollContainer/VBoxContainer/Section1/Sensitivity"]
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_left = -250.0
+margin_top = -8.0
+margin_right = -50.0
+margin_bottom = 8.0
 min_value = 0.001
 max_value = 0.1
 step = 0.001
@@ -338,9 +344,277 @@ value = 0.005
 tick_count = 20
 script = SubResource( 3 )
 
+[node name="Section2" type="Control" parent="menu/TabContainer/Управление/ScrollContainer/VBoxContainer"]
+margin_top = 60.0
+margin_bottom = 60.0
+
+[node name="Forward" type="Control" parent="menu/TabContainer/Управление/ScrollContainer/VBoxContainer/Section2"]
+margin_right = 700.0
+margin_bottom = 60.0
+
+[node name="Label" type="Label" parent="menu/TabContainer/Управление/ScrollContainer/VBoxContainer/Section2/Forward"]
+anchor_top = 0.5
+anchor_bottom = 0.5
+margin_left = 20.0
+margin_top = -14.5
+margin_right = 84.0
+text = "Вперед"
+
+[node name="Button" type="Button" parent="menu/TabContainer/Управление/ScrollContainer/VBoxContainer/Section2/Forward"]
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_left = -100.0
+margin_top = -22.0
+margin_right = -50.0
+margin_bottom = 22.0
+
+[node name="ColorRect" type="ColorRect" parent="menu/TabContainer/Управление/ScrollContainer/VBoxContainer/Section2/Forward"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -350.0
+margin_right = 350.0
+margin_bottom = 2.0
+color = Color( 0.0627451, 0.203922, 0.258824, 1 )
+
+[node name="Section3" type="Control" parent="menu/TabContainer/Управление/ScrollContainer/VBoxContainer"]
+margin_top = 120.0
+margin_bottom = 120.0
+
+[node name="Backward" type="Control" parent="menu/TabContainer/Управление/ScrollContainer/VBoxContainer/Section3"]
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_right = 700.0
+margin_bottom = 60.0
+
+[node name="Label" type="Label" parent="menu/TabContainer/Управление/ScrollContainer/VBoxContainer/Section3/Backward"]
+anchor_top = 0.5
+anchor_bottom = 0.5
+margin_left = 20.0
+margin_top = -14.5
+margin_right = 84.0
+margin_bottom = 14.5
+text = "Назад"
+
+[node name="Button" type="Button" parent="menu/TabContainer/Управление/ScrollContainer/VBoxContainer/Section3/Backward"]
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_left = -100.0
+margin_top = -22.0
+margin_right = -50.0
+margin_bottom = 22.0
+
+[node name="ColorRect" type="ColorRect" parent="menu/TabContainer/Управление/ScrollContainer/VBoxContainer/Section3/Backward"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -350.0
+margin_right = 350.0
+margin_bottom = 2.0
+color = Color( 0.0627451, 0.203922, 0.258824, 1 )
+
+[node name="Section4" type="Control" parent="menu/TabContainer/Управление/ScrollContainer/VBoxContainer"]
+margin_top = 180.0
+margin_bottom = 180.0
+
+[node name="Left" type="Control" parent="menu/TabContainer/Управление/ScrollContainer/VBoxContainer/Section4"]
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_right = 700.0
+margin_bottom = 60.0
+
+[node name="Label" type="Label" parent="menu/TabContainer/Управление/ScrollContainer/VBoxContainer/Section4/Left"]
+anchor_top = 0.5
+anchor_bottom = 0.5
+margin_left = 20.0
+margin_top = -14.5
+margin_right = 84.0
+margin_bottom = 14.5
+text = "Влево"
+
+[node name="Button" type="Button" parent="menu/TabContainer/Управление/ScrollContainer/VBoxContainer/Section4/Left"]
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_left = -100.0
+margin_top = -22.0
+margin_right = -50.0
+margin_bottom = 22.0
+
+[node name="ColorRect" type="ColorRect" parent="menu/TabContainer/Управление/ScrollContainer/VBoxContainer/Section4/Left"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -350.0
+margin_right = 350.0
+margin_bottom = 2.0
+color = Color( 0.0627451, 0.203922, 0.258824, 1 )
+
+[node name="Section5" type="Control" parent="menu/TabContainer/Управление/ScrollContainer/VBoxContainer"]
+margin_top = 240.0
+margin_bottom = 240.0
+
+[node name="Right" type="Control" parent="menu/TabContainer/Управление/ScrollContainer/VBoxContainer/Section5"]
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_right = 700.0
+margin_bottom = 60.0
+
+[node name="Label" type="Label" parent="menu/TabContainer/Управление/ScrollContainer/VBoxContainer/Section5/Right"]
+anchor_top = 0.5
+anchor_bottom = 0.5
+margin_left = 20.0
+margin_top = -14.5
+margin_right = 84.0
+margin_bottom = 14.5
+text = "Вправо"
+
+[node name="Button" type="Button" parent="menu/TabContainer/Управление/ScrollContainer/VBoxContainer/Section5/Right"]
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_left = -100.0
+margin_top = -22.0
+margin_right = -50.0
+margin_bottom = 22.0
+
+[node name="ColorRect" type="ColorRect" parent="menu/TabContainer/Управление/ScrollContainer/VBoxContainer/Section5/Right"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -350.0
+margin_right = 350.0
+margin_bottom = 2.0
+color = Color( 0.0627451, 0.203922, 0.258824, 1 )
+
+[node name="Section6" type="Control" parent="menu/TabContainer/Управление/ScrollContainer/VBoxContainer"]
+margin_top = 300.0
+margin_bottom = 300.0
+
+[node name="Run" type="Control" parent="menu/TabContainer/Управление/ScrollContainer/VBoxContainer/Section6"]
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_right = 700.0
+margin_bottom = 60.0
+
+[node name="Label" type="Label" parent="menu/TabContainer/Управление/ScrollContainer/VBoxContainer/Section6/Run"]
+anchor_top = 0.5
+anchor_bottom = 0.5
+margin_left = 20.0
+margin_top = -14.5
+margin_right = 84.0
+margin_bottom = 14.5
+text = "Бег"
+
+[node name="Button" type="Button" parent="menu/TabContainer/Управление/ScrollContainer/VBoxContainer/Section6/Run"]
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_left = -100.0
+margin_top = -22.0
+margin_right = -50.0
+margin_bottom = 22.0
+
+[node name="ColorRect" type="ColorRect" parent="menu/TabContainer/Управление/ScrollContainer/VBoxContainer/Section6/Run"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -350.0
+margin_right = 350.0
+margin_bottom = 2.0
+color = Color( 0.0627451, 0.203922, 0.258824, 1 )
+
+[node name="Section7" type="Control" parent="menu/TabContainer/Управление/ScrollContainer/VBoxContainer"]
+margin_top = 360.0
+margin_bottom = 360.0
+
+[node name="Sit" type="Control" parent="menu/TabContainer/Управление/ScrollContainer/VBoxContainer/Section7"]
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_right = 700.0
+margin_bottom = 60.0
+
+[node name="Label" type="Label" parent="menu/TabContainer/Управление/ScrollContainer/VBoxContainer/Section7/Sit"]
+anchor_top = 0.5
+anchor_bottom = 0.5
+margin_left = 20.0
+margin_top = -14.5
+margin_right = 84.0
+margin_bottom = 14.5
+text = "Присесть"
+
+[node name="Button" type="Button" parent="menu/TabContainer/Управление/ScrollContainer/VBoxContainer/Section7/Sit"]
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_left = -100.0
+margin_top = -22.0
+margin_right = -50.0
+margin_bottom = 22.0
+
+[node name="ColorRect" type="ColorRect" parent="menu/TabContainer/Управление/ScrollContainer/VBoxContainer/Section7/Sit"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -350.0
+margin_right = 350.0
+margin_bottom = 2.0
+color = Color( 0.0627451, 0.203922, 0.258824, 1 )
+
+[node name="Section8" type="Control" parent="menu/TabContainer/Управление/ScrollContainer/VBoxContainer"]
+margin_top = 420.0
+margin_bottom = 420.0
+
+[node name="TakeInHand" type="Control" parent="menu/TabContainer/Управление/ScrollContainer/VBoxContainer/Section8"]
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_right = 700.0
+margin_bottom = 60.0
+
+[node name="Label" type="Label" parent="menu/TabContainer/Управление/ScrollContainer/VBoxContainer/Section8/TakeInHand"]
+anchor_top = 0.5
+anchor_bottom = 0.5
+margin_left = 20.0
+margin_top = -14.5
+margin_right = 84.0
+margin_bottom = 14.5
+text = "Взять в руку"
+
+[node name="Button" type="Button" parent="menu/TabContainer/Управление/ScrollContainer/VBoxContainer/Section8/TakeInHand"]
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_left = -100.0
+margin_top = -22.0
+margin_right = -50.0
+margin_bottom = 22.0
+
+[node name="ColorRect" type="ColorRect" parent="menu/TabContainer/Управление/ScrollContainer/VBoxContainer/Section8/TakeInHand"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -350.0
+margin_right = 350.0
+margin_bottom = 2.0
+color = Color( 0.0627451, 0.203922, 0.258824, 1 )
+
 [connection signal="toggled" from="menu/TabContainer/Графика/VBoxContainer/ScreenMode/CheckButton" to="menu/TabContainer/Графика/VBoxContainer/ScreenMode/CheckButton" method="_on_CheckButton_toggled"]
 [connection signal="toggled" from="menu/TabContainer/Графика/VBoxContainer/Vsync/CheckButton" to="menu/TabContainer/Графика/VBoxContainer/Vsync/CheckButton" method="_on_CheckButton_toggled"]
 [connection signal="item_selected" from="menu/TabContainer/Графика/VBoxContainer/Resolution/OptionButton" to="menu/TabContainer/Графика/VBoxContainer/Resolution" method="_on_OptionButton_item_selected"]
 [connection signal="toggled" from="menu/TabContainer/Графика/VBoxContainer/FXAA/CheckBox" to="menu/TabContainer/Графика/VBoxContainer/FXAA/CheckBox" method="_on_CheckBox_toggled"]
 [connection signal="item_selected" from="menu/TabContainer/Графика/VBoxContainer/MSAA/OptionButton" to="menu/TabContainer/Графика/VBoxContainer/MSAA/OptionButton" method="_on_OptionButton_item_selected"]
-[connection signal="value_changed" from="menu/TabContainer/Управление/VBoxContainer/ColorRect/sensitivity" to="menu/TabContainer/Управление/VBoxContainer/ColorRect/sensitivity" method="_on_HSlider_value_changed"]
+[connection signal="value_changed" from="menu/TabContainer/Управление/ScrollContainer/VBoxContainer/Section1/Sensitivity/sensitivity" to="menu/TabContainer/Управление/ScrollContainer/VBoxContainer/Section1/Sensitivity/sensitivity" method="_on_HSlider_value_changed"]
