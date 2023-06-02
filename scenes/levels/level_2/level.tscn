@@ -40,24 +40,28 @@ func _ready():
 		var item1 = load('res://objects/interactive/bottle.tscn').instance()
 		$things.add_child(item1)
 		item1.subs = \"Phenolphthalein\"
+		item1.update_name()
 		item1.global_transform.origin = Vector3(15, 3.3, -0.8)
 		
 		var item12 = load('res://objects/interactive/bottle.tscn').instance()
 		$things.add_child(item12)
 		item12.subs = \"Na\"
 		item12.hide()
+		item12.update_name()
 		item12.global_transform.origin = Vector3(15, 3.3, -1.1)
 		
 		var item13 = load('res://objects/interactive/bottle.tscn').instance()
 		$things.add_child(item13)
 		item13.subs = \"Li\"
 		item13.hide()
+		item13.update_name()
 		item13.global_transform.origin = Vector3(15, 3.3, -1.4)
 		
 		var item14 = load('res://objects/interactive/bottle.tscn').instance()
 		$things.add_child(item14)
 		item14.subs = \"K\"
 		item14.hide()
+		item14.update_name()
 		item14.global_transform.origin = Vector3(15, 3.3, -1.7)
 		
 		item2 = load('res://objects/interactive/petri.tscn').instance()
@@ -106,11 +110,13 @@ func _ready():
 		var item1 = load('res://objects/interactive/bottle.tscn').instance()
 		$things.add_child(item1)
 		item1.subs = \"Na2CO3\"
+		item1.update_name()
 		item1.global_transform.origin = Vector3(15, 3.3, -0.8)
 		
 		var item12 = load('res://objects/interactive/bottle.tscn').instance()
 		$things.add_child(item12)
 		item12.subs = \"LiCl\"
+		item12.update_name()
 		item12.global_transform.origin = Vector3(15, 3.3, -1.1)
 		
 		item2 = load('res://objects/interactive/petri.tscn').instance()
@@ -150,26 +156,31 @@ func _ready():
 		var item1 = load('res://objects/interactive/bottle.tscn').instance()
 		$things.add_child(item1)
 		item1.subs = \"Mg\"
+		item1.update_name()
 		item1.global_transform.origin = Vector3(15, 3.3, -0.8)
 		
 		var item12 = load('res://objects/interactive/bottle.tscn').instance()
 		$things.add_child(item12)
 		item12.subs = \"Ba\"
+		item12.update_name()
 		item12.global_transform.origin = Vector3(15, 3.3, -1.1)
 		
 		var item13 = load('res://objects/interactive/bottle.tscn').instance()
 		$things.add_child(item13)
 		item13.subs = \"Sr\"
+		item13.update_name()
 		item13.global_transform.origin = Vector3(15, 3.3, -1.4)
 		
 		var item14 = load('res://objects/interactive/bottle.tscn').instance()
 		$things.add_child(item14)
 		item14.subs = \"Ca\"
+		item14.update_name()
 		item14.global_transform.origin = Vector3(15, 3.3, -1.7)
 		
 		var item15 = load('res://objects/interactive/bottle.tscn').instance()
 		$things.add_child(item15)
 		item15.subs = \"Na2CO3\"
+		item15.update_name()
 		item15.global_transform.origin = Vector3(15, 3.3, -2.0)
 	
 	if G.load_item == '20':

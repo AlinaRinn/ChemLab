@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://assets/models/bottle.obj" type="ArrayMesh" id=1]
 [ext_resource path="res://scripts/objects/interactive/bottle.gd" type="Script" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://objects/interaction.tscn" type="PackedScene" id=4]
 [ext_resource path="res://objects/elements/water.tscn" type="PackedScene" id=5]
 [ext_resource path="res://assets/models/metal_piece.obj" type="ArrayMesh" id=6]
+[ext_resource path="res://assets/fonts/Cascadia/CascadiaMono-Light.otf" type="DynamicFontData" id=7]
 
 [sub_resource type="CylinderShape" id=1]
 height = 0.255448
@@ -14,6 +15,12 @@ radius = 0.0950053
 [sub_resource type="CylinderShape" id=2]
 height = 0.0842828
 radius = 0.0454384
+
+[sub_resource type="DynamicFont" id=3]
+size = 72
+outline_size = 3
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 7 )
 
 [node name="bottle" type="RigidBody"]
 script = ExtResource( 2 )
@@ -47,3 +54,10 @@ shape = SubResource( 2 )
 transform = Transform( 0.204, 0, 0, 0, 0.237992, 0.145982, 0, -0.390139, 0.0890519, -0.0383004, 0.199903, 0.0821294 )
 visible = false
 mesh = ExtResource( 6 )
+
+[node name="Label3D" type="Label3D" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.39233, 0 )
+pixel_size = 0.001
+billboard = 1
+text = "Пусто"
+font = SubResource( 3 )

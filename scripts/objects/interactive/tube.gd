@@ -71,7 +71,7 @@ func get_info():
 
 
 func reaction():
-	if name_substance == ["Магний", "Карбонат натрия", "", "", ""]:
+	if name_substance == ["Магний+", "Карбонат натрия", "", "", ""] or name_substance == ["Карбонат натрия", "Магний+", "", "", ""]:
 		$CollisionShape/tube/sediment/sediment.visible = true
 		$CollisionShape/tube/liquid/element_2.visible = false
 		name_substance[0] = "Карбонат Магния"
@@ -81,7 +81,7 @@ func reaction():
 		material.albedo_color = Color.white
 		layer.set_surface_material(0, material)
 
-	if name_substance == ["Барий", "Карбонат натрия", "", "", ""]:
+	if name_substance == ["Барий+", "Карбонат натрия", "", "", ""] or name_substance == ["Карбонат натрия", "Барий+", "", "", ""]:
 		$CollisionShape/tube/sediment/sediment.visible = true
 		$CollisionShape/tube/liquid/element_2.visible = false
 		name_substance[0] = "Карбонат Бария"
@@ -91,7 +91,7 @@ func reaction():
 		material.albedo_color = Color.white
 		layer.set_surface_material(0, material)
 		
-	if name_substance == ["Стронций", "Карбонат натрия", "", "", ""]:
+	if name_substance == ["Стронций+", "Карбонат натрия", "", "", ""] or name_substance == ["Карбонат натрия", "Стронций+", "", "", ""]:
 		$CollisionShape/tube/sediment/sediment.visible = true
 		$CollisionShape/tube/liquid/element_2.visible = false
 		name_substance[0] = "Карбонат Стронция"
@@ -101,7 +101,7 @@ func reaction():
 		material.albedo_color = Color.white
 		layer.set_surface_material(0, material)
 		
-	if name_substance == ["Кальций", "Карбонат натрия", "", "", ""]:
+	if name_substance == ["Кальций+", "Карбонат натрия", "", "", ""] or name_substance == ["Карбонат натрия", "Кальций+", "", "", ""]:
 		$CollisionShape/tube/sediment/sediment.visible = true
 		$CollisionShape/tube/liquid/element_2.visible = false
 		name_substance[0] = "Карбонат Кальция"

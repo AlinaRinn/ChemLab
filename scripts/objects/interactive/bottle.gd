@@ -35,6 +35,8 @@ func _ready():
 	if (isMetal):
 		$metal.visible = true
 
+	$Label3D.text = subs
+
 
 func hide():
 	if isMetal:
@@ -43,3 +45,7 @@ func hide():
 	else:
 		isMetal = true
 		$metal.visible = isMetal
+
+
+func update_name():
+	$Label3D.text = subs
