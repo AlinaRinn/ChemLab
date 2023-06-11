@@ -25,19 +25,19 @@ func spiral():
 		isSpiral = true
 		$spiral.visible = isSpiral
 		if G.player.in_hand_object.subs == "K":
-			$CPUParticles.color_ramp = load("res://assets/gradient/K.tres")
+			$fire.process_material = load("res://assets/gradient/part_K.tres")
 		if G.player.in_hand_object.subs == "Na":
-			$CPUParticles.color_ramp = load("res://assets/gradient/Na.tres")
+			$fire.process_material = load("res://assets/gradient/part_Na.tres")
 		if G.player.in_hand_object.subs == "Li":
-			$CPUParticles.color_ramp = load("res://assets/gradient/Li.tres")
+			$fire.process_material = load("res://assets/gradient/part_Li.tres")
 		if G.player.in_hand_object.subs == "Ca":
-			$CPUParticles.color_ramp = load("res://assets/gradient/Ca.tres")
+			$fire.process_material = load("res://assets/gradient/part_Ca.tres")
 		if G.player.in_hand_object.subs == "Ba":
-			$CPUParticles.color_ramp = load("res://assets/gradient/Ba.tres")
+			$fire.process_material = load("res://assets/gradient/part_Ba.tres")
 		if G.player.in_hand_object.subs == "Sr":
-			$CPUParticles.color_ramp = load("res://assets/gradient/Sr.tres")
+			$fire.process_material = load("res://assets/gradient/part_Sr.tres")
 	else:
 		G.player.in_hand_object.hide()
 		isSpiral = false
 		$spiral.visible = isSpiral
-		$CPUParticles.color_ramp = load("res://assets/gradient/burner.tres")
+		$fire.process_material = load("res://assets/gradient/part_burter.tres")

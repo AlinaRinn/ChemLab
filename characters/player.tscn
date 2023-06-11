@@ -406,6 +406,7 @@ visible = false
 
 [node name="pipette" parent="head" instance=ExtResource( 1 )]
 transform = Transform( 0.036273, -0.0267965, 0.0215921, 2.069e-06, -0.0313701, -0.0389348, 0.0344133, 0.0282465, -0.0227566, -0.402337, -0.12437, -0.517703 )
+visible = false
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/RESET = SubResource( 3 )
