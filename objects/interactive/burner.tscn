@@ -55,7 +55,7 @@ tracks/1/keys = {
 "values": [ false, true ]
 }
 
-[sub_resource type="SpatialMaterial" id=13]
+[sub_resource type="SpatialMaterial" id=16]
 flags_transparent = true
 flags_unshaded = true
 vertex_color_use_as_albedo = true
@@ -67,7 +67,7 @@ particles_anim_loop = true
 albedo_texture = ExtResource( 10 )
 
 [sub_resource type="QuadMesh" id=14]
-material = SubResource( 13 )
+material = SubResource( 16 )
 
 [node name="burner" type="Spatial"]
 script = ExtResource( 5 )
