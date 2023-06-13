@@ -108,8 +108,7 @@ shadow_enabled = true
 shadow_color = Color( 0.2, 0.2, 0.168627, 1 )
 
 [node name="spiral" parent="." instance=ExtResource( 8 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0747402, 0.503067, -0.00910415 )
-visible = false
+transform = Transform( 1, 0, 0, 0, 0.916956, -0.398989, 0, 0.398989, 0.916956, -0.00352529, 0.411382, -0.000419408 )
 
 [node name="fire" type="Particles" parent="."]
 transform = Transform( 0.01, 0, 0, 0, 0.05, 0, 0, 0, 0.01, 0, 0.357753, 0 )
