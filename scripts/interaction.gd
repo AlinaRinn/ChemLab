@@ -21,7 +21,7 @@ func _process(delta):
 		var node = get_parent().get_children()[0]
 		var material = node.get_surface_material(0).duplicate()
 		if see:
-			material.emission_energy = 0.2
+			material.emission_energy = 0.5
 			node.set_surface_material(0, material)
 		else:
 			material.emission_energy = 0.0
