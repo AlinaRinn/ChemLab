@@ -31,10 +31,6 @@ func hide():
 		$spiral.visible = h
 "
 
-[sub_resource type="CylinderShape" id=4]
-height = 0.540256
-radius = 0.0664903
-
 [sub_resource type="SpatialMaterial" id=2]
 render_priority = -1
 albedo_color = Color( 1, 1, 1, 0.588235 )
@@ -48,6 +44,10 @@ ao_texture_channel = 0
 refraction_enabled = true
 refraction_scale = 0.05
 refraction_texture_channel = 0
+
+[sub_resource type="CylinderShape" id=4]
+height = 0.540256
+radius = 0.0664903
 
 [sub_resource type="Animation" id=3]
 resource_name = "drug"
@@ -64,47 +64,48 @@ mass = 2.0
 gravity_scale = 0.8
 script = SubResource( 5 )
 
-[node name="CollisionShape" type="CollisionShape" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.185462, -0.00997448 )
-shape = SubResource( 4 )
-
-[node name="tube" type="MeshInstance" parent="CollisionShape"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -3.122, -3.486, 3.194 )
+[node name="MeshInstance" type="MeshInstance" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -3.122, -3.30054, 3.18403 )
 mesh = ExtResource( 1 )
+skeleton = NodePath("../CollisionShape")
 material/0 = ExtResource( 2 )
 
-[node name="liquid" type="Spatial" parent="CollisionShape/tube"]
+[node name="liquid" type="Spatial" parent="MeshInstance"]
 visible = false
 
-[node name="element_1" parent="CollisionShape/tube/liquid" instance=ExtResource( 5 )]
+[node name="element_1" parent="MeshInstance/liquid" instance=ExtResource( 5 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 3.12313, 3.30867, -3.19543 )
 
-[node name="element_2" parent="CollisionShape/tube/liquid" instance=ExtResource( 5 )]
+[node name="element_2" parent="MeshInstance/liquid" instance=ExtResource( 5 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 3.12313, 3.40021, -3.19543 )
 
-[node name="element_3" parent="CollisionShape/tube/liquid" instance=ExtResource( 5 )]
+[node name="element_3" parent="MeshInstance/liquid" instance=ExtResource( 5 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 3.12313, 3.49199, -3.19543 )
 
-[node name="element_4" parent="CollisionShape/tube/liquid" instance=ExtResource( 5 )]
+[node name="element_4" parent="MeshInstance/liquid" instance=ExtResource( 5 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 3.12313, 3.58267, -3.19543 )
 
-[node name="element_5" parent="CollisionShape/tube/liquid" instance=ExtResource( 5 )]
+[node name="element_5" parent="MeshInstance/liquid" instance=ExtResource( 5 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 3.12313, 3.67419, -3.19543 )
 
-[node name="sediment" type="Spatial" parent="CollisionShape/tube"]
+[node name="sediment" type="Spatial" parent="MeshInstance"]
 
-[node name="element_1" parent="CollisionShape/tube/sediment" instance=ExtResource( 7 )]
+[node name="element_1" parent="MeshInstance/sediment" instance=ExtResource( 7 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 3.123, 3.41096, -3.195 )
 
-[node name="element_2" parent="CollisionShape/tube/sediment" instance=ExtResource( 7 )]
+[node name="element_2" parent="MeshInstance/sediment" instance=ExtResource( 7 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 3.123, 3.31996, -3.195 )
 
-[node name="Sphere" type="CSGSphere" parent="CollisionShape/tube/sediment/element_2"]
+[node name="Sphere" type="CSGSphere" parent="MeshInstance/sediment/element_2"]
 transform = Transform( 1, 0, 0, 0, 0.877698, 0, 0, 0, 1, 0, -0.0427787, -0.000138847 )
 radius = 0.0612399
 radial_segments = 40
 rings = 25
 material = SubResource( 2 )
+
+[node name="CollisionShape" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.185462, -0.00997448 )
+shape = SubResource( 4 )
 
 [node name="interaction" parent="." instance=ExtResource( 3 )]
 transform = Transform( 0.0842691, 0, 0, 0, 0.325166, 0, 0, 0, 0.0835238, 0.00632, 0.172919, -0.00947995 )
@@ -114,6 +115,7 @@ left_click_action = "use1"
 left_click_label = "Использовать спираль"
 right_click_action = "take"
 right_click_label = "Взять"
+highlighting = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 root_node = NodePath("")

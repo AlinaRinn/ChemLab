@@ -41,6 +41,7 @@ left_click_action = "pour"
 left_click_label = "Набрать"
 right_click_action = "take"
 right_click_label = "Взять бутылку"
+highlighting = true
 
 [node name="CollisionShape" type="CollisionShape" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.000278652, 0.128143, -0.00195086 )

@@ -72,6 +72,9 @@ func get_info_object():
 	if cast:
 		var owner = cast.get_owner()
 		
+		if cast.get(\"highlighting\"):
+			cast.see = true
+		
 		# Название предмета на который навелись
 		G.label_name.text = cast.label
 		var liquid_obj = owner.get(\"subs\")
@@ -213,6 +216,7 @@ func drop():
 	drop_obj.sleeping = false
 	G.root_level.add_child(drop_obj)
 
+
 func action():
 	# Для взаимодействия с объектами
 	if cast:
@@ -223,6 +227,7 @@ func _ready():
 	# Прячет курсор при загрузке на уровень
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	SPEED_TURN = G.sensitivity
+
 
 func _input(e):
 	# Обрабатываем движение мышкой

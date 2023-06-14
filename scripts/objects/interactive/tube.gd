@@ -1,6 +1,6 @@
 extends Spatial
 
-onready var el = $CollisionShape/tube/liquid
+onready var el = $MeshInstance/liquid
 
 var MAX_AMOUNT_SUBSTANCE = 4
 
@@ -10,7 +10,6 @@ var amount_substance = 0
 var opened = false
 var id = "tube"
 
-export(bool) var isSpiral
 
 func change_color(color):
 	# Меняем цвет
@@ -20,7 +19,7 @@ func change_color(color):
 	material.refraction_enabled = true
 	layer.set_surface_material(0, material)
 	if amount_substance == 0:
-		$CollisionShape/tube/liquid/element_1/Sphere.material = material
+		$MeshInstance/liquid/element_1/Sphere.material = material
 
 func add_substance(sub):
 	# Добавляем слой жидкости
@@ -56,11 +55,6 @@ func _ready():
 	for i in range(MAX_AMOUNT_SUBSTANCE + 1):
 		name_substance.append("")
 
-	if !isSpiral:
-		$CollisionShape/tube/spiral.visible = false
-		$CollisionShape/tube/sediment/element_1.visible = false
-		$CollisionShape/tube/sediment/element_2.visible = false
-
 
 func get_info():
 	# Информация о содежимом в интерфейс
@@ -72,41 +66,41 @@ func get_info():
 
 func reaction():
 	if name_substance == ["Магний+", "Карбонат натрия", "", "", ""] or name_substance == ["Карбонат натрия", "Магний+", "", "", ""]:
-		$CollisionShape/tube/sediment/sediment.visible = true
-		$CollisionShape/tube/liquid/element_2.visible = false
+		$MeshInstance/sediment/sediment.visible = true
+		$MeshInstance/liquid/element_2.visible = false
 		name_substance[0] = "Карбонат Магния"
 		name_substance[1] = "Натрий"
-		var layer = $CollisionShape/tube/liquid/element_1/liq
+		var layer = $MeshInstance/liquid/element_1/liq
 		var material = layer.get_surface_material(0).duplicate()
 		material.albedo_color = Color.white
 		layer.set_surface_material(0, material)
 
 	if name_substance == ["Барий+", "Карбонат натрия", "", "", ""] or name_substance == ["Карбонат натрия", "Барий+", "", "", ""]:
-		$CollisionShape/tube/sediment/sediment.visible = true
-		$CollisionShape/tube/liquid/element_2.visible = false
+		$MeshInstance/sediment/sediment.visible = true
+		$MeshInstance/liquid/element_2.visible = false
 		name_substance[0] = "Карбонат Бария"
 		name_substance[1] = "Натрий"
-		var layer = $CollisionShape/tube/liquid/element_1/liq
+		var layer = $MeshInstance/liquid/element_1/liq
 		var material = layer.get_surface_material(0).duplicate()
 		material.albedo_color = Color.white
 		layer.set_surface_material(0, material)
 		
 	if name_substance == ["Стронций+", "Карбонат натрия", "", "", ""] or name_substance == ["Карбонат натрия", "Стронций+", "", "", ""]:
-		$CollisionShape/tube/sediment/sediment.visible = true
-		$CollisionShape/tube/liquid/element_2.visible = false
+		$MeshInstance/sediment/sediment.visible = true
+		$MeshInstance/liquid/element_2.visible = false
 		name_substance[0] = "Карбонат Стронция"
 		name_substance[1] = "Натрий"
-		var layer = $CollisionShape/tube/liquid/element_1/liq
+		var layer = $MeshInstance/liquid/element_1/liq
 		var material = layer.get_surface_material(0).duplicate()
 		material.albedo_color = Color.white
 		layer.set_surface_material(0, material)
 		
 	if name_substance == ["Кальций+", "Карбонат натрия", "", "", ""] or name_substance == ["Карбонат натрия", "Кальций+", "", "", ""]:
-		$CollisionShape/tube/sediment/sediment.visible = true
-		$CollisionShape/tube/liquid/element_2.visible = false
+		$MeshInstance/sediment/sediment.visible = true
+		$MeshInstance/liquid/element_2.visible = false
 		name_substance[0] = "Карбонат Кальция"
 		name_substance[1] = "Натрий"
-		var layer = $CollisionShape/tube/liquid/element_1/liq
+		var layer = $MeshInstance/liquid/element_1/liq
 		var material = layer.get_surface_material(0).duplicate()
 		material.albedo_color = Color.white
 		layer.set_surface_material(0, material)
