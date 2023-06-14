@@ -72,9 +72,10 @@ func reaction():
 		name_substance[1] = "Натрий"
 		var layer = $MeshInstance/liquid/element_1/liq
 		var material = layer.get_surface_material(0).duplicate()
-		material.albedo_color = Color.white
+		material.albedo_color = Color(0.752941, 0.752941, 0.752941, 0.7)
 		layer.set_surface_material(0, material)
-
+		$MeshInstance/liquid/element_1/Sphere.material = material
+		
 	if name_substance == ["Барий+", "Карбонат натрия", "", "", ""] or name_substance == ["Карбонат натрия", "Барий+", "", "", ""]:
 		$MeshInstance/sediment/sediment.visible = true
 		$MeshInstance/liquid/element_2.visible = false
@@ -82,8 +83,9 @@ func reaction():
 		name_substance[1] = "Натрий"
 		var layer = $MeshInstance/liquid/element_1/liq
 		var material = layer.get_surface_material(0).duplicate()
-		material.albedo_color = Color.white
+		material.albedo_color = Color(0.752941, 0.752941, 0.752941, 0.7)
 		layer.set_surface_material(0, material)
+		$MeshInstance/liquid/element_1/Sphere.material = material
 		
 	if name_substance == ["Стронций+", "Карбонат натрия", "", "", ""] or name_substance == ["Карбонат натрия", "Стронций+", "", "", ""]:
 		$MeshInstance/sediment/sediment.visible = true
@@ -92,8 +94,9 @@ func reaction():
 		name_substance[1] = "Натрий"
 		var layer = $MeshInstance/liquid/element_1/liq
 		var material = layer.get_surface_material(0).duplicate()
-		material.albedo_color = Color.white
+		material.albedo_color = Color(0.752941, 0.752941, 0.752941, 0.7)
 		layer.set_surface_material(0, material)
+		$MeshInstance/liquid/element_1/Sphere.material = material
 		
 	if name_substance == ["Кальций+", "Карбонат натрия", "", "", ""] or name_substance == ["Карбонат натрия", "Кальций+", "", "", ""]:
 		$MeshInstance/sediment/sediment.visible = true
@@ -102,5 +105,6 @@ func reaction():
 		name_substance[1] = "Натрий"
 		var layer = $MeshInstance/liquid/element_1/liq
 		var material = layer.get_surface_material(0).duplicate()
-		material.albedo_color = Color.white
+		material.albedo_color = Color(0.752941, 0.752941, 0.752941, 0.7)
 		layer.set_surface_material(0, material)
+		$MeshInstance/liquid/element_1/Sphere.material = material

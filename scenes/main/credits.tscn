@@ -67,6 +67,10 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
+margin_left = 960.0
+margin_top = 1080.0
+margin_right = 960.0
+margin_bottom = 1080.0
 
 [node name="RichTextLabel" type="RichTextLabel" parent="slider"]
 anchor_left = 0.5
@@ -95,8 +99,10 @@ bbcode_text = "[center][b]Программирование[/b]
 
 [b]3D-модели[/b]
 
+Никита Лущик @AlinaRinn
+Андрей Самойлов @AndreySyp
 Дарья Семенова
-
+Максим Солопов
 "
 text = "Программирование
 
@@ -118,8 +124,10 @@ text = "Программирование
 
 3D-модели
 
+Никита Лущик @AlinaRinn
+Андрей Самойлов @AndreySyp
 Дарья Семенова
-
+Максим Солопов
 "
 
 [node name="AnimationSlide" type="AnimationPlayer" parent="."]

@@ -190,10 +190,10 @@ transform = Transform( -1.09278e-07, 0, 2.5, 0, 2.5, 0, -2.5, 0, -1.09278e-07, -
 [node name="staffs" type="Spatial" parent="."]
 
 [node name="Tube2" parent="staffs" instance=ExtResource( 10 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 14.9025, 2.51954, 6.49631 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 14.8361, 2.43462, 5.91697 )
 
 [node name="Tripod1" parent="staffs" instance=ExtResource( 9 )]
-transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 14.8919, 2.29459, 6.4758 )
+transform = Transform( -0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, -0.707107, 14.5875, 2.29459, 6.1508 )
 
 [node name="Tube3" parent="staffs" instance=ExtResource( 10 )]
 transform = Transform( 0.253606, 0, -0.967308, 0, 1, 0, 0.967308, 0, 0.253606, 15.9874, 2.42168, -3.52441 )
@@ -243,10 +243,10 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.584816, 2.17807, -5.73009 )
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 12.4082, 2.31318, 5.84636 )
 
 [node name="petri" parent="staffs" instance=ExtResource( 22 )]
-transform = Transform( 0.08, 0, 0, 0, 0.08, 0, 0, 0, 0.08, 13.9052, 2.23202, 5.7421 )
+transform = Transform( 0.08, 0, 0, 0, 0.08, 0, 0, 0, 0.08, 13.9052, 2.23962, 5.7421 )
 
 [node name="pincet" parent="staffs" instance=ExtResource( 23 )]
-transform = Transform( 0.18, 0, 0, 0, 0.18, 0, 0, 0, 0.18, 14.7492, 2.17197, 5.43382 )
+transform = Transform( 0.18, 0, 0, 0, 0.18, 0, 0, 0, 0.18, 14.4052, 2.17197, 5.43382 )
 
 [node name="Li" parent="staffs" instance=ExtResource( 24 )]
 transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -0.962808, 2.19768, -5.67439 )
@@ -293,6 +293,7 @@ transform = Transform( 0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, -2.60431, 2.32542, -4.33
 
 [node name="scales" parent="staffs" instance=ExtResource( 37 )]
 transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 6, 2.17866, -6 )
+visible = false
 
 [node name="chem_cup" parent="staffs" instance=ExtResource( 39 )]
 transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 1.6293, 2.37868, -6.1196 )

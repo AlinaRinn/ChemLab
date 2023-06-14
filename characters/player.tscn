@@ -129,7 +129,7 @@ func get_input():
 	
 	# Зум камеры
 	if Input.is_action_pressed(\"ui_alt\"):
-		$head/Camera.transform.origin.z = -1
+		$head/Camera.transform.origin.z = -2
 	else: $head/Camera.transform.origin.z = 0
 	
 	# Видимость задач

@@ -3,7 +3,6 @@
 [ext_resource path="res://objects/static/room.tscn" type="PackedScene" id=1]
 [ext_resource path="res://objects/static/lamp.tscn" type="PackedScene" id=2]
 [ext_resource path="res://objects/static/chair.tscn" type="PackedScene" id=3]
-[ext_resource path="res://objects/static/holder.tscn" type="PackedScene" id=4]
 [ext_resource path="res://objects/interactive/window.tscn" type="PackedScene" id=5]
 [ext_resource path="res://objects/static/mendeleev.tscn" type="PackedScene" id=6]
 [ext_resource path="res://objects/interactive/tube.tscn" type="PackedScene" id=7]
@@ -11,11 +10,12 @@
 [ext_resource path="res://objects/interactive/fume_hood.tscn" type="PackedScene" id=9]
 [ext_resource path="res://objects/static/table_1.tscn" type="PackedScene" id=10]
 [ext_resource path="res://objects/static/board_whells.tscn" type="PackedScene" id=11]
-[ext_resource path="res://default_env.tres" type="Environment" id=12]
+[ext_resource path="res://cloudy_sky_env.tres" type="Environment" id=12]
 [ext_resource path="res://objects/static/table_2.tscn" type="PackedScene" id=13]
 [ext_resource path="res://objects/static/table_hole.tscn" type="PackedScene" id=14]
 [ext_resource path="res://objects/interactive/sink.tscn" type="PackedScene" id=15]
 [ext_resource path="res://objects/static/table_4.tscn" type="PackedScene" id=16]
+[ext_resource path="res://objects/static/shtativ.tscn" type="PackedScene" id=17]
 [ext_resource path="res://objects/interactive/burner.tscn" type="PackedScene" id=19]
 [ext_resource path="res://objects/static/lobby.tscn" type="PackedScene" id=20]
 [ext_resource path="res://objects/static/shelf.tscn" type="PackedScene" id=21]
@@ -41,28 +41,28 @@ func _ready():
 		$things.add_child(item1)
 		item1.subs = \"Phenolphthalein\"
 		item1.update_name()
-		item1.global_transform.origin = Vector3(15, 3.3, -0.8)
+		item1.global_transform.origin = Vector3(15, 3.3, -0.7)
 		
 		var item12 = load('res://objects/interactive/bottle.tscn').instance()
 		$things.add_child(item12)
 		item12.subs = \"Na\"
 		item12.hide()
 		item12.update_name()
-		item12.global_transform.origin = Vector3(15, 3.3, -1.1)
+		item12.global_transform.origin = Vector3(15, 3.3, -1.2)
 		
 		var item13 = load('res://objects/interactive/bottle.tscn').instance()
 		$things.add_child(item13)
 		item13.subs = \"Li\"
 		item13.hide()
 		item13.update_name()
-		item13.global_transform.origin = Vector3(15, 3.3, -1.4)
+		item13.global_transform.origin = Vector3(15, 3.3, -1.5)
 		
 		var item14 = load('res://objects/interactive/bottle.tscn').instance()
 		$things.add_child(item14)
 		item14.subs = \"K\"
 		item14.hide()
 		item14.update_name()
-		item14.global_transform.origin = Vector3(15, 3.3, -1.7)
+		item14.global_transform.origin = Vector3(15, 3.3, -1.8)
 		
 		item2 = load('res://objects/interactive/petri.tscn').instance()
 		$things.add_child(item2)
@@ -351,17 +351,20 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 14.4538, 2.81113, -14.1175 )
 [node name="stand" parent="things" instance=ExtResource( 21 )]
 transform = Transform( 0.4, 0, 0, 0, 0.48, 0, 0, 0, 0.4, 14.9963, 2.84733, -1.29036 )
 
-[node name="tripod" parent="things" instance=ExtResource( 4 )]
-transform = Transform( 0.55, 0, 0, 0, 0.55, 0, 0, 0, 0.55, 15.02, 2.87887, -5.05513 )
+[node name="shtativ" parent="things" instance=ExtResource( 17 )]
+transform = Transform( -0.198, 0, -1.73097e-08, 0, 0.198, 0, 1.73097e-08, 0, -0.198, 15.0049, 2.81105, -4.9623 )
 
-[node name="tube" parent="things/tripod" instance=ExtResource( 7 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00398827, 0.231869, -0.33351 )
+[node name="tube" parent="things" instance=ExtResource( 7 )]
+transform = Transform( 0.75, 0, 0, 0, 0.75, 0, 0, 0, 0.75, 14.9342, 2.89942, -4.95335 )
 
-[node name="tube2" parent="things/tripod" instance=ExtResource( 7 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00398827, 0.231869, 0.012682 )
+[node name="tube2" parent="things" instance=ExtResource( 7 )]
+transform = Transform( 0.75, 0, 0, 0, 0.75, 0, 0, 0, 0.75, 14.9385, 2.89704, -5.09485 )
 
-[node name="tube3" parent="things/tripod" instance=ExtResource( 7 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00398827, 0.231869, 0.357152 )
+[node name="tube3" parent="things" instance=ExtResource( 7 )]
+transform = Transform( 0.75, 0, 0, 0, 0.75, 0, 0, 0, 0.75, 15.0775, 2.89704, -4.81265 )
+
+[node name="tube4" parent="things" instance=ExtResource( 7 )]
+transform = Transform( 0.75, 0, 0, 0, 0.75, 0, 0, 0, 0.75, 14.9374, 2.89704, -4.67406 )
 
 [node name="lobby" parent="." instance=ExtResource( 20 )]
 transform = Transform( -4.37114e-08, 0, -1, 0, 0.62, 0, 1, 0, -4.37114e-08, -5.85772, 1.15397, 3.37713 )
