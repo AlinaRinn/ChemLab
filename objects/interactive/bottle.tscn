@@ -26,13 +26,13 @@ font_data = ExtResource( 7 )
 script = ExtResource( 2 )
 
 [node name="MeshInstance" type="MeshInstance" parent="."]
-transform = Transform( 0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, -2.143, -2.369, 2.406 )
+transform = Transform( 0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, -0.00139117, 0.276982, 0.000808954 )
 mesh = ExtResource( 1 )
 skeleton = NodePath("")
 material/0 = ExtResource( 3 )
 
 [node name="water" parent="MeshInstance" instance=ExtResource( 5 )]
-transform = Transform( 2.41727, 0, 0, 0, 2.63187, 0, 0, 0, 2.44943, 3.57077, 4.07892, -4.01442 )
+transform = Transform( 2.41727, 0, 0, 0, 2.63187, 0, 0, 0, 2.44943, 0.00142217, -0.33105, -0.00576854 )
 
 [node name="interaction" parent="." instance=ExtResource( 4 )]
 transform = Transform( 0.0907442, 0, 0, 0, 0.182292, 0, 0, 0, 0.0946747, -0.00154418, 0.166892, -0.00156694 )
