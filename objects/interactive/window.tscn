@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://assets/materials/plastic_black.material" type="Material" id=1]
 [ext_resource path="res://assets/materials/wood_brown_scaled.material" type="Material" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://assets/materials/glass_gray.material" type="Material" id=4]
 [ext_resource path="res://assets/models/window.glb" type="PackedScene" id=5]
 [ext_resource path="res://objects/interaction.tscn" type="PackedScene" id=6]
+[ext_resource path="res://objects/collide.tscn" type="PackedScene" id=7]
 
 [sub_resource type="GDScript" id=1]
 script/source = "extends Spatial
@@ -84,7 +85,10 @@ anims/RESET = SubResource( 2 )
 anims/open = SubResource( 3 )
 
 [node name="interactive" parent="." index="6" instance=ExtResource( 6 )]
-transform = Transform( 7.26773, 0, 0, 0, 27.0563, 0, 0, 0, 28.1205, 0, 0, 0 )
+transform = Transform( 1.86741, 0, 0, 0, 22.0551, 0, 0, 0, 28.1205, -1.11951, 2.46226, 0 )
 label = "Окно"
 left_click_action = "open"
 left_click_label = "Поднять/Опустить"
+
+[node name="BoxCollider" parent="." index="7" instance=ExtResource( 7 )]
+transform = Transform( 5.42041, 0, 0, 0, 1, 0, 0, 0, 29.7038, -0.0151887, -25.5536, 0 )
