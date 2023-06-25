@@ -164,7 +164,7 @@ radial_accel = 0.2
 radial_accel_random = 1.0
 angle = 360.0
 angle_random = 1.0
-scale = 0.0
+scale = 0.4
 scale_curve = SubResource( 10 )
 color_ramp = SubResource( 8 )
 anim_speed = 1.0
@@ -215,18 +215,6 @@ extents = Vector3( 2.83185, 0.787091, 2.82525 )
 
 [sub_resource type="Animation" id=6]
 length = 0.001
-tracks/0/type = "value"
-tracks/0/path = NodePath("MeshInstance/element_1:translation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ Vector3( -1.23882, 0.687879, 1.14812 ) ]
-}
 
 [sub_resource type="Animation" id=14]
 resource_name = "move_bubble"
@@ -406,7 +394,8 @@ mesh = ExtResource( 1 )
 material/0 = ExtResource( 2 )
 
 [node name="element_1" parent="MeshInstance" instance=ExtResource( 4 )]
-transform = Transform( 0, 0, 0, 0, 0, 0, 0, 0, 0, -1.23882, 0.687879, 1.14812 )
+transform = Transform( 5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 0.687879, 0 )
+visible = false
 
 [node name="smoke" type="Particles" parent="MeshInstance/element_1"]
 transform = Transform( 0.002, 0, 0, 0, 0.01, 0, 0, 0, 0.002, 0, -0.0175364, 0 )
@@ -460,9 +449,11 @@ skeleton = NodePath("../CollisionShape")
 
 [node name="element_1" parent="MeshInstance2" instance=ExtResource( 5 )]
 transform = Transform( 44, 0, 0, 0, 6.2315, 0, 0, 0, 44, 0, -0.385994, 0 )
+visible = false
 
 [node name="element_2" parent="MeshInstance2" instance=ExtResource( 5 )]
 transform = Transform( 44, 0, 0, 0, 5.92244, 0, 0, 0, 44, 0, 0.173095, 0 )
+visible = false
 
 [node name="sediment" parent="MeshInstance2" instance=ExtResource( 6 )]
 transform = Transform( 1, 0, 0, 0, 0.725795, 0, 0, 0, 1, 0.0233777, -0.696604, -0.100709 )
