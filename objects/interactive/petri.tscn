@@ -164,7 +164,7 @@ radial_accel = 0.2
 radial_accel_random = 1.0
 angle = 360.0
 angle_random = 1.0
-scale = 0.4
+scale = 0.0
 scale_curve = SubResource( 10 )
 color_ramp = SubResource( 8 )
 anim_speed = 1.0
@@ -215,6 +215,18 @@ extents = Vector3( 2.83185, 0.787091, 2.82525 )
 
 [sub_resource type="Animation" id=6]
 length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("MeshInstance/element_1:translation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector3( -1.23882, 0.687879, 1.14812 ) ]
+}
 
 [sub_resource type="Animation" id=14]
 resource_name = "move_bubble"
@@ -226,10 +238,10 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"times": PoolRealArray( 0, 1, 2, 3.5, 5, 6.5, 8, 10 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
 "update": 0,
-"values": [ Vector3( 0, 0.687879, 0 ), Vector3( 0.901218, 0.687879, 1.38724 ), Vector3( -1.17937, 0.687879, 1.10969 ), Vector3( -0.739559, 0.687879, -1.36182 ), Vector3( 1.58407, 0.687879, -0.404011 ), Vector3( -1.39676, 0.687879, 0.931223 ), Vector3( 0.142245, 0.687879, 1.3203 ), Vector3( 0.971342, 0.687879, 0.538837 ), Vector3( -0.586253, 0.687879, -0.0742029 ), Vector3( -0.0821625, 0.687879, 1.52469 ), Vector3( 0.554657, 0.687879, -0.34448 ) ]
+"values": [ Vector3( 0, 0.687879, 0 ), Vector3( 0.901218, 0.687879, 1.38724 ), Vector3( -1.17937, 0.687879, 1.10969 ), Vector3( -0.739559, 0.687879, -1.36182 ), Vector3( 1.58407, 0.687879, -0.404011 ), Vector3( 0.142245, 0.687879, 1.3203 ), Vector3( -0.586253, 0.687879, -0.0742029 ), Vector3( 0.554657, 0.687879, -0.34448 ) ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("MeshInstance/element_1:scale")
@@ -266,10 +278,10 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.7, 1.4, 2.1, 2.8, 3.5, 4.2, 4.9, 5.6, 6.3, 7, 7.7, 8.5, 9.2, 10 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
 "update": 0,
-"values": [ Vector3( 0, 0.687879, 0 ), Vector3( 0.901218, 0.687879, 1.38724 ), Vector3( -1.17937, 0.687879, 1.10969 ), Vector3( -0.739559, 0.687879, -1.36182 ), Vector3( 1.58407, 0.687879, -0.404011 ), Vector3( -1.39676, 0.687879, 0.931223 ), Vector3( 0.142245, 0.687879, 1.3203 ), Vector3( 0.971342, 0.687879, 0.538837 ), Vector3( -0.586253, 0.687879, -0.0742029 ), Vector3( -0.0821625, 0.687879, 1.52469 ), Vector3( 0.554657, 0.687879, -0.34448 ) ]
+"values": [ Vector3( 0, 0.687879, 0 ), Vector3( 0.901218, 0.687879, 1.38724 ), Vector3( -1.17937, 0.687879, 1.10969 ), Vector3( -0.739559, 0.687879, -1.36182 ), Vector3( 1.58407, 0.687879, -0.404011 ), Vector3( -1.39676, 0.687879, 0.931223 ), Vector3( 0.142245, 0.687879, 1.3203 ), Vector3( 0.971342, 0.687879, 0.538837 ), Vector3( -0.586253, 0.687879, -0.0742029 ), Vector3( -0.0821625, 0.687879, 1.52469 ), Vector3( 1.23122, 0.687879, 0.341771 ), Vector3( -0.453706, 0.687879, -0.718752 ), Vector3( -1.12395, 0.687879, 0.817056 ), Vector3( 0.92303, 0.687879, 1.39282 ), Vector3( 0.554657, 0.687879, -0.34448 ) ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("MeshInstance/element_1:scale")
@@ -318,10 +330,10 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 1, 2, 3, 4, 5, 6, 7, 8 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.5, 1, 1.5, 2, 2.5, 3, 3.5, 4, 4.5, 5, 5.5, 6, 6.5, 7, 7.5, 8.1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
 "update": 0,
-"values": [ Vector3( 0, 0.687879, 0 ), Vector3( 0.901218, 0.687879, 1.38724 ), Vector3( -1.17937, 0.687879, 1.10969 ), Vector3( -0.739559, 0.687879, -1.36182 ), Vector3( 1.58407, 0.687879, -0.404011 ), Vector3( -1.39676, 0.687879, 0.931223 ), Vector3( 0.142245, 0.687879, 1.3203 ), Vector3( 0.971342, 0.687879, 0.538837 ), Vector3( -0.586253, 0.687879, -0.0742029 ) ]
+"values": [ Vector3( 0, 0.687879, 0 ), Vector3( 0.901218, 0.687879, 1.38724 ), Vector3( -1.17937, 0.687879, 1.10969 ), Vector3( -0.739559, 0.687879, -1.36182 ), Vector3( 1.58407, 0.687879, -0.404011 ), Vector3( -1.39676, 0.687879, 0.931223 ), Vector3( 0.142245, 0.687879, 1.3203 ), Vector3( 0.971342, 0.687879, 0.538837 ), Vector3( -0.586253, 0.687879, -0.0742029 ), Vector3( -1.23882, 0.687879, 1.14812 ), Vector3( -0.088395, 0.687879, -1.24133 ), Vector3( 1.45678, 0.687879, 0.403307 ), Vector3( -0.743262, 0.687879, 0.876187 ), Vector3( -0.0242072, 0.687879, -1.16212 ), Vector3( -1.41333, 0.687879, 0.462774 ), Vector3( -0.1836, 0.687879, 1.21499 ), Vector3( 0.538464, 0.687879, -0.442937 ) ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("MeshInstance/element_1:scale")
@@ -394,8 +406,7 @@ mesh = ExtResource( 1 )
 material/0 = ExtResource( 2 )
 
 [node name="element_1" parent="MeshInstance" instance=ExtResource( 4 )]
-transform = Transform( 5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 0.687879, 0 )
-visible = false
+transform = Transform( 0, 0, 0, 0, 0, 0, 0, 0, 0, -1.23882, 0.687879, 1.14812 )
 
 [node name="smoke" type="Particles" parent="MeshInstance/element_1"]
 transform = Transform( 0.002, 0, 0, 0, 0.01, 0, 0, 0, 0.002, 0, -0.0175364, 0 )
@@ -449,11 +460,9 @@ skeleton = NodePath("../CollisionShape")
 
 [node name="element_1" parent="MeshInstance2" instance=ExtResource( 5 )]
 transform = Transform( 44, 0, 0, 0, 6.2315, 0, 0, 0, 44, 0, -0.385994, 0 )
-visible = false
 
 [node name="element_2" parent="MeshInstance2" instance=ExtResource( 5 )]
 transform = Transform( 44, 0, 0, 0, 5.92244, 0, 0, 0, 44, 0, 0.173095, 0 )
-visible = false
 
 [node name="sediment" parent="MeshInstance2" instance=ExtResource( 6 )]
 transform = Transform( 1, 0, 0, 0, 0.725795, 0, 0, 0, 1, 0.0233777, -0.696604, -0.100709 )
