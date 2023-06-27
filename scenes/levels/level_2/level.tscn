@@ -1,8 +1,9 @@
-[gd_scene load_steps=23 format=2]
+[gd_scene load_steps=25 format=2]
 
 [ext_resource path="res://objects/static/room.tscn" type="PackedScene" id=1]
 [ext_resource path="res://objects/static/lamp.tscn" type="PackedScene" id=2]
 [ext_resource path="res://objects/static/chair.tscn" type="PackedScene" id=3]
+[ext_resource path="res://assets/models/cubapple.gltf" type="PackedScene" id=4]
 [ext_resource path="res://objects/interactive/window.tscn" type="PackedScene" id=5]
 [ext_resource path="res://objects/static/mendeleev.tscn" type="PackedScene" id=6]
 [ext_resource path="res://objects/interactive/tube.tscn" type="PackedScene" id=7]
@@ -262,6 +263,8 @@ func handler_19():
 	
 "
 
+[sub_resource type="BoxShape" id=2]
+
 [node name="level_area" type="Spatial"]
 script = SubResource( 1 )
 
@@ -368,6 +371,14 @@ transform = Transform( 0.75, 0, 0, 0, 0.75, 0, 0, 0, 0.75, 14.9374, 2.89704, -4.
 
 [node name="lobby" parent="." instance=ExtResource( 20 )]
 transform = Transform( -4.37114e-08, 0, -1, 0, 0.62, 0, 1, 0, -4.37114e-08, -5.85772, 1.15397, 3.37713 )
+
+[node name="cubapple" parent="lobby" instance=ExtResource( 4 )]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1.6129, 0, -1, 0, -4.37114e-08, -0.336961, 0.629041, 3.25494 )
+
+[node name="StaticBody" type="StaticBody" parent="lobby/cubapple"]
+
+[node name="CollisionShape" type="CollisionShape" parent="lobby/cubapple/StaticBody"]
+shape = SubResource( 2 )
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = ExtResource( 12 )
