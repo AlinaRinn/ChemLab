@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://menu_theme.tres" type="Theme" id=1]
 [ext_resource path="res://assets/images/blank_background.jpg" type="Texture" id=2]
@@ -12,43 +12,12 @@ func _ready():
 	#$AnimationSlide.play(\"slide\")
 	
 	for i in range(0, 3000, 1):
-		$slider.rect_position.y -= 1
+		$CreditsText.rect_position.y -= 1
 		yield(get_tree().create_timer(0.00009), \"timeout\")
 		if Input.is_action_just_pressed(\"ui_cancel\"):
 			break			
 	G.to('main_menu')
 "
-
-[sub_resource type="Animation" id=2]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/path = NodePath("slider:rect_position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ Vector2( 960, 1080 ) ]
-}
-
-[sub_resource type="Animation" id=3]
-resource_name = "slide"
-length = 30.0
-tracks/0/type = "value"
-tracks/0/path = NodePath("slider:rect_position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 30 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ Vector2( 960, 1100 ), Vector2( 960, -700 ) ]
-}
 
 [node name="credits" type="Control"]
 anchor_right = 1.0
@@ -62,22 +31,15 @@ anchor_bottom = 1.0
 texture = ExtResource( 2 )
 expand = true
 
-[node name="slider" type="Control" parent="."]
+[node name="CreditsText" type="RichTextLabel" parent="."]
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-margin_left = 960.0
-margin_top = 1080.0
-margin_right = 960.0
-margin_bottom = 1080.0
-
-[node name="RichTextLabel" type="RichTextLabel" parent="slider"]
-anchor_left = 0.5
-anchor_right = 0.5
 margin_left = -300.0
 margin_right = 300.0
-margin_bottom = 800.002
+margin_bottom = 800.0
+rect_min_size = Vector2( 600, 800 )
 bbcode_enabled = true
 bbcode_text = "[center][b]Программирование[/b]
 
@@ -129,10 +91,6 @@ text = "Программирование
 Дарья Семенова
 Максим Солопов
 "
-
-[node name="AnimationSlide" type="AnimationPlayer" parent="."]
-anims/RESET = SubResource( 2 )
-anims/slide = SubResource( 3 )
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 3 )

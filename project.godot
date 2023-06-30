@@ -18,7 +18,8 @@ config/name="chemical_laboratory"
 run/main_scene="res://scenes/main/main_menu.tscn"
 boot_splash/image="res://assets/images/start_screen.png"
 boot_splash/bg_color=Color( 0.141176, 0.141176, 0.141176, 1 )
-config/icon="res://icon.png"
+config/icon="res://assets/images/logo_square.png"
+config/windows_native_icon="res://assets/images/icon.ico"
 
 [autoload]
 
