@@ -38,7 +38,7 @@ func take():
 
 
 func add_metal(sub):
-	# Добавляем слой жидкости
+	# Добавляем металл
 	elements_met[amount_substance_met].show()
 	name_substance_met[amount_substance_met] = sub[\"name\"]
 
@@ -75,7 +75,7 @@ func remove_liquid():
 
 
 func remove_substance_met():
-	# Удаляем слой
+	# Удаляем металл
 	elements_liq[amount_substance_liq].hide()
 	name_substance_liq[amount_substance_liq] = \"\"
 	amount_substance_liq = amount_substance_liq if amount_substance_liq == 0 else amount_substance_liq - 1
