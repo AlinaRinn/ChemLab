@@ -283,7 +283,7 @@ transform = Transform( 0.06075, 0, 1.12902e-08, 0, 0.0530739, 0, -1.12902e-08, 0
 transform = Transform( 0.06075, 0, 1.12902e-08, 0, 0.0530739, 0, -1.12902e-08, 0, 0.0683951, 15.4533, 3.94156, -17.9182 )
 
 [node name="door" parent="room" instance=ExtResource( 8 )]
-transform = Transform( -1.03531e-07, 0, -2.36852, 0, 2.44842, 0, 1.749, 0, -7.64512e-08, -2.0096, 0.488957, 6.64957 )
+transform = Transform( -1.07005e-07, 0, -2.448, 0, 2.448, 0, 2.448, 0, -1.07005e-07, 3.79287, 0.536812, 0.357777 )
 
 [node name="mendeleev" parent="room" instance=ExtResource( 6 )]
 transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 3.10468, 3.77459, -25.3721 )

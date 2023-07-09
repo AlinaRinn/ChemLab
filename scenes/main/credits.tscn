@@ -65,6 +65,7 @@ bbcode_text = "[center][b]Программирование[/b]
 Андрей Самойлов @AndreySyp
 Дарья Семенова
 Максим Солопов
+Александр Боханцев
 "
 text = "Программирование
 
@@ -90,6 +91,7 @@ text = "Программирование
 Андрей Самойлов @AndreySyp
 Дарья Семенова
 Максим Солопов
+Александр Боханцев
 "
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]

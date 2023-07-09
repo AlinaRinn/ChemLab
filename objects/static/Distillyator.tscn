@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=2]
 
-[ext_resource path="res://assets/models/Distillyator_1.glb" type="PackedScene" id=1]
+[ext_resource path="res://assets/models/distillyator.glb" type="PackedScene" id=1]
 [ext_resource path="res://assets/materials/tube.material" type="Material" id=2]
 [ext_resource path="res://assets/materials/metal_copper.material" type="Material" id=3]
 
