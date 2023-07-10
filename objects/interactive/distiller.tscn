@@ -1,14 +1,14 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://assets/models/distiller_big_main.obj" type="ArrayMesh" id=1]
 [ext_resource path="res://assets/models/distiller_big_check.obj" type="ArrayMesh" id=2]
 [ext_resource path="res://scripts/objects/interactive/distiller.gd" type="Script" id=3]
-[ext_resource path="res://assets/particle/water_particle.png" type="Texture" id=4]
 [ext_resource path="res://assets/materials/metal.material" type="Material" id=5]
+[ext_resource path="res://assets/materials/water.material" type="Material" id=6]
 [ext_resource path="res://objects/interaction.tscn" type="PackedScene" id=8]
 
-[sub_resource type="BoxShape" id=2]
-extents = Vector3( 1, 0.865262, 1 )
+[sub_resource type="CylinderShape" id=9]
+height = 1.6723
 
 [sub_resource type="BoxShape" id=3]
 extents = Vector3( 0.257797, 0.308183, 0.283782 )
@@ -31,8 +31,8 @@ tracks/0/keys = {
 "values": [ Vector3( 0, 90, 0 ), Vector3( 0, 0, 0 ) ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("../CPUParticles:emitting")
-tracks/1/interp = 2
+tracks/1/path = NodePath("../WaterParticles:emitting")
+tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
@@ -43,16 +43,10 @@ tracks/1/keys = {
 "values": [ false, true ]
 }
 
-[sub_resource type="SpatialMaterial" id=4]
-flags_transparent = true
-flags_unshaded = true
-params_billboard_mode = 1
-albedo_color = Color( 0.243137, 0.52549, 0.854902, 1 )
-albedo_texture = ExtResource( 4 )
-
-[sub_resource type="QuadMesh" id=5]
-material = SubResource( 4 )
-size = Vector2( 0.05, 0.1 )
+[sub_resource type="SphereMesh" id=10]
+material = ExtResource( 6 )
+radial_segments = 16
+rings = 16
 
 [node name="distiller" type="Spatial"]
 transform = Transform( 0.882, 0, 0, 0, 0.882, 0, 0, 0, 0.882, 0, 0, 0 )
@@ -62,8 +56,8 @@ script = ExtResource( 3 )
 transform = Transform( 1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, 0, 0, 0 )
 
 [node name="CollisionShape" type="CollisionShape" parent="main"]
-transform = Transform( 0.752929, 0, 0, 0, 2.47057, 0, -1.42109e-14, 0, 0.759919, 0, 1.14877, 0 )
-shape = SubResource( 2 )
+transform = Transform( 0.752929, 0, 0, 0, 2.47057, 0, -2.13163e-14, 0, 0.759919, 0, 1.14877, 0 )
+shape = SubResource( 9 )
 
 [node name="MeshInstance" type="MeshInstance" parent="main/CollisionShape"]
 transform = Transform( -4.06386e-08, 0, 0.929703, 0, 0.283335, 0, -0.921151, 0, -4.02648e-08, 0, -0.464982, 0 )
@@ -89,19 +83,13 @@ material/1 = SubResource( 7 )
 [node name="AnimationPlayer" type="AnimationPlayer" parent="valve/valve_rotate"]
 anims/rotate = SubResource( 8 )
 
-[node name="CPUParticles" type="CPUParticles" parent="valve"]
-transform = Transform( 0.7, 0, 1.22392e-07, 0, 0.7, 0, -1.22392e-07, 0, 0.7, 0.25615, -0.213338, -2.4504e-07 )
+[node name="WaterParticles" type="CPUParticles" parent="valve"]
+transform = Transform( 0.033, 0, 0, 0, 0.033, 3.98774e-16, 0, -3.98774e-16, 0.033, 0.25248, -0.174107, 0 )
 emitting = false
-amount = 5
-preprocess = 0.57
-speed_scale = 0.8
-randomness = 0.4
-lifetime_randomness = 0.4
-mesh = SubResource( 5 )
-emission_shape = 2
-emission_box_extents = Vector3( 0.1, 0.1, 0.1 )
-scale_amount = 2.0
-scale_amount_random = 1.0
+amount = 50
+lifetime = 4.0
+speed_scale = 2.0
+mesh = SubResource( 10 )
 
 [node name="interaction_1" parent="." instance=ExtResource( 8 )]
 transform = Transform( 1.03822, 0, 0, 0, 1.93991, 0, 0, 0, 1, 0.247042, 1.10552, 0 )

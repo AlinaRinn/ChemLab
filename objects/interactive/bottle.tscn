@@ -8,8 +8,9 @@
 [ext_resource path="res://assets/models/metal_piece.obj" type="ArrayMesh" id=6]
 [ext_resource path="res://assets/fonts/Cascadia/CascadiaMono-Light.otf" type="DynamicFontData" id=7]
 
-[sub_resource type="BoxShape" id=4]
-extents = Vector3( 0.0979395, 0.149083, 0.093302 )
+[sub_resource type="CylinderShape" id=4]
+height = 0.299026
+radius = 0.0953555
 
 [sub_resource type="DynamicFont" id=3]
 size = 72
@@ -39,12 +40,11 @@ right_click_label = "Взять бутылку"
 highlighting = true
 
 [node name="CollisionShape" type="CollisionShape" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.000278652, 0.128143, -0.00195086 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00148201, 0.1489, 0.000628322 )
 shape = SubResource( 4 )
 
 [node name="metal" type="MeshInstance" parent="."]
-transform = Transform( 0.204, 0, 0, 0, 0.237992, 0.145982, 0, -0.390139, 0.0890519, -0.0383004, 0.199903, 0.0821294 )
-visible = false
+transform = Transform( 0.204, 0, 0, 0, 0.452707, 0.0233818, 0, -0.0624885, 0.169394, -0.0383004, -0.00283934, 0.0821294 )
 mesh = ExtResource( 6 )
 
 [node name="Label3D" type="Label3D" parent="."]
