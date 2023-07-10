@@ -4,7 +4,7 @@
 [ext_resource path="res://assets/fonts/Cascadia/CascadiaMono-Light.otf" type="DynamicFontData" id=2]
 [ext_resource path="res://assets/images/target.png" type="Texture" id=3]
 [ext_resource path="res://assets/fonts/Cascadia/CascadiaMono-Bold.otf" type="DynamicFontData" id=4]
-[ext_resource path="res://gui_theme.tres" type="Theme" id=5]
+[ext_resource path="res://themes/gui_theme.tres" type="Theme" id=5]
 
 [sub_resource type="GDScript" id=11]
 script/source = "extends VBoxContainer
