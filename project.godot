@@ -123,4 +123,4 @@ ui_t={
 [rendering]
 
 quality/filters/msaa=2
-environment/default_environment="res://default_env.tres"
+environment/default_environment="res://environments/default_env.tres"
