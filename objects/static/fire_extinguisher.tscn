@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://assets/materials/tube.material" type="Material" id=1]
+[ext_resource path="res://assets/models/fire_extinguisher.gltf" type="PackedScene" id=2]
+
+[node name="fire_extinguisher" instance=ExtResource( 2 )]
+
+[node name="Circle002" parent="." index="10"]
+material/0 = ExtResource( 1 )
