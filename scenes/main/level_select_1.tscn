@@ -5,7 +5,6 @@
 [ext_resource path="res://assets/fonts/Cascadia/CascadiaMono-Bold.otf" type="DynamicFontData" id=3]
 [ext_resource path="res://assets/images/menu_background.png" type="Texture" id=4]
 
-
 [sub_resource type="GDScript" id=3]
 script/source = "extends Control
 

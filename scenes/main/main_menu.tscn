@@ -17,7 +17,7 @@ func _input(_event):
 script/source = "extends Button
 
 func _pressed():
-	G.to('chapter_select')
+	G.to('type_select')
 "
 
 [sub_resource type="GDScript" id=2]

@@ -161,7 +161,6 @@ margin_bottom = 336.0
 tab_align = 0
 
 [node name="Графика" type="Tabs" parent="menu/TabContainer"]
-visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_top = 34.0
@@ -301,6 +300,7 @@ selected = 0
 script = SubResource( 7 )
 
 [node name="Управление" type="Tabs" parent="menu/TabContainer"]
+visible = false
 margin_top = 35.0
 margin_right = 700.0
 margin_bottom = 335.0

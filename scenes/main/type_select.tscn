@@ -1,0 +1,135 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://themes/menu_theme.tres" type="Theme" id=1]
+[ext_resource path="res://assets/images/menu_background.png" type="Texture" id=2]
+[ext_resource path="res://assets/fonts/Cascadia/CascadiaMono-Bold.otf" type="DynamicFontData" id=3]
+[ext_resource path="res://assets/images/type_1_logo.png" type="Texture" id=4]
+[ext_resource path="res://assets/images/type_2_logo.jpg" type="Texture" id=5]
+
+[sub_resource type="GDScript" id=3]
+script/source = "extends Control
+
+func _input(_event):
+	if Input.is_action_just_pressed(\"ui_cancel\"):
+		G.to(\"main_menu\")
+"
+
+[sub_resource type="DynamicFont" id=1]
+size = 40
+outline_size = 5
+outline_color = Color( 0.101961, 0.180392, 0.223529, 1 )
+font_data = ExtResource( 3 )
+
+[sub_resource type="GDScript" id=4]
+script/source = "extends Button
+
+func _pressed():
+	G.to('chapter_select')
+"
+
+[sub_resource type="DynamicFont" id=2]
+size = 40
+outline_size = 5
+font_data = ExtResource( 3 )
+
+[sub_resource type="GDScript" id=5]
+script/source = "extends Button
+
+
+func _pressed():
+	G.to('plug')
+"
+
+[node name="type" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme = ExtResource( 1 )
+script = SubResource( 3 )
+
+[node name="TextureRect" type="TextureRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 2 )
+expand = true
+
+[node name="ColorRect" type="ColorRect" parent="TextureRect"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0.0509804, 0.101961, 0.12549, 0.313726 )
+
+[node name="Title" type="Label" parent="."]
+anchor_right = 1.0
+margin_bottom = 29.0
+rect_min_size = Vector2( 0, 100 )
+custom_fonts/font = SubResource( 1 )
+text = "Выберите тип практикума:"
+align = 1
+valign = 1
+
+[node name="HSplitContainer" type="HSplitContainer" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -706.0
+margin_top = -231.0
+margin_right = 706.0
+margin_bottom = 231.0
+split_offset = 40
+
+[node name="General_inorganic_chem" type="Button" parent="HSplitContainer"]
+margin_right = 700.0
+margin_bottom = 462.0
+rect_min_size = Vector2( 700, 462 )
+icon = ExtResource( 4 )
+icon_align = 1
+expand_icon = true
+script = SubResource( 4 )
+
+[node name="Name" type="Label" parent="HSplitContainer/General_inorganic_chem"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = 8.0
+custom_fonts/font = SubResource( 2 )
+text = "Общая и 
+неорганическая химия"
+align = 1
+valign = 1
+
+[node name="ColorRect2" type="ColorRect" parent="HSplitContainer/General_inorganic_chem"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+color = Color( 0.0862745, 0.419608, 0.529412, 0.329412 )
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="Simulation_chem_tech_ proc" type="Button" parent="HSplitContainer"]
+margin_left = 712.0
+margin_right = 1412.0
+margin_bottom = 462.0
+rect_min_size = Vector2( 700, 462 )
+icon = ExtResource( 5 )
+expand_icon = true
+script = SubResource( 5 )
+
+[node name="Name" type="Label" parent="HSplitContainer/Simulation_chem_tech_ proc"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_fonts/font = SubResource( 2 )
+text = "Моделирование процессов 
+химической технологии"
+align = 1
+valign = 1
+
+[node name="ColorRect2" type="ColorRect" parent="HSplitContainer/Simulation_chem_tech_ proc"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+color = Color( 0.0862745, 0.419608, 0.529412, 0.329412 )
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
