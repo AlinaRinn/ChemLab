@@ -37,7 +37,7 @@ script/source = "extends Button
 
 
 func _pressed():
-	G.to('plug')
+	G.to('level_select_cyber')
 "
 
 [node name="type" type="Control"]
