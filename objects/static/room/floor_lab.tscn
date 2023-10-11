@@ -3,10 +3,10 @@
 [ext_resource path="res://assets/materials/tile_blue.material" type="Material" id=1]
 
 [sub_resource type="CubeMesh" id=1]
-size = Vector3( 8, 0.5, 12 )
+size = Vector3( 8.8, 0.5, 12.7 )
 
 [sub_resource type="BoxShape" id=2]
-extents = Vector3( 4.01455, 0.254303, 6.02465 )
+extents = Vector3( 4.37497, 0.254303, 6.34747 )
 
 [node name="floor" type="Spatial"]
 

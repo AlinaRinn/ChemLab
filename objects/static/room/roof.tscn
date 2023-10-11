@@ -2,7 +2,7 @@
 
 [ext_resource path="res://assets/textures/roof.png" type="Texture" id=2]
 [ext_resource path="res://assets/models/potoloc.obj" type="ArrayMesh" id=3]
-[ext_resource path="res://objects/static/lamp_custom.tscn" type="PackedScene" id=4]
+[ext_resource path="res://objects/static/lamp_lab.tscn" type="PackedScene" id=4]
 
 [sub_resource type="SpatialMaterial" id=1]
 albedo_texture = ExtResource( 2 )

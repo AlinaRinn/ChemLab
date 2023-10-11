@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://assets/materials/plastic_black.material" type="Material" id=1]
 [ext_resource path="res://assets/materials/wood_brown_scaled.material" type="Material" id=2]
@@ -23,6 +23,12 @@ func open():
 		active = false
 		$AnimationPlayer.play_backwards(\"open\")
 "
+
+[sub_resource type="BoxShape" id=4]
+extents = Vector3( 25.0884, 6.56396, 16.9081 )
+
+[sub_resource type="BoxShape" id=5]
+extents = Vector3( 25.1223, 5.45652, 5.35256 )
 
 [sub_resource type="Animation" id=2]
 length = 0.001
@@ -64,11 +70,23 @@ material/0 = ExtResource( 3 )
 [node name="Line06" parent="bottom_frame" index="1"]
 material/0 = ExtResource( 4 )
 
+[node name="StaticBody" type="StaticBody" parent="bottom_frame/Line06" index="0"]
+
+[node name="CollisionShape" type="CollisionShape" parent="bottom_frame/Line06/StaticBody" index="0"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.04891e-08, 5.60143, 0 )
+shape = SubResource( 4 )
+
 [node name="Line04" parent="up_frame" index="0"]
 material/0 = ExtResource( 3 )
 
 [node name="Line07" parent="up_frame" index="1"]
 material/0 = ExtResource( 4 )
+
+[node name="StaticBody" type="StaticBody" parent="up_frame/Line07" index="0"]
+
+[node name="CollisionShape" type="CollisionShape" parent="up_frame/Line07/StaticBody" index="0"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.6077e-08, 5.94879, 0 )
+shape = SubResource( 5 )
 
 [node name="deflector" parent="." index="2"]
 material/0 = ExtResource( 1 )
