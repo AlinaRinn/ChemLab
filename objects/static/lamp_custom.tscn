@@ -17,7 +17,8 @@ material/0 = SubResource( 1 )
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.858499, 0 )
 light_specular = 1.0
 shadow_enabled = true
-shadow_bias = 1.2
+shadow_color = Color( 0.501961, 0.501961, 0.501961, 1 )
+shadow_bias = 0.5
 omni_range = 6.0
 
 [node name="SpotLight" type="SpotLight" parent="."]

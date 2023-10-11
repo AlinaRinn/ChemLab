@@ -4,7 +4,8 @@
 [ext_resource path="res://assets/materials/metal.material" type="Material" id=2]
 [ext_resource path="res://assets/materials/glass_bottle.material" type="Material" id=3]
 [ext_resource path="res://assets/materials/glass_tube.material" type="Material" id=4]
-[ext_resource path="res://assets/materials/paint.material" type="Material" id=5]
+[ext_resource path="res://assets/materials/paint_blue.material" type="Material" id=5]
+
 
 [node name="Kipp" instance=ExtResource( 1 )]
 
