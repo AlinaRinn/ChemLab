@@ -1,0 +1,66 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://assets/materials/tile_white.material" type="Material" id=1]
+[ext_resource path="res://assets/materials/tile_blue_2.material" type="Material" id=2]
+
+[sub_resource type="CubeMesh" id=3]
+size = Vector3( 0.4, 0.8, 8.8 )
+
+[sub_resource type="BoxShape" id=4]
+extents = Vector3( 0.206142, 0.407691, 4.40496 )
+
+[sub_resource type="CubeMesh" id=2]
+size = Vector3( 0.4, 3.2, 2.7 )
+
+[sub_resource type="BoxShape" id=5]
+extents = Vector3( 0.20486, 1.60632, 1.35187 )
+
+[sub_resource type="BoxShape" id=6]
+extents = Vector3( 0.20486, 1.59936, 1.35254 )
+
+[sub_resource type="CubeMesh" id=1]
+size = Vector3( 0.4, 2, 8.8 )
+
+[sub_resource type="BoxShape" id=7]
+extents = Vector3( 0.208166, 1, 4.40119 )
+
+[node name="wall" type="Spatial"]
+
+[node name="top" type="MeshInstance" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.6, 0 )
+mesh = SubResource( 3 )
+material/0 = ExtResource( 1 )
+
+[node name="StaticBody" type="StaticBody" parent="top"]
+
+[node name="CollisionShape" type="CollisionShape" parent="top/StaticBody"]
+shape = SubResource( 4 )
+
+[node name="right" type="MeshInstance" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.6, -3.05 )
+mesh = SubResource( 2 )
+material/0 = ExtResource( 2 )
+
+[node name="StaticBody" type="StaticBody" parent="right"]
+
+[node name="CollisionShape" type="CollisionShape" parent="right/StaticBody"]
+shape = SubResource( 5 )
+
+[node name="left" type="MeshInstance" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.6, 3.05 )
+mesh = SubResource( 2 )
+material/0 = ExtResource( 2 )
+
+[node name="StaticBody" type="StaticBody" parent="left"]
+
+[node name="CollisionShape" type="CollisionShape" parent="left/StaticBody"]
+shape = SubResource( 6 )
+
+[node name="bottom" type="MeshInstance" parent="."]
+mesh = SubResource( 1 )
+material/0 = ExtResource( 1 )
+
+[node name="StaticBody" type="StaticBody" parent="bottom"]
+
+[node name="CollisionShape" type="CollisionShape" parent="bottom/StaticBody"]
+shape = SubResource( 7 )

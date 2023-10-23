@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 [gd_scene load_steps=22 format=2]
 
 [ext_resource path="res://objects/static/room.tscn" type="PackedScene" id=1]
@@ -10,19 +11,288 @@
 [ext_resource path="res://objects/static/table_1.tscn" type="PackedScene" id=10]
 [ext_resource path="res://objects/static/board_whells.tscn" type="PackedScene" id=11]
 [ext_resource path="res://objects/static/wall_picture.tscn" type="PackedScene" id=12]
+=======
+[gd_scene load_steps=25 format=2]
+
+[ext_resource path="res://objects/static/room/room.tscn" type="PackedScene" id=1]
+[ext_resource path="res://objects/static/lamp.tscn" type="PackedScene" id=2]
+[ext_resource path="res://objects/static/chair.tscn" type="PackedScene" id=3]
+[ext_resource path="res://assets/models/cubapple.gltf" type="PackedScene" id=4]
+[ext_resource path="res://objects/interactive/window.tscn" type="PackedScene" id=5]
+[ext_resource path="res://objects/static/mendeleev.tscn" type="PackedScene" id=6]
+[ext_resource path="res://objects/interactive/tube.tscn" type="PackedScene" id=7]
+[ext_resource path="res://objects/interactive/door.tscn" type="PackedScene" id=8]
+[ext_resource path="res://objects/interactive/fume_hood.tscn" type="PackedScene" id=9]
+[ext_resource path="res://objects/static/chair_2.tscn" type="PackedScene" id=10]
+[ext_resource path="res://objects/static/board_whells.tscn" type="PackedScene" id=11]
+[ext_resource path="res://environments/cloudy_sky_env.tres" type="Environment" id=12]
+>>>>>>> dev
 [ext_resource path="res://objects/static/table_2.tscn" type="PackedScene" id=13]
 [ext_resource path="res://objects/static/table_hole.tscn" type="PackedScene" id=14]
 [ext_resource path="res://objects/interactive/sink.tscn" type="PackedScene" id=15]
 [ext_resource path="res://objects/static/table_4.tscn" type="PackedScene" id=16]
+<<<<<<< HEAD
 [ext_resource path="res://objects/static/table_5.tscn" type="PackedScene" id=17]
 [ext_resource path="res://objects/interactive/tube.tscn" type="PackedScene" id=18]
 [ext_resource path="res://objects/interactive/burner.tscn" type="PackedScene" id=19]
 [ext_resource path="res://objects/interactive/bottle.tscn" type="PackedScene" id=20]
+=======
+[ext_resource path="res://objects/static/new_tube_holder.tscn" type="PackedScene" id=17]
+[ext_resource path="res://objects/interactive/burner.tscn" type="PackedScene" id=19]
+[ext_resource path="res://objects/static/room/lobby.tscn" type="PackedScene" id=20]
+>>>>>>> dev
 [ext_resource path="res://objects/static/shelf.tscn" type="PackedScene" id=21]
 [ext_resource path="res://objects/interactive/switch.tscn" type="PackedScene" id=22]
 [ext_resource path="res://objects/interactive/wardrobe.tscn" type="PackedScene" id=23]
 
+<<<<<<< HEAD
 [node name="level_area" type="Spatial"]
+=======
+[sub_resource type="GDScript" id=1]
+script/source = "extends Spatial
+
+var item2
+var item3
+var item4
+var switch1
+var switch2
+var switch3
+var switch4
+
+func _ready():
+	G.connect(\"escape\", self, \"exit\")
+	
+	if G.load_item == '11':
+		var item1 = load('res://objects/interactive/bottle.tscn').instance()
+		$things.add_child(item1)
+		item1.subs = \"Phenolphthalein\"
+		item1.update_name()
+		item1.global_transform.origin = Vector3(15, 3.3, -0.7)
+		
+		var item12 = load('res://objects/interactive/bottle.tscn').instance()
+		$things.add_child(item12)
+		item12.subs = \"Na\"
+		item12.hide()
+		item12.update_name()
+		item12.global_transform.origin = Vector3(15, 3.3, -1.2)
+		
+		var item13 = load('res://objects/interactive/bottle.tscn').instance()
+		$things.add_child(item13)
+		item13.subs = \"Li\"
+		item13.hide()
+		item13.update_name()
+		item13.global_transform.origin = Vector3(15, 3.3, -1.5)
+		
+		var item14 = load('res://objects/interactive/bottle.tscn').instance()
+		$things.add_child(item14)
+		item14.subs = \"K\"
+		item14.hide()
+		item14.update_name()
+		item14.global_transform.origin = Vector3(15, 3.3, -1.8)
+		
+		item2 = load('res://objects/interactive/petri.tscn').instance()
+		$things.add_child(item2)
+		item2.global_transform.origin = Vector3(14.5, 3, -0.8)
+		item2.scale = Vector3(0.05, 0.05, 0.05)
+		
+		item3 = load('res://objects/interactive/petri.tscn').instance()
+		$things.add_child(item3)
+		item3.global_transform.origin = Vector3(14.5, 3, -1.2)
+		item3.scale = Vector3(0.05, 0.05, 0.05)
+		
+		item4 = load('res://objects/interactive/petri.tscn').instance()
+		$things.add_child(item4)
+		item4.global_transform.origin = Vector3(14.5, 3, -1.6)
+		item4.scale = Vector3(0.05, 0.05, 0.05)
+		#item1.set_mode(0)
+		
+		var item5 = load('res://objects/interactive/paper.tscn').instance()
+		$things.add_child(item5)
+		item5.global_transform.origin = Vector3(14.5, 2.82, -2)
+		
+	if G.load_item == '12':
+		pass
+
+	if G.load_item == '13':
+		item2 = load('res://objects/interactive/tube_spiral.tscn').instance()
+		$things.add_child(item2)
+		item2.subs = \"K\"
+		item2.global_transform.origin = Vector3(14.3, 3, -12)
+		item2.set_mode(1)
+	
+		item3 = load('res://objects/interactive/tube_spiral.tscn').instance()
+		$things.add_child(item3)
+		item3.subs = \"Na\"
+		item3.global_transform.origin = Vector3(14.3, 3, -11.5)
+		item3.set_mode(1)
+		
+		item4 = load('res://objects/interactive/tube_spiral.tscn').instance()
+		$things.add_child(item4)
+		item4.subs = \"Li\"
+		item4.global_transform.origin = Vector3(14.3, 3, -11)
+		item4.set_mode(1)
+		
+	if G.load_item == '14':
+		var item1 = load('res://objects/interactive/bottle.tscn').instance()
+		$things.add_child(item1)
+		item1.subs = \"Na2CO3\"
+		item1.update_name()
+		item1.global_transform.origin = Vector3(15, 3.3, -0.8)
+		
+		var item12 = load('res://objects/interactive/bottle.tscn').instance()
+		$things.add_child(item12)
+		item12.subs = \"LiCl\"
+		item12.update_name()
+		item12.global_transform.origin = Vector3(15, 3.3, -1.1)
+		
+		item2 = load('res://objects/interactive/petri.tscn').instance()
+		$things.add_child(item2)
+		item2.global_transform.origin = Vector3(14.5, 3, -0.8)
+		item2.scale = Vector3(0.05, 0.05, 0.05)	
+	
+	if G.load_item == '15':
+		pass
+	
+	if G.load_item == '16':
+		pass
+		
+	if G.load_item == '17':
+		pass
+		
+	if G.load_item == '18':
+		item2 = load('res://objects/interactive/tube_spiral.tscn').instance()
+		$things.add_child(item2)
+		item2.subs = \"Ca\"
+		item2.global_transform.origin = Vector3(14.3, 3, -12)
+		item2.set_mode(1)
+	
+		item3 = load('res://objects/interactive/tube_spiral.tscn').instance()
+		$things.add_child(item3)
+		item3.subs = \"Sr\"
+		item3.global_transform.origin = Vector3(14.3, 3, -11.5)
+		item3.set_mode(1)
+		
+		item4 = load('res://objects/interactive/tube_spiral.tscn').instance()
+		$things.add_child(item4)
+		item4.subs = \"Ba\"
+		item4.global_transform.origin = Vector3(14.3, 3, -11)
+		item4.set_mode(1)
+		
+	if G.load_item == '19':
+		var item1 = load('res://objects/interactive/bottle.tscn').instance()
+		$things.add_child(item1)
+		item1.subs = \"Mg\"
+		item1.update_name()
+		item1.global_transform.origin = Vector3(15, 3.3, -0.8)
+		
+		var item12 = load('res://objects/interactive/bottle.tscn').instance()
+		$things.add_child(item12)
+		item12.subs = \"Ba\"
+		item12.update_name()
+		item12.global_transform.origin = Vector3(15, 3.3, -1.1)
+		
+		var item13 = load('res://objects/interactive/bottle.tscn').instance()
+		$things.add_child(item13)
+		item13.subs = \"Sr\"
+		item13.update_name()
+		item13.global_transform.origin = Vector3(15, 3.3, -1.4)
+		
+		var item14 = load('res://objects/interactive/bottle.tscn').instance()
+		$things.add_child(item14)
+		item14.subs = \"Ca\"
+		item14.update_name()
+		item14.global_transform.origin = Vector3(15, 3.3, -1.7)
+		
+		var item15 = load('res://objects/interactive/bottle.tscn').instance()
+		$things.add_child(item15)
+		item15.subs = \"Na2CO3\"
+		item15.update_name()
+		item15.global_transform.origin = Vector3(15, 3.3, -2.0)
+	
+	if G.load_item == '20':
+		pass
+		
+	if G.load_item == '21':
+		pass
+		
+func exit():
+	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+	G.to(\"main_menu\")
+
+func _input(event):
+	call(\"handler_\"+str(G.load_item))
+	
+func handler_11():
+	if (item2.name_substance_liq == [\"Вода\", \"Фенолфталеин\"] or item2.name_substance_liq == [\"Фенолфталеин\", \"Вода\"]) and (item3.name_substance_liq == [\"Вода\", \"Фенолфталеин\"] or item3.name_substance_liq == [\"Фенолфталеин\", \"Вода\"]) and (item4.name_substance_liq == [\"Вода\", \"Фенолфталеин\"] or item4.name_substance_liq == [\"Фенолфталеин\", \"Вода\"]):
+		G.emit_signal(\"level_check_1\")
+	if (item2.name_substance_met == [\"Литий\", \"\", \"\", \"\", \"\"] or item3.name_substance_met == [\"Литий\", \"\", \"\", \"\", \"\"] or item4.name_substance_met == [\"Литий\", \"\", \"\", \"\", \"\"]):
+		G.emit_signal(\"level_check_2\")
+	if (item2.name_substance_met == [\"Калий\", \"\", \"\", \"\", \"\"] or item3.name_substance_met == [\"Калий\", \"\", \"\", \"\", \"\"] or item4.name_substance_met == [\"Калий\", \"\", \"\", \"\", \"\"]):
+		G.emit_signal(\"level_check_3\")
+	if (item2.name_substance_met == [\"Натрий\", \"\", \"\", \"\", \"\"] or item3.name_substance_met == [\"Натрий\", \"\", \"\", \"\", \"\"] or item4.name_substance_met == [\"Натрий\", \"\", \"\", \"\", \"\"]):
+		G.emit_signal(\"level_check_4\")
+	if item2.reaction and item3.reaction and item4.reaction:
+		G.emit_signal(\"level_check_finish\")
+		
+		
+func handler_13():
+	if $things/burner.active and !switch1:
+		G.emit_signal(\"level_check_1\")
+		switch1 = true
+	if !item2.h and !switch2:
+		G.emit_signal(\"level_check_2\")
+		switch2 = true
+	if !item3.h and !switch3:
+		G.emit_signal(\"level_check_3\")
+		switch3 = true
+	if !item4.h and !switch4:
+		G.emit_signal(\"level_check_4\")
+		switch4 = true
+	if switch1 and switch2 and switch3 and switch4:
+		G.emit_signal(\"level_check_finish\")
+
+func handler_14():
+	if item2.name_substance_liq == [\"Хлорид лития\", \"\"]:
+		G.emit_signal(\"level_check_1\")
+	elif item2.name_substance_liq == [\"Карбонат натрия\", \"\"]:
+		G.emit_signal(\"level_check_2\")
+		
+	if item2.name_substance_liq == [\"Хлорид лития\", \"Карбонат натрия\"]:
+		G.emit_signal(\"level_check_2\")
+	elif item2.name_substance_liq == [\"Карбонат натрия\", \"Хлорид лития\"]:
+		G.emit_signal(\"level_check_1\")
+		
+	if item2.reaction:
+		G.emit_signal(\"level_check_finish\")
+
+
+func handler_18():
+	if $things/burner.active and !switch1:
+		G.emit_signal(\"level_check_1\")
+		switch1 = true
+	if !item2.h and !switch2:
+		G.emit_signal(\"level_check_2\")
+		switch2 = true
+	if !item3.h and !switch3:
+		G.emit_signal(\"level_check_3\")
+		switch3 = true
+	if !item4.h and !switch4:
+		G.emit_signal(\"level_check_4\")
+		switch4 = true
+	if switch1 and switch2 and switch3 and switch4:
+		G.emit_signal(\"level_check_finish\")
+
+
+func handler_19():
+	pass
+	
+"
+
+[sub_resource type="BoxShape" id=2]
+
+[node name="level_area" type="Spatial"]
+script = SubResource( 1 )
+>>>>>>> dev
 
 [node name="room" parent="." instance=ExtResource( 1 )]
 
@@ -35,14 +305,24 @@ transform = Transform( -0.06075, 0, -5.31094e-09, 0, 0.0530739, 0, 5.97929e-09, 
 [node name="window3" parent="room" instance=ExtResource( 5 )]
 transform = Transform( 0.06075, 0, 1.12902e-08, 0, 0.0530739, 0, -1.12902e-08, 0, 0.0683951, 15.4533, 3.94156, -8.02355 )
 
+<<<<<<< HEAD
 [node name="view" parent="room/window3" instance=ExtResource( 12 )]
 transform = Transform( 4.74074, 0, -7.82569e-07, 0, 5.4264, 0, 7.82569e-07, 0, 4.21083, 5.86971, -22.6492, 1.77039 )
 
+=======
+>>>>>>> dev
 [node name="window4" parent="room" instance=ExtResource( 5 )]
 transform = Transform( 0.06075, 0, 1.12902e-08, 0, 0.0530739, 0, -1.12902e-08, 0, 0.0683951, 15.4533, 3.94156, -17.9182 )
 
 [node name="door" parent="room" instance=ExtResource( 8 )]
+<<<<<<< HEAD
 transform = Transform( -1.03531e-07, 0, -2.36852, 0, 2.44842, 0, 1.749, 0, -7.64512e-08, -2.0096, 0.488957, 6.64957 )
+=======
+transform = Transform( -1.07005e-07, 0, -2.448, 0, 2.448, 0, 2.448, 0, -1.07005e-07, 3.79287, 0.536812, 0.357777 )
+
+[node name="mendeleev" parent="room" instance=ExtResource( 6 )]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 3.10468, 3.77459, -25.3721 )
+>>>>>>> dev
 
 [node name="light" type="Spatial" parent="."]
 
@@ -76,7 +356,11 @@ transform = Transform( 0.25, 0, 0, 0, -1.09278e-08, 0.25, 0, -0.25, -1.09278e-08
 [node name="furniture" type="Spatial" parent="."]
 
 [node name="board" parent="furniture" instance=ExtResource( 11 )]
+<<<<<<< HEAD
 transform = Transform( -1.39876e-10, 0, -0.0032, 0, 0.0032, 0, 0.0032, 0, -1.39876e-10, 7.47772, 2.63915, -24.2625 )
+=======
+transform = Transform( -1.39876e-10, 0, -0.0032, 0, 0.0032, 0, 0.0032, 0, -1.39876e-10, 8.5797, 2.63915, -24.2625 )
+>>>>>>> dev
 
 [node name="stool" parent="furniture" instance=ExtResource( 10 )]
 transform = Transform( 0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 14.5933, 0.490563, -24.4123 )
@@ -84,9 +368,12 @@ transform = Transform( 0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 14.5933, 0.490563, -24.4
 [node name="shelf" parent="furniture" instance=ExtResource( 9 )]
 transform = Transform( -1.09278e-09, 0, -0.025, 0, 0.025, 0, 0.025, 0, -1.09278e-09, 14.4708, 3.74918, -12.9786 )
 
+<<<<<<< HEAD
 [node name="chair2" parent="furniture" instance=ExtResource( 3 )]
 transform = Transform( 0.675, 0, 1.18021e-07, 0, 0.675, 0, -1.18021e-07, 0, 0.675, 7.44946, 0.142294, -18.5253 )
 
+=======
+>>>>>>> dev
 [node name="chair" parent="furniture" instance=ExtResource( 3 )]
 transform = Transform( -0.675, 0, -5.90104e-08, 0, 0.675, 0, 5.90104e-08, 0, -0.675, 1.34056, 0.142135, -23.7731 )
 
@@ -103,6 +390,7 @@ transform = Transform( -0.03, 0, -2.62268e-09, 0, 0.03, 0, 2.62268e-09, 0, -0.03
 transform = Transform( -0.0225, 0, 1.04774e-09, 0, 0.0225, 0, -1.04774e-09, 0, -0.0225, 14.6357, 1.5269, -8.00339 )
 
 [node name="wardrobe" parent="furniture" instance=ExtResource( 23 )]
+<<<<<<< HEAD
 transform = Transform( 2.5, 0, 4.37114e-07, 0, 2.5, 0, -4.37114e-07, 0, 2.5, 11.9892, 0.543426, -24.6584 )
 
 [node name="table_5n" parent="furniture" instance=ExtResource( 17 )]
@@ -149,3 +437,43 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 14.4538, 2.81113, -14.1175 )
 
 [node name="stand" parent="things" instance=ExtResource( 21 )]
 transform = Transform( 0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 14.9963, 2.84733, -1.29036 )
+=======
+transform = Transform( 2.5, 0, 4.37114e-07, 0, 2.5, 0, -4.37114e-07, 0, 2.5, 12.4157, 0.543426, -24.6584 )
+
+[node name="things" type="Spatial" parent="."]
+
+[node name="burner" parent="things" instance=ExtResource( 19 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 14.4538, 2.81113, -14.1175 )
+
+[node name="stand" parent="things" instance=ExtResource( 21 )]
+transform = Transform( 0.4, 0, 0, 0, 0.48, 0, 0, 0, 0.4, 14.9963, 2.84733, -1.29036 )
+
+[node name="shtativ" parent="things" instance=ExtResource( 17 )]
+transform = Transform( -0.198, 0, -1.73097e-08, 0, 0.198, 0, 1.73097e-08, 0, -0.198, 15.0049, 2.81105, -4.9623 )
+
+[node name="tube" parent="things" instance=ExtResource( 7 )]
+transform = Transform( 0.75, 0, 0, 0, 0.75, 0, 0, 0, 0.75, 14.9342, 2.89942, -4.95335 )
+
+[node name="tube2" parent="things" instance=ExtResource( 7 )]
+transform = Transform( 0.75, 0, 0, 0, 0.75, 0, 0, 0, 0.75, 14.9385, 2.89704, -5.09485 )
+
+[node name="tube3" parent="things" instance=ExtResource( 7 )]
+transform = Transform( 0.75, 0, 0, 0, 0.75, 0, 0, 0, 0.75, 15.0775, 2.89704, -4.81265 )
+
+[node name="tube4" parent="things" instance=ExtResource( 7 )]
+transform = Transform( 0.75, 0, 0, 0, 0.75, 0, 0, 0, 0.75, 14.9374, 2.89704, -4.67406 )
+
+[node name="lobby" parent="." instance=ExtResource( 20 )]
+transform = Transform( -4.37114e-08, 0, -1, 0, 0.62, 0, 1, 0, -4.37114e-08, -5.85772, 1.15397, 3.37713 )
+
+[node name="cubapple" parent="lobby" instance=ExtResource( 4 )]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1.6129, 0, -1, 0, -4.37114e-08, -0.336961, 0.629041, 3.25494 )
+
+[node name="StaticBody" type="StaticBody" parent="lobby/cubapple"]
+
+[node name="CollisionShape" type="CollisionShape" parent="lobby/cubapple/StaticBody"]
+shape = SubResource( 2 )
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = ExtResource( 12 )
+>>>>>>> dev

@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 [gd_scene load_steps=7 format=2]
+=======
+[gd_scene load_steps=13 format=2]
+>>>>>>> dev
 
 [ext_resource path="res://assets/models/sink.glb" type="PackedScene" id=1]
 [ext_resource path="res://assets/materials/metal.material" type="Material" id=2]
@@ -6,6 +10,90 @@
 [ext_resource path="res://objects/interaction.tscn" type="PackedScene" id=4]
 [ext_resource path="res://scripts/objects/interactive/sink.gd" type="Script" id=5]
 [ext_resource path="res://objects/collide.tscn" type="PackedScene" id=6]
+<<<<<<< HEAD
+=======
+[ext_resource path="res://assets/materials/water.material" type="Material" id=7]
+
+[sub_resource type="CubeMesh" id=4]
+material = ExtResource( 7 )
+size = Vector3( 45, 10, 36 )
+
+[sub_resource type="SphereMesh" id=3]
+material = ExtResource( 7 )
+radial_segments = 16
+rings = 16
+
+[sub_resource type="Animation" id=6]
+resource_name = "pour"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("KitchenSinkFaucet/WaterParticles:emitting")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3, 1.2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ false, true, false ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("KitchenSinkFaucet:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.5, 1.8, 2 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0, 0 ), Vector3( 0, 0, -45 ), Vector3( 0, 0, -45 ), Vector3( 0, 0, 0 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("KitchenSinkHandleL:rotation_degrees")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 1, 2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0, 0 ), Vector3( 0, 0, 90 ), Vector3( 0, 0, 0 ) ]
+}
+
+[sub_resource type="Animation" id=7]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("../KitchenSink/WaterPart:emitting")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ false ]
+}
+
+[sub_resource type="Animation" id=8]
+resource_name = "drain"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("../KitchenSink/WaterPart:emitting")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+>>>>>>> dev
 
 [node name="sink" instance=ExtResource( 1 )]
 transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0 )
@@ -32,12 +120,37 @@ transform = Transform( -1.13213e-06, -2.2, 9.6165e-08, 41.3001, -1.53345e-07, 6.
 [node name="BoxCollider6" parent="KitchenSink" index="5" instance=ExtResource( 6 )]
 transform = Transform( 8.54365e-14, 1.2053e-06, 23.7759, 38.3966, -1.23415e-07, -6.07658e-15, -1.45294e-06, 0.438073, -1.39016e-07, 1.67522, 1.15034e-06, 26.3166 )
 
+<<<<<<< HEAD
 [node name="BoxCollider7" parent="KitchenSink" index="6" instance=ExtResource( 6 )]
 transform = Transform( 6.68713, 0, 0, 0, 2.2, 5.05807e-07, 0, 5.05807e-07, 13.7715, -20.3964, -0.0306767, -19.2765 )
 
 [node name="KitchenSinkFaucet" parent="." index="1"]
 material/0 = ExtResource( 3 )
 
+=======
+[node name="WaterPart" type="CPUParticles" parent="KitchenSink" index="6"]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 1.56773, -19.9942, 20.7534 )
+emitting = false
+amount = 1
+lifetime = 2.0
+mesh = SubResource( 4 )
+
+[node name="KitchenSinkFaucet" parent="." index="1"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -24.1358, 0.000553023, -2.47301 )
+material/0 = ExtResource( 3 )
+
+[node name="BoxCollider7" parent="KitchenSinkFaucet" index="0" instance=ExtResource( 6 )]
+transform = Transform( 6.68713, 0, 0, 0, 2.2, 5.05807e-07, 0, 5.05807e-07, 13.7715, 3.73944, -0.0312298, -16.8035 )
+
+[node name="WaterParticles" type="CPUParticles" parent="KitchenSinkFaucet" index="1"]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 19.7133, -9.67586e-07, -19.3774 )
+emitting = false
+amount = 70
+lifetime = 6.19
+speed_scale = 3.0
+mesh = SubResource( 3 )
+
+>>>>>>> dev
 [node name="KitchenSinkHandleR" parent="." index="2"]
 material/0 = ExtResource( 3 )
 
@@ -45,6 +158,7 @@ material/0 = ExtResource( 3 )
 material/0 = ExtResource( 3 )
 
 [node name="interactive" parent="." index="4" instance=ExtResource( 4 )]
+<<<<<<< HEAD
 transform = Transform( 12.4384, 0, 0, 0, 2.36999, 5.34073e-07, 0, 5.34073e-07, 14.5882, -15.2231, -8.43835e-07, -19.3047 )
 label = "Раковина"
 need = "tube"
@@ -53,3 +167,21 @@ left_click_action = "pour"
 left_click_label = "Набрать воду"
 right_click_action = "drain"
 right_click_label = "Слить воду"
+=======
+transform = Transform( 10.2389, 0, 0, 0, 9.82528, 2.08185e-07, 0, 2.08192e-07, 14.5882, -15.2231, -7.43115e-07, -17.0005 )
+label = "Раковина"
+left_click_action = "pour"
+left_click_label = "Набрать воду"
+right_click_action = "drain"
+right_click_label = "Слить"
+
+[node name="Pour" type="AnimationPlayer" parent="." index="5"]
+playback_process_mode = 0
+anims/pour = SubResource( 6 )
+
+[node name="Drain" type="AnimationPlayer" parent="." index="6"]
+root_node = NodePath("../Pour")
+playback_process_mode = 0
+anims/RESET = SubResource( 7 )
+anims/drain = SubResource( 8 )
+>>>>>>> dev

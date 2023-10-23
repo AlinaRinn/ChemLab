@@ -1,0 +1,129 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://themes/menu_theme.tres" type="Theme" id=1]
+[ext_resource path="res://scripts/plug.gd" type="Script" id=2]
+[ext_resource path="res://assets/fonts/Cascadia/CascadiaMono-Bold.otf" type="DynamicFontData" id=3]
+[ext_resource path="res://assets/images/menu_background.png" type="Texture" id=4]
+
+[sub_resource type="GDScript" id=3]
+script/source = "extends Control
+
+func _input(_event):
+	if Input.is_action_just_pressed(\"ui_cancel\"):
+		G.to(\"type_select\")
+"
+
+[sub_resource type="GDScript" id=4]
+script/source = "extends Button
+
+func _pressed():
+	G.level = \"cyber\"
+	G.to('cut_scene_practicum')
+	G.briefing = \"Цель работы: \\nИсследование на экспериментальной установке процесса теплообмена в аппарате 'труба в трубе', расчет на основании опытных данных коэффициентов теплопередачи и компьютерное моделирование статики процесса теплообмена\"
+	G.load_item = ''
+	G.level_check_1_text = \"Исследовать на экспериментальной установке процесс теплообмена\"
+	G.level_check_2_text = null
+	G.level_check_3_text = null
+	G.level_check_4_text = null
+	G.level_check_5_text = null
+	G.level_check_finish_text = null
+"
+
+[sub_resource type="DynamicFont" id=2]
+size = 24
+outline_size = 4
+outline_color = Color( 0.0509804, 0.101961, 0.129412, 1 )
+font_data = ExtResource( 3 )
+
+[node name="level" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+rect_pivot_offset = Vector2( -856, -306 )
+theme = ExtResource( 1 )
+script = SubResource( 3 )
+
+[node name="TextureRect" type="TextureRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 4 )
+expand = true
+
+[node name="ColorRect" type="ColorRect" parent="TextureRect"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0.0509804, 0.101961, 0.12549, 0.313726 )
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -500.0
+margin_top = -410.0
+margin_right = 500.0
+margin_bottom = 410.0
+custom_constants/separation = 75
+
+[node name="level1" type="Control" parent="VBoxContainer"]
+margin_right = 1000.0
+
+[node name="level" type="Button" parent="VBoxContainer/level1"]
+anchor_right = 1.0
+margin_bottom = 44.0
+rect_min_size = Vector2( 0, 70 )
+align = 0
+script = SubResource( 4 )
+
+[node name="Label" type="Label" parent="VBoxContainer/level1/level"]
+anchor_left = 0.05
+anchor_top = 0.1
+anchor_right = 0.95
+anchor_bottom = 0.9
+margin_right = 0.115967
+margin_bottom = 0.0199966
+custom_fonts/font = SubResource( 2 )
+text = "Исследование процесса теплообмена в аппарате \"труба в трубе\""
+valign = 1
+
+[node name="ColorRect2" type="ColorRect" parent="VBoxContainer/level1/level"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+color = Color( 0.0862745, 0.419608, 0.529412, 0.329412 )
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="level2" type="Control" parent="VBoxContainer"]
+margin_top = 75.0
+margin_right = 1000.0
+margin_bottom = 75.0
+
+[node name="level" type="Button" parent="VBoxContainer/level2"]
+anchor_right = 1.0
+margin_bottom = 44.0
+rect_min_size = Vector2( 0, 70 )
+align = 0
+script = ExtResource( 2 )
+
+[node name="Label" type="Label" parent="VBoxContainer/level2/level"]
+anchor_left = 0.05
+anchor_top = 0.1
+anchor_right = 0.95
+anchor_bottom = 0.9
+margin_right = 0.115967
+margin_bottom = 0.0199966
+custom_fonts/font = SubResource( 2 )
+text = "Исследование парожидкостного равновесия в системе \"ацетон-вода\""
+valign = 1
+
+[node name="ColorRect2" type="ColorRect" parent="VBoxContainer/level2/level"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+color = Color( 0.0862745, 0.419608, 0.529412, 0.329412 )
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}

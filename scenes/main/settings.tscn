@@ -1,7 +1,14 @@
+<<<<<<< HEAD
 [gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://assets/images/menu_background.png" type="Texture" id=1]
 [ext_resource path="res://menu_theme.tres" type="Theme" id=2]
+=======
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://assets/images/menu_background.png" type="Texture" id=1]
+[ext_resource path="res://themes/menu_theme.tres" type="Theme" id=2]
+>>>>>>> dev
 
 [sub_resource type="GDScript" id=1]
 script/source = "extends Button
@@ -22,6 +29,77 @@ func _on_CheckButton_toggled(button_pressed):
 	OS.window_size = OS.get_screen_size()
 "
 
+<<<<<<< HEAD
+=======
+[sub_resource type="GDScript" id=5]
+script/source = "extends CheckButton
+
+
+func _ready():
+	set_pressed_no_signal(OS.is_vsync_enabled())
+
+func _on_CheckButton_toggled(button_pressed):
+	OS.set_use_vsync(button_pressed)
+"
+
+[sub_resource type="GDScript" id=4]
+script/source = "extends Control
+
+
+var Resolitions: Dictionary = {\"3840x2160\":Vector2(3840, 2160),
+								\"2560x1440\":Vector2(2560, 1440),
+								\"1920x1080\":Vector2(1920, 1080),
+								\"1680x1050\":Vector2(1680, 1050),
+								\"1536x864\":Vector2(1536, 864),
+								\"1440x900\":Vector2(1440, 900),
+								\"1366x768\":Vector2(1366, 768), 
+								\"1280x720\":Vector2(1280, 720),
+								\"1024x768\":Vector2(1024, 768),
+								\"800x600\":Vector2(800, 600)}
+
+func _ready():
+	AddResolutions()
+
+
+func AddResolutions():
+	var current = get_viewport().get_size()
+	var index = 0
+	for i in Resolitions:
+		$OptionButton.add_item(i, index)
+		if Resolitions[i] == current:
+			$OptionButton._select_int(index)
+		index += 1
+		
+		
+func _on_OptionButton_item_selected(index):
+	var size = Resolitions.get($OptionButton.get_item_text(index))
+	OS.set_window_size(size)
+	get_tree().set_screen_stretch(SceneTree.STRETCH_MODE_VIEWPORT, SceneTree.STRETCH_ASPECT_KEEP, size)
+"
+
+[sub_resource type="GDScript" id=6]
+script/source = "extends CheckBox
+
+
+func _ready():
+	set_pressed_no_signal(get_viewport().get_use_fxaa())
+
+func _on_CheckBox_toggled(button_pressed):
+	get_viewport().set_use_fxaa(button_pressed)
+"
+
+[sub_resource type="GDScript" id=7]
+script/source = "extends OptionButton
+
+
+func _ready():
+	selected = get_viewport().get_msaa()
+	
+func _on_OptionButton_item_selected(index):
+	get_viewport().set_msaa(index)
+"
+
+>>>>>>> dev
 [sub_resource type="GDScript" id=3]
 script/source = "extends HSlider
 
@@ -35,6 +113,7 @@ func _on_HSlider_value_changed(value):
 [node name="settings" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+<<<<<<< HEAD
 margin_right = -1920.0
 margin_bottom = -1080.0
 rect_pivot_offset = Vector2( 960, 540 )
@@ -54,6 +133,31 @@ margin_left = 586.0
 margin_top = 304.0
 margin_right = 1286.0
 margin_bottom = 704.0
+=======
+rect_pivot_offset = Vector2( 960, 540 )
+
+[node name="TextureRect" type="TextureRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 1 )
+expand = true
+
+[node name="background" type="ColorRect" parent="TextureRect"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0, 0, 0, 0.647059 )
+
+[node name="menu" type="Control" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -350.0
+margin_top = -200.0
+margin_right = 350.0
+margin_bottom = 200.0
+>>>>>>> dev
 rect_pivot_offset = Vector2( 350, 200 )
 theme = ExtResource( 2 )
 
@@ -89,12 +193,16 @@ margin_bottom = 336.0
 tab_align = 0
 
 [node name="Графика" type="Tabs" parent="menu/TabContainer"]
+<<<<<<< HEAD
 visible = false
+=======
+>>>>>>> dev
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_top = 34.0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="menu/TabContainer/Графика"]
+<<<<<<< HEAD
 margin_right = 692.0
 margin_bottom = 300.0
 
@@ -118,10 +226,148 @@ pressed = true
 script = SubResource( 2 )
 
 [node name="Управление" type="Tabs" parent="menu/TabContainer"]
+=======
+anchor_right = 0.33
+margin_right = 469.0
+margin_bottom = 300.0
+
+[node name="ScreenMode" type="Control" parent="menu/TabContainer/Графика/VBoxContainer"]
+margin_right = 700.0
+
+[node name="ColorRect" type="ColorRect" parent="menu/TabContainer/Графика/VBoxContainer/ScreenMode"]
+margin_top = 60.0
+margin_right = 700.0
+margin_bottom = 62.0
+color = Color( 0.0627451, 0.203922, 0.258824, 1 )
+
+[node name="Label" type="Label" parent="menu/TabContainer/Графика/VBoxContainer/ScreenMode"]
+margin_left = 30.0
+margin_top = 15.0
+margin_right = 296.0
+margin_bottom = 45.0
+text = "Полноэкранный режим"
+
+[node name="CheckButton" type="CheckButton" parent="menu/TabContainer/Графика/VBoxContainer/ScreenMode"]
+margin_left = 610.0
+margin_top = 10.0
+margin_right = 685.0
+margin_bottom = 56.0
+pressed = true
+script = SubResource( 2 )
+
+[node name="Vsync" type="Control" parent="menu/TabContainer/Графика/VBoxContainer"]
+margin_top = 60.0
+margin_right = 700.0
+margin_bottom = 60.0
+
+[node name="ColorRect" type="ColorRect" parent="menu/TabContainer/Графика/VBoxContainer/Vsync"]
+margin_top = 60.0
+margin_right = 700.0
+margin_bottom = 62.0
+color = Color( 0.0627451, 0.203922, 0.258824, 1 )
+
+[node name="Label" type="Label" parent="menu/TabContainer/Графика/VBoxContainer/Vsync"]
+margin_left = 30.0
+margin_top = 15.0
+margin_right = 268.0
+margin_bottom = 35.0
+text = "Вертикальная синхронизация"
+
+[node name="CheckButton" type="CheckButton" parent="menu/TabContainer/Графика/VBoxContainer/Vsync"]
+margin_left = 610.0
+margin_top = 10.0
+margin_right = 76.0
+margin_bottom = 46.0
+script = SubResource( 5 )
+
+[node name="Resolution" type="Control" parent="menu/TabContainer/Графика/VBoxContainer"]
+margin_top = 120.0
+margin_right = 700.0
+margin_bottom = 120.0
+script = SubResource( 4 )
+
+[node name="ColorRect" type="ColorRect" parent="menu/TabContainer/Графика/VBoxContainer/Resolution"]
+margin_top = 60.0
+margin_right = 700.0
+margin_bottom = 62.0
+color = Color( 0.0627451, 0.203922, 0.258824, 1 )
+
+[node name="Label" type="Label" parent="menu/TabContainer/Графика/VBoxContainer/Resolution"]
+margin_left = 30.0
+margin_top = 15.0
+margin_right = 268.0
+margin_bottom = 40.0
+text = "Разрешение экрана"
+
+[node name="OptionButton" type="OptionButton" parent="menu/TabContainer/Графика/VBoxContainer/Resolution"]
+margin_left = 420.0
+margin_top = 15.0
+margin_right = 670.0
+margin_bottom = 45.0
+align = 1
+
+[node name="FXAA" type="Control" parent="menu/TabContainer/Графика/VBoxContainer"]
+margin_top = 180.0
+margin_right = 700.0
+margin_bottom = 180.0
+
+[node name="ColorRect" type="ColorRect" parent="menu/TabContainer/Графика/VBoxContainer/FXAA"]
+margin_top = 60.0
+margin_right = 700.0
+margin_bottom = 62.0
+color = Color( 0.0627451, 0.203922, 0.258824, 1 )
+
+[node name="Label" type="Label" parent="menu/TabContainer/Графика/VBoxContainer/FXAA"]
+margin_left = 30.0
+margin_top = 15.0
+margin_right = 268.0
+margin_bottom = 35.0
+text = "FXAA"
+
+[node name="CheckBox" type="CheckBox" parent="menu/TabContainer/Графика/VBoxContainer/FXAA"]
+margin_left = 635.0
+margin_top = 8.0
+margin_right = 24.0
+margin_bottom = 46.0
+script = SubResource( 6 )
+
+[node name="MSAA" type="Control" parent="menu/TabContainer/Графика/VBoxContainer"]
+margin_top = 240.0
+margin_right = 700.0
+margin_bottom = 240.0
+
+[node name="ColorRect" type="ColorRect" parent="menu/TabContainer/Графика/VBoxContainer/MSAA"]
+margin_top = 60.0
+margin_right = 700.0
+margin_bottom = 62.0
+color = Color( 0.0627451, 0.203922, 0.258824, 1 )
+
+[node name="Label" type="Label" parent="menu/TabContainer/Графика/VBoxContainer/MSAA"]
+margin_left = 30.0
+margin_top = 15.0
+margin_right = 268.0
+margin_bottom = 35.0
+text = "MSAA"
+
+[node name="OptionButton" type="OptionButton" parent="menu/TabContainer/Графика/VBoxContainer/MSAA"]
+margin_left = 570.0
+margin_top = 15.0
+margin_right = 670.0
+margin_bottom = 46.0
+text = "Выкл."
+align = 1
+items = [ "Выкл.", null, false, 0, null, "х2", null, false, 1, null, "х4", null, false, 2, null, "х8", null, false, 3, null, "х16", null, false, 4, null ]
+selected = 0
+script = SubResource( 7 )
+
+[node name="Управление" type="Tabs" parent="menu/TabContainer"]
+visible = false
+>>>>>>> dev
 margin_top = 35.0
 margin_right = 700.0
 margin_bottom = 335.0
 
+<<<<<<< HEAD
 [node name="VBoxContainer" type="VBoxContainer" parent="menu/TabContainer/Управление"]
 anchor_left = 0.5
 anchor_top = 0.5
@@ -148,6 +394,41 @@ margin_left = 402.0
 margin_top = 23.0
 margin_right = 652.0
 margin_bottom = 39.0
+=======
+[node name="ScrollContainer" type="ScrollContainer" parent="menu/TabContainer/Управление"]
+margin_right = 700.0
+margin_bottom = 300.0
+scroll_horizontal_enabled = false
+
+[node name="VBoxContainer" type="VBoxContainer" parent="menu/TabContainer/Управление/ScrollContainer"]
+margin_bottom = 720.0
+rect_min_size = Vector2( 0, 720 )
+
+[node name="Section1" type="Control" parent="menu/TabContainer/Управление/ScrollContainer/VBoxContainer"]
+
+[node name="Sensitivity" type="Control" parent="menu/TabContainer/Управление/ScrollContainer/VBoxContainer/Section1"]
+margin_right = 700.0
+margin_bottom = 60.0
+
+[node name="Label" type="Label" parent="menu/TabContainer/Управление/ScrollContainer/VBoxContainer/Section1/Sensitivity"]
+anchor_top = 0.5
+anchor_bottom = 0.5
+margin_left = 20.0
+margin_top = -14.5
+margin_right = 294.0
+margin_bottom = 14.5
+text = "Чувствительность мыши"
+
+[node name="sensitivity" type="HSlider" parent="menu/TabContainer/Управление/ScrollContainer/VBoxContainer/Section1/Sensitivity"]
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_left = -250.0
+margin_top = -8.0
+margin_right = -50.0
+margin_bottom = 8.0
+>>>>>>> dev
 min_value = 0.001
 max_value = 0.1
 step = 0.001
@@ -155,5 +436,449 @@ value = 0.005
 tick_count = 20
 script = SubResource( 3 )
 
+<<<<<<< HEAD
 [connection signal="toggled" from="menu/TabContainer/Графика/VBoxContainer/ColorRect/CheckButton" to="menu/TabContainer/Графика/VBoxContainer/ColorRect/CheckButton" method="_on_CheckButton_toggled"]
 [connection signal="value_changed" from="menu/TabContainer/Управление/VBoxContainer/ColorRect/sensitivity" to="menu/TabContainer/Управление/VBoxContainer/ColorRect/sensitivity" method="_on_HSlider_value_changed"]
+=======
+[node name="Section2" type="Control" parent="menu/TabContainer/Управление/ScrollContainer/VBoxContainer"]
+margin_top = 60.0
+margin_bottom = 60.0
+
+[node name="Forward" type="Control" parent="menu/TabContainer/Управление/ScrollContainer/VBoxContainer/Section2"]
+margin_right = 700.0
+margin_bottom = 60.0
+
+[node name="Label" type="Label" parent="menu/TabContainer/Управление/ScrollContainer/VBoxContainer/Section2/Forward"]
+anchor_top = 0.5
+anchor_bottom = 0.5
+margin_left = 20.0
+margin_top = -14.5
+margin_right = 84.0
+text = "Вперед"
+
+[node name="Button" type="Button" parent="menu/TabContainer/Управление/ScrollContainer/VBoxContainer/Section2/Forward"]
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_left = -200.0
+margin_top = -22.0
+margin_right = -50.0
+margin_bottom = 22.0
+text = "W"
+
+[node name="ColorRect" type="ColorRect" parent="menu/TabContainer/Управление/ScrollContainer/VBoxContainer/Section2/Forward"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -350.0
+margin_right = 350.0
+margin_bottom = 2.0
+color = Color( 0.0627451, 0.203922, 0.258824, 1 )
+
+[node name="Section3" type="Control" parent="menu/TabContainer/Управление/ScrollContainer/VBoxContainer"]
+margin_top = 120.0
+margin_bottom = 120.0
+
+[node name="Backward" type="Control" parent="menu/TabContainer/Управление/ScrollContainer/VBoxContainer/Section3"]
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_right = 700.0
+margin_bottom = 60.0
+
+[node name="Label" type="Label" parent="menu/TabContainer/Управление/ScrollContainer/VBoxContainer/Section3/Backward"]
+anchor_top = 0.5
+anchor_bottom = 0.5
+margin_left = 20.0
+margin_top = -14.5
+margin_right = 84.0
+margin_bottom = 14.5
+text = "Назад"
+
+[node name="Button" type="Button" parent="menu/TabContainer/Управление/ScrollContainer/VBoxContainer/Section3/Backward"]
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_left = -200.0
+margin_top = -22.0
+margin_right = -50.0
+margin_bottom = 22.0
+text = "S"
+
+[node name="ColorRect" type="ColorRect" parent="menu/TabContainer/Управление/ScrollContainer/VBoxContainer/Section3/Backward"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -350.0
+margin_right = 350.0
+margin_bottom = 2.0
+color = Color( 0.0627451, 0.203922, 0.258824, 1 )
+
+[node name="Section4" type="Control" parent="menu/TabContainer/Управление/ScrollContainer/VBoxContainer"]
+margin_top = 180.0
+margin_bottom = 180.0
+
+[node name="Left" type="Control" parent="menu/TabContainer/Управление/ScrollContainer/VBoxContainer/Section4"]
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_right = 700.0
+margin_bottom = 60.0
+
+[node name="Label" type="Label" parent="menu/TabContainer/Управление/ScrollContainer/VBoxContainer/Section4/Left"]
+anchor_top = 0.5
+anchor_bottom = 0.5
+margin_left = 20.0
+margin_top = -14.5
+margin_right = 84.0
+margin_bottom = 14.5
+text = "Влево"
+
+[node name="Button" type="Button" parent="menu/TabContainer/Управление/ScrollContainer/VBoxContainer/Section4/Left"]
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_left = -200.0
+margin_top = -22.0
+margin_right = -50.0
+margin_bottom = 22.0
+text = "A"
+
+[node name="ColorRect" type="ColorRect" parent="menu/TabContainer/Управление/ScrollContainer/VBoxContainer/Section4/Left"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -350.0
+margin_right = 350.0
+margin_bottom = 2.0
+color = Color( 0.0627451, 0.203922, 0.258824, 1 )
+
+[node name="Section5" type="Control" parent="menu/TabContainer/Управление/ScrollContainer/VBoxContainer"]
+margin_top = 240.0
+margin_bottom = 240.0
+
+[node name="Right" type="Control" parent="menu/TabContainer/Управление/ScrollContainer/VBoxContainer/Section5"]
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_right = 700.0
+margin_bottom = 60.0
+
+[node name="Label" type="Label" parent="menu/TabContainer/Управление/ScrollContainer/VBoxContainer/Section5/Right"]
+anchor_top = 0.5
+anchor_bottom = 0.5
+margin_left = 20.0
+margin_top = -14.5
+margin_right = 84.0
+margin_bottom = 14.5
+text = "Вправо"
+
+[node name="Button" type="Button" parent="menu/TabContainer/Управление/ScrollContainer/VBoxContainer/Section5/Right"]
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_left = -200.0
+margin_top = -22.0
+margin_right = -50.0
+margin_bottom = 22.0
+text = "D"
+
+[node name="ColorRect" type="ColorRect" parent="menu/TabContainer/Управление/ScrollContainer/VBoxContainer/Section5/Right"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -350.0
+margin_right = 350.0
+margin_bottom = 2.0
+color = Color( 0.0627451, 0.203922, 0.258824, 1 )
+
+[node name="Section6" type="Control" parent="menu/TabContainer/Управление/ScrollContainer/VBoxContainer"]
+margin_top = 300.0
+margin_bottom = 300.0
+
+[node name="Run" type="Control" parent="menu/TabContainer/Управление/ScrollContainer/VBoxContainer/Section6"]
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_right = 700.0
+margin_bottom = 60.0
+
+[node name="Label" type="Label" parent="menu/TabContainer/Управление/ScrollContainer/VBoxContainer/Section6/Run"]
+anchor_top = 0.5
+anchor_bottom = 0.5
+margin_left = 20.0
+margin_top = -14.5
+margin_right = 84.0
+margin_bottom = 14.5
+text = "Бег"
+
+[node name="Button" type="Button" parent="menu/TabContainer/Управление/ScrollContainer/VBoxContainer/Section6/Run"]
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_left = -200.0
+margin_top = -22.0
+margin_right = -50.0
+margin_bottom = 22.0
+text = "Shift"
+
+[node name="ColorRect" type="ColorRect" parent="menu/TabContainer/Управление/ScrollContainer/VBoxContainer/Section6/Run"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -350.0
+margin_right = 350.0
+margin_bottom = 2.0
+color = Color( 0.0627451, 0.203922, 0.258824, 1 )
+
+[node name="Section7" type="Control" parent="menu/TabContainer/Управление/ScrollContainer/VBoxContainer"]
+margin_top = 360.0
+margin_bottom = 360.0
+
+[node name="Sit" type="Control" parent="menu/TabContainer/Управление/ScrollContainer/VBoxContainer/Section7"]
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_right = 700.0
+margin_bottom = 60.0
+
+[node name="Label" type="Label" parent="menu/TabContainer/Управление/ScrollContainer/VBoxContainer/Section7/Sit"]
+anchor_top = 0.5
+anchor_bottom = 0.5
+margin_left = 20.0
+margin_top = -14.5
+margin_right = 84.0
+margin_bottom = 14.5
+text = "Присесть"
+
+[node name="Button" type="Button" parent="menu/TabContainer/Управление/ScrollContainer/VBoxContainer/Section7/Sit"]
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_left = -200.0
+margin_top = -22.0
+margin_right = -50.0
+margin_bottom = 22.0
+text = "Ctrl"
+
+[node name="ColorRect" type="ColorRect" parent="menu/TabContainer/Управление/ScrollContainer/VBoxContainer/Section7/Sit"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -350.0
+margin_right = 350.0
+margin_bottom = 2.0
+color = Color( 0.0627451, 0.203922, 0.258824, 1 )
+
+[node name="Section8" type="Control" parent="menu/TabContainer/Управление/ScrollContainer/VBoxContainer"]
+margin_top = 420.0
+margin_bottom = 420.0
+
+[node name="MoveItem" type="Control" parent="menu/TabContainer/Управление/ScrollContainer/VBoxContainer/Section8"]
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_right = 700.0
+margin_bottom = 60.0
+
+[node name="Label" type="Label" parent="menu/TabContainer/Управление/ScrollContainer/VBoxContainer/Section8/MoveItem"]
+anchor_top = 0.5
+anchor_bottom = 0.5
+margin_left = 20.0
+margin_top = -14.5
+margin_right = 84.0
+margin_bottom = 14.5
+text = "Двигать предмет"
+
+[node name="Button" type="Button" parent="menu/TabContainer/Управление/ScrollContainer/VBoxContainer/Section8/MoveItem"]
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_left = -200.0
+margin_top = -22.0
+margin_right = -50.0
+margin_bottom = 22.0
+text = "F"
+
+[node name="ColorRect" type="ColorRect" parent="menu/TabContainer/Управление/ScrollContainer/VBoxContainer/Section8/MoveItem"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -350.0
+margin_right = 350.0
+margin_bottom = 2.0
+color = Color( 0.0627451, 0.203922, 0.258824, 1 )
+
+[node name="Section9" type="Control" parent="menu/TabContainer/Управление/ScrollContainer/VBoxContainer"]
+margin_top = 480.0
+margin_bottom = 480.0
+
+[node name="DropItem" type="Control" parent="menu/TabContainer/Управление/ScrollContainer/VBoxContainer/Section9"]
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_right = 700.0
+margin_bottom = 60.0
+
+[node name="Label" type="Label" parent="menu/TabContainer/Управление/ScrollContainer/VBoxContainer/Section9/DropItem"]
+anchor_top = 0.5
+anchor_bottom = 0.5
+margin_left = 20.0
+margin_top = -14.5
+margin_right = 84.0
+margin_bottom = 14.5
+text = "Выбросить предмет"
+
+[node name="Button" type="Button" parent="menu/TabContainer/Управление/ScrollContainer/VBoxContainer/Section9/DropItem"]
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_left = -200.0
+margin_top = -22.0
+margin_right = -50.0
+margin_bottom = 22.0
+text = "G"
+
+[node name="ColorRect" type="ColorRect" parent="menu/TabContainer/Управление/ScrollContainer/VBoxContainer/Section9/DropItem"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -350.0
+margin_right = 350.0
+margin_bottom = 2.0
+color = Color( 0.0627451, 0.203922, 0.258824, 1 )
+
+[node name="Section10" type="Control" parent="menu/TabContainer/Управление/ScrollContainer/VBoxContainer"]
+margin_top = 540.0
+margin_bottom = 540.0
+
+[node name="Zoom" type="Control" parent="menu/TabContainer/Управление/ScrollContainer/VBoxContainer/Section10"]
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_right = 700.0
+margin_bottom = 60.0
+
+[node name="Label" type="Label" parent="menu/TabContainer/Управление/ScrollContainer/VBoxContainer/Section10/Zoom"]
+anchor_top = 0.5
+anchor_bottom = 0.5
+margin_left = 20.0
+margin_top = -14.5
+margin_right = 84.0
+margin_bottom = 14.5
+text = "Приблизить камеру (х2)"
+
+[node name="Button" type="Button" parent="menu/TabContainer/Управление/ScrollContainer/VBoxContainer/Section10/Zoom"]
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_left = -200.0
+margin_top = -22.0
+margin_right = -50.0
+margin_bottom = 22.0
+text = "Alt"
+
+[node name="ColorRect" type="ColorRect" parent="menu/TabContainer/Управление/ScrollContainer/VBoxContainer/Section10/Zoom"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -350.0
+margin_right = 350.0
+margin_bottom = 2.0
+color = Color( 0.0627451, 0.203922, 0.258824, 1 )
+
+[node name="Section11" type="Control" parent="menu/TabContainer/Управление/ScrollContainer/VBoxContainer"]
+margin_top = 600.0
+margin_bottom = 600.0
+
+[node name="HideTasks" type="Control" parent="menu/TabContainer/Управление/ScrollContainer/VBoxContainer/Section11"]
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_right = 700.0
+margin_bottom = 60.0
+
+[node name="Label" type="Label" parent="menu/TabContainer/Управление/ScrollContainer/VBoxContainer/Section11/HideTasks"]
+anchor_top = 0.5
+anchor_bottom = 0.5
+margin_left = 20.0
+margin_top = -14.5
+margin_right = 84.0
+margin_bottom = 14.5
+text = "Скрыть список задач (практикум)"
+
+[node name="Button" type="Button" parent="menu/TabContainer/Управление/ScrollContainer/VBoxContainer/Section11/HideTasks"]
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_left = -200.0
+margin_top = -22.0
+margin_right = -50.0
+margin_bottom = 22.0
+text = "T"
+
+[node name="ColorRect" type="ColorRect" parent="menu/TabContainer/Управление/ScrollContainer/VBoxContainer/Section11/HideTasks"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -350.0
+margin_right = 350.0
+margin_bottom = 2.0
+color = Color( 0.0627451, 0.203922, 0.258824, 1 )
+
+[node name="Section12" type="Control" parent="menu/TabContainer/Управление/ScrollContainer/VBoxContainer"]
+margin_top = 660.0
+margin_bottom = 660.0
+
+[node name="Reaction" type="Control" parent="menu/TabContainer/Управление/ScrollContainer/VBoxContainer/Section12"]
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_right = 700.0
+margin_bottom = 60.0
+
+[node name="Label" type="Label" parent="menu/TabContainer/Управление/ScrollContainer/VBoxContainer/Section12/Reaction"]
+anchor_top = 0.5
+anchor_bottom = 0.5
+margin_left = 20.0
+margin_top = -14.5
+margin_right = 84.0
+margin_bottom = 14.5
+text = "Начать реакцию"
+
+[node name="Button" type="Button" parent="menu/TabContainer/Управление/ScrollContainer/VBoxContainer/Section12/Reaction"]
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_left = -200.0
+margin_top = -22.0
+margin_right = -50.0
+margin_bottom = 22.0
+text = "MMB"
+
+[node name="ColorRect" type="ColorRect" parent="menu/TabContainer/Управление/ScrollContainer/VBoxContainer/Section12/Reaction"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -350.0
+margin_right = 350.0
+margin_bottom = 2.0
+color = Color( 0.0627451, 0.203922, 0.258824, 1 )
+
+[connection signal="toggled" from="menu/TabContainer/Графика/VBoxContainer/ScreenMode/CheckButton" to="menu/TabContainer/Графика/VBoxContainer/ScreenMode/CheckButton" method="_on_CheckButton_toggled"]
+[connection signal="toggled" from="menu/TabContainer/Графика/VBoxContainer/Vsync/CheckButton" to="menu/TabContainer/Графика/VBoxContainer/Vsync/CheckButton" method="_on_CheckButton_toggled"]
+[connection signal="item_selected" from="menu/TabContainer/Графика/VBoxContainer/Resolution/OptionButton" to="menu/TabContainer/Графика/VBoxContainer/Resolution" method="_on_OptionButton_item_selected"]
+[connection signal="toggled" from="menu/TabContainer/Графика/VBoxContainer/FXAA/CheckBox" to="menu/TabContainer/Графика/VBoxContainer/FXAA/CheckBox" method="_on_CheckBox_toggled"]
+[connection signal="item_selected" from="menu/TabContainer/Графика/VBoxContainer/MSAA/OptionButton" to="menu/TabContainer/Графика/VBoxContainer/MSAA/OptionButton" method="_on_OptionButton_item_selected"]
+[connection signal="value_changed" from="menu/TabContainer/Управление/ScrollContainer/VBoxContainer/Section1/Sensitivity/sensitivity" to="menu/TabContainer/Управление/ScrollContainer/VBoxContainer/Section1/Sensitivity/sensitivity" method="_on_HSlider_value_changed"]
+>>>>>>> dev

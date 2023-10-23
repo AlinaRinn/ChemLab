@@ -1,8 +1,13 @@
+<<<<<<< HEAD
 [gd_scene load_steps=14 format=2]
+=======
+[gd_scene load_steps=12 format=2]
+>>>>>>> dev
 
 [ext_resource path="res://assets/models/distiller_big_main.obj" type="ArrayMesh" id=1]
 [ext_resource path="res://assets/models/distiller_big_check.obj" type="ArrayMesh" id=2]
 [ext_resource path="res://scripts/objects/interactive/distiller.gd" type="Script" id=3]
+<<<<<<< HEAD
 [ext_resource path="res://assets/particle/water_particle.png" type="Texture" id=4]
 [ext_resource path="res://objects/interaction.tscn" type="PackedScene" id=8]
 
@@ -13,15 +18,26 @@ extents = Vector3( 1, 0.865262, 1 )
 albedo_color = Color( 0.709804, 0.709804, 0.709804, 1 )
 metallic = 0.72
 roughness = 0.34
+=======
+[ext_resource path="res://assets/materials/metal.material" type="Material" id=5]
+[ext_resource path="res://assets/materials/water.material" type="Material" id=6]
+[ext_resource path="res://objects/interaction.tscn" type="PackedScene" id=8]
+
+[sub_resource type="CylinderShape" id=9]
+height = 1.6723
+>>>>>>> dev
 
 [sub_resource type="BoxShape" id=3]
 extents = Vector3( 0.257797, 0.308183, 0.283782 )
 
+<<<<<<< HEAD
 [sub_resource type="SpatialMaterial" id=6]
 albedo_color = Color( 0.74902, 0.74902, 0.74902, 1 )
 metallic = 0.69
 roughness = 0.24
 
+=======
+>>>>>>> dev
 [sub_resource type="SpatialMaterial" id=7]
 albedo_color = Color( 0.568627, 0, 0, 1 )
 metallic = 0.32
@@ -40,8 +56,13 @@ tracks/0/keys = {
 "values": [ Vector3( 0, 90, 0 ), Vector3( 0, 0, 0 ) ]
 }
 tracks/1/type = "value"
+<<<<<<< HEAD
 tracks/1/path = NodePath("../CPUParticles:emitting")
 tracks/1/interp = 2
+=======
+tracks/1/path = NodePath("../WaterParticles:emitting")
+tracks/1/interp = 1
+>>>>>>> dev
 tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
@@ -52,6 +73,7 @@ tracks/1/keys = {
 "values": [ false, true ]
 }
 
+<<<<<<< HEAD
 [sub_resource type="SpatialMaterial" id=4]
 flags_transparent = true
 flags_unshaded = true
@@ -62,6 +84,12 @@ albedo_texture = ExtResource( 4 )
 [sub_resource type="QuadMesh" id=5]
 material = SubResource( 4 )
 size = Vector2( 0.05, 0.1 )
+=======
+[sub_resource type="SphereMesh" id=10]
+material = ExtResource( 6 )
+radial_segments = 16
+rings = 16
+>>>>>>> dev
 
 [node name="distiller" type="Spatial"]
 transform = Transform( 0.882, 0, 0, 0, 0.882, 0, 0, 0, 0.882, 0, 0, 0 )
@@ -71,14 +99,23 @@ script = ExtResource( 3 )
 transform = Transform( 1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, 0, 0, 0 )
 
 [node name="CollisionShape" type="CollisionShape" parent="main"]
+<<<<<<< HEAD
 transform = Transform( 0.752929, 0, 0, 0, 2.47057, 0, -1.42109e-14, 0, 0.759919, 0, 1.14877, 0 )
 shape = SubResource( 2 )
+=======
+transform = Transform( 0.752929, 0, 0, 0, 2.47057, 0, -2.13163e-14, 0, 0.759919, 0, 1.14877, 0 )
+shape = SubResource( 9 )
+>>>>>>> dev
 
 [node name="MeshInstance" type="MeshInstance" parent="main/CollisionShape"]
 transform = Transform( -4.06386e-08, 0, 0.929703, 0, 0.283335, 0, -0.921151, 0, -4.02648e-08, 0, -0.464982, 0 )
 mesh = ExtResource( 1 )
 skeleton = NodePath("../..")
+<<<<<<< HEAD
 material/0 = SubResource( 1 )
+=======
+material/0 = ExtResource( 5 )
+>>>>>>> dev
 
 [node name="valve" type="StaticBody" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.61215, 0.385868, 0 )
@@ -92,12 +129,17 @@ transform = Transform( -1.16911e-08, 0, 0.267462, 0, 0.267462, 0, -0.267462, 0, 
 [node name="MeshInstance" type="MeshInstance" parent="valve/valve_rotate"]
 transform = Transform( -1.14401e-07, 0, -2.61719, 0, 2.61719, 0, 2.61719, 0, -1.14401e-07, 0.0016359, -1.42058, -6.05036 )
 mesh = ExtResource( 2 )
+<<<<<<< HEAD
 material/0 = SubResource( 6 )
+=======
+material/0 = ExtResource( 5 )
+>>>>>>> dev
 material/1 = SubResource( 7 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="valve/valve_rotate"]
 anims/rotate = SubResource( 8 )
 
+<<<<<<< HEAD
 [node name="CPUParticles" type="CPUParticles" parent="valve"]
 transform = Transform( 0.7, 0, 1.22392e-07, 0, 0.7, 0, -1.22392e-07, 0, 0.7, 0.25615, -0.213338, -2.4504e-07 )
 emitting = false
@@ -111,13 +153,32 @@ emission_shape = 2
 emission_box_extents = Vector3( 0.1, 0.1, 0.1 )
 scale_amount = 2.0
 scale_amount_random = 1.0
+=======
+[node name="WaterParticles" type="CPUParticles" parent="valve"]
+transform = Transform( 0.033, 0, 0, 0, 0.033, 3.98774e-16, 0, -3.98774e-16, 0.033, 0.25248, -0.174107, 0 )
+emitting = false
+amount = 50
+lifetime = 4.0
+speed_scale = 2.0
+mesh = SubResource( 10 )
+>>>>>>> dev
 
 [node name="interaction_1" parent="." instance=ExtResource( 8 )]
 transform = Transform( 1.03822, 0, 0, 0, 1.93991, 0, 0, 0, 1, 0.247042, 1.10552, 0 )
 label = "Дистиллятор"
+<<<<<<< HEAD
+=======
+right_click_action = "drain"
+right_click_label = "Слить"
+>>>>>>> dev
 
 [node name="interaction_2" parent="." instance=ExtResource( 8 )]
 transform = Transform( 0.278153, 0, 0, 0, 0.251164, 0, 0, 0, 0.271931, 1.64459, 0.337286, 0 )
 label = "Дистиллятор"
 left_click_action = "press"
 left_click_label = "Открыть/Закрыть"
+<<<<<<< HEAD
+=======
+right_click_action = "pour"
+right_click_label = "Наполнить"
+>>>>>>> dev

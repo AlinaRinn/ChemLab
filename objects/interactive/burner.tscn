@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 [gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://assets/materials/plank.material" type="Material" id=1]
@@ -6,10 +7,41 @@
 [ext_resource path="res://assets/particle/burn_particle.png" type="Texture" id=4]
 [ext_resource path="res://scripts/objects/interactive/burner.gd" type="Script" id=5]
 [ext_resource path="res://objects/interaction.tscn" type="PackedScene" id=7]
+=======
+[gd_scene load_steps=15 format=2]
+
+[ext_resource path="res://assets/materials/plank.material" type="Material" id=1]
+[ext_resource path="res://assets/materials/glass_blue.material" type="Material" id=2]
+[ext_resource path="res://assets/models/spirit_lamp.obj" type="ArrayMesh" id=3]
+[ext_resource path="res://assets/gradient/part_burter.tres" type="Material" id=4]
+[ext_resource path="res://scripts/objects/interactive/burner.gd" type="Script" id=5]
+[ext_resource path="res://objects/elements/kerosene.tscn" type="PackedScene" id=6]
+[ext_resource path="res://objects/interaction.tscn" type="PackedScene" id=7]
+[ext_resource path="res://objects/interactive/spiral.tscn" type="PackedScene" id=8]
+[ext_resource path="res://assets/particle/fire_particle.png" type="Texture" id=10]
+>>>>>>> dev
 
 [sub_resource type="BoxShape" id=1]
 extents = Vector3( 0.171085, 0.20831, 0.174081 )
 
+<<<<<<< HEAD
+=======
+[sub_resource type="Animation" id=15]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("../fire:emitting")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ false ]
+}
+
+>>>>>>> dev
 [sub_resource type="Animation" id=5]
 resource_name = "burn"
 tracks/0/type = "value"
@@ -25,7 +57,11 @@ tracks/0/keys = {
 "values": [ 0.0, 1.0 ]
 }
 tracks/1/type = "value"
+<<<<<<< HEAD
 tracks/1/path = NodePath("../CPUParticles:emitting")
+=======
+tracks/1/path = NodePath("../fire:emitting")
+>>>>>>> dev
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -37,6 +73,7 @@ tracks/1/keys = {
 "values": [ false, true ]
 }
 
+<<<<<<< HEAD
 [sub_resource type="SpatialMaterial" id=6]
 flags_transparent = true
 flags_unshaded = true
@@ -58,6 +95,21 @@ _data = [ Vector2( 0, 0.5 ), 0.0, 0.0, 0, 0, Vector2( 0.5, 1 ), 0.0, 0.0, 0, 0, 
 [sub_resource type="Gradient" id=9]
 offsets = PoolRealArray( 0, 0.403974, 0.761589, 1 )
 colors = PoolColorArray( 0.0535278, 0.729421, 0.856445, 1, 0.875849, 0.911586, 0.417073, 1, 0.96582, 0.477465, 0.056591, 1, 0.9375, 0.334682, 0.150146, 0.254902 )
+=======
+[sub_resource type="SpatialMaterial" id=16]
+flags_transparent = true
+flags_unshaded = true
+vertex_color_use_as_albedo = true
+params_blend_mode = 1
+params_billboard_mode = 3
+particles_anim_h_frames = 6
+particles_anim_v_frames = 5
+particles_anim_loop = true
+albedo_texture = ExtResource( 10 )
+
+[sub_resource type="QuadMesh" id=14]
+material = SubResource( 16 )
+>>>>>>> dev
 
 [node name="burner" type="Spatial"]
 script = ExtResource( 5 )
@@ -74,11 +126,18 @@ mesh = ExtResource( 3 )
 material/0 = ExtResource( 2 )
 material/1 = ExtResource( 1 )
 
+<<<<<<< HEAD
+=======
+[node name="kerosene" parent="StaticBody/CollisionShape/MeshInstance" instance=ExtResource( 6 )]
+transform = Transform( 2.37614, 0, 0, 0, 1.1977, 0, 0, 0, 2.26621, 2.10975, 3.03277, -2.41889 )
+
+>>>>>>> dev
 [node name="interaction" parent="." instance=ExtResource( 7 )]
 transform = Transform( 0.180822, 0, 0, 0, 0.20381, 0, 0, 0, 0.187598, 0, 0.204414, 0 )
 label = "Горелка"
 left_click_action = "burn"
 left_click_label = "Зажечь/Потушить"
+<<<<<<< HEAD
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 root_node = NodePath("../StaticBody")
@@ -96,9 +155,37 @@ gravity = Vector3( 0, 1, 0 )
 scale_amount_curve = SubResource( 8 )
 color_ramp = SubResource( 9 )
 
+=======
+right_click_action = "spiral"
+right_click_label = "Добавить\\Убрать спираль"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+root_node = NodePath("../StaticBody")
+anims/RESET = SubResource( 15 )
+anims/burn = SubResource( 5 )
+
+>>>>>>> dev
 [node name="OmniLight" type="OmniLight" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.607105, 0 )
 light_color = Color( 0.901961, 0.764706, 0.121569, 1 )
 light_energy = 0.0
 shadow_enabled = true
 shadow_color = Color( 0.2, 0.2, 0.168627, 1 )
+<<<<<<< HEAD
+=======
+
+[node name="spiral" parent="." instance=ExtResource( 8 )]
+transform = Transform( 1, 0, 0, 0, 0.916956, -0.398989, 0, 0.398989, 0.916956, -0.00352529, 0.411382, -0.000419408 )
+visible = false
+
+[node name="fire" type="Particles" parent="."]
+transform = Transform( 0.01, 0, 0, 0, 0.05, 0, 0, 0, 0.01, 0, 0.357753, 0 )
+emitting = false
+amount = 100
+lifetime = 0.5
+randomness = 1.0
+local_coords = false
+draw_order = 2
+process_material = ExtResource( 4 )
+draw_pass_1 = SubResource( 14 )
+>>>>>>> dev

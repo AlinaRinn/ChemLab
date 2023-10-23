@@ -1,4 +1,11 @@
+<<<<<<< HEAD
 [gd_scene load_steps=6 format=2]
+=======
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://objects/interactive/pipette.tscn" type="PackedScene" id=1]
+[ext_resource path="res://objects/interactive/pincet.tscn" type="PackedScene" id=2]
+>>>>>>> dev
 
 [sub_resource type="GDScript" id=1]
 script/source = "extends KinematicBody
@@ -12,11 +19,19 @@ var SPEED_TURN
 var vel = Vector3()
 
 var state = \"stay\"
+<<<<<<< HEAD
+=======
+var task_state = true
+>>>>>>> dev
 
 onready var rc = $head/eye
 onready var anim = $AnimationPlayer
 onready var hand = $head/player_hand
 onready var hand1 = $head/hand
+<<<<<<< HEAD
+=======
+var substance = load(\"res://scripts/substance.res\").sub
+>>>>>>> dev
 
 var picked_object
 var pull_power = 4
@@ -26,6 +41,11 @@ var cast = null
 
 
 func get_to_hand(object):
+<<<<<<< HEAD
+=======
+	$head/pincet.visible = false
+	$head/pipette.visible = false
+>>>>>>> dev
 	# Если в руках что то есть, и это тот же предмет, меняем местами
 	# Иначе, что в руках выкидываем, и берем новый
 	var swap_obj = null
@@ -47,6 +67,16 @@ func get_to_hand(object):
 	in_hand_object = object
 	in_hand_object_id = object.id
 	
+<<<<<<< HEAD
+=======
+	if object.get(\"isMetal\") != null:
+		if (in_hand_object.isMetal):
+			$head/pincet.visible = true
+		else:
+			$head/pipette.visible = true
+		
+	
+>>>>>>> dev
 	return swap_obj
 
 
@@ -58,11 +88,22 @@ func get_info_object():
 	if cast:
 		var owner = cast.get_owner()
 		
+<<<<<<< HEAD
 		# Название предмета на который навелись
 		G.label_name.text = cast.label
 		var liquid_obj = owner.get(\"liquid\")
 		if liquid_obj != \"\" && liquid_obj:
 			G.label_name.text += ' \"' + liquid_obj + '\"'
+=======
+		if cast.get(\"highlighting\"):
+			cast.see = true
+		
+		# Название предмета на который навелись
+		G.label_name.text = cast.label
+		var liquid_obj = owner.get(\"subs\")
+		if liquid_obj != \"\" && liquid_obj:
+			G.label_name.text += ' \"' + substance[liquid_obj][\"name\"] + '\"'
+>>>>>>> dev
 		
 		# Содержимое пробирки на которую навелись
 		if owner.has_method(\"get_info\"):
@@ -78,9 +119,12 @@ func get_info_object():
 				G.label_bindings.text += \"ЛКМ - \" + cast.left_click_label + \"\\n\"
 			if cast.right_click_label != \"\":
 				G.label_bindings.text += \"ПКМ - \" + cast.right_click_label + \"\\n\"
+<<<<<<< HEAD
 	else:
 		G.label_name.text
 		G.label_bindings.text
+=======
+>>>>>>> dev
 
 
 func get_object():
@@ -113,6 +157,22 @@ func get_input():
 	if Input.is_action_pressed(\"ui_down\"):
 		dir.z = 1
 	
+<<<<<<< HEAD
+=======
+	# Зум камеры
+	if Input.is_action_pressed(\"ui_alt\"):
+		$head/Camera.transform.origin.z = -2
+	else: $head/Camera.transform.origin.z = 0
+	
+	# Видимость задач
+	if Input.is_action_just_pressed(\"ui_t\") and task_state:
+		G.emit_signal(\"hide_tasks\")
+		task_state = false
+	elif Input.is_action_just_pressed(\"ui_t\") and !task_state:
+		G.emit_signal(\"show_tasks\")
+		task_state = true
+	
+>>>>>>> dev
 	# Дроп предмета в руке
 	if Input.is_action_just_pressed(\"ui_g\"):
 		drop()
@@ -142,7 +202,11 @@ func get_input():
 	if dir:
 		dir = dir.rotated(Vector3.UP, rotation.y) * speed 
 		
+<<<<<<< HEAD
 	# Пзволяет передвигать предметы
+=======
+	# Позволяет передвигать предметы
+>>>>>>> dev
 	if Input.is_action_just_pressed(\"ui_f\"):
 		if picked_object == null:
 			var collider = cast.get_owner() if cast else null 
@@ -164,7 +228,11 @@ func get_input():
 
 
 func _physics_process(_delta):
+<<<<<<< HEAD
 	get_input();
+=======
+	get_input()
+>>>>>>> dev
 	vel = move_and_slide(vel, Vector3.UP)
 	get_object()
 	get_info_object()
@@ -179,6 +247,7 @@ func drop():
 	# Проверяем есть ли предмет в руке
 	if !in_hand_object:
 			return
+<<<<<<< HEAD
 	
 	# Удаляем предмет из рук, и добавляем его на сцену
 	var drop_obj = in_hand_object
@@ -188,6 +257,16 @@ func drop():
 	in_hand_object = null
 	in_hand_object_id = null
 	
+=======
+			
+	# Удаляем предмет из рук, и добавляем его на сцену
+	var drop_obj = in_hand_object
+	drop_obj.translation = G.player.get_node('head/hand').global_transform.origin
+	hand.remove_child(in_hand_object)
+	in_hand_object = null
+	in_hand_object_id = null
+	drop_obj.sleeping = false
+>>>>>>> dev
 	G.root_level.add_child(drop_obj)
 
 
@@ -202,6 +281,10 @@ func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	SPEED_TURN = G.sensitivity
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> dev
 func _input(e):
 	# Обрабатываем движение мышкой
 	if e is InputEventMouseMotion:
@@ -370,6 +453,10 @@ collision_mask = 4
 collide_with_areas = true
 
 [node name="Camera" type="Camera" parent="head"]
+<<<<<<< HEAD
+=======
+near = 0.01
+>>>>>>> dev
 
 [node name="player_hand" type="Spatial" parent="head"]
 transform = Transform( 0.0985865, 0.0167543, 0, -0.0167543, 0.0985865, 0, 0, 0, 0.1, 0.0801525, -0.0562506, -0.0885729 )
@@ -377,6 +464,17 @@ transform = Transform( 0.0985865, 0.0167543, 0, -0.0167543, 0.0985865, 0, 0, 0, 
 [node name="hand" type="Position3D" parent="head"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.9579 )
 
+<<<<<<< HEAD
+=======
+[node name="pincet" parent="head" instance=ExtResource( 2 )]
+transform = Transform( -0.0303, 0.0301773, -0.0903949, -0.0690003, 0.0584793, 0.0426513, 0.0657333, 0.0752961, 0.00310321, -0.263766, -0.111748, -0.331101 )
+visible = false
+
+[node name="pipette" parent="head" instance=ExtResource( 1 )]
+transform = Transform( 0.036273, -0.0267965, 0.0215921, 2.069e-06, -0.0313701, -0.0389348, 0.0344133, 0.0282465, -0.0227566, -0.402337, -0.12437, -0.517703 )
+visible = false
+
+>>>>>>> dev
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/RESET = SubResource( 3 )
 anims/run = SubResource( 4 )

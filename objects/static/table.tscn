@@ -1,0 +1,100 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://assets/models/table.glb" type="PackedScene" id=1]
+[ext_resource path="res://assets/materials/metal_darkgrey.material" type="Material" id=2]
+[ext_resource path="res://assets/materials/metal_white.material" type="Material" id=3]
+[ext_resource path="res://assets/materials/paint_white.material" type="Material" id=4]
+
+[sub_resource type="BoxShape" id=1]
+extents = Vector3( 907.583, 326.522, 46.1654 )
+
+[sub_resource type="BoxShape" id=2]
+extents = Vector3( 905.479, 94.6855, 401.848 )
+
+[node name="table" instance=ExtResource( 1 )]
+transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0 )
+
+[node name="surface" parent="." index="0"]
+material/0 = ExtResource( 4 )
+
+[node name="end_left" parent="surface" index="2"]
+material/0 = ExtResource( 3 )
+
+[node name="end_top_right" parent="surface" index="3"]
+material/0 = ExtResource( 3 )
+
+[node name="front_top_left" parent="surface" index="4"]
+material/0 = ExtResource( 3 )
+
+[node name="front_top_right" parent="surface" index="5"]
+material/0 = ExtResource( 3 )
+
+[node name="middle_inter_right" parent="surface" index="6"]
+material/0 = ExtResource( 3 )
+
+[node name="miggle_inter_left" parent="surface" index="7"]
+material/0 = ExtResource( 3 )
+
+[node name="StaticBody" type="StaticBody" parent="surface" index="8"]
+
+[node name="CollisionShape" type="CollisionShape" parent="surface/StaticBody" index="0"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -200.502, 167.231, -484.072 )
+shape = SubResource( 1 )
+
+[node name="CollisionShape2" type="CollisionShape" parent="surface/StaticBody" index="1"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -199.42, -58.7233, -36.3103 )
+shape = SubResource( 2 )
+
+[node name="leg_left" parent="legs" index="0"]
+material/0 = ExtResource( 3 )
+
+[node name="VIFS135" parent="legs/leg_left" index="0"]
+material/0 = ExtResource( 2 )
+
+[node name="VIFS136" parent="legs/leg_left/VIFS135" index="0"]
+material/0 = ExtResource( 2 )
+
+[node name="VIFS147" parent="legs/leg_left" index="1"]
+material/0 = ExtResource( 2 )
+
+[node name="VIFS148" parent="legs/leg_left/VIFS147" index="0"]
+material/0 = ExtResource( 2 )
+
+[node name="leg_middle" parent="legs" index="1"]
+material/0 = ExtResource( 3 )
+
+[node name="VIFS150" parent="legs/leg_middle" index="0"]
+material/0 = ExtResource( 2 )
+
+[node name="VIFS151" parent="legs/leg_middle/VIFS150" index="0"]
+material/0 = ExtResource( 2 )
+
+[node name="VIFS152" parent="legs/leg_middle" index="1"]
+material/0 = ExtResource( 2 )
+
+[node name="VIFS153" parent="legs/leg_middle/VIFS152" index="0"]
+material/0 = ExtResource( 2 )
+
+[node name="leg_right" parent="legs" index="2"]
+material/0 = ExtResource( 3 )
+
+[node name="VIFS131" parent="legs/leg_right" index="0"]
+material/0 = ExtResource( 2 )
+
+[node name="VIFS132" parent="legs/leg_right/VIFS131" index="0"]
+material/0 = ExtResource( 2 )
+
+[node name="VIFS154" parent="legs/leg_right" index="1"]
+material/0 = ExtResource( 2 )
+
+[node name="VIFS155" parent="legs/leg_right/VIFS154" index="0"]
+material/0 = ExtResource( 2 )
+
+[node name="end_stand_left" parent="stands" index="0"]
+material/0 = ExtResource( 3 )
+
+[node name="end_stand_right" parent="stands" index="1"]
+material/0 = ExtResource( 3 )
+
+[node name="middle_stand" parent="stands" index="2"]
+material/0 = ExtResource( 3 )

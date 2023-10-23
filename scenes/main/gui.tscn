@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 [gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://scripts/gui.gd" type="Script" id=1]
@@ -15,6 +16,28 @@ font_data = ExtResource( 2 )
 size = 30
 outline_size = 2
 outline_color = Color( 0, 0, 0, 1 )
+=======
+[gd_scene load_steps=15 format=2]
+
+[ext_resource path="res://scripts/gui.gd" type="Script" id=1]
+[ext_resource path="res://assets/fonts/Cascadia/CascadiaMono-Light.otf" type="DynamicFontData" id=2]
+[ext_resource path="res://assets/images/target.png" type="Texture" id=3]
+[ext_resource path="res://assets/fonts/Cascadia/CascadiaMono-Bold.otf" type="DynamicFontData" id=4]
+[ext_resource path="res://themes/gui_theme.tres" type="Theme" id=5]
+
+[sub_resource type="GDScript" id=11]
+script/source = "extends VBoxContainer
+
+func _ready():
+	G.connect(\"hide_tasks\", self, \"hide\")
+	G.connect(\"show_tasks\", self, \"show\")
+"
+
+[sub_resource type="DynamicFont" id=10]
+size = 18
+outline_size = 2
+outline_color = Color( 0.0627451, 0.203922, 0.258824, 1 )
+>>>>>>> dev
 font_data = ExtResource( 2 )
 
 [sub_resource type="GDScript" id=5]
@@ -24,6 +47,7 @@ func _ready():
 	G.connect(\"paused\", self, \"show\")
 "
 
+<<<<<<< HEAD
 [sub_resource type="GDScript" id=3]
 script/source = "extends Button
 
@@ -31,6 +55,13 @@ func _pressed():
 	G.to('main_menu')
 	get_node(\"/root/game/player\").get_tree().paused = false
 "
+=======
+[sub_resource type="DynamicFont" id=7]
+size = 20
+outline_size = 3
+outline_color = Color( 0.0509804, 0.101961, 0.129412, 1 )
+font_data = ExtResource( 4 )
+>>>>>>> dev
 
 [sub_resource type="GDScript" id=4]
 script/source = "extends Button
@@ -41,17 +72,51 @@ func _pressed():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 "
 
+<<<<<<< HEAD
+=======
+[sub_resource type="GDScript" id=9]
+script/source = "extends Button
+
+func _pressed():
+	G.to('game')
+	get_node(\"/root/game/player\").get_tree().paused = false
+"
+
+[sub_resource type="DynamicFont" id=6]
+size = 20
+outline_size = 3
+outline_color = Color( 0.0509804, 0.101961, 0.129412, 1 )
+font_data = ExtResource( 4 )
+
+[sub_resource type="GDScript" id=3]
+script/source = "extends Button
+
+func _pressed():
+	G.to('main_menu')
+	get_node(\"/root/game/player\").get_tree().paused = false
+"
+
+[sub_resource type="DynamicFont" id=8]
+outline_size = 2
+font_data = ExtResource( 2 )
+
+>>>>>>> dev
 [node name="gui" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 1.50732
 margin_right = 1.50732
+<<<<<<< HEAD
+=======
+theme = ExtResource( 5 )
+>>>>>>> dev
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_lock_": true,
 "_edit_use_anchors_": false
 }
 
+<<<<<<< HEAD
 [node name="ColorRect2" type="ColorRect" parent="."]
 visible = false
 anchor_left = 0.5
@@ -137,6 +202,217 @@ autowrap = true
 visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
+=======
+[node name="ItemInfo" type="VBoxContainer" parent="."]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -380.0
+margin_top = 30.0
+margin_right = -30.0
+margin_bottom = 230.0
+
+[node name="TargetName" type="Control" parent="ItemInfo"]
+margin_right = 350.0
+
+[node name="label" type="Label" parent="ItemInfo/TargetName"]
+margin_right = 350.0
+margin_bottom = 50.0
+valign = 2
+
+[node name="TargetBindings" type="Control" parent="ItemInfo"]
+margin_top = 60.0
+margin_right = 350.0
+margin_bottom = 60.0
+
+[node name="label" type="Label" parent="ItemInfo/TargetBindings"]
+margin_right = 350.0
+margin_bottom = 50.0
+autowrap = true
+
+[node name="ItemContent" type="VBoxContainer" parent="."]
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_left = -380.0
+margin_top = -240.0
+margin_right = -30.0
+margin_bottom = -20.0
+
+[node name="ContentHand" type="Control" parent="ItemContent"]
+margin_right = 350.0
+
+[node name="title" type="Label" parent="ItemContent/ContentHand"]
+margin_right = 300.0
+margin_bottom = 40.0
+text = "Содержимое:"
+
+[node name="label" type="Label" parent="ItemContent/ContentHand"]
+anchor_top = 0.685
+anchor_right = 0.199
+anchor_bottom = 0.936
+margin_top = 50.0
+margin_right = 230.35
+margin_bottom = 90.0
+autowrap = true
+
+[node name="ContentOutside" type="Control" parent="ItemContent"]
+margin_top = 60.0
+margin_right = 350.0
+margin_bottom = 60.0
+
+[node name="label" type="Label" parent="ItemContent/ContentOutside"]
+anchor_top = 0.685
+anchor_right = 0.199
+anchor_bottom = 0.936
+margin_right = 230.35
+margin_bottom = 40.0
+autowrap = true
+
+[node name="LevelProgress" type="VBoxContainer" parent="."]
+margin_left = 20.0
+margin_top = 35.0
+margin_right = 320.0
+margin_bottom = 275.0
+custom_constants/separation = 25
+script = SubResource( 11 )
+
+[node name="Check1" type="Control" parent="LevelProgress"]
+margin_right = 300.0
+
+[node name="CheckBox" type="CheckBox" parent="LevelProgress/Check1"]
+visible = false
+anchor_top = 0.5
+anchor_bottom = 0.5
+margin_top = -23.0
+margin_right = 24.0
+margin_bottom = 23.0
+disabled = true
+
+[node name="Label" type="Label" parent="LevelProgress/Check1/CheckBox"]
+anchor_top = 0.5
+anchor_bottom = 0.5
+margin_left = 30.0
+margin_top = -13.0
+margin_right = 430.0
+margin_bottom = 16.0
+custom_fonts/font = SubResource( 10 )
+
+[node name="Check2" type="Control" parent="LevelProgress"]
+margin_top = 25.0
+margin_right = 300.0
+margin_bottom = 25.0
+
+[node name="CheckBox" type="CheckBox" parent="LevelProgress/Check2"]
+visible = false
+anchor_top = 0.5
+anchor_bottom = 0.5
+margin_top = -23.0
+margin_right = 24.0
+margin_bottom = 23.0
+disabled = true
+
+[node name="Label" type="Label" parent="LevelProgress/Check2/CheckBox"]
+anchor_top = 0.5
+anchor_bottom = 0.5
+margin_left = 30.0
+margin_top = -13.0
+margin_right = 430.0
+margin_bottom = 16.0
+custom_fonts/font = SubResource( 10 )
+
+[node name="Check3" type="Control" parent="LevelProgress"]
+margin_top = 50.0
+margin_right = 300.0
+margin_bottom = 50.0
+
+[node name="CheckBox" type="CheckBox" parent="LevelProgress/Check3"]
+visible = false
+anchor_top = 0.5
+anchor_bottom = 0.5
+margin_top = -23.0
+margin_right = 24.0
+margin_bottom = 23.0
+disabled = true
+
+[node name="Label" type="Label" parent="LevelProgress/Check3/CheckBox"]
+anchor_top = 0.5
+anchor_bottom = 0.5
+margin_left = 30.0
+margin_top = -13.0
+margin_right = 430.0
+margin_bottom = 16.0
+custom_fonts/font = SubResource( 10 )
+
+[node name="Check4" type="Control" parent="LevelProgress"]
+margin_top = 75.0
+margin_right = 300.0
+margin_bottom = 75.0
+
+[node name="CheckBox" type="CheckBox" parent="LevelProgress/Check4"]
+visible = false
+anchor_top = 0.5
+anchor_bottom = 0.5
+margin_top = -23.0
+margin_right = 24.0
+margin_bottom = 23.0
+disabled = true
+
+[node name="Label" type="Label" parent="LevelProgress/Check4/CheckBox"]
+anchor_top = 0.5
+anchor_bottom = 0.5
+margin_left = 30.0
+margin_top = -13.0
+margin_right = 430.0
+margin_bottom = 16.0
+custom_fonts/font = SubResource( 10 )
+
+[node name="Check5" type="Control" parent="LevelProgress"]
+margin_top = 100.0
+margin_right = 300.0
+margin_bottom = 100.0
+
+[node name="CheckBox" type="CheckBox" parent="LevelProgress/Check5"]
+visible = false
+anchor_top = 0.5
+anchor_bottom = 0.5
+margin_top = -23.0
+margin_right = 24.0
+margin_bottom = 23.0
+disabled = true
+
+[node name="Label" type="Label" parent="LevelProgress/Check5/CheckBox"]
+anchor_top = 0.5
+anchor_bottom = 0.5
+margin_left = 30.0
+margin_top = -13.0
+margin_right = 430.0
+margin_bottom = 16.0
+custom_fonts/font = SubResource( 10 )
+
+[node name="Check5051" type="Control" parent="LevelProgress"]
+margin_top = 125.0
+margin_right = 300.0
+margin_bottom = 125.0
+
+[node name="CheckBox" type="CheckBox" parent="LevelProgress/Check5051"]
+visible = false
+anchor_top = 0.5
+anchor_bottom = 0.5
+margin_top = -23.0
+margin_right = 24.0
+margin_bottom = 23.0
+disabled = true
+
+[node name="Label" type="Label" parent="LevelProgress/Check5051/CheckBox"]
+anchor_top = 0.5
+anchor_bottom = 0.5
+margin_left = 30.0
+margin_top = -13.0
+margin_right = 430.0
+margin_bottom = 16.0
+custom_fonts/font = SubResource( 10 )
+>>>>>>> dev
 
 [node name="center" type="ColorRect" parent="."]
 anchor_left = 0.5
@@ -158,6 +434,7 @@ position = Vector2( 1.49219, 1.9668 )
 scale = Vector2( 0.0254624, 0.0254624 )
 texture = ExtResource( 3 )
 
+<<<<<<< HEAD
 [node name="Label" type="Label" parent="."]
 anchor_top = 1.0
 anchor_bottom = 1.0
@@ -178,10 +455,25 @@ margin_right = 300.0
 margin_bottom = 100.0
 rect_clip_content = true
 theme = ExtResource( 4 )
+=======
+[node name="ExitDialog" type="WindowDialog" parent="."]
+pause_mode = 2
+visible = true
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -125.0
+margin_top = -97.5
+margin_right = 125.0
+margin_bottom = 97.5
+rect_clip_content = true
+>>>>>>> dev
 popup_exclusive = true
 window_title = "Выход"
 script = SubResource( 5 )
 
+<<<<<<< HEAD
 [node name="Label" type="Label" parent="ExitDialog"]
 margin_left = 4.0
 margin_top = 7.0
@@ -209,3 +501,92 @@ margin_bottom = 89.0
 theme = ExtResource( 4 )
 text = "Нет"
 script = SubResource( 4 )
+=======
+[node name="ColorRect" type="ColorRect" parent="ExitDialog"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+color = Color( 0.0862745, 0.419608, 0.529412, 0.329412 )
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="ExitDialog/ColorRect"]
+margin_left = 50.0
+margin_top = 10.0
+margin_right = 200.0
+margin_bottom = 40.0
+text = "Пауза"
+align = 1
+valign = 1
+
+[node name="Resume" type="Button" parent="ExitDialog"]
+margin_left = 15.0
+margin_top = 55.0
+margin_right = 235.0
+margin_bottom = 90.0
+custom_fonts/font = SubResource( 7 )
+text = "Продолжить"
+script = SubResource( 4 )
+
+[node name="ColorRect" type="ColorRect" parent="ExitDialog/Resume"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+color = Color( 0.0862745, 0.419608, 0.529412, 0.329412 )
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="Restart" type="Button" parent="ExitDialog"]
+margin_left = 15.0
+margin_top = 100.0
+margin_right = 235.0
+margin_bottom = 135.0
+custom_fonts/font = SubResource( 7 )
+text = "Начать заново"
+script = SubResource( 9 )
+
+[node name="ColorRect" type="ColorRect" parent="ExitDialog/Restart"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+color = Color( 0.0862745, 0.419608, 0.529412, 0.329412 )
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="Exit" type="Button" parent="ExitDialog"]
+margin_left = 15.0
+margin_top = 145.0
+margin_right = 235.0
+margin_bottom = 180.0
+custom_fonts/font = SubResource( 6 )
+text = "Выйти в меню"
+script = SubResource( 3 )
+
+[node name="ColorRect" type="ColorRect" parent="ExitDialog/Exit"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+color = Color( 0.0862745, 0.419608, 0.529412, 0.329412 )
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="Watermark" type="Label" parent="."]
+anchor_left = 0.018
+anchor_top = 0.97
+anchor_right = 0.018
+anchor_bottom = 0.97
+margin_right = 81.0
+margin_bottom = 19.0
+custom_fonts/font = SubResource( 8 )
+text = "MUCTR lab"
+align = 1
+valign = 1
+>>>>>>> dev

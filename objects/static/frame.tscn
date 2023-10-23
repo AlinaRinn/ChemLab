@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://assets/materials/wood_light.material" type="Material" id=1]
+[ext_resource path="res://assets/models/frame.obj" type="ArrayMesh" id=2]
+
+[node name="Spatial" type="Spatial"]
+
+[node name="frame" type="MeshInstance" parent="."]
+mesh = ExtResource( 2 )
+material/0 = ExtResource( 1 )

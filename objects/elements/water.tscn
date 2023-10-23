@@ -1,15 +1,18 @@
 [gd_scene load_steps=3 format=2]
 
-[sub_resource type="CylinderMesh" id=1]
+[ext_resource path="res://assets/materials/water.material" type="Material" id=1]
 
-[sub_resource type="SpatialMaterial" id=2]
-albedo_color = Color( 0.105882, 0.384314, 0.815686, 0.6 )
-metallic_specular = 0.0
-roughness = 0.05
+[sub_resource type="CylinderMesh" id=1]
 
 [node name="water" type="Spatial"]
 
+<<<<<<< HEAD
+[node name="water" type="Spatial"]
+
 [node name="MeshInstance" type="MeshInstance" parent="."]
+=======
+[node name="liq" type="MeshInstance" parent="."]
+>>>>>>> dev
 transform = Transform( 0.0613559, 0, 0, 0, 0.0460169, 0, 0, 0, 0.0613559, 0, 0, 0 )
 mesh = SubResource( 1 )
-material/0 = SubResource( 2 )
+material/0 = ExtResource( 1 )

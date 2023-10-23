@@ -3,7 +3,19 @@
 [ext_resource path="res://assets/models/door_2.obj" type="ArrayMesh" id=1]
 [ext_resource path="res://assets/textures/door.jpg" type="Texture" id=2]
 [ext_resource path="res://objects/interaction.tscn" type="PackedScene" id=3]
+<<<<<<< HEAD
 [ext_resource path="res://scripts/objects/interactive/door_old.gd" type="Script" id=4]
+=======
+
+[sub_resource type="GDScript" id=3]
+script/source = "extends Spatial
+
+func exit():
+	# Выход в меню
+	G.to('main_menu')
+	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+"
+>>>>>>> dev
 
 [sub_resource type="BoxShape" id=1]
 extents = Vector3( 0.170364, 2.3762, 1.29889 )
@@ -12,7 +24,11 @@ extents = Vector3( 0.170364, 2.3762, 1.29889 )
 albedo_texture = ExtResource( 2 )
 
 [node name="door" type="Spatial"]
+<<<<<<< HEAD
 script = ExtResource( 4 )
+=======
+script = SubResource( 3 )
+>>>>>>> dev
 
 [node name="StaticBody" type="StaticBody" parent="."]
 

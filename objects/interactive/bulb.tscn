@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://assets/materials/glass_tube.material" type="Material" id=1]
+[ext_resource path="res://assets/models/bulb.glb" type="PackedScene" id=2]
+
+[node name="bulb" instance=ExtResource( 2 )]
+
+[node name="Sphere001" parent="." index="0"]
+material/0 = ExtResource( 1 )

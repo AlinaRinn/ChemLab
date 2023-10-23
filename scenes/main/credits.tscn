@@ -1,0 +1,100 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://themes/menu_theme.tres" type="Theme" id=1]
+[ext_resource path="res://assets/images/blank_background.jpg" type="Texture" id=2]
+[ext_resource path="res://assets/audio/outro.mp3" type="AudioStream" id=3]
+
+[sub_resource type="GDScript" id=1]
+script/source = "extends Control
+
+
+func _ready():
+	#$AnimationSlide.play(\"slide\")
+	
+	for i in range(0, 3000, 1):
+		$CreditsText.rect_position.y -= 1
+		yield(get_tree().create_timer(0.00009), \"timeout\")
+		if Input.is_action_just_pressed(\"ui_cancel\"):
+			break			
+	G.to('main_menu')
+"
+
+[node name="credits" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme = ExtResource( 1 )
+script = SubResource( 1 )
+
+[node name="TextureRect" type="TextureRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 2 )
+expand = true
+
+[node name="CreditsText" type="RichTextLabel" parent="."]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -300.0
+margin_right = 300.0
+margin_bottom = 800.0
+rect_min_size = Vector2( 600, 800 )
+bbcode_enabled = true
+bbcode_text = "[center][b]Программирование[/b]
+
+Илья Басистый @ilyabasisty
+Андрей Самойлов @AndreySyp
+Никита Лущик @AlinaRinn
+
+
+[b]Интерфейсы[/b]
+
+Никита Лущик @AlinaRinn
+
+
+[b]3D-объекты[/b]
+
+Андрей Самойлов @AndreySyp
+Никита Лущик @AlinaRinn
+
+
+[b]3D-модели[/b]
+
+Никита Лущик @AlinaRinn
+Андрей Самойлов @AndreySyp
+Дарья Семенова
+Максим Солопов
+Александр Боханцев
+Елизовета Зозуля"
+text = "Программирование
+
+Илья Басистый @ilyabasisty
+Андрей Самойлов @AndreySyp
+Никита Лущик @AlinaRinn
+
+
+Интерфейсы
+
+Никита Лущик @AlinaRinn
+
+
+3D-объекты
+
+Андрей Самойлов @AndreySyp
+Никита Лущик @AlinaRinn
+
+
+3D-модели
+
+Никита Лущик @AlinaRinn
+Андрей Самойлов @AndreySyp
+Дарья Семенова
+Максим Солопов
+Александр Боханцев
+Елизовета Зозуля"
+scroll_active = false
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 3 )
+autoplay = true

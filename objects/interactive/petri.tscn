@@ -1,0 +1,477 @@
+[gd_scene load_steps=26 format=2]
+
+[ext_resource path="res://assets/models/petri.obj" type="ArrayMesh" id=1]
+[ext_resource path="res://assets/materials/tube.material" type="Material" id=2]
+[ext_resource path="res://objects/interaction.tscn" type="PackedScene" id=3]
+[ext_resource path="res://objects/interactive/metal.tscn" type="PackedScene" id=4]
+[ext_resource path="res://objects/elements/water.tscn" type="PackedScene" id=5]
+[ext_resource path="res://objects/elements/true_sediment.tscn" type="PackedScene" id=6]
+[ext_resource path="res://assets/particle/fire_particle.png" type="Texture" id=7]
+[ext_resource path="res://assets/gradient/SmokeGradient.tres" type="Gradient" id=8]
+[ext_resource path="res://assets/gradient/part_burter.tres" type="Material" id=9]
+
+[sub_resource type="GDScript" id=2]
+script/source = "extends RigidBody
+
+onready var el = $MeshInstance
+
+var MAX_AMOUNT_SUBSTANCE_MET = 4
+var MAX_AMOUNT_SUBSTANCE_LIQ = 1
+
+var elements_met = null
+var name_substance_met = []
+var amount_substance_met = 0
+
+var elements_liq = null
+var name_substance_liq = []
+var amount_substance_liq = 0
+
+var id = \"petri\"
+var reaction = false
+
+func take():
+	# Подбирание предмета
+	var parent = get_parent()
+	var object = G.player.get_to_hand(self)
+	if object:
+		parent.add_child(object)
+
+
+func add_metal(sub):
+	# Добавляем металл
+	elements_met[amount_substance_met].show()
+	name_substance_met[amount_substance_met] = sub[\"name\"]
+
+	# Меняем цвет
+	var layer = elements_met[amount_substance_met].get_children()[0]
+	var material = layer.get_surface_material(0).duplicate()
+	material.albedo_color = sub[\"color\"]
+	layer.set_surface_material(0, material)
+
+	amount_substance_met = amount_substance_met if amount_substance_met == MAX_AMOUNT_SUBSTANCE_MET \\
+		else amount_substance_met + 1
+
+
+func add_liquid(sub):
+	# Добавляем слой жидкости
+	elements_liq[amount_substance_liq].show()
+	name_substance_liq[amount_substance_liq] = sub[\"name\"]
+
+	# Меняем цвет
+	var layer = elements_liq[amount_substance_liq].get_children()[0]
+	var material = layer.get_surface_material(0).duplicate()
+	material.albedo_color = sub[\"color\"]
+	layer.set_surface_material(0, material)
+
+	amount_substance_liq = amount_substance_liq if amount_substance_liq == MAX_AMOUNT_SUBSTANCE_LIQ \\
+		else amount_substance_liq + 1
+
+
+func remove_liquid():
+	for i in range(0, MAX_AMOUNT_SUBSTANCE_LIQ+1, 1):
+		elements_liq[i].hide()
+		name_substance_liq[i] = \"\"
+	amount_substance_liq = 0
+
+
+func remove_substance_met():
+	# Удаляем металл
+	elements_liq[amount_substance_liq].hide()
+	name_substance_liq[amount_substance_liq] = \"\"
+	amount_substance_liq = amount_substance_liq if amount_substance_liq == 0 else amount_substance_liq - 1
+
+
+func change_color(layer, color):
+	var material = layer.get_surface_material(0).duplicate()
+	material.albedo_color = color
+	layer.set_surface_material(0, material)
+
+func reaction():
+	if name_substance_met == [\"Литий\", \"\", \"\", \"\", \"\"] and \\
+	   (name_substance_liq == [\"Вода\", \"Фенолфталеин\"] or name_substance_liq == [\"Фенолфталеин\", \"Вода\"]):
+		change_color($MeshInstance2/element_2/liq, Color(1, 0.0784314, 0.576471, 0.5))
+		change_color($MeshInstance2/element_1/liq, Color(1, 0.0784314, 0.576471, 0.5))
+		$AnimationPlayer.play(\"move_bubble\")
+		reaction = true
+
+	if name_substance_met == [\"Калий\", \"\", \"\", \"\", \"\"] and \\
+	   (name_substance_liq == [\"Вода\", \"Фенолфталеин\"] or name_substance_liq == [\"Фенолфталеин\", \"Вода\"]):
+		change_color($MeshInstance2/element_2/liq, Color(1, 0.0784314, 0.576471, 0.5))
+		change_color($MeshInstance2/element_1/liq, Color(1, 0.0784314, 0.576471, 0.5))
+		$AnimationPlayer.play(\"move_smoke_explosion\")
+		reaction = true
+		
+	if name_substance_met == [\"Натрий\", \"\", \"\", \"\", \"\"] and \\
+	   (name_substance_liq == [\"Вода\", \"Фенолфталеин\"] or name_substance_liq == [\"Фенолфталеин\", \"Вода\"]):
+		change_color($MeshInstance2/element_2/liq, Color(1, 0.0784314, 0.576471, 0.5))
+		change_color($MeshInstance2/element_1/liq, Color(1, 0.0784314, 0.576471, 0.5))
+		$AnimationPlayer.play(\"move_smoke\")
+		reaction = true
+		
+	if name_substance_met == [\"\", \"\", \"\", \"\", \"\"] and \\
+	   (name_substance_liq == [\"Карбонат натрия\", \"Хлорид лития\"] or name_substance_liq == [\"Хлорид лития\", \"Карбонат натрия\"]):
+		print(123)
+		name_substance_liq[0] = \"Хлорид Натрия\"
+		name_substance_liq[1] = \"Карбонат Лития\"
+		$MeshInstance2/element_2.visible = false
+		$MeshInstance2/sediment.visible = true
+		reaction = true
+
+
+func _ready():
+	# При создании получаем кол-во слоев
+	elements_met = el.get_children()
+	for i in range(MAX_AMOUNT_SUBSTANCE_MET + 1):
+		name_substance_met.append(\"\")
+		
+	elements_liq = $MeshInstance2.get_children()
+	for i in range(MAX_AMOUNT_SUBSTANCE_LIQ + 1):
+		name_substance_liq.append(\"\")
+
+
+func get_info():
+	# Информация о содежимом в интерфейс
+	var sting = \"\"
+	for i in range(name_substance_met.size() - 1, -1, -1): 
+		sting += name_substance_met[i] + \"\\n\"
+	for i in range(name_substance_liq.size() - 1, -1, -1): 
+		sting += name_substance_liq[i] + \"\\n\"
+	return sting
+"
+
+[sub_resource type="GradientTexture" id=8]
+gradient = ExtResource( 8 )
+
+[sub_resource type="Curve" id=9]
+_data = [ Vector2( 0, 0.340909 ), 0.0, 0.0, 0, 0, Vector2( 1, 0.568182 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=10]
+curve = SubResource( 9 )
+
+[sub_resource type="ParticlesMaterial" id=11]
+emission_shape = 1
+emission_sphere_radius = 0.3
+direction = Vector3( 0, 1, 0 )
+spread = 0.0
+gravity = Vector3( 0, 0, 0 )
+initial_velocity = 1.0
+initial_velocity_random = 0.5
+angular_velocity = 40.0
+angular_velocity_random = 1.0
+linear_accel = 2.0
+linear_accel_random = 1.0
+radial_accel = 0.2
+radial_accel_random = 1.0
+angle = 360.0
+angle_random = 1.0
+scale = 0.4
+scale_curve = SubResource( 10 )
+color_ramp = SubResource( 8 )
+anim_speed = 1.0
+anim_offset = 1.0
+anim_offset_random = 1.0
+
+[sub_resource type="SpatialMaterial" id=12]
+flags_transparent = true
+flags_unshaded = true
+vertex_color_use_as_albedo = true
+params_billboard_mode = 3
+particles_anim_h_frames = 6
+particles_anim_v_frames = 5
+particles_anim_loop = true
+albedo_texture = ExtResource( 7 )
+
+[sub_resource type="QuadMesh" id=13]
+material = SubResource( 12 )
+
+[sub_resource type="ParticlesMaterial" id=4]
+spread = 180.0
+gravity = Vector3( 0, 1.5, 0 )
+initial_velocity = 2.0
+initial_velocity_random = 1.0
+
+[sub_resource type="SphereMesh" id=5]
+radius = 0.03
+height = 0.06
+radial_segments = 12
+rings = 12
+
+[sub_resource type="SpatialMaterial" id=15]
+flags_transparent = true
+flags_unshaded = true
+vertex_color_use_as_albedo = true
+params_blend_mode = 1
+params_billboard_mode = 3
+particles_anim_h_frames = 6
+particles_anim_v_frames = 5
+particles_anim_loop = true
+albedo_texture = ExtResource( 7 )
+
+[sub_resource type="QuadMesh" id=16]
+material = SubResource( 15 )
+
+[sub_resource type="BoxShape" id=3]
+extents = Vector3( 2.83185, 0.787091, 2.82525 )
+
+[sub_resource type="Animation" id=6]
+length = 0.001
+
+[sub_resource type="Animation" id=14]
+resource_name = "move_bubble"
+length = 10.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("MeshInstance/element_1:translation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1, 2, 3.5, 5, 6.5, 8, 10 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0.687879, 0 ), Vector3( 0.901218, 0.687879, 1.38724 ), Vector3( -1.17937, 0.687879, 1.10969 ), Vector3( -0.739559, 0.687879, -1.36182 ), Vector3( 1.58407, 0.687879, -0.404011 ), Vector3( 0.142245, 0.687879, 1.3203 ), Vector3( -0.586253, 0.687879, -0.0742029 ), Vector3( 0.554657, 0.687879, -0.34448 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("MeshInstance/element_1:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1, 2, 3, 4, 6, 8, 10 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector3( 5, 5, 5 ), Vector3( 4.5, 4.5, 4.5 ), Vector3( 4, 4, 4 ), Vector3( 3.5, 3.5, 3.5 ), Vector3( 3, 3, 3 ), Vector3( 2.5, 2.5, 2.5 ), Vector3( 2, 2, 2 ), Vector3( 0, 0, 0 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("MeshInstance/element_1/bubble:emitting")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0.5, 10 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+
+[sub_resource type="Animation" id=7]
+resource_name = "move_smoke"
+length = 10.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("MeshInstance/element_1:translation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.7, 1.4, 2.1, 2.8, 3.5, 4.2, 4.9, 5.6, 6.3, 7, 7.7, 8.5, 9.2, 10 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0.687879, 0 ), Vector3( 0.901218, 0.687879, 1.38724 ), Vector3( -1.17937, 0.687879, 1.10969 ), Vector3( -0.739559, 0.687879, -1.36182 ), Vector3( 1.58407, 0.687879, -0.404011 ), Vector3( -1.39676, 0.687879, 0.931223 ), Vector3( 0.142245, 0.687879, 1.3203 ), Vector3( 0.971342, 0.687879, 0.538837 ), Vector3( -0.586253, 0.687879, -0.0742029 ), Vector3( -0.0821625, 0.687879, 1.52469 ), Vector3( 1.23122, 0.687879, 0.341771 ), Vector3( -0.453706, 0.687879, -0.718752 ), Vector3( -1.12395, 0.687879, 0.817056 ), Vector3( 0.92303, 0.687879, 1.39282 ), Vector3( 0.554657, 0.687879, -0.34448 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("MeshInstance/element_1:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1, 2, 3, 4, 6, 8, 10 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector3( 5, 5, 5 ), Vector3( 4.5, 4.5, 4.5 ), Vector3( 4, 4, 4 ), Vector3( 3.5, 3.5, 3.5 ), Vector3( 3, 3, 3 ), Vector3( 2.5, 2.5, 2.5 ), Vector3( 2, 2, 2 ), Vector3( 0, 0, 0 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("MeshInstance/element_1/smoke:emitting")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.5, 10 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ false, true, false ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("MeshInstance/element_1/smoke:process_material:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 10 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.4, 0.0 ]
+}
+
+[sub_resource type="Animation" id=17]
+resource_name = "move_smoke_explosion"
+length = 8.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("MeshInstance/element_1:translation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5, 1, 1.5, 2, 2.5, 3, 3.5, 4, 4.5, 5, 5.5, 6, 6.5, 7, 7.5, 8.1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0.687879, 0 ), Vector3( 0.901218, 0.687879, 1.38724 ), Vector3( -1.17937, 0.687879, 1.10969 ), Vector3( -0.739559, 0.687879, -1.36182 ), Vector3( 1.58407, 0.687879, -0.404011 ), Vector3( -1.39676, 0.687879, 0.931223 ), Vector3( 0.142245, 0.687879, 1.3203 ), Vector3( 0.971342, 0.687879, 0.538837 ), Vector3( -0.586253, 0.687879, -0.0742029 ), Vector3( -1.23882, 0.687879, 1.14812 ), Vector3( -0.088395, 0.687879, -1.24133 ), Vector3( 1.45678, 0.687879, 0.403307 ), Vector3( -0.743262, 0.687879, 0.876187 ), Vector3( -0.0242072, 0.687879, -1.16212 ), Vector3( -1.41333, 0.687879, 0.462774 ), Vector3( -0.1836, 0.687879, 1.21499 ), Vector3( 0.538464, 0.687879, -0.442937 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("MeshInstance/element_1:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1, 2, 3, 4, 6, 8 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector3( 5, 5, 5 ), Vector3( 4.5, 4.5, 4.5 ), Vector3( 4, 4, 4 ), Vector3( 3.5, 3.5, 3.5 ), Vector3( 3, 3, 3 ), Vector3( 2.5, 2.5, 2.5 ), Vector3( 2, 2, 2 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("MeshInstance/element_1/smoke:emitting")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.5, 8 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ false, true, false ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("MeshInstance/element_1/smoke:process_material:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.4 ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("MeshInstance/element_1/fire:emitting")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 8, 8.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("MeshInstance/element_1:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 8.2 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+
+[node name="petri" type="RigidBody"]
+transform = Transform( 0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0 )
+script = SubResource( 2 )
+
+[node name="MeshInstance" type="MeshInstance" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.242444, 0 )
+mesh = ExtResource( 1 )
+material/0 = ExtResource( 2 )
+
+[node name="element_1" parent="MeshInstance" instance=ExtResource( 4 )]
+transform = Transform( 5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 0.687879, 0 )
+visible = false
+
+[node name="smoke" type="Particles" parent="MeshInstance/element_1"]
+transform = Transform( 0.002, 0, 0, 0, 0.01, 0, 0, 0, 0.002, 0, -0.0175364, 0 )
+emitting = false
+amount = 50
+speed_scale = 0.4
+randomness = 1.0
+local_coords = false
+draw_order = 2
+process_material = SubResource( 11 )
+draw_pass_1 = SubResource( 13 )
+
+[node name="bubble" type="Particles" parent="MeshInstance/element_1"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0827152, 0 )
+emitting = false
+amount = 7
+lifetime = 0.16
+speed_scale = 0.2
+process_material = SubResource( 4 )
+draw_pass_1 = SubResource( 5 )
+
+[node name="fire" type="Particles" parent="MeshInstance/element_1"]
+transform = Transform( 0.01, 0, 0, 0, 0.05, 0, 0, 0, 0.01, 0.136079, 0.0785449, 0 )
+emitting = false
+amount = 100
+lifetime = 0.06
+randomness = 1.0
+local_coords = false
+draw_order = 2
+process_material = ExtResource( 9 )
+draw_pass_1 = SubResource( 16 )
+
+[node name="element_2" parent="MeshInstance" instance=ExtResource( 4 )]
+transform = Transform( 3.50132, 1.93411, 0, -1.93411, 3.50132, 0, 0, 0, 4, 1.11117, 0.687879, 0.437967 )
+visible = false
+
+[node name="element_3" parent="MeshInstance" instance=ExtResource( 4 )]
+transform = Transform( 2.61071, 1.8588, -2.39354, 0.0311542, 3.1426, 2.47449, 3.03039, -1.63369, 2.03662, 1.02885, 0.687879, -0.584918 )
+visible = false
+
+[node name="element_4" parent="MeshInstance" instance=ExtResource( 4 )]
+transform = Transform( 4.55766, -1.98496, 0.536333, 1.8803, 4.55133, 0.86596, -0.831985, -0.587658, 4.89515, -0.872672, 0.687879, -1.03553 )
+visible = false
+
+[node name="element_5" parent="MeshInstance" instance=ExtResource( 4 )]
+transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 2, -1.21145, 0.626362, 0.875085 )
+visible = false
+
+[node name="MeshInstance2" type="MeshInstance" parent="."]
+skeleton = NodePath("../CollisionShape")
+
+[node name="element_1" parent="MeshInstance2" instance=ExtResource( 5 )]
+transform = Transform( 44, 0, 0, 0, 6.2315, 0, 0, 0, 44, 0, -0.385994, 0 )
+visible = false
+
+[node name="element_2" parent="MeshInstance2" instance=ExtResource( 5 )]
+transform = Transform( 44, 0, 0, 0, 5.92244, 0, 0, 0, 44, 0, 0.173095, 0 )
+visible = false
+
+[node name="sediment" parent="MeshInstance2" instance=ExtResource( 6 )]
+transform = Transform( 1, 0, 0, 0, 0.725795, 0, 0, 0, 1, 0.0233777, -0.696604, -0.100709 )
+visible = false
+
+[node name="CollisionShape" type="CollisionShape" parent="."]
+shape = SubResource( 3 )
+
+[node name="interactive" parent="." instance=ExtResource( 3 )]
+transform = Transform( 2.80528, 0, 0, 0, 0.112423, 0, 0, 0, 2.82172, 0, -0.44446, 0 )
+label = "чашка Петри"
+right_click_action = "take"
+right_click_label = "Взять"
+test_click_action = "reaction"
+highlighting = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/RESET = SubResource( 6 )
+anims/move_bubble = SubResource( 14 )
+anims/move_smoke = SubResource( 7 )
+anims/move_smoke_explosion = SubResource( 17 )

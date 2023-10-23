@@ -1,0 +1,53 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://assets/materials/tile_white.material" type="Material" id=1]
+
+[sub_resource type="CubeMesh" id=1]
+size = Vector3( 0.3, 1.5, 2 )
+
+[sub_resource type="BoxShape" id=4]
+extents = Vector3( 0.154053, 0.74947, 1 )
+
+[sub_resource type="CubeMesh" id=2]
+size = Vector3( 0.3, 6, 1 )
+
+[sub_resource type="BoxShape" id=5]
+extents = Vector3( 0.159274, 2.99791, 0.504831 )
+
+[sub_resource type="CubeMesh" id=3]
+size = Vector3( 0.3, 6, 5.8 )
+
+[sub_resource type="BoxShape" id=6]
+extents = Vector3( 0.153694, 3.0072, 2.90561 )
+
+[node name="wall" type="Spatial"]
+
+[node name="top" type="MeshInstance" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.24991, 3.9 )
+mesh = SubResource( 1 )
+material/0 = ExtResource( 1 )
+
+[node name="StaticBody" type="StaticBody" parent="top"]
+
+[node name="CollisionShape" type="CollisionShape" parent="top/StaticBody"]
+shape = SubResource( 4 )
+
+[node name="left" type="MeshInstance" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5.4 )
+mesh = SubResource( 2 )
+material/0 = ExtResource( 1 )
+
+[node name="StaticBody" type="StaticBody" parent="left"]
+
+[node name="CollisionShape" type="CollisionShape" parent="left/StaticBody"]
+shape = SubResource( 5 )
+
+[node name="right" type="MeshInstance" parent="."]
+mesh = SubResource( 3 )
+skeleton = NodePath("../left")
+material/0 = ExtResource( 1 )
+
+[node name="StaticBody" type="StaticBody" parent="right"]
+
+[node name="CollisionShape" type="CollisionShape" parent="right/StaticBody"]
+shape = SubResource( 6 )
