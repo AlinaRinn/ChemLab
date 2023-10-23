@@ -3,12 +3,8 @@
 [ext_resource path="res://objects/collide.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/textures/pltstol.jpg" type="Texture" id=2]
 [ext_resource path="res://assets/textures/gofr.jpg" type="Texture" id=3]
-<<<<<<< HEAD
-[ext_resource path="res://assets/models/air_vent.obj" type="ArrayMesh" id=4]
-=======
 [ext_resource path="res://assets/models/fume_hood_simple.obj" type="ArrayMesh" id=4]
 [ext_resource path="res://assets/materials/metal.material" type="Material" id=5]
->>>>>>> dev
 
 [sub_resource type="SpatialMaterial" id=1]
 

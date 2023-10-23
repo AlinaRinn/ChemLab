@@ -3,10 +3,6 @@ extends Node
 signal lightOn
 signal lightOff
 signal paused
-<<<<<<< HEAD
-
-var level = 1
-=======
 signal hide_tasks
 signal show_tasks
 signal escape
@@ -16,7 +12,6 @@ signal level_check_3
 signal level_check_4
 signal level_check_5
 signal level_check_finish
->>>>>>> dev
 
 # scenes
 var root_level
@@ -47,16 +42,6 @@ var label_name
 var label_bindings 
 var label_compounds 
 var label_compounds2
-
-# settings
-var sensitivity = 0.005
-var screenState = true
-
-var game
-var label_name =''
-var label_bindings =''
-var label_compounds =''
-var label_compounds2 =''
 
 # settings
 var sensitivity = 0.005

@@ -6,13 +6,7 @@
 
 [node name="water" type="Spatial"]
 
-<<<<<<< HEAD
-[node name="water" type="Spatial"]
-
-[node name="MeshInstance" type="MeshInstance" parent="."]
-=======
 [node name="liq" type="MeshInstance" parent="."]
->>>>>>> dev
 transform = Transform( 0.0613559, 0, 0, 0, 0.0460169, 0, 0, 0, 0.0613559, 0, 0, 0 )
 mesh = SubResource( 1 )
 material/0 = ExtResource( 1 )

@@ -2,11 +2,8 @@ extends Spatial
 
 
 var active = false
-<<<<<<< HEAD
-=======
 var substance = load("res://scripts/substance.res").sub
 var water = {"name": "Вода", "color": Color.blue}
->>>>>>> dev
 
 
 func press():
@@ -17,8 +14,6 @@ func press():
 	else:
 		$valve/valve_rotate/AnimationPlayer.play_backwards("rotate")
 		active = false
-<<<<<<< HEAD
-=======
 
 
 func pour():
@@ -39,4 +34,3 @@ func drain():
 		G.player.in_hand_object.remove_substance()
 	elif G.player.in_hand_object.has_method("remove_liquid"):
 		G.player.in_hand_object.remove_liquid()
->>>>>>> dev

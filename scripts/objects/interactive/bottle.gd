@@ -1,14 +1,10 @@
 extends Spatial
 
-<<<<<<< HEAD
-export var liquid = ""
-=======
 var substance = load("res://scripts/substance.res").sub
 export(String, "acid", "alkali", "water", "Na", "Li", "K", "Phenolphthalein",
 "LiCl", "Na2CO3") var subs
 export(bool) var isMetal
 
->>>>>>> dev
 var id = "bottle"
 
 
@@ -19,11 +15,6 @@ func take():
 	if object:
 		parent.add_child(object)
 
-<<<<<<< HEAD
-func pour():
-	# Налить слой воды
-	G.player.in_hand_object.add_liquid(liquid)
-=======
 
 func pour():
 	
@@ -58,4 +49,3 @@ func hide():
 
 func update_name():
 	$Label3D.text = subs
->>>>>>> dev

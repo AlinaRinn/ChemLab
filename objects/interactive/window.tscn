@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-[gd_scene load_steps=10 format=2]
-=======
 [gd_scene load_steps=13 format=2]
->>>>>>> dev
 
 [ext_resource path="res://assets/materials/plastic_black.material" type="Material" id=1]
 [ext_resource path="res://assets/materials/wood_brown_scaled.material" type="Material" id=2]
@@ -10,10 +6,7 @@
 [ext_resource path="res://assets/materials/glass_gray.material" type="Material" id=4]
 [ext_resource path="res://assets/models/window.glb" type="PackedScene" id=5]
 [ext_resource path="res://objects/interaction.tscn" type="PackedScene" id=6]
-<<<<<<< HEAD
-=======
 [ext_resource path="res://objects/collide.tscn" type="PackedScene" id=7]
->>>>>>> dev
 
 [sub_resource type="GDScript" id=1]
 script/source = "extends Spatial
@@ -31,15 +24,12 @@ func open():
 		$AnimationPlayer.play_backwards(\"open\")
 "
 
-<<<<<<< HEAD
-=======
 [sub_resource type="BoxShape" id=4]
 extents = Vector3( 25.0884, 6.56396, 16.9081 )
 
 [sub_resource type="BoxShape" id=5]
 extents = Vector3( 25.1223, 5.45652, 5.35256 )
 
->>>>>>> dev
 [sub_resource type="Animation" id=2]
 length = 0.001
 tracks/0/type = "value"
@@ -80,30 +70,24 @@ material/0 = ExtResource( 3 )
 [node name="Line06" parent="bottom_frame" index="1"]
 material/0 = ExtResource( 4 )
 
-<<<<<<< HEAD
-=======
 [node name="StaticBody" type="StaticBody" parent="bottom_frame/Line06" index="0"]
 
 [node name="CollisionShape" type="CollisionShape" parent="bottom_frame/Line06/StaticBody" index="0"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.04891e-08, 5.60143, 0 )
 shape = SubResource( 4 )
 
->>>>>>> dev
 [node name="Line04" parent="up_frame" index="0"]
 material/0 = ExtResource( 3 )
 
 [node name="Line07" parent="up_frame" index="1"]
 material/0 = ExtResource( 4 )
 
-<<<<<<< HEAD
-=======
 [node name="StaticBody" type="StaticBody" parent="up_frame/Line07" index="0"]
 
 [node name="CollisionShape" type="CollisionShape" parent="up_frame/Line07/StaticBody" index="0"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.6077e-08, 5.94879, 0 )
 shape = SubResource( 5 )
 
->>>>>>> dev
 [node name="deflector" parent="." index="2"]
 material/0 = ExtResource( 1 )
 
@@ -111,10 +95,7 @@ material/0 = ExtResource( 1 )
 material/0 = ExtResource( 3 )
 
 [node name="BLIND" parent="blinds" index="0"]
-<<<<<<< HEAD
-=======
 transform = Transform( 0.34202, -0.939693, 5.96047e-08, 2.38419e-07, 1.19209e-07, 1, -0.939693, -0.34202, 2.38419e-07, 103.91, -1.19196, 30.4661 )
->>>>>>> dev
 material/0 = ExtResource( 2 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." index="5"]
@@ -122,12 +103,6 @@ anims/RESET = SubResource( 2 )
 anims/open = SubResource( 3 )
 
 [node name="interactive" parent="." index="6" instance=ExtResource( 6 )]
-<<<<<<< HEAD
-transform = Transform( 7.26773, 0, 0, 0, 27.0563, 0, 0, 0, 28.1205, 0, 0, 0 )
-label = "Окно"
-left_click_action = "open"
-left_click_label = "Поднять/Опустить"
-=======
 transform = Transform( 1.86741, 0, 0, 0, 22.0551, 0, 0, 0, 28.1205, -1.11951, 2.46226, 0 )
 label = "Окно"
 left_click_action = "open"
@@ -135,4 +110,3 @@ left_click_label = "Поднять/Опустить"
 
 [node name="BoxCollider" parent="." index="7" instance=ExtResource( 7 )]
 transform = Transform( 5.42041, 0, 0, 0, 1, 0, 0, 0, 29.7038, -0.0151887, -25.5536, 0 )
->>>>>>> dev

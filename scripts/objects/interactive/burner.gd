@@ -2,11 +2,7 @@ extends Spatial
 
 
 var active = false
-<<<<<<< HEAD
-
-=======
 var isSpiral = false
->>>>>>> dev
 
 func burn():
 	# Вкл и выкл анимации горения
@@ -16,8 +12,6 @@ func burn():
 	else:
 		$AnimationPlayer.play_backwards("burn")
 		active = false
-<<<<<<< HEAD
-=======
 
 
 func _ready():
@@ -47,4 +41,3 @@ func spiral():
 		isSpiral = false
 		$spiral.visible = isSpiral
 		$fire.process_material = load("res://assets/gradient/part_burter.tres")
->>>>>>> dev

@@ -1,15 +1,6 @@
 extends Spatial
 
 
-<<<<<<< HEAD
-func pour():
-	# Налить слой воды
-	G.player.in_hand_object.add_liquid("вода")
-
-func drain():
-	# Удалить слой воды
-	G.player.in_hand_object.remove_liquid()
-=======
 var substance = load("res://scripts/substance.res").sub
 var water = {"name": "Вода", "color": Color.blue}
 
@@ -35,4 +26,3 @@ func drain():
 	elif G.player.in_hand_object.has_method("remove_liquid"):
 		G.player.in_hand_object.remove_liquid()
 		$Drain.play("drain")
->>>>>>> dev

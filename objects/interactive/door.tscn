@@ -5,9 +5,6 @@
 [ext_resource path="res://assets/materials/plastic_black.material" type="Material" id=3]
 [ext_resource path="res://assets/materials/metal.material" type="Material" id=4]
 [ext_resource path="res://objects/interaction.tscn" type="PackedScene" id=5]
-<<<<<<< HEAD
-[ext_resource path="res://scripts/objects/interactive/door.gd" type="Script" id=6]
-=======
 
 [sub_resource type="GDScript" id=6]
 script/source = "extends MeshInstance
@@ -23,7 +20,6 @@ func open():
 		active = false
 		$AnimationPlayer.play_backwards(\"open\")
 "
->>>>>>> dev
 
 [sub_resource type="BoxShape" id=2]
 extents = Vector3( 0.0304566, 1, 0.533192 )
@@ -50,20 +46,13 @@ tracks/0/keys = {
 [node name="door" instance=ExtResource( 1 )]
 
 [node name="frame_005" parent="." index="0"]
-<<<<<<< HEAD
-=======
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
->>>>>>> dev
 material/0 = ExtResource( 4 )
 
 [node name="door_005" parent="frame_005" index="0"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00694728, 1.06113, 0.913118 )
 material/0 = ExtResource( 2 )
-<<<<<<< HEAD
-script = ExtResource( 6 )
-=======
 script = SubResource( 6 )
->>>>>>> dev
 
 [node name="kick_plate_005" parent="frame_005/door_005" index="0"]
 material/0 = ExtResource( 4 )
