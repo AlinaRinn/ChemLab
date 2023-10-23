@@ -68,7 +68,7 @@ margin_left = -172.0
 margin_top = -54.0
 theme = ExtResource( 2 )
 custom_colors/font_outline_modulate = Color( 0.0509804, 0.101961, 0.129412, 1 )
-text = "alfa 0.6"
+text = "alfa 0.7"
 align = 1
 valign = 1
 
