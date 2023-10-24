@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=21 format=2]
 
 [ext_resource path="res://objects/static/room/wall_lab.tscn" type="PackedScene" id=1]
 [ext_resource path="res://objects/static/room/floor_lab.tscn" type="PackedScene" id=2]
@@ -18,6 +18,8 @@
 [ext_resource path="res://objects/static/Tube 90'.tscn" type="PackedScene" id=16]
 [ext_resource path="res://objects/static/flange.tscn" type="PackedScene" id=17]
 [ext_resource path="res://objects/static/bolt.tscn" type="PackedScene" id=18]
+[ext_resource path="res://objects/interactive/tape_inter.tscn" type="PackedScene" id=19]
+[ext_resource path="res://objects/interactive/wardrobe.tscn" type="PackedScene" id=20]
 
 [node name="area" type="Spatial"]
 
@@ -225,3 +227,9 @@ transform = Transform( 0.3, 1.31134e-08, 1.31134e-08, 1.31134e-08, -1.31134e-08,
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.78036, 2.39364, 10.5515 )
 light_color = Color( 1, 0.8, 0.2, 1 )
 light_energy = 0.1
+
+[node name="shelf_animated" parent="." instance=ExtResource( 20 )]
+transform = Transform( -1.09278e-07, 0, -2.5, 0, 2.5, 0, 2.5, 0, -1.09278e-07, 3.24509, -0.2466, 4.55697 )
+
+[node name="tape" parent="shelf_animated" instance=ExtResource( 19 )]
+transform = Transform( 0.0108, 0, -2.22045e-16, 0, 0.0108, 0, 2.22045e-16, 0, 0.0108, -0.0374228, 1.07813, 0.0572404 )
