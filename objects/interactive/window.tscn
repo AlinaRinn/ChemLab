@@ -11,17 +11,26 @@
 [sub_resource type="GDScript" id=1]
 script/source = "extends Spatial
 
+var active0 = false
+var active1 = false
 
-var active = false
+func openwndw():
+	if !active0:
+		active0 = true
+		$AnimationPlayer.play(\"openwndw\")
+	else:
+		active0 = false
+		$AnimationPlayer.play_backwards(\"openwndw\")
 
 
 func open():
-	if !active:
-		active = true
+	if !active1:
+		active1 = true
 		$AnimationPlayer.play(\"open\")
 	else:
-		active = false
+		active1 = false
 		$AnimationPlayer.play_backwards(\"open\")
+
 "
 
 [sub_resource type="BoxShape" id=4]
@@ -29,21 +38,6 @@ extents = Vector3( 25.0884, 6.56396, 16.9081 )
 
 [sub_resource type="BoxShape" id=5]
 extents = Vector3( 25.1223, 5.45652, 5.35256 )
-
-[sub_resource type="Animation" id=2]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/path = NodePath("blinds/BLIND:translation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ Vector3( 103.91, -1.19196, 30.4661 ) ]
-}
 
 [sub_resource type="Animation" id=3]
 resource_name = "open"
@@ -59,6 +53,22 @@ tracks/0/keys = {
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
 "values": [ Vector3( 103.91, -1.19196, 30.4661 ), Vector3( 103.91, 70, 30.466 ) ]
+}
+
+[sub_resource type="Animation" id=6]
+resource_name = "openwndw"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("bottom_frame:translation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector3( 3.5159, -24.4573, 0.0295005 ), Vector3( 3.5159, -3.06555, 0.0295005 ) ]
 }
 
 [node name="window" instance=ExtResource( 5 )]
@@ -99,14 +109,16 @@ transform = Transform( 0.34202, -0.939693, 5.96047e-08, 2.38419e-07, 1.19209e-07
 material/0 = ExtResource( 2 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." index="5"]
-anims/RESET = SubResource( 2 )
 anims/open = SubResource( 3 )
+anims/openwndw = SubResource( 6 )
 
 [node name="interactive" parent="." index="6" instance=ExtResource( 6 )]
 transform = Transform( 1.86741, 0, 0, 0, 22.0551, 0, 0, 0, 28.1205, -1.11951, 2.46226, 0 )
 label = "Окно"
 left_click_action = "open"
-left_click_label = "Поднять/Опустить"
+left_click_label = "Поднять/Опустить жалюзи"
+right_click_action = "openwndw"
+right_click_label = "Открыть/Закрыть окно"
 
 [node name="BoxCollider" parent="." index="7" instance=ExtResource( 7 )]
 transform = Transform( 5.42041, 0, 0, 0, 1, 0, 0, 0, 29.7038, -0.0151887, -25.5536, 0 )
