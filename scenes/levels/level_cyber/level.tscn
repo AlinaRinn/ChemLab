@@ -65,7 +65,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, -0.0548401 )
 transform = Transform( -1.09278e-09, 0, -0.025, 0, 0.025, 0, 0.025, 0, -1.09278e-09, 3.59387, 0.715927, -3.23145 )
 
 [node name="pipe_in_pipe" parent="table" instance=ExtResource( 10 )]
-transform = Transform( 5.24536e-06, 0, -40, 0, 40, 0, 40, 0, 5.24536e-06, -36.4474, 54.8237, 2.41035 )
+transform = Transform( 5.24536e-06, 0, -40, 0, 40, 0, 40, 0, 5.24536e-06, -36.4474, 54.8237, 2.41032 )
 
 [node name="bolt" parent="table/pipe_in_pipe" instance=ExtResource( 18 )]
 transform = Transform( -9.83506e-08, 2.25, -1.96701e-07, -2.25, -9.83506e-08, -1.96701e-07, -1.96701e-07, 1.96701e-07, 2.25, -0.442557, 1.95521, 1.23282 )
