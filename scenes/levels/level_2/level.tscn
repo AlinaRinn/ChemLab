@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=2]
+[gd_scene load_steps=24 format=2]
 
 [ext_resource path="res://objects/static/room/room.tscn" type="PackedScene" id=1]
 [ext_resource path="res://objects/static/lamp.tscn" type="PackedScene" id=2]
@@ -6,7 +6,6 @@
 [ext_resource path="res://assets/models/cubapple.gltf" type="PackedScene" id=4]
 [ext_resource path="res://objects/interactive/window.tscn" type="PackedScene" id=5]
 [ext_resource path="res://objects/static/mendeleev.tscn" type="PackedScene" id=6]
-[ext_resource path="res://objects/interactive/tube.tscn" type="PackedScene" id=7]
 [ext_resource path="res://objects/interactive/door.tscn" type="PackedScene" id=8]
 [ext_resource path="res://objects/interactive/fume_hood.tscn" type="PackedScene" id=9]
 [ext_resource path="res://objects/static/chair_2.tscn" type="PackedScene" id=10]
@@ -26,7 +25,6 @@
 [sub_resource type="GDScript" id=1]
 script/source = "extends Spatial
 
-var item1
 var item2
 var item3
 var item4
@@ -40,7 +38,7 @@ func _ready():
 	G.connect(\"escape\", self, \"exit\")
 	
 	if G.load_item == '11':
-		item1 = load('res://objects/interactive/bottle.tscn').instance()
+		var item1 = load('res://objects/interactive/bottle.tscn').instance()
 		$things.add_child(item1)
 		item1.subs = \"Phenolphthalein\"
 		item1.update_name()
@@ -94,27 +92,23 @@ func _ready():
 		item2 = load('res://objects/interactive/tube_spiral.tscn').instance()
 		$things.add_child(item2)
 		item2.subs = \"K\"
-		item2.global_transform.origin = Vector3(14.445, 2.931, -11.697)
-		item2.scale = Vector3(0.75, 0.75, 0.75)	
-		#item2.set_mode(1)
+		item2.global_transform.origin = Vector3(14.3, 3, -12)
+		item2.set_mode(1)
 	
 		item3 = load('res://objects/interactive/tube_spiral.tscn').instance()
 		$things.add_child(item3)
 		item3.subs = \"Na\"
-		item3.global_transform.origin = Vector3(14.445, 2.931, -11.545)
-		item3.scale = Vector3(0.75, 0.75, 0.75)	
-		#item3.set_mode(1)
+		item3.global_transform.origin = Vector3(14.3, 3, -11.5)
+		item3.set_mode(1)
 		
 		item4 = load('res://objects/interactive/tube_spiral.tscn').instance()
 		$things.add_child(item4)
 		item4.subs = \"Li\"
-		item4.global_transform.origin = Vector3(14.445, 2.931, -11.401)
-		item4.scale = Vector3(0.75, 0.75, 0.75)	
-		#item4.set_mode(1)
-		
+		item4.global_transform.origin = Vector3(14.3, 3, -11)
+		item4.set_mode(1)
 		
 	if G.load_item == '14':
-		item1 = load('res://objects/interactive/bottle.tscn').instance()
+		var item1 = load('res://objects/interactive/bottle.tscn').instance()
 		$things.add_child(item1)
 		item1.subs = \"Na2CO3\"
 		item1.update_name()
@@ -160,7 +154,7 @@ func _ready():
 		item4.set_mode(1)
 		
 	if G.load_item == '19':
-		item1 = load('res://objects/interactive/bottle.tscn').instance()
+		var item1 = load('res://objects/interactive/bottle.tscn').instance()
 		$things.add_child(item1)
 		item1.subs = \"Mg\"
 		item1.update_name()
@@ -189,12 +183,115 @@ func _ready():
 		item15.subs = \"Na2CO3\"
 		item15.update_name()
 		item15.global_transform.origin = Vector3(15, 3.3, -2.0)
-	
-	if G.load_item == '20':
-		pass
 		
-	if G.load_item == '21':
-		pass
+		item2 = load('res://objects/interactive/tube.tscn').instance()
+		$things.add_child(item2)
+		item2.global_transform.origin = Vector3(14.934, 2.889, -4.953)
+		
+		item3 = load('res://objects/interactive/tube.tscn').instance()
+		$things.add_child(item3)
+		item3.global_transform.origin = Vector3(14.939, 2.897, -5.095)
+		
+		item4 = load('res://objects/interactive/tube.tscn').instance()
+		$things.add_child(item4)
+		item4.global_transform.origin = Vector3(14.946, 2.897, -4.813)
+		
+		item5 = load('res://objects/interactive/tube.tscn').instance()
+		$things.add_child(item5)
+		item5.global_transform.origin = Vector3(14.937, 2.897, -4.67)
+		
+	if G.load_item == '110':
+		var item12 = load('res://objects/interactive/bottle.tscn').instance()
+		$things.add_child(item12)
+		item12.subs = \"Ba\"
+		item12.update_name()
+		item12.global_transform.origin = Vector3(15, 3.3, -1.1)
+		
+		var item13 = load('res://objects/interactive/bottle.tscn').instance()
+		$things.add_child(item13)
+		item13.subs = \"Sr\"
+		item13.update_name()
+		item13.global_transform.origin = Vector3(15, 3.3, -1.4)
+		
+		var item14 = load('res://objects/interactive/bottle.tscn').instance()
+		$things.add_child(item14)
+		item14.subs = \"Ca\"
+		item14.update_name()
+		item14.global_transform.origin = Vector3(15, 3.3, -1.7)
+		
+		var item15 = load('res://objects/interactive/bottle.tscn').instance()
+		$things.add_child(item15)
+		item15.subs = \"Na2SO4\"
+		item15.update_name()
+		item15.global_transform.origin = Vector3(15, 3.3, -2.0)
+		
+		item2 = load('res://objects/interactive/tube.tscn').instance()
+		$things.add_child(item2)
+		item2.global_transform.origin = Vector3(14.934, 2.889, -4.953)
+		
+		item3 = load('res://objects/interactive/tube.tscn').instance()
+		$things.add_child(item3)
+		item3.global_transform.origin = Vector3(14.939, 2.897, -5.095)
+		
+		item4 = load('res://objects/interactive/tube.tscn').instance()
+		$things.add_child(item4)
+		item4.global_transform.origin = Vector3(14.946, 2.897, -4.813)
+		
+	if G.load_item == '111':
+		var item12 = load('res://objects/interactive/bottle.tscn').instance()
+		$things.add_child(item12)
+		item12.subs = \"Ba\"
+		item12.update_name()
+		item12.global_transform.origin = Vector3(15, 3.3, -1.1)
+		
+		var item13 = load('res://objects/interactive/bottle.tscn').instance()
+		$things.add_child(item13)
+		item13.subs = \"Sr\"
+		item13.update_name()
+		item13.global_transform.origin = Vector3(15, 3.3, -1.4)
+		
+		var item14 = load('res://objects/interactive/bottle.tscn').instance()
+		$things.add_child(item14)
+		item14.subs = \"Ca\"
+		item14.update_name()
+		item14.global_transform.origin = Vector3(15, 3.3, -1.7)
+		
+		var item15 = load('res://objects/interactive/bottle.tscn').instance()
+		$things.add_child(item15)
+		item15.subs = \"K2CrO4\"
+		item15.update_name()
+		item15.global_transform.origin = Vector3(15, 3.3, -2.0)
+		
+		item2 = load('res://objects/interactive/tube.tscn').instance()
+		$things.add_child(item2)
+		item2.global_transform.origin = Vector3(14.934, 2.889, -4.953)
+		
+		item3 = load('res://objects/interactive/tube.tscn').instance()
+		$things.add_child(item3)
+		item3.global_transform.origin = Vector3(14.939, 2.897, -5.095)
+		
+		item4 = load('res://objects/interactive/tube.tscn').instance()
+		$things.add_child(item4)
+		item4.global_transform.origin = Vector3(14.946, 2.897, -4.813)
+	
+	if G.load_item == '22':
+		var item1 = load('res://objects/interactive/bottle.tscn').instance()
+		$things.add_child(item1)
+		item1.subs = \"Phenolphthalein\"
+		item1.update_name()
+		item1.global_transform.origin = Vector3(15, 3.3, -0.7)
+		
+		var item12 = load('res://objects/interactive/bottle.tscn').instance()
+		$things.add_child(item12)
+		item12.subs = \"Na2B4O7\"
+		item12.hide()
+		item12.update_name()
+		item12.global_transform.origin = Vector3(15, 3.3, -1.2)
+		
+		item2 = load('res://objects/interactive/petri.tscn').instance()
+		$things.add_child(item2)
+		item2.global_transform.origin = Vector3(14.5, 3, -0.8)
+		item2.scale = Vector3(0.05, 0.05, 0.05)
 		
 func exit():
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
@@ -263,10 +360,58 @@ func handler_18():
 	if switch1 and switch2 and switch3 and switch4:
 		G.emit_signal(\"level_check_finish\")
 
-
 func handler_19():
-	pass
+	if (item2.name_substance == [\"Карбонат натрия\", \"\", \"\", \"\", \"\"]) and (item3.name_substance == [\"Карбонат натрия\", \"\", \"\", \"\", \"\"]) and (item4.name_substance == [\"Карбонат натрия\", \"\", \"\", \"\", \"\"]) and (item5.name_substance == [\"Карбонат натрия\", \"\", \"\", \"\", \"\"]):
+		G.emit_signal(\"level_check_1\")
+	if (item2.name_substance == [\"Карбонат натрия\", \"Магний+\", \"\", \"\", \"\"] or item2.name_substance == [\"Магний+\", \"Карбонат натрия\", \"\", \"\", \"\"]) or (item3.name_substance == [\"Карбонат натрия\", \"Магний+\", \"\", \"\", \"\"] or item3.name_substance == [\"Магний+\", \"Карбонат натрия\", \"\", \"\", \"\"]) or (item4.name_substance == [\"Карбонат натрия\", \"Магний+\", \"\", \"\", \"\"] or item4.name_substance == [\"Магний+\", \"Карбонат натрия\", \"\", \"\", \"\"]) or (item5.name_substance == [\"Карбонат натрия\", \"Магний+\", \"\", \"\", \"\"] or item5.name_substance == [\"Магний+\", \"Карбонат натрия\", \"\", \"\", \"\"]):
+		G.emit_signal(\"level_check_2\")
+	if (item2.name_substance == [\"Карбонат натрия\", \"Кальций+\", \"\", \"\", \"\"] or item2.name_substance == [\"Кальций+\", \"Карбонат натрия\", \"\", \"\", \"\"]) or (item3.name_substance == [\"Карбонат натрия\", \"Кальций+\", \"\", \"\", \"\"] or item3.name_substance == [\"Кальций+\", \"Карбонат натрия\", \"\", \"\", \"\"]) or (item4.name_substance == [\"Карбонат натрия\", \"Кальций+\", \"\", \"\", \"\"] or item4.name_substance == [\"Кальций+\", \"Карбонат натрия\", \"\", \"\", \"\"]) or (item5.name_substance == [\"Карбонат натрия\", \"Кальций+\", \"\", \"\", \"\"] or item5.name_substance == [\"Кальций+\", \"Карбонат натрия\", \"\", \"\", \"\"]):
+		G.emit_signal(\"level_check_3\")
+	if (item2.name_substance == [\"Карбонат натрия\", \"Стронций+\", \"\", \"\", \"\"] or item2.name_substance == [\"Стронций+\", \"Карбонат натрия\", \"\", \"\", \"\"]) or (item3.name_substance == [\"Карбонат натрия\", \"Стронций+\", \"\", \"\", \"\"] or item3.name_substance == [\"Стронций+\", \"Карбонат натрия\", \"\", \"\", \"\"]) or (item4.name_substance == [\"Карбонат натрия\", \"Стронций+\", \"\", \"\", \"\"] or item4.name_substance == [\"Стронций+\", \"Карбонат натрия\", \"\", \"\", \"\"]) or (item5.name_substance == [\"Карбонат натрия\", \"Стронций+\", \"\", \"\", \"\"] or item5.name_substance == [\"Стронций+\", \"Карбонат натрия\", \"\", \"\", \"\"]):
+		G.emit_signal(\"level_check_4\")
+	if (item2.name_substance == [\"Карбонат натрия\", \"Барий+\", \"\", \"\", \"\"] or item2.name_substance == [\"Барий+\", \"Карбонат натрия\", \"\", \"\", \"\"]) or (item3.name_substance == [\"Карбонат натрия\", \"Барий+\", \"\", \"\", \"\"] or item3.name_substance == [\"Барий+\", \"Карбонат натрия\", \"\", \"\", \"\"]) or (item4.name_substance == [\"Карбонат натрия\", \"Барий+\", \"\", \"\", \"\"] or item4.name_substance == [\"Барий+\", \"Карбонат натрия\", \"\", \"\", \"\"]) or (item5.name_substance == [\"Карбонат натрия\", \"Барий+\", \"\", \"\", \"\"] or item5.name_substance == [\"Барий+\", \"Карбонат натрия\", \"\", \"\", \"\"]):
+		G.emit_signal(\"level_check_5\")
+	if item2.reaction and item3.reaction and item4.reaction and item5.reaction:
+		G.emit_signal(\"level_check_finish\")
+		G.emit_signal(\"level_check_1\")
 	
+func handler_110():
+	if (item2.name_substance == [\"Сульфат натрия\", \"\", \"\", \"\", \"\"]) and (item3.name_substance == [\"Сульфат натрия\", \"\", \"\", \"\", \"\"]) and (item4.name_substance == [\"Сульфат натрия\", \"\", \"\", \"\", \"\"]):
+		G.emit_signal(\"level_check_1\")
+	if (item2.name_substance == [\"Сульфат натрия\", \"Барий+\", \"\", \"\", \"\"] or item2.name_substance == [\"Барий+\", \"Сульфат натрия\", \"\", \"\", \"\"]) or (item3.name_substance == [\"Сульфат натрия\", \"Барий+\", \"\", \"\", \"\"] or item3.name_substance == [\"Барий+\", \"Сульфат натрия\", \"\", \"\", \"\"]) or (item4.name_substance == [\"Сульфат натрия\", \"Барий+\", \"\", \"\", \"\"] or item4.name_substance == [\"Барий+\", \"Сульфат натрия\", \"\", \"\", \"\"]):
+		G.emit_signal(\"level_check_2\")
+	if (item2.name_substance == [\"Сульфат натрия\", \"Стронций+\", \"\", \"\", \"\"] or item2.name_substance == [\"Стронций+\", \"Сульфат натрия\", \"\", \"\", \"\"]) or (item3.name_substance == [\"Сульфат натрия\", \"Стронций+\", \"\", \"\", \"\"] or item3.name_substance == [\"Стронций+\", \"Сульфат натрия\", \"\", \"\", \"\"]) or (item4.name_substance == [\"Сульфат натрия\", \"Стронций+\", \"\", \"\", \"\"] or item4.name_substance == [\"Стронций+\", \"Сульфат натрия\", \"\", \"\", \"\"]):
+		G.emit_signal(\"level_check_3\")
+	if (item2.name_substance == [\"Сульфат натрия\", \"Кальций+\", \"\", \"\", \"\"] or item2.name_substance == [\"Кальций+\", \"Сульфат натрия\", \"\", \"\", \"\"]) or (item3.name_substance == [\"Сульфат натрия\", \"Кальций+\", \"\", \"\", \"\"] or item3.name_substance == [\"Кальций+\", \"Сульфат натрия\", \"\", \"\", \"\"]) or (item4.name_substance == [\"Сульфат натрия\", \"Кальций+\", \"\", \"\", \"\"] or item4.name_substance == [\"Кальций+\", \"Сульфат натрия\", \"\", \"\", \"\"]):
+		G.emit_signal(\"level_check_4\")
+	if item2.reaction and item3.reaction and item4.reaction:
+		G.emit_signal(\"level_check_finish\")
+		G.emit_signal(\"level_check_1\")
+	
+		
+func handler_111():
+	if (item2.name_substance == [\"Хромат калия\", \"\", \"\", \"\", \"\"]) and (item3.name_substance == [\"Хромат калия\", \"\", \"\", \"\", \"\"]) and (item4.name_substance == [\"Хромат калия\", \"\", \"\", \"\", \"\"]):
+		G.emit_signal(\"level_check_1\")
+	if (item2.name_substance == [\"Хромат калия\", \"Барий+\", \"\", \"\", \"\"] or item2.name_substance == [\"Барий+\", \"Хромат калия\", \"\", \"\", \"\"]) or (item3.name_substance == [\"Хромат калия\", \"Барий+\", \"\", \"\", \"\"] or item3.name_substance == [\"Барий+\", \"Хромат калия\", \"\", \"\", \"\"]) or (item4.name_substance == [\"Хромат калия\", \"Барий+\", \"\", \"\", \"\"] or item4.name_substance == [\"Барий+\", \"Хромат калия\", \"\", \"\", \"\"]):
+		G.emit_signal(\"level_check_2\")
+	if (item2.name_substance == [\"Хромат калия\", \"Стронций+\", \"\", \"\", \"\"] or item2.name_substance == [\"Стронций+\", \"Хромат калия\", \"\", \"\", \"\"]) or (item3.name_substance == [\"Хромат калия\", \"Стронций+\", \"\", \"\", \"\"] or item3.name_substance == [\"Стронций+\", \"Хромат калия\", \"\", \"\", \"\"]) or (item4.name_substance == [\"Хромат калия\", \"Стронций+\", \"\", \"\", \"\"] or item4.name_substance == [\"Стронций+\", \"Хромат калия\", \"\", \"\", \"\"]):
+		G.emit_signal(\"level_check_3\")
+	if (item2.name_substance == [\"Хромат калия\", \"Кальций+\", \"\", \"\", \"\"] or item2.name_substance == [\"Кальций+\", \"Хромат калия\", \"\", \"\", \"\"]) or (item3.name_substance == [\"Хромат калия\", \"Кальций+\", \"\", \"\", \"\"] or item3.name_substance == [\"Кальций+\", \"Хромат калия\", \"\", \"\", \"\"]) or (item4.name_substance == [\"Хромат калия\", \"Кальций+\", \"\", \"\", \"\"] or item4.name_substance == [\"Кальций+\", \"Хромат калия\", \"\", \"\", \"\"]):
+		G.emit_signal(\"level_check_4\")
+	if item2.reaction and item3.reaction and item4.reaction:
+		G.emit_signal(\"level_check_finish\")
+		G.emit_signal(\"level_check_1\")
+	
+func handler_22():
+	if (item2.name_substance_liq == [\"Вода\", \"\"] or item2.name_substance_liq == [\"\", \"Вода\"]):
+		G.emit_signal(\"level_check_1\")
+	if (item2.name_substance_met == [\"Тетраборат натрия\", \"\", \"\", \"\", \"\"]):
+		G.emit_signal(\"level_check_2\")
+	if (item2.name_substance_liq == [\"Вода\", \"Фенолфталеин\"] or item2.name_substance_liq == [\"Фенолфталеин\", \"Вода\"]):
+		G.emit_signal(\"level_check_1\")
+		G.emit_signal(\"level_check_3\")
+	if item2.reaction:
+		G.emit_signal(\"level_check_finish\")
 "
 
 [sub_resource type="BoxShape" id=2]
@@ -343,9 +488,6 @@ transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 14.3688
 [node name="sink" parent="furniture/table_hole" instance=ExtResource( 15 )]
 transform = Transform( -8.59475e-10, -0.0196625, 8.59475e-10, 0, -8.59475e-10, -0.0196625, 0.0196625, -8.59475e-10, 3.75689e-17, -0.0216169, 1.01382, -0.166395 )
 
-[node name="stand" parent="furniture/table_hole" instance=ExtResource( 21 )]
-transform = Transform( -1.74846e-08, 0, 0.4, 0, 0.48, 0, -0.4, 0, -1.74846e-08, 1.71996, 1.0447, -0.6275 )
-
 [node name="table_2" parent="furniture" instance=ExtResource( 13 )]
 transform = Transform( -0.03, 0, -2.62268e-09, 0, 0.03, 0, 2.62268e-09, 0, -0.03, 1.9746, 1.73664, -22.1807 )
 
@@ -358,25 +500,13 @@ transform = Transform( 2.5, 0, 4.37114e-07, 0, 2.5, 0, -4.37114e-07, 0, 2.5, 12.
 [node name="things" type="Spatial" parent="."]
 
 [node name="burner" parent="things" instance=ExtResource( 19 )]
-transform = Transform( 1, 0, 4.9738e-14, 0, 1, 0, -4.9738e-14, 0, 1, 14.4538, 2.81113, -14.1175 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 14.4538, 2.81113, -14.1175 )
+
+[node name="stand" parent="things" instance=ExtResource( 21 )]
+transform = Transform( 0.4, 0, 0, 0, 0.48, 0, 0, 0, 0.4, 14.9963, 2.84733, -1.29036 )
 
 [node name="shtativ" parent="things" instance=ExtResource( 17 )]
-transform = Transform( -0.198, 0, -1.73097e-08, 0, 0.198, 0, 1.73097e-08, 0, -0.198, 15.0049, 2.80616, -4.9623 )
-
-[node name="shtativ2" parent="things" instance=ExtResource( 17 )]
-transform = Transform( -0.19935, 0, 1.74845e-08, 0, 0.2, 0, -1.74277e-08, 0, -0.2, 14.5149, 2.80607, -11.4108 )
-
-[node name="tube" parent="things" instance=ExtResource( 7 )]
-transform = Transform( 0.75, 0, 0, 0, 0.75, 0, 0, 0, 0.75, 15.0764, 2.88467, -4.95226 )
-
-[node name="tube2" parent="things" instance=ExtResource( 7 )]
-transform = Transform( 0.75, 0, 0, 0, 0.75, 0, 0, 0, 0.75, 14.9385, 2.89704, -5.09485 )
-
-[node name="tube3" parent="things" instance=ExtResource( 7 )]
-transform = Transform( 0.75, 0, 0, 0, 0.75, 0, 0, 0, 0.75, 15.0775, 2.89704, -4.81265 )
-
-[node name="tube4" parent="things" instance=ExtResource( 7 )]
-transform = Transform( 0.75, 0, 0, 0, 0.75, 0, 0, 0, 0.75, 14.9374, 2.89704, -4.67406 )
+transform = Transform( -0.198, 0, -1.73097e-08, 0, 0.198, 0, 1.73097e-08, 0, -0.198, 15.0049, 2.81105, -4.9623 )
 
 [node name="lobby" parent="." instance=ExtResource( 20 )]
 transform = Transform( -4.37114e-08, 0, -1, 0, 0.62, 0, 1, 0, -4.37114e-08, -5.85772, 1.15397, 3.37713 )
