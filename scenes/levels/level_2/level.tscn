@@ -82,7 +82,7 @@ func _ready():
 		item4.scale = Vector3(0.05, 0.05, 0.05)
 		#item1.set_mode(0)
 		
-		var item5 = load('res://objects/interactive/paper.tscn').instance()
+		item5 = load('res://objects/interactive/paper.tscn').instance()
 		$things.add_child(item5)
 		item5.global_transform.origin = Vector3(14.5, 2.82, -2)
 		
@@ -298,7 +298,7 @@ func exit():
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	G.to(\"main_menu\")
 
-func _input(event):
+func _input(_event):
 	call(\"handler_\"+str(G.load_item))
 	
 func handler_11():
@@ -310,7 +310,7 @@ func handler_11():
 		G.emit_signal(\"level_check_3\")
 	if (item2.name_substance_met == [\"Натрий\", \"\", \"\", \"\", \"\"] or item3.name_substance_met == [\"Натрий\", \"\", \"\", \"\", \"\"] or item4.name_substance_met == [\"Натрий\", \"\", \"\", \"\", \"\"]):
 		G.emit_signal(\"level_check_4\")
-	if item2.reaction and item3.reaction and item4.reaction:
+	if item2.reaction_check and item3.reaction_check and item4.reaction_check:
 		G.emit_signal(\"level_check_finish\")
 		
 		
@@ -341,7 +341,7 @@ func handler_14():
 	elif item2.name_substance_liq == [\"Карбонат натрия\", \"Хлорид лития\"]:
 		G.emit_signal(\"level_check_1\")
 		
-	if item2.reaction:
+	if item2.reaction_check:
 		G.emit_signal(\"level_check_finish\")
 
 
@@ -372,7 +372,7 @@ func handler_19():
 		G.emit_signal(\"level_check_4\")
 	if (item2.name_substance == [\"Карбонат натрия\", \"Барий+\", \"\", \"\", \"\"] or item2.name_substance == [\"Барий+\", \"Карбонат натрия\", \"\", \"\", \"\"]) or (item3.name_substance == [\"Карбонат натрия\", \"Барий+\", \"\", \"\", \"\"] or item3.name_substance == [\"Барий+\", \"Карбонат натрия\", \"\", \"\", \"\"]) or (item4.name_substance == [\"Карбонат натрия\", \"Барий+\", \"\", \"\", \"\"] or item4.name_substance == [\"Барий+\", \"Карбонат натрия\", \"\", \"\", \"\"]) or (item5.name_substance == [\"Карбонат натрия\", \"Барий+\", \"\", \"\", \"\"] or item5.name_substance == [\"Барий+\", \"Карбонат натрия\", \"\", \"\", \"\"]):
 		G.emit_signal(\"level_check_5\")
-	if item2.reaction and item3.reaction and item4.reaction and item5.reaction:
+	if item2.reaction_check and item3.reaction_check and item4.reaction_check and item5.reaction_check:
 		G.emit_signal(\"level_check_finish\")
 		G.emit_signal(\"level_check_1\")
 	
@@ -385,7 +385,7 @@ func handler_110():
 		G.emit_signal(\"level_check_3\")
 	if (item2.name_substance == [\"Сульфат натрия\", \"Кальций+\", \"\", \"\", \"\"] or item2.name_substance == [\"Кальций+\", \"Сульфат натрия\", \"\", \"\", \"\"]) or (item3.name_substance == [\"Сульфат натрия\", \"Кальций+\", \"\", \"\", \"\"] or item3.name_substance == [\"Кальций+\", \"Сульфат натрия\", \"\", \"\", \"\"]) or (item4.name_substance == [\"Сульфат натрия\", \"Кальций+\", \"\", \"\", \"\"] or item4.name_substance == [\"Кальций+\", \"Сульфат натрия\", \"\", \"\", \"\"]):
 		G.emit_signal(\"level_check_4\")
-	if item2.reaction and item3.reaction and item4.reaction:
+	if item2.reaction_check and item3.reaction_check and item4.reaction_check:
 		G.emit_signal(\"level_check_finish\")
 		G.emit_signal(\"level_check_1\")
 	
@@ -399,7 +399,7 @@ func handler_111():
 		G.emit_signal(\"level_check_3\")
 	if (item2.name_substance == [\"Хромат калия\", \"Кальций+\", \"\", \"\", \"\"] or item2.name_substance == [\"Кальций+\", \"Хромат калия\", \"\", \"\", \"\"]) or (item3.name_substance == [\"Хромат калия\", \"Кальций+\", \"\", \"\", \"\"] or item3.name_substance == [\"Кальций+\", \"Хромат калия\", \"\", \"\", \"\"]) or (item4.name_substance == [\"Хромат калия\", \"Кальций+\", \"\", \"\", \"\"] or item4.name_substance == [\"Кальций+\", \"Хромат калия\", \"\", \"\", \"\"]):
 		G.emit_signal(\"level_check_4\")
-	if item2.reaction and item3.reaction and item4.reaction:
+	if item2.reaction_check and item3.reaction_check and item4.reaction_check:
 		G.emit_signal(\"level_check_finish\")
 		G.emit_signal(\"level_check_1\")
 	
@@ -411,7 +411,7 @@ func handler_22():
 	if (item2.name_substance_liq == [\"Вода\", \"Фенолфталеин\"] or item2.name_substance_liq == [\"Фенолфталеин\", \"Вода\"]):
 		G.emit_signal(\"level_check_1\")
 		G.emit_signal(\"level_check_3\")
-	if item2.reaction:
+	if item2.reaction_check:
 		G.emit_signal(\"level_check_finish\")
 "
 

@@ -16,7 +16,7 @@ func _ready():
 	$MeshInstance.hide()
 
 
-func _process(delta):
+func _process(_delta):
 	if highlighting:
 		var node = get_parent().get_children()[0]
 		var material = node.get_surface_material(0).duplicate()
