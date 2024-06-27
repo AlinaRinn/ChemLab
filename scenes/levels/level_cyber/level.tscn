@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=21 format=2]
 
 [ext_resource path="res://objects/static/room/wall_lab.tscn" type="PackedScene" id=1]
 [ext_resource path="res://objects/static/room/floor_lab.tscn" type="PackedScene" id=2]
@@ -10,6 +10,16 @@
 [ext_resource path="res://objects/static/table.tscn" type="PackedScene" id=8]
 [ext_resource path="res://environments/sunset_no_light.tres" type="Environment" id=9]
 [ext_resource path="res://objects/interactive/pipe_in_pipe.tscn" type="PackedScene" id=10]
+[ext_resource path="res://objects/interactive/pc.tscn" type="PackedScene" id=11]
+[ext_resource path="res://objects/interactive/key_mouse.tscn" type="PackedScene" id=12]
+[ext_resource path="res://objects/static/nut.tscn" type="PackedScene" id=13]
+[ext_resource path="res://objects/static/chair.tscn" type="PackedScene" id=14]
+[ext_resource path="res://objects/interactive/monic_opti.tscn" type="PackedScene" id=15]
+[ext_resource path="res://objects/static/Tube 90'.tscn" type="PackedScene" id=16]
+[ext_resource path="res://objects/static/flange.tscn" type="PackedScene" id=17]
+[ext_resource path="res://objects/static/bolt.tscn" type="PackedScene" id=18]
+[ext_resource path="res://objects/interactive/tape_inter.tscn" type="PackedScene" id=19]
+[ext_resource path="res://objects/interactive/wardrobe.tscn" type="PackedScene" id=20]
 
 [node name="area" type="Spatial"]
 
@@ -54,13 +64,172 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, -0.0548401 )
 [node name="table" parent="." instance=ExtResource( 8 )]
 transform = Transform( -1.09278e-09, 0, -0.025, 0, 0.025, 0, 0.025, 0, -1.09278e-09, 3.59387, 0.715927, -3.23145 )
 
+[node name="pipe_in_pipe" parent="table" instance=ExtResource( 10 )]
+transform = Transform( 5.24536e-06, 0, -40, 0, 40, 0, 40, 0, 5.24536e-06, -36.4474, 54.8237, 2.41032 )
+
+[node name="bolt" parent="table/pipe_in_pipe" instance=ExtResource( 18 )]
+transform = Transform( -9.83506e-08, 2.25, -1.96701e-07, -2.25, -9.83506e-08, -1.96701e-07, -1.96701e-07, 1.96701e-07, 2.25, -0.442557, 1.95521, 1.23282 )
+
+[node name="bolt2" parent="table/pipe_in_pipe" instance=ExtResource( 18 )]
+transform = Transform( -9.83506e-08, 2.25, -1.96701e-07, -2.25, -9.83506e-08, -1.96701e-07, -1.96701e-07, 1.96701e-07, 2.25, -0.442557, 1.89358, 1.12465 )
+
+[node name="bolt3" parent="table/pipe_in_pipe" instance=ExtResource( 18 )]
+transform = Transform( -9.83506e-08, 2.25, -1.96701e-07, -2.25, -9.83506e-08, -1.96701e-07, -1.96701e-07, 1.96701e-07, 2.25, -0.442557, 1.89144, 1.34311 )
+
+[node name="bolt4" parent="table/pipe_in_pipe" instance=ExtResource( 18 )]
+transform = Transform( -9.83506e-08, 2.25, -1.96701e-07, -2.25, -9.83506e-08, -1.96701e-07, -1.96701e-07, 1.96701e-07, 2.25, -0.442557, 1.76766, 1.34066 )
+
+[node name="bolt5" parent="table/pipe_in_pipe" instance=ExtResource( 18 )]
+transform = Transform( -9.83506e-08, 2.25, -1.96701e-07, -2.25, -9.83506e-08, -1.96701e-07, -1.96701e-07, 1.96701e-07, 2.25, -0.442557, 1.70491, 1.2336 )
+
+[node name="bolt6" parent="table/pipe_in_pipe" instance=ExtResource( 18 )]
+transform = Transform( -9.83506e-08, 2.25, -1.96701e-07, -2.25, -9.83506e-08, -1.96701e-07, -1.96701e-07, 1.96701e-07, 2.25, -0.442557, 1.76761, 1.12551 )
+
+[node name="flange" parent="table/pipe_in_pipe" instance=ExtResource( 17 )]
+transform = Transform( -1.29498e-07, 1.48129, -1.12149e-07, -1.28283, -5.60744e-08, 0.740644, 0.740644, 1.61873e-07, 1.28283, 0.414237, 0.229098, 1.23241 )
+
+[node name="bolt" parent="table/pipe_in_pipe/flange" instance=ExtResource( 18 )]
+transform = Transform( 1.06875, -2.45347e-07, -1.85113, -4.67162e-08, 2.13749, -3.10274e-07, 1.85113, 1.95594e-07, 1.06875, -0.0732434, 0.0270398, -0.0415983 )
+
+[node name="nut" parent="table/pipe_in_pipe/flange/bolt" instance=ExtResource( 13 )]
+transform = Transform( -0.95, 8.30515e-08, -7.1535e-08, -8.30518e-08, -0.95, 2.03875e-07, -7.1535e-08, 2.03875e-07, 0.95, 7.14064e-05, -0.0237148, 8.20756e-05 )
+
+[node name="bolt2" parent="table/pipe_in_pipe/flange" instance=ExtResource( 18 )]
+transform = Transform( 1.06875, -2.45347e-07, -1.85112, -4.67162e-08, 2.13749, -3.10274e-07, 1.85112, 1.95594e-07, 1.06875, -0.0735843, 0.0270398, 0.0422206 )
+
+[node name="nut" parent="table/pipe_in_pipe/flange/bolt2" instance=ExtResource( 13 )]
+transform = Transform( -0.95, 8.30515e-08, -7.1535e-08, -8.30518e-08, -0.95, 2.03875e-07, -7.1535e-08, 2.03875e-07, 0.95, 7.14064e-05, -0.0237148, 8.20756e-05 )
+
+[node name="bolt3" parent="table/pipe_in_pipe/flange" instance=ExtResource( 18 )]
+transform = Transform( 1.06875, -2.45347e-07, -1.85113, -4.67162e-08, 2.13749, -3.10274e-07, 1.85113, 1.95594e-07, 1.06875, 3.44515e-05, 0.0270398, 0.0853219 )
+
+[node name="nut" parent="table/pipe_in_pipe/flange/bolt3" instance=ExtResource( 13 )]
+transform = Transform( -0.95, 8.30515e-08, -7.1535e-08, -8.30518e-08, -0.95, 2.03875e-07, -7.1535e-08, 2.03875e-07, 0.95, 7.14064e-05, -0.0237148, 8.20756e-05 )
+
+[node name="bolt4" parent="table/pipe_in_pipe/flange" instance=ExtResource( 18 )]
+transform = Transform( 1.06875, -2.45347e-07, -1.85113, -4.67162e-08, 2.13749, -3.10274e-07, 1.85113, 1.95594e-07, 1.06875, 0.00175822, 0.0270398, -0.0849004 )
+
+[node name="nut" parent="table/pipe_in_pipe/flange/bolt4" instance=ExtResource( 13 )]
+transform = Transform( -0.95, 8.30515e-08, -7.1535e-08, -8.30518e-08, -0.95, 2.03875e-07, -7.1535e-08, 2.03875e-07, 0.95, 7.14064e-05, -0.0237148, 8.20756e-05 )
+
+[node name="bolt5" parent="table/pipe_in_pipe/flange" instance=ExtResource( 18 )]
+transform = Transform( 1.06875, -2.45347e-07, -1.85113, -4.67162e-08, 2.13749, -3.10274e-07, 1.85113, 1.95594e-07, 1.06875, 0.073426, 0.0270398, 0.0433745 )
+
+[node name="nut" parent="table/pipe_in_pipe/flange/bolt5" instance=ExtResource( 13 )]
+transform = Transform( -0.95, 8.30515e-08, -7.1535e-08, -8.30518e-08, -0.95, 2.03875e-07, -7.1535e-08, 2.03875e-07, 0.95, 7.14064e-05, -0.0237148, 8.20756e-05 )
+
+[node name="bolt6" parent="table/pipe_in_pipe/flange" instance=ExtResource( 18 )]
+transform = Transform( 1.06875, -2.45347e-07, -1.85112, -4.67162e-08, 2.13749, -3.10274e-07, 1.85112, 1.95594e-07, 1.06875, 0.0746561, 0.0270398, -0.0412068 )
+
+[node name="nut" parent="table/pipe_in_pipe/flange/bolt6" instance=ExtResource( 13 )]
+transform = Transform( -0.95, 8.30515e-08, -7.1535e-08, -8.30518e-08, -0.95, 2.03875e-07, -7.1535e-08, 2.03875e-07, 0.95, 7.14064e-05, -0.0237148, 8.20756e-05 )
+
+[node name="Tube 90\'" parent="table/pipe_in_pipe/flange" instance=ExtResource( 16 )]
+transform = Transform( -6.88453e-08, -1.36399, 0.787498, 1.575, -5.96217e-08, 3.44227e-08, -8.39228e-14, 0.787498, 1.36399, 0.113655, 0.369256, 0.196609 )
+
+[node name="Tube 90\'2" parent="table/pipe_in_pipe/flange" instance=ExtResource( 16 )]
+transform = Transform( 3.14999, -1.36399, -6.8845e-08, 6.88456e-08, -5.96218e-08, -1.57499, 5.45595, 0.787498, -2.38486e-07, 0.56805, 0.141917, 0.983645 )
+
+[node name="flange2" parent="table/pipe_in_pipe" instance=ExtResource( 17 )]
+transform = Transform( -0.583257, -1.78465e-07, -1.01023, -1.01023, -4.41586e-08, 0.583257, -1.27475e-07, 1.16651, -1.32476e-07, 0.182682, 0.229669, 1.71534 )
+
+[node name="bolt" parent="table/pipe_in_pipe/flange2" instance=ExtResource( 18 )]
+transform = Transform( 1.06875, -2.45347e-07, -1.85113, -4.67162e-08, 2.13749, -3.10274e-07, 1.85113, 1.95594e-07, 1.06875, -0.0732434, 0.0270398, -0.0415983 )
+
+[node name="nut" parent="table/pipe_in_pipe/flange2/bolt" instance=ExtResource( 13 )]
+transform = Transform( -0.95, 8.30515e-08, -7.1535e-08, -8.30517e-08, -0.95, 2.03875e-07, -7.15351e-08, 2.03875e-07, 0.95, 7.14064e-05, -0.0279753, 8.2016e-05 )
+
+[node name="bolt2" parent="table/pipe_in_pipe/flange2" instance=ExtResource( 18 )]
+transform = Transform( 1.06875, -2.45347e-07, -1.85112, -4.67162e-08, 2.13749, -3.10274e-07, 1.85112, 1.95594e-07, 1.06875, -0.0735843, 0.0270398, 0.0422206 )
+
+[node name="nut" parent="table/pipe_in_pipe/flange2/bolt2" instance=ExtResource( 13 )]
+transform = Transform( -0.95, 8.30515e-08, -7.1535e-08, -8.30518e-08, -0.95, 2.03875e-07, -7.15351e-08, 2.03875e-07, 0.95, 7.14064e-05, -0.0280507, 8.20756e-05 )
+
+[node name="bolt3" parent="table/pipe_in_pipe/flange2" instance=ExtResource( 18 )]
+transform = Transform( 1.06875, -2.45347e-07, -1.85113, -4.67162e-08, 2.13749, -3.10274e-07, 1.85113, 1.95594e-07, 1.06875, 3.44515e-05, 0.0270398, 0.0853219 )
+
+[node name="nut" parent="table/pipe_in_pipe/flange2/bolt3" instance=ExtResource( 13 )]
+transform = Transform( -0.95, 8.30515e-08, -7.15351e-08, -8.30518e-08, -0.95, 2.03875e-07, -7.15351e-08, 2.03875e-07, 0.95, 7.14064e-05, -0.0280402, 8.2016e-05 )
+
+[node name="bolt4" parent="table/pipe_in_pipe/flange2" instance=ExtResource( 18 )]
+transform = Transform( 1.06875, -2.45347e-07, -1.85113, -4.67162e-08, 2.13749, -3.10274e-07, 1.85113, 1.95594e-07, 1.06875, 0.00175822, 0.0270398, -0.0849004 )
+
+[node name="nut" parent="table/pipe_in_pipe/flange2/bolt4" instance=ExtResource( 13 )]
+transform = Transform( -0.95, 8.30515e-08, -7.1535e-08, -8.30518e-08, -0.95, 2.03875e-07, -7.1535e-08, 2.03875e-07, 0.95, 7.14064e-05, -0.0280819, 8.20756e-05 )
+
+[node name="bolt5" parent="table/pipe_in_pipe/flange2" instance=ExtResource( 18 )]
+transform = Transform( 1.06875, -2.45347e-07, -1.85113, -4.67162e-08, 2.13749, -3.10274e-07, 1.85113, 1.95594e-07, 1.06875, 0.073426, 0.0270398, 0.0433745 )
+
+[node name="nut" parent="table/pipe_in_pipe/flange2/bolt5" instance=ExtResource( 13 )]
+transform = Transform( -0.95, 8.30515e-08, -7.1535e-08, -8.30518e-08, -0.95, 2.03875e-07, -7.1535e-08, 2.03875e-07, 0.95, 7.14064e-05, -0.0279515, 8.2016e-05 )
+
+[node name="bolt6" parent="table/pipe_in_pipe/flange2" instance=ExtResource( 18 )]
+transform = Transform( 1.06875, -2.45347e-07, -1.85112, -4.67162e-08, 2.13749, -3.10274e-07, 1.85112, 1.95594e-07, 1.06875, 0.0746561, 0.0270398, -0.0412068 )
+
+[node name="nut" parent="table/pipe_in_pipe/flange2/bolt6" instance=ExtResource( 13 )]
+transform = Transform( -0.95, 8.30515e-08, -7.1535e-08, -8.30517e-08, -0.95, 2.03875e-07, -7.1535e-08, 2.03875e-07, 0.95, 7.14064e-05, -0.0280511, 8.20756e-05 )
+
+[node name="flange3" parent="table/pipe_in_pipe" instance=ExtResource( 17 )]
+transform = Transform( -0.583257, -1.78465e-07, -1.01023, -1.01023, -4.41586e-08, 0.583257, -1.27475e-07, 1.16651, -1.32476e-07, -0.180857, 1.83018, 1.73053 )
+
+[node name="bolt" parent="table/pipe_in_pipe/flange3" instance=ExtResource( 18 )]
+transform = Transform( 1.06875, -2.45347e-07, -1.85113, -4.67162e-08, 2.13749, -3.10274e-07, 1.85113, 1.95594e-07, 1.06875, -0.0732434, 0.0270398, -0.0415983 )
+
+[node name="nut" parent="table/pipe_in_pipe/flange3/bolt" instance=ExtResource( 13 )]
+transform = Transform( -0.95, 8.30515e-08, -7.1535e-08, -8.30517e-08, -0.95, 2.03875e-07, -7.15351e-08, 2.03875e-07, 0.95, 7.14064e-05, -0.0279753, 8.2016e-05 )
+
+[node name="bolt2" parent="table/pipe_in_pipe/flange3" instance=ExtResource( 18 )]
+transform = Transform( 1.06875, -2.45347e-07, -1.85112, -4.67162e-08, 2.13749, -3.10274e-07, 1.85112, 1.95594e-07, 1.06875, -0.0735843, 0.0270398, 0.0422206 )
+
+[node name="nut" parent="table/pipe_in_pipe/flange3/bolt2" instance=ExtResource( 13 )]
+transform = Transform( -0.95, 8.30515e-08, -7.1535e-08, -8.30518e-08, -0.95, 2.03875e-07, -7.15351e-08, 2.03875e-07, 0.95, 7.14064e-05, -0.0280507, 8.20756e-05 )
+
+[node name="bolt3" parent="table/pipe_in_pipe/flange3" instance=ExtResource( 18 )]
+transform = Transform( 1.06875, -2.45347e-07, -1.85113, -4.67162e-08, 2.13749, -3.10274e-07, 1.85113, 1.95594e-07, 1.06875, 3.44515e-05, 0.0270398, 0.0853219 )
+
+[node name="nut" parent="table/pipe_in_pipe/flange3/bolt3" instance=ExtResource( 13 )]
+transform = Transform( -0.95, 8.30515e-08, -7.15351e-08, -8.30518e-08, -0.95, 2.03875e-07, -7.15351e-08, 2.03875e-07, 0.95, 7.14064e-05, -0.0280402, 8.2016e-05 )
+
+[node name="bolt4" parent="table/pipe_in_pipe/flange3" instance=ExtResource( 18 )]
+transform = Transform( 1.06875, -2.45347e-07, -1.85113, -4.67162e-08, 2.13749, -3.10274e-07, 1.85113, 1.95594e-07, 1.06875, 0.00175822, 0.0270398, -0.0849004 )
+
+[node name="nut" parent="table/pipe_in_pipe/flange3/bolt4" instance=ExtResource( 13 )]
+transform = Transform( -0.95, 8.30515e-08, -7.1535e-08, -8.30518e-08, -0.95, 2.03875e-07, -7.1535e-08, 2.03875e-07, 0.95, 7.14064e-05, -0.0280819, 8.20756e-05 )
+
+[node name="bolt5" parent="table/pipe_in_pipe/flange3" instance=ExtResource( 18 )]
+transform = Transform( 1.06875, -2.45347e-07, -1.85113, -4.67162e-08, 2.13749, -3.10274e-07, 1.85113, 1.95594e-07, 1.06875, 0.073426, 0.0270398, 0.0433745 )
+
+[node name="nut" parent="table/pipe_in_pipe/flange3/bolt5" instance=ExtResource( 13 )]
+transform = Transform( -0.95, 8.30515e-08, -7.1535e-08, -8.30518e-08, -0.95, 2.03875e-07, -7.1535e-08, 2.03875e-07, 0.95, 7.14064e-05, -0.0279515, 8.2016e-05 )
+
+[node name="bolt6" parent="table/pipe_in_pipe/flange3" instance=ExtResource( 18 )]
+transform = Transform( 1.06875, -2.45347e-07, -1.85112, -4.67162e-08, 2.13749, -3.10274e-07, 1.85112, 1.95594e-07, 1.06875, 0.0746561, 0.0270398, -0.0412068 )
+
+[node name="nut" parent="table/pipe_in_pipe/flange3/bolt6" instance=ExtResource( 13 )]
+transform = Transform( -0.95, 8.30515e-08, -7.1535e-08, -8.30517e-08, -0.95, 2.03875e-07, -7.1535e-08, 2.03875e-07, 0.95, 7.14064e-05, -0.0280511, 8.20756e-05 )
+
 [node name="table2" parent="." instance=ExtResource( 8 )]
 transform = Transform( -1.09278e-09, 0, -0.025, 0, 0.025, 0, 0.025, 0, -1.09278e-09, 3.59387, 0.715927, 1.29394 )
 
-[node name="pipe_in_pipe" parent="." instance=ExtResource( 10 )]
-transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 3.53361, 2.08652, -4.10916 )
+[node name="chair" parent="table2" instance=ExtResource( 14 )]
+transform = Transform( 20.7846, 0, -12, 0, 24, 0, 12, 0, 20.7846, 5.63368, -49.9655, 64.8848 )
+
+[node name="pc" parent="table2" instance=ExtResource( 11 )]
+transform = Transform( 40, 7.7307e-12, 3.32037e-19, 0, -1.74846e-06, 40, 7.7307e-12, -40, -1.74846e-06, 53.2479, -13.3449, 28.8379 )
+
+[node name="key_mouse" parent="table2/pc" instance=ExtResource( 12 )]
+transform = Transform( -1.8635, 0, -6.95467, -6.95467, -3.14722e-07, 1.8635, -3.03998e-07, 7.2, 8.1456e-08, -0.375779, 0.28946, 1.65922 )
+
+[node name="monic2" parent="table2/pc" instance=ExtResource( 15 )]
+transform = Transform( 0.3, 1.31134e-08, 1.31134e-08, 1.31134e-08, -1.31134e-08, -0.3, -1.31134e-08, 0.3, -1.31134e-08, -0.347701, 0.80493, 1.66246 )
 
 [node name="DirectionalLight" type="DirectionalLight" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.78036, 2.39364, 10.5515 )
 light_color = Color( 1, 0.8, 0.2, 1 )
 light_energy = 0.1
+
+[node name="shelf_animated" parent="." instance=ExtResource( 20 )]
+transform = Transform( -1.09278e-07, 0, -2.5, 0, 2.5, 0, 2.5, 0, -1.09278e-07, 3.24509, -0.2466, 4.55697 )
+
+[node name="tape" parent="shelf_animated" instance=ExtResource( 19 )]
+transform = Transform( 0.0108, 0, -2.22045e-16, 0, 0.0108, 0, 2.22045e-16, 0, 0.0108, -0.0374228, 1.07813, 0.0572404 )
