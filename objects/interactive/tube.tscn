@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://assets/models/tube_type_0.obj" type="ArrayMesh" id=1]
 [ext_resource path="res://assets/materials/tube.material" type="Material" id=2]
@@ -9,6 +9,18 @@
 [ext_resource path="res://objects/elements/sediment.tscn" type="PackedScene" id=7]
 [ext_resource path="res://objects/elements/true_sediment.tscn" type="PackedScene" id=8]
 [ext_resource path="res://assets/materials/water.material" type="Material" id=9]
+
+[sub_resource type="ParticlesMaterial" id=8]
+spread = 180.0
+gravity = Vector3( 0, 1.5, 0 )
+initial_velocity = 2.0
+initial_velocity_random = 1.0
+
+[sub_resource type="SphereMesh" id=9]
+radius = 0.03
+height = 0.06
+radial_segments = 12
+rings = 12
 
 [sub_resource type="SpatialMaterial" id=2]
 render_priority = -1
@@ -31,15 +43,12 @@ radius = 0.180145
 [sub_resource type="BoxShape" id=5]
 extents = Vector3( 0.0404251, 0.0895884, 0.0428093 )
 
-[sub_resource type="Animation" id=3]
-resource_name = "drug"
-tracks/0/type = "transform"
-tracks/0/path = NodePath(".")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = PoolRealArray( 0, 1, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 0, 0.300043, 0, 0, 0, 0, 1, 1, 1, 1 )
+[sub_resource type="Animation" id=6]
+length = 0.001
+
+[sub_resource type="Animation" id=7]
+resource_name = "move_bubble"
+length = 10.0
 
 [node name="tube" type="RigidBody"]
 transform = Transform( 0.75, 0, 0, 0, 0.75, 0, 0, 0, 0.75, 0, 0, 0 )
@@ -58,11 +67,20 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 3.122, 3.32, -3.196 )
 visible = false
 
 [node name="Sphere" type="CSGSphere" parent="MeshInstance/liquid/element_1"]
-transform = Transform( 1, 0, 0, 0, 0.877698, 0, 0, 0, 1, 0, -0.0427787, -0.000138847 )
+transform = Transform( 1, 0, 0, 0, 0.877698, 0, 0, 0, 1, 0, -0.0341837, -0.000138847 )
 radius = 0.0612399
 radial_segments = 40
 rings = 25
 material = ExtResource( 9 )
+
+[node name="bubble" type="Particles" parent="MeshInstance/liquid/element_1"]
+transform = Transform( 0.15, 0, 0, 0, 0.15, 0, 0, 0, 0.15, 0, 0.0525801, 0 )
+visible = false
+amount = 7
+lifetime = 0.16
+speed_scale = 0.2
+process_material = SubResource( 8 )
+draw_pass_1 = SubResource( 9 )
 
 [node name="element_2" parent="MeshInstance/liquid" instance=ExtResource( 5 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 3.122, 3.411, -3.196 )
@@ -98,7 +116,7 @@ rings = 25
 material = SubResource( 2 )
 
 [node name="sediment" parent="MeshInstance/sediment" instance=ExtResource( 8 )]
-transform = Transform( -0.0244872, -5.73744e-09, 0, 4.37888e-09, -0.045, 0, 0, 0, 0.0236398, 3.12303, 3.27877, -3.19564 )
+transform = Transform( 0.027, 0, 0, 0, 0.045, 0, 0, 0, 0.027, 3.12303, 3.28075, -3.19564 )
 visible = false
 
 [node name="CollisionShape" type="CollisionShape" parent="."]
@@ -120,4 +138,5 @@ highlighting = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 root_node = NodePath("")
-anims/drug = SubResource( 3 )
+anims/RESET = SubResource( 6 )
+anims/move_bubble = SubResource( 7 )
