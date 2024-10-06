@@ -87,7 +87,7 @@ anchor_bottom = 0.9
 margin_right = 0.115967
 margin_bottom = 0.0199966
 custom_fonts/font = SubResource( 2 )
-text = "1. Получение борноэтилового эфира"
+text = "1. "
 valign = 1
 
 [node name="ColorRect2" type="ColorRect" parent="VBoxContainer/level1/level"]
@@ -151,7 +151,7 @@ anchor_bottom = 0.9
 margin_right = 0.115967
 margin_bottom = 0.0199966
 custom_fonts/font = SubResource( 2 )
-text = "3. Взаимодействие алюминия с водой и кислотами"
+text = "3. "
 valign = 1
 
 [node name="ColorRect2" type="ColorRect" parent="VBoxContainer/level3/level"]
@@ -183,7 +183,7 @@ anchor_bottom = 0.9
 margin_right = 0.115967
 margin_bottom = 0.0199966
 custom_fonts/font = SubResource( 2 )
-text = "4. Восстановительные свойства алюминия"
+text = "4. "
 valign = 1
 
 [node name="ColorRect2" type="ColorRect" parent="VBoxContainer/level4/level"]
@@ -215,7 +215,7 @@ anchor_bottom = 0.9
 margin_right = 0.115967
 margin_bottom = 0.0199966
 custom_fonts/font = SubResource( 2 )
-text = "5. Взаимодействие алюминия с щелочами"
+text = "5. "
 valign = 1
 
 [node name="ColorRect2" type="ColorRect" parent="VBoxContainer/level5/level"]
@@ -247,7 +247,7 @@ anchor_bottom = 0.9
 margin_right = 0.115967
 margin_bottom = 0.0199966
 custom_fonts/font = SubResource( 2 )
-text = "6. Изучение свойств гидроксида алюминия"
+text = "6. "
 valign = 1
 
 [node name="ColorRect2" type="ColorRect" parent="VBoxContainer/level6/level"]
@@ -279,7 +279,7 @@ anchor_bottom = 0.9
 margin_right = 0.115967
 margin_bottom = 0.0199966
 custom_fonts/font = SubResource( 2 )
-text = "7. Гидролиз соединений алюминия"
+text = "7. "
 valign = 1
 
 [node name="ColorRect2" type="ColorRect" parent="VBoxContainer/level7/level"]
@@ -311,7 +311,7 @@ anchor_bottom = 0.9
 margin_right = 0.115967
 margin_bottom = 0.0199966
 custom_fonts/font = SubResource( 2 )
-text = "8. Гидролиз солей алюминия, протекающий по катиону"
+text = "8. "
 valign = 1
 
 [node name="ColorRect2" type="ColorRect" parent="VBoxContainer/level8/level"]

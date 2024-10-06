@@ -221,7 +221,7 @@ anchor_bottom = 0.9
 margin_right = 0.115967
 margin_bottom = 0.0199966
 custom_fonts/font = SubResource( 2 )
-text = "2. Взаимодействие щелочных металлов с кислородом воздуха"
+text = "2. "
 valign = 1
 
 [node name="ColorRect2" type="ColorRect" parent="VBoxContainer/level2/level"]
@@ -317,7 +317,7 @@ anchor_bottom = 0.9
 margin_right = 0.115967
 margin_bottom = 0.0199966
 custom_fonts/font = SubResource( 2 )
-text = "5. Взаимодействие щелочноземельных металлов с водой"
+text = "5. "
 valign = 1
 
 [node name="ColorRect2" type="ColorRect" parent="VBoxContainer/level5/level"]
@@ -349,7 +349,7 @@ anchor_bottom = 0.9
 margin_right = 0.115967
 margin_bottom = 0.0199966
 custom_fonts/font = SubResource( 2 )
-text = "6. Восстановление магнием оксида углерода"
+text = "6. "
 valign = 1
 
 [node name="ColorRect2" type="ColorRect" parent="VBoxContainer/level6/level"]
@@ -381,7 +381,7 @@ anchor_bottom = 0.9
 margin_right = 0.115967
 margin_bottom = 0.0199966
 custom_fonts/font = SubResource( 2 )
-text = "7. Получение кислородных соединений магния и кальция"
+text = "7. "
 valign = 1
 
 [node name="ColorRect2" type="ColorRect" parent="VBoxContainer/level7/level"]
