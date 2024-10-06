@@ -37,6 +37,7 @@ var switch4
 
 func _ready():
 	G.connect(\"escape\", self, \"exit\")
+	$\"/root/game/player\".translation = Vector3(5, 0, -5)
 	
 	if G.load_item == '11':
 		var item1 = load('res://objects/interactive/bottle.tscn').instance()
