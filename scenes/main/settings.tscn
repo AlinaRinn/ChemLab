@@ -5,9 +5,27 @@
 
 [sub_resource type="GDScript" id=1]
 script/source = "extends Button
-
+var settings = ConfigFile.new()
+var err = settings.load(\"res://scripts/settings.ini\")
+	
 func _pressed():
+	if err != OK: 
+		print(\"opening config file failed\" + str(err))
+		
 	G.to('main_menu')
+	
+	settings.set_value(\"Graphics\", \"screen_mode\", $\"/root/settings/menu/TabContainer/Графика/VBoxContainer/ScreenMode/CheckButton\".pressed)
+	settings.set_value(\"Graphics\", \"vsync\", $\"/root/settings/menu/TabContainer/Графика/VBoxContainer/Vsync/CheckButton\".pressed)
+	settings.set_value(\"Graphics\", \"resolution\", $\"/root/settings/menu/TabContainer/Графика/VBoxContainer/Resolution/OptionButton\".text)
+	settings.set_value(\"Graphics\", \"fxaa\", $\"/root/settings/menu/TabContainer/Графика/VBoxContainer/FXAA/CheckBox\".pressed)
+	settings.set_value(\"Graphics\", \"msaa\", $\"/root/settings/menu/TabContainer/Графика/VBoxContainer/MSAA/OptionButton\".text)
+	
+	settings.set_value(\"Controls\", \"sensitivity\", $\"/root/settings/menu/TabContainer/Управление/ScrollContainer/VBoxContainer/Section1/Sensitivity/sensitivity\".value)
+	settings.save(\"res://scripts/settings.ini\")
+
+
+
+ # SETTINGS_FILE_PATH = file path string to your settings file
 "
 
 [sub_resource type="GDScript" id=2]
