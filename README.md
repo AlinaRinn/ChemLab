@@ -24,7 +24,7 @@
         <tr>
             <td>Windows</td>
             <td>
-                <a href="https://github.com/AlinaRinn/ChemLab/releases/download/Alpha/ChemLab.exe"><img src="https://img.shields.io/badge/Setup-x64-2d7d9a.svg?logo=windows"></a><br>
+                <a href="https://github.com/AlinaRinn/ChemLab/releases/download/Alpha/ChemLab.exe"><img src="https://img.shields.io/badge/Portable-x64-2d7d9a.svg?logo=windows"></a><br>
             </td>
         </tr>
     </tbody>
