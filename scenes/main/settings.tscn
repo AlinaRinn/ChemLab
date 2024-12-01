@@ -201,6 +201,7 @@ margin_bottom = 336.0
 tab_align = 0
 
 [node name="Графика" type="Tabs" parent="menu/TabContainer"]
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_top = 34.0
@@ -338,6 +339,41 @@ align = 1
 items = [ "Выкл.", null, false, 0, null, "х2", null, false, 1, null, "х4", null, false, 2, null, "х8", null, false, 3, null, "х16", null, false, 4, null ]
 selected = 0
 script = SubResource( 7 )
+
+[node name="Звук" type="Tabs" parent="menu/TabContainer"]
+margin_top = 35.0
+margin_right = 700.0
+margin_bottom = 335.0
+rect_min_size = Vector2( 700, 300 )
+
+[node name="VBoxContainer" type="VBoxContainer" parent="menu/TabContainer/Звук"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="Volume" type="Control" parent="menu/TabContainer/Звук/VBoxContainer"]
+margin_right = 700.0
+margin_bottom = 60.0
+rect_min_size = Vector2( 700, 60 )
+
+[node name="Label" type="Label" parent="menu/TabContainer/Звук/VBoxContainer/Volume"]
+anchor_top = 0.5
+anchor_bottom = 0.5
+margin_left = 20.0
+margin_top = -14.5
+margin_right = 230.0
+margin_bottom = 14.5
+text = "Общая громкость"
+
+[node name="size" type="HSlider" parent="menu/TabContainer/Звук/VBoxContainer/Volume"]
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_left = -250.0
+margin_top = -15.0
+margin_right = -50.0
+margin_bottom = 15.0
+rect_min_size = Vector2( 200, 30 )
 
 [node name="Управление" type="Tabs" parent="menu/TabContainer"]
 visible = false
