@@ -1,126 +1,65 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://assets/images/menu_background.png" type="Texture" id=1]
 [ext_resource path="res://themes/menu_theme.tres" type="Theme" id=2]
 
-[sub_resource type="GDScript" id=1]
-script/source = "extends Button
-var settings = ConfigFile.new()
-var err = settings.load(\"res://scripts/settings.ini\")
-	
-func _pressed():
+[sub_resource type="GDScript" id=10]
+script/source = "extends Control
+
+func _ready():
+	var settings = ConfigFile.new() # Cоздать объект класса парсера конфиг-файлов
+	var err = settings.load(\"res://scripts/settings.ini\")
 	if err != OK: 
 		print(\"opening config file failed\" + str(err))
 		
-	G.to('main_menu')
+	$\"/root/settings/menu/TabContainer/Графика/VBoxContainer/ScreenMode/CheckButton\".pressed = settings.get_value(\"Graphics\", \"screen_mode\")
+	$\"/root/settings/menu/TabContainer/Графика/VBoxContainer/Vsync/CheckButton\".pressed = settings.get_value(\"Graphics\", \"vsync\")
+	$\"/root/settings/menu/TabContainer/Графика/VBoxContainer/Resolution/OptionButton\".text = settings.get_value(\"Graphics\", \"resolution\")
+	$\"/root/settings/menu/TabContainer/Графика/VBoxContainer/FXAA/CheckBox\".pressed = settings.get_value(\"Graphics\", \"fxaa\")
+	$\"/root/settings/menu/TabContainer/Графика/VBoxContainer/MSAA/OptionButton\".selected = settings.get_value(\"Graphics\", \"msaa\")
+	$\"/root/settings/menu/TabContainer/Управление/ScrollContainer/VBoxContainer/Section1/Sensitivity/sensitivity\".value = settings.get_value(\"Controls\", \"sensitivity\")
+	$\"/root/settings/menu/TabContainer/Звук/VBoxContainer/Volume/Value\".value = settings.get_value(\"Sound\", \"master_volume\")
+"
+
+[sub_resource type="GDScript" id=1]
+script/source = "extends Button
 	
+func _pressed():
+	var settings = ConfigFile.new() # Cоздать объект класса парсера конфиг-файлов
 	settings.set_value(\"Graphics\", \"screen_mode\", $\"/root/settings/menu/TabContainer/Графика/VBoxContainer/ScreenMode/CheckButton\".pressed)
 	settings.set_value(\"Graphics\", \"vsync\", $\"/root/settings/menu/TabContainer/Графика/VBoxContainer/Vsync/CheckButton\".pressed)
 	settings.set_value(\"Graphics\", \"resolution\", $\"/root/settings/menu/TabContainer/Графика/VBoxContainer/Resolution/OptionButton\".text)
 	settings.set_value(\"Graphics\", \"fxaa\", $\"/root/settings/menu/TabContainer/Графика/VBoxContainer/FXAA/CheckBox\".pressed)
-	settings.set_value(\"Graphics\", \"msaa\", $\"/root/settings/menu/TabContainer/Графика/VBoxContainer/MSAA/OptionButton\".text)
-	
+	settings.set_value(\"Graphics\", \"msaa\", $\"/root/settings/menu/TabContainer/Графика/VBoxContainer/MSAA/OptionButton\".selected)
 	settings.set_value(\"Controls\", \"sensitivity\", $\"/root/settings/menu/TabContainer/Управление/ScrollContainer/VBoxContainer/Section1/Sensitivity/sensitivity\".value)
+	settings.set_value(\"Sound\", \"master_volume\", $\"/root/settings/menu/TabContainer/Звук/VBoxContainer/Volume/Value\".value)
 	settings.save(\"res://scripts/settings.ini\")
-
-"
-
-[sub_resource type="GDScript" id=2]
-script/source = "extends CheckButton
-
-func _ready():
-	pressed = G.screenState
-
-func _on_CheckButton_toggled(button_pressed):
-	OS.set_window_fullscreen(button_pressed)
-	G.screenState = button_pressed
-	OS.window_size = OS.get_screen_size()
-"
-
-[sub_resource type="GDScript" id=5]
-script/source = "extends CheckButton
-
-
-func _ready():
-	set_pressed_no_signal(OS.is_vsync_enabled())
-
-func _on_CheckButton_toggled(button_pressed):
-	OS.set_use_vsync(button_pressed)
+	
+	G.to('main_menu')
 "
 
 [sub_resource type="GDScript" id=4]
 script/source = "extends Control
 
-
-var Resolitions: Dictionary = {\"3840x2160\":Vector2(3840, 2160),
-								\"2560x1440\":Vector2(2560, 1440),
-								\"1920x1080\":Vector2(1920, 1080),
-								\"1680x1050\":Vector2(1680, 1050),
-								\"1536x864\":Vector2(1536, 864),
-								\"1440x900\":Vector2(1440, 900),
-								\"1366x768\":Vector2(1366, 768), 
-								\"1280x720\":Vector2(1280, 720),
-								\"1024x768\":Vector2(1024, 768),
-								\"800x600\":Vector2(800, 600)}
-
 func _ready():
 	AddResolutions()
-
 
 func AddResolutions():
 	var current = get_viewport().get_size()
 	var index = 0
-	for i in Resolitions:
+	for i in G.Resolitions:
 		$OptionButton.add_item(i, index)
-		if Resolitions[i] == current:
+		if G.Resolitions[i] == current:
 			$OptionButton._select_int(index)
 		index += 1
-		
-		
-func _on_OptionButton_item_selected(index):
-	var size = Resolitions.get($OptionButton.get_item_text(index))
-	OS.set_window_size(size)
-	get_tree().set_screen_stretch(SceneTree.STRETCH_MODE_VIEWPORT, SceneTree.STRETCH_ASPECT_KEEP, size)
-"
-
-[sub_resource type="GDScript" id=6]
-script/source = "extends CheckBox
-
-
-func _ready():
-	set_pressed_no_signal(get_viewport().get_use_fxaa())
-
-func _on_CheckBox_toggled(button_pressed):
-	get_viewport().set_use_fxaa(button_pressed)
-"
-
-[sub_resource type="GDScript" id=7]
-script/source = "extends OptionButton
-
-
-func _ready():
-	selected = get_viewport().get_msaa()
-	
-func _on_OptionButton_item_selected(index):
-	get_viewport().set_msaa(index)
 "
 
 [sub_resource type="GDScript" id=9]
 script/source = "extends Tabs
 
 # работает, ура
-func _input(event):
-	InputMap.action_add_event(\"ui_down\", event)
-"
-
-[sub_resource type="GDScript" id=3]
-script/source = "extends HSlider
-
-func _ready():
-	value = G.sensitivity
-
-func _on_HSlider_value_changed(value):
-	G.sensitivity = value
+#func _input(event):
+	#InputMap.action_add_event(\"ui_down\", event)
 "
 
 [sub_resource type="GDScript" id=8]
@@ -168,6 +107,7 @@ margin_right = 350.0
 margin_bottom = 200.0
 rect_pivot_offset = Vector2( 350, 200 )
 theme = ExtResource( 2 )
+script = SubResource( 10 )
 
 [node name="back_menu" type="ColorRect" parent="menu"]
 anchor_right = 1.0
@@ -233,7 +173,6 @@ margin_top = 10.0
 margin_right = 685.0
 margin_bottom = 56.0
 pressed = true
-script = SubResource( 2 )
 
 [node name="Vsync" type="Control" parent="menu/TabContainer/Графика/VBoxContainer"]
 margin_top = 60.0
@@ -258,7 +197,6 @@ margin_left = 610.0
 margin_top = 10.0
 margin_right = 76.0
 margin_bottom = 46.0
-script = SubResource( 5 )
 
 [node name="Resolution" type="Control" parent="menu/TabContainer/Графика/VBoxContainer"]
 margin_top = 120.0
@@ -309,7 +247,6 @@ margin_left = 635.0
 margin_top = 8.0
 margin_right = 24.0
 margin_bottom = 46.0
-script = SubResource( 6 )
 
 [node name="MSAA" type="Control" parent="menu/TabContainer/Графика/VBoxContainer"]
 margin_top = 240.0
@@ -338,9 +275,9 @@ text = "Выкл."
 align = 1
 items = [ "Выкл.", null, false, 0, null, "х2", null, false, 1, null, "х4", null, false, 2, null, "х8", null, false, 3, null, "х16", null, false, 4, null ]
 selected = 0
-script = SubResource( 7 )
 
 [node name="Звук" type="Tabs" parent="menu/TabContainer"]
+visible = false
 margin_top = 35.0
 margin_right = 700.0
 margin_bottom = 335.0
@@ -364,7 +301,7 @@ margin_right = 230.0
 margin_bottom = 14.5
 text = "Общая громкость"
 
-[node name="size" type="HSlider" parent="menu/TabContainer/Звук/VBoxContainer/Volume"]
+[node name="Value" type="HSlider" parent="menu/TabContainer/Звук/VBoxContainer/Volume"]
 anchor_left = 1.0
 anchor_top = 0.5
 anchor_right = 1.0
@@ -374,9 +311,11 @@ margin_top = -15.0
 margin_right = -50.0
 margin_bottom = 15.0
 rect_min_size = Vector2( 200, 30 )
+min_value = -50.0
+max_value = 10.0
+step = 0.1
 
 [node name="Управление" type="Tabs" parent="menu/TabContainer"]
-visible = false
 margin_top = 35.0
 margin_right = 700.0
 margin_bottom = 335.0
@@ -416,11 +355,10 @@ margin_top = -8.0
 margin_right = -50.0
 margin_bottom = 8.0
 min_value = 0.001
-max_value = 0.1
+max_value = 0.05
 step = 0.001
 value = 0.005
 tick_count = 20
-script = SubResource( 3 )
 
 [node name="Section2" type="Control" parent="menu/TabContainer/Управление/ScrollContainer/VBoxContainer"]
 margin_top = 60.0
@@ -857,15 +795,3 @@ margin_left = -350.0
 margin_right = 350.0
 margin_bottom = 2.0
 color = Color( 0.0627451, 0.203922, 0.258824, 1 )
-
-[node name="Звук" type="Tabs" parent="menu/TabContainer"]
-visible = false
-margin_right = 40.0
-margin_bottom = 24.0
-
-[connection signal="toggled" from="menu/TabContainer/Графика/VBoxContainer/ScreenMode/CheckButton" to="menu/TabContainer/Графика/VBoxContainer/ScreenMode/CheckButton" method="_on_CheckButton_toggled"]
-[connection signal="toggled" from="menu/TabContainer/Графика/VBoxContainer/Vsync/CheckButton" to="menu/TabContainer/Графика/VBoxContainer/Vsync/CheckButton" method="_on_CheckButton_toggled"]
-[connection signal="item_selected" from="menu/TabContainer/Графика/VBoxContainer/Resolution/OptionButton" to="menu/TabContainer/Графика/VBoxContainer/Resolution" method="_on_OptionButton_item_selected"]
-[connection signal="toggled" from="menu/TabContainer/Графика/VBoxContainer/FXAA/CheckBox" to="menu/TabContainer/Графика/VBoxContainer/FXAA/CheckBox" method="_on_CheckBox_toggled"]
-[connection signal="item_selected" from="menu/TabContainer/Графика/VBoxContainer/MSAA/OptionButton" to="menu/TabContainer/Графика/VBoxContainer/MSAA/OptionButton" method="_on_OptionButton_item_selected"]
-[connection signal="value_changed" from="menu/TabContainer/Управление/ScrollContainer/VBoxContainer/Section1/Sensitivity/sensitivity" to="menu/TabContainer/Управление/ScrollContainer/VBoxContainer/Section1/Sensitivity/sensitivity" method="_on_HSlider_value_changed"]
