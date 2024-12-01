@@ -241,9 +241,9 @@ func _input(e):
 			action()
 "
 
-[sub_resource type="CapsuleShape" id=2]
-radius = 0.303878
-height = 1.7
+[sub_resource type="CapsuleShape" id=6]
+radius = 0.306188
+height = 1.6
 
 [sub_resource type="Animation" id=3]
 length = 0.001
@@ -284,7 +284,7 @@ tracks/2/keys = {
 "values": [ Vector3( 0.0801525, -0.0562506, -0.0885729 ) ]
 }
 tracks/3/type = "value"
-tracks/3/path = NodePath("shape:shape:height")
+tracks/3/path = NodePath("CollisionShape:scale")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
@@ -293,10 +293,10 @@ tracks/3/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ 1.7 ]
+"values": [ Vector3( 1, 1, 0.5 ) ]
 }
 tracks/4/type = "value"
-tracks/4/path = NodePath("shape:translation")
+tracks/4/path = NodePath("CollisionShape:shape:height")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/imported = false
@@ -305,7 +305,19 @@ tracks/4/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Vector3( 0, 0.310886, 0 ) ]
+"values": [ 1.6 ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("CollisionShape:translation")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0.267651, 0 ) ]
 }
 
 [sub_resource type="Animation" id=4]
@@ -353,7 +365,7 @@ tracks/0/keys = {
 "values": [ Vector3( 0, 2.32333, 0 ), Vector3( 0, 1.2, 0 ) ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("shape:shape:height")
+tracks/1/path = NodePath("CollisionShape:shape:height")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -362,10 +374,10 @@ tracks/1/keys = {
 "times": PoolRealArray( 0, 0.1 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ 1.7, 0.8 ]
+"values": [ 2.83672, 1.6 ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("shape:translation")
+tracks/2/path = NodePath("CollisionShape:translation")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -374,7 +386,7 @@ tracks/2/keys = {
 "times": PoolRealArray( 0, 0.1 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ Vector3( 0, 0.310886, 0 ), Vector3( 0, -0.124742, -3.15647e-08 ) ]
+"values": [ Vector3( 0, 0.88569, 0 ), Vector3( 0, 0.267651, 0 ) ]
 }
 
 [node name="player" type="KinematicBody"]
@@ -383,9 +395,9 @@ collision_layer = 2
 collision_mask = 5
 script = SubResource( 1 )
 
-[node name="shape" type="CollisionShape" parent="."]
-transform = Transform( 1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 0.310886, 0 )
-shape = SubResource( 2 )
+[node name="CollisionShape" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, 0.5, 0, -1, -2.18557e-08, 0, 0.267651, 0 )
+shape = SubResource( 6 )
 
 [node name="head" type="Spatial" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.32333, 0 )

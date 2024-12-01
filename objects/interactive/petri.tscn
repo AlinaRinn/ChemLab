@@ -27,7 +27,7 @@ var name_substance_liq = []
 var amount_substance_liq = 0
 
 var id = \"petri\"
-var reaction = false
+var reaction_check = false
 
 func take():
 	# Подбирание предмета
@@ -92,28 +92,28 @@ func reaction():
 		change_color($MeshInstance2/element_2/liq, Color(1, 0.0784314, 0.576471, 0.5))
 		change_color($MeshInstance2/element_1/liq, Color(1, 0.0784314, 0.576471, 0.5))
 		$AnimationPlayer.play(\"move_bubble\")
-		reaction = true
+		reaction_check = true
 
 	if name_substance_met == [\"Калий\", \"\", \"\", \"\", \"\"] and \\
 	   (name_substance_liq == [\"Вода\", \"Фенолфталеин\"] or name_substance_liq == [\"Фенолфталеин\", \"Вода\"]):
 		change_color($MeshInstance2/element_2/liq, Color(1, 0.0784314, 0.576471, 0.5))
 		change_color($MeshInstance2/element_1/liq, Color(1, 0.0784314, 0.576471, 0.5))
 		$AnimationPlayer.play(\"move_smoke_explosion\")
-		reaction = true
+		reaction_check = true
 		
 	if name_substance_met == [\"Натрий\", \"\", \"\", \"\", \"\"] and \\
 	   (name_substance_liq == [\"Вода\", \"Фенолфталеин\"] or name_substance_liq == [\"Фенолфталеин\", \"Вода\"]):
 		change_color($MeshInstance2/element_2/liq, Color(1, 0.0784314, 0.576471, 0.5))
 		change_color($MeshInstance2/element_1/liq, Color(1, 0.0784314, 0.576471, 0.5))
 		$AnimationPlayer.play(\"move_smoke\")
-		reaction = true
+		reaction_check = true
 		
 	if name_substance_met == [\"Тетраборат натрия\", \"\", \"\", \"\", \"\"] and \\
 	   (name_substance_liq == [\"Вода\", \"Фенолфталеин\"] or name_substance_liq == [\"Фенолфталеин\", \"Вода\"]):
 		change_color($MeshInstance2/element_2/liq, Color(0.6667, 0.4471, 0.7686, 0.5))
 		change_color($MeshInstance2/element_1/liq, Color(0.6667, 0.4471, 0.7686, 0.5))
 		$AnimationPlayer.play(\"decrease_element_1\")
-		reaction = true
+		reaction_check = true
 	
 	if name_substance_met == [\"\", \"\", \"\", \"\", \"\"] and \\
 	   (name_substance_liq == [\"Карбонат натрия\", \"Хлорид лития\"] or name_substance_liq == [\"Хлорид лития\", \"Карбонат натрия\"]):
@@ -122,17 +122,17 @@ func reaction():
 		name_substance_liq[1] = \"Карбонат Лития\"
 		$MeshInstance2/element_2.visible = false
 		$MeshInstance2/sediment.visible = true
-		reaction = true
+		reaction_check = true
 
 
 func _ready():
 	# При создании получаем кол-во слоев
 	elements_met = el.get_children()
-	for i in range(MAX_AMOUNT_SUBSTANCE_MET + 1):
+	for _i in range(MAX_AMOUNT_SUBSTANCE_MET + 1):
 		name_substance_met.append(\"\")
 		
 	elements_liq = $MeshInstance2.get_children()
-	for i in range(MAX_AMOUNT_SUBSTANCE_LIQ + 1):
+	for _i in range(MAX_AMOUNT_SUBSTANCE_LIQ + 1):
 		name_substance_liq.append(\"\")
 
 
@@ -417,7 +417,7 @@ mesh = ExtResource( 1 )
 material/0 = ExtResource( 2 )
 
 [node name="element_1" parent="MeshInstance" instance=ExtResource( 4 )]
-transform = Transform( 5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 0.687879, 0 )
+transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 2, 0.538464, 0.687879, -0.442937 )
 visible = false
 
 [node name="smoke" type="Particles" parent="MeshInstance/element_1"]

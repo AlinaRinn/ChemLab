@@ -1,0 +1,41 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://assets/models/maxwell_the_cat.glb" type="PackedScene" id=1]
+[ext_resource path="res://objects/interaction.tscn" type="PackedScene" id=2]
+
+[sub_resource type="GDScript" id=3]
+script/source = "extends RigidBody
+
+var id = \"durak\"
+
+func take():
+	var parent = get_parent()
+	var object = G.player.get_to_hand(self)
+	if object:
+		parent.add_child(object)
+"
+
+[sub_resource type="CapsuleShape" id=1]
+radius = 7.63231
+height = 13.1211
+
+[sub_resource type="SphereShape" id=2]
+radius = 4.5819
+
+[node name="maxwell_the_cat" instance=ExtResource( 1 )]
+transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0 )
+script = SubResource( 3 )
+
+[node name="CollisionShape" type="CollisionShape" parent="." index="1"]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -2.75548, 7, -0.2984 )
+shape = SubResource( 1 )
+
+[node name="interactive" parent="." index="2" instance=ExtResource( 2 )]
+transform = Transform( 11.6381, 0, 0, 0, 7.58524, 0, 0, 0, 7.06701, 0, 8.99767, -1.05522 )
+label = "Кот дурак"
+right_click_action = "take"
+right_click_label = "Взять"
+
+[node name="CollisionShape2" type="CollisionShape" parent="." index="3"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 8.14333, 13.244, 1.83982 )
+shape = SubResource( 2 )

@@ -3,8 +3,6 @@
 [ext_resource path="res://themes/menu_theme.tres" type="Theme" id=1]
 [ext_resource path="res://assets/fonts/Cascadia/CascadiaMono-Bold.otf" type="DynamicFontData" id=3]
 [ext_resource path="res://assets/images/menu_background.png" type="Texture" id=4]
-[ext_resource path="res://scenes/main/level10.gd" type="Script" id=5]
-[ext_resource path="res://scenes/main/level11.gd" type="Script" id=6]
 
 [sub_resource type="GDScript" id=3]
 script/source = "extends Control
@@ -113,6 +111,38 @@ func _pressed():
 	G.level_check_finish_text = \"наблюдать протекание реакций\"
 "
 
+[sub_resource type="GDScript" id=11]
+script/source = "extends Button
+
+func _pressed():
+	G.level = 2
+	G.to('cut_scene_practicum')
+	G.briefing = \"Используемые реактивы и оборудование\\n* растворы солей (Ba, Sr, Ca);\\n* раствор сульфата натрия;\\n* штатив с пробирками;\\n\\nХод работы \\nВ пробирку налить 2-3 капли раствора, содержащих катионы кальция. Добавить 1-2 мл раствора сульфата натрия. Проследить за осаждением малорастворимых сульфатов. Аналогичные опыты проделать с растворами солей бария и стронция.\"
+	G.load_item = '110'
+	G.level_check_1_text = \"Добавить сульфат натрия в три пробирки\"
+	G.level_check_2_text = \"Добавить соль бария в одну из пробирок\"
+	G.level_check_3_text = \"Добавить соль стронция в одну из пробирок\"
+	G.level_check_4_text = \"Добавить соль кальция в одну из пробирок\"
+	G.level_check_5_text = null
+	G.level_check_finish_text = \"Наблюдать протекание реакций\"
+"
+
+[sub_resource type="GDScript" id=10]
+script/source = "extends Button
+
+func _pressed():
+	G.level = 2
+	G.to('cut_scene_practicum')
+	G.briefing = \"Используемые реактивы и оборудование\\n* растворы солей (Ba, Sr, Ca);\\n* раствор хромата калия;\\n* штатив с пробирками;\\n\\nХод работы \\nВ пробирку налить 2-3 капли раствора соли бария. Добавить 1-2 мл раствора хромата калия. Проследить за осаждением малорастворимых хроматов. Аналогичные опыты проделать с растворами солей стронция и кальция.\"
+	G.load_item = '111'
+	G.level_check_1_text = \"Добавить хромат калия в три пробирки\"
+	G.level_check_2_text = \"Добавить соль бария в одну из пробирок\"
+	G.level_check_3_text = \"Добавить соль стронция в одну из пробирок\"
+	G.level_check_4_text = \"Добавить соль кальция в одну из пробирок\"
+	G.level_check_5_text = null
+	G.level_check_finish_text = \"Наблюдать протекание реакций\"
+"
+
 [node name="level" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -191,7 +221,7 @@ anchor_bottom = 0.9
 margin_right = 0.115967
 margin_bottom = 0.0199966
 custom_fonts/font = SubResource( 2 )
-text = "2. Взаимодействие щелочных металлов с кислородом воздуха"
+text = "2. "
 valign = 1
 
 [node name="ColorRect2" type="ColorRect" parent="VBoxContainer/level2/level"]
@@ -287,7 +317,7 @@ anchor_bottom = 0.9
 margin_right = 0.115967
 margin_bottom = 0.0199966
 custom_fonts/font = SubResource( 2 )
-text = "5. Взаимодействие щелочноземельных металлов с водой"
+text = "5. "
 valign = 1
 
 [node name="ColorRect2" type="ColorRect" parent="VBoxContainer/level5/level"]
@@ -319,7 +349,7 @@ anchor_bottom = 0.9
 margin_right = 0.115967
 margin_bottom = 0.0199966
 custom_fonts/font = SubResource( 2 )
-text = "6. Восстановление магнием оксида углерода"
+text = "6. "
 valign = 1
 
 [node name="ColorRect2" type="ColorRect" parent="VBoxContainer/level6/level"]
@@ -351,7 +381,7 @@ anchor_bottom = 0.9
 margin_right = 0.115967
 margin_bottom = 0.0199966
 custom_fonts/font = SubResource( 2 )
-text = "7. Получение кислородных соединений магния и кальция"
+text = "7. "
 valign = 1
 
 [node name="ColorRect2" type="ColorRect" parent="VBoxContainer/level7/level"]
@@ -437,7 +467,7 @@ margin_bottom = 675.0
 margin_right = 900.0
 margin_bottom = 70.0
 align = 0
-script = ExtResource( 5 )
+script = SubResource( 11 )
 
 [node name="Label" type="Label" parent="VBoxContainer/level10/level"]
 anchor_left = 0.05
@@ -469,7 +499,7 @@ margin_bottom = 750.0
 margin_right = 900.0
 margin_bottom = 70.0
 align = 0
-script = ExtResource( 6 )
+script = SubResource( 10 )
 
 [node name="Label" type="Label" parent="VBoxContainer/level11/level"]
 anchor_left = 0.05

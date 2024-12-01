@@ -185,7 +185,7 @@ transform = Transform( 0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, 16.4794, 0.0521719, -5.1
 transform = Transform( -2.18557e-08, 0, -0.5, 0, 0.5, 0, 0.5, 0, -2.18557e-08, 16.438, 0.0596735, -6.7207 )
 
 [node name="flover2" parent="Furniture/stool" instance=ExtResource( 44 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0387726, 3.81969, -0.00947857 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 3.00157, 3.81969, -0.00947952 )
 
 [node name="staffs" type="Spatial" parent="."]
 

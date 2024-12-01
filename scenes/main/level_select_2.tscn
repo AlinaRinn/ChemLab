@@ -1,7 +1,6 @@
 [gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://themes/menu_theme.tres" type="Theme" id=1]
-[ext_resource path="res://scenes/main/level22.gd" type="Script" id=2]
 [ext_resource path="res://assets/fonts/Cascadia/CascadiaMono-Bold.otf" type="DynamicFontData" id=3]
 [ext_resource path="res://assets/images/menu_background.png" type="Texture" id=4]
 
@@ -25,6 +24,22 @@ size = 24
 outline_size = 4
 outline_color = Color( 0.0509804, 0.101961, 0.129412, 1 )
 font_data = ExtResource( 3 )
+
+[sub_resource type="GDScript" id=10]
+script/source = "extends Button
+
+func _pressed():
+	G.level = 2
+	G.to('cut_scene_practicum')
+	G.briefing = \"Используемые реактивы и оборудование\\n* кристаллы тетрабората натрия;\\n* вода;\\n* раствор фенолфталеина;\\n* чашка Петри;\\n\\nХод работы \\nНалить в пустую чашку Петри немного воды. Добавить в чашку Петри несколько кристаллов тетрабората натрия. 3.	В чашку Петри с полученным раствором добавить 2-3 капли фенолфталеина. Проследить за реакцией.\"
+	G.load_item = '22'
+	G.level_check_1_text = \"Добавить воду в чашку Петри\"
+	G.level_check_2_text = \"Добавить кристаллы тетрабората натрия в чашку Петри\"
+	G.level_check_3_text = \"Добавить фенолфталеин в чашку Петри\"
+	G.level_check_4_text = null
+	G.level_check_5_text = null
+	G.level_check_finish_text = \"Наблюдать протекание реакций\"
+"
 
 [node name="level" type="Control"]
 anchor_right = 1.0
@@ -50,9 +65,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 margin_left = -450.0
-margin_top = -410.0
+margin_top = -300.0
 margin_right = 450.0
-margin_bottom = 410.0
+margin_bottom = 300.0
 custom_constants/separation = 75
 
 [node name="level1" type="Control" parent="VBoxContainer"]
@@ -72,7 +87,7 @@ anchor_bottom = 0.9
 margin_right = 0.115967
 margin_bottom = 0.0199966
 custom_fonts/font = SubResource( 2 )
-text = "1. Получение борноэтилового эфира"
+text = "1. "
 valign = 1
 
 [node name="ColorRect2" type="ColorRect" parent="VBoxContainer/level1/level"]
@@ -94,7 +109,7 @@ margin_bottom = 75.0
 margin_right = 900.0
 margin_bottom = 70.0
 align = 0
-script = ExtResource( 2 )
+script = SubResource( 10 )
 
 [node name="Label" type="Label" parent="VBoxContainer/level2/level"]
 anchor_left = 0.05
@@ -136,7 +151,7 @@ anchor_bottom = 0.9
 margin_right = 0.115967
 margin_bottom = 0.0199966
 custom_fonts/font = SubResource( 2 )
-text = "3. Взаимодействие алюминия с водой и кислотами"
+text = "3. "
 valign = 1
 
 [node name="ColorRect2" type="ColorRect" parent="VBoxContainer/level3/level"]
@@ -168,7 +183,7 @@ anchor_bottom = 0.9
 margin_right = 0.115967
 margin_bottom = 0.0199966
 custom_fonts/font = SubResource( 2 )
-text = "4. Восстановительные свойства алюминия"
+text = "4. "
 valign = 1
 
 [node name="ColorRect2" type="ColorRect" parent="VBoxContainer/level4/level"]
@@ -200,7 +215,7 @@ anchor_bottom = 0.9
 margin_right = 0.115967
 margin_bottom = 0.0199966
 custom_fonts/font = SubResource( 2 )
-text = "5. Взаимодействие алюминия с щелочами"
+text = "5. "
 valign = 1
 
 [node name="ColorRect2" type="ColorRect" parent="VBoxContainer/level5/level"]
@@ -232,7 +247,7 @@ anchor_bottom = 0.9
 margin_right = 0.115967
 margin_bottom = 0.0199966
 custom_fonts/font = SubResource( 2 )
-text = "6. Изучение свойств гидроксида алюминия"
+text = "6. "
 valign = 1
 
 [node name="ColorRect2" type="ColorRect" parent="VBoxContainer/level6/level"]
@@ -264,7 +279,7 @@ anchor_bottom = 0.9
 margin_right = 0.115967
 margin_bottom = 0.0199966
 custom_fonts/font = SubResource( 2 )
-text = "7. Гидролиз соединений алюминия"
+text = "7. "
 valign = 1
 
 [node name="ColorRect2" type="ColorRect" parent="VBoxContainer/level7/level"]
@@ -284,7 +299,7 @@ margin_bottom = 525.0
 
 [node name="level" type="Button" parent="VBoxContainer/level8"]
 margin_right = 900.0
-margin_bottom = 97.0
+margin_bottom = 70.0
 align = 0
 script = SubResource( 9 )
 
@@ -296,8 +311,7 @@ anchor_bottom = 0.9
 margin_right = 0.115967
 margin_bottom = 0.0199966
 custom_fonts/font = SubResource( 2 )
-text = "8. Гидролиз солей алюминия, протекающий по катиону с солями,
- гидролиз которых протекает по аниону (необратимый гидролиз)"
+text = "8. "
 valign = 1
 
 [node name="ColorRect2" type="ColorRect" parent="VBoxContainer/level8/level"]
