@@ -55,7 +55,8 @@ var Resolitions: Dictionary = {"3840x2160":Vector2(3840, 2160),
 								"1280x720":Vector2(1280, 720),
 								"1024x768":Vector2(1024, 768),
 								"800x600":Vector2(800, 600)}
-
+var keybind
+var keyname = ""
 
 func pause(p=true):
 	get_tree().paused = p

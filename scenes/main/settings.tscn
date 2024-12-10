@@ -54,22 +54,19 @@ func AddResolutions():
 		index += 1
 "
 
-[sub_resource type="GDScript" id=9]
-script/source = "extends Tabs
-
-# работает, ура
-#func _input(event):
-	#InputMap.action_add_event(\"ui_down\", event)
-"
-
 [sub_resource type="GDScript" id=8]
 script/source = "extends Button
 
 func _pressed():
-	var key = InputEventKey.new()
-	key.scancode = 32
-	InputMap.action_erase_events(\"ui_down\")
-	InputMap.action_add_event(\"ui_down\", key)
+	InputMap.action_erase_events(\"ui_up\")
+	G.keybind = \"ui_up\"
+	$\"/root/settings/menu/keybind_plug\".visible = true
+	text = G.keyname
+	#pass
+	#var key = InputEventKey.new()
+	#key.scancode = 32
+	#InputMap.action_erase_events(\"ui_down\")
+	#InputMap.action_add_event(\"ui_down\", key)
 
 	#e.Set(\"scancode\", KeyList.A);
 	#InputMap.action_erase_events(\"ui_up\")
@@ -77,6 +74,16 @@ func _pressed():
 	#OS.get_keycode_string()
 
 # Key List: https://docs.godotengine.org/en/3.0/classes/class_@globalscope.html
+"
+
+[sub_resource type="GDScript" id=11]
+script/source = "extends ColorRect
+
+func _input(event):
+	if visible and event is InputEventKey:
+		visible = false
+		InputMap.action_add_event(G.keybind, event)
+		G.keyname = event.as_text()
 "
 
 [node name="settings" type="Control"]
@@ -131,7 +138,6 @@ anchor_bottom = 1.0
 mouse_filter = 2
 color = Color( 0.0862745, 0.419608, 0.529412, 0.329412 )
 __meta__ = {
-"_edit_lock_": true,
 "_edit_use_anchors_": false
 }
 
@@ -141,7 +147,6 @@ margin_bottom = 336.0
 tab_align = 0
 
 [node name="Графика" type="Tabs" parent="menu/TabContainer"]
-visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_top = 34.0
@@ -316,10 +321,10 @@ max_value = 10.0
 step = 0.1
 
 [node name="Управление" type="Tabs" parent="menu/TabContainer"]
+visible = false
 margin_top = 35.0
 margin_right = 700.0
 margin_bottom = 335.0
-script = SubResource( 9 )
 
 [node name="ScrollContainer" type="ScrollContainer" parent="menu/TabContainer/Управление"]
 margin_right = 700.0
@@ -795,3 +800,21 @@ margin_left = -350.0
 margin_right = 350.0
 margin_bottom = 2.0
 color = Color( 0.0627451, 0.203922, 0.258824, 1 )
+
+[node name="keybind_plug" type="ColorRect" parent="menu"]
+visible = false
+margin_right = 700.0
+margin_bottom = 400.0
+color = Color( 0.188235, 0.290196, 0.356863, 1 )
+script = SubResource( 11 )
+
+[node name="text" type="Label" parent="menu/keybind_plug"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -168.0
+margin_top = -14.5
+margin_right = 168.0
+margin_bottom = 14.5
+text = "Нажмите любую клавишу..."
