@@ -1,0 +1,145 @@
+@font-face {
+  font-family: TT; 
+  src: url(../fonts/TTRegular.woff);
+}
+
+@font-face {
+  font-family: Cascadia; 
+  src: url(../fonts/CascadiaMono/CascadiaMono-Bold.otf);
+}
+
+body, html {
+    margin: 0;
+    padding: 0;
+    font-family: TT;
+    /*background: linear-gradient(120deg, #00c6ff, #0072ff);*/
+	background: url(../images/background.jpg);
+	background-repeat: no-repeat;
+	background-size: 100% 100%;
+    color: #fff;
+	scroll-behavior: smooth;
+}
+
+.container {
+    width: 80%;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.hero-section {
+    background: linear-gradient(#00c6ff, #0072ff);
+    padding: 100px 0;
+    animation: fadeIn 2s ease-in-out;
+}
+
+.hero-section h1 {
+    font-size: 4em;
+    margin: 0.5em 0;
+}
+
+.hero-section p {
+    font-size: 2em;
+    margin-bottom: 3em;
+}
+
+.cta-button {
+	margin: 100px;
+    padding: 15px 30px;
+    background: #fff;
+    color: #0072ff;
+    text-decoration: none;
+    font-weight: bold;
+	font-size: 1.5em;
+    border-radius: 50px;
+    transition: background 0.3s;
+}
+
+.cta-button:hover {
+    background: #00c6ff;
+    color: #fff;
+}
+
+.features {
+    padding: 50px 0;
+    background: rgba(0, 78, 146, 0.7);
+    color: #fff;
+	min-height: 40vh;
+}
+
+.features h1 {
+	font-size: 2em;
+    margin-bottom: 2em;
+}
+
+.features h3 {
+	font-size: 1.5em;
+    margin-bottom: 1em;
+}
+
+.features p {
+	font-size: 1em;
+    margin-bottom: 2em;
+}
+
+.feature-list {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.feature-item {
+    width: 30%;
+	min-width: 200px;
+    margin-bottom: 2em;
+    animation: fadeInUp 2s ease-in-out;
+}
+
+.feature-item img {
+    width: 100px;
+    height: auto;
+    margin-bottom: 1em;
+}
+
+.download-section {
+    background: linear-gradient(#0072ff, #004e92);
+	padding: 50px 0;
+	min-height: 20vh;
+	animation: fadeIn 3s ease-in-out;
+}
+
+.download-section p{
+    font-size: 1.2em;
+    margin-bottom: 3em;
+}
+
+.download-button {
+    padding: 15px 30px;
+    background: #fff;
+    color: #0072ff;
+    text-decoration: none;
+    font-weight: bold;
+	font-size: 1.2em;
+    border-radius: 25px;
+    transition: background 0.3s;
+}
+
+.download-button:hover {
+    background: #00c6ff;
+    color: #fff;
+}
+
+footer {
+    padding: 20px 0;
+    background: #004e92;
+	animation: fadeIn 3s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(400px); }
+    to { opacity: 1; transform: translateY(0); }
+}
