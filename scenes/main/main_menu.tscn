@@ -7,10 +7,30 @@
 [sub_resource type="GDScript" id=1]
 script/source = "extends Node
 
-
 func _input(_event):
 	if Input.is_action_just_pressed(\"ui_cancel\"):
 		get_tree().quit()
+
+func _ready():
+	set_graphics()
+
+# Загружает и применяет настройки из файла
+func set_graphics():
+	var graphcfg = ConfigFile.new() # Cоздать объект класса парсера конфиг-файлов
+	var err = graphcfg.load(\"res://scripts/settings.ini\")
+	if err != OK: 
+		print(\"opening config file failed\" + str(err))
+		
+	OS.set_window_fullscreen(graphcfg.get_value(\"Graphics\", \"screen_mode\"))
+	OS.window_size = OS.get_screen_size()
+	OS.set_use_vsync(graphcfg.get_value(\"Graphics\", \"vsync\"))
+	var size = G.Resolitions.get(graphcfg.get_value(\"Graphics\", \"resolution\"))
+	OS.set_window_size(size)
+	get_tree().set_screen_stretch(SceneTree.STRETCH_MODE_VIEWPORT, SceneTree.STRETCH_ASPECT_KEEP, size)
+	get_viewport().set_use_fxaa(graphcfg.get_value(\"Graphics\", \"fxaa\"))
+	get_viewport().set_msaa(graphcfg.get_value(\"Graphics\", \"msaa\"))
+	G.sensitivity = graphcfg.get_value(\"Controls\", \"sensitivity\")
+	AudioServer.set_bus_volume_db(AudioServer.get_bus_index(\"Master\"), graphcfg.get_value(\"Sound\", \"master_volume\"))
 "
 
 [sub_resource type="GDScript" id=6]
