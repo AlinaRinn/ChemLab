@@ -12,25 +12,52 @@ func _input(_event):
 		get_tree().quit()
 
 func _ready():
-	set_graphics()
+	apply_settings()
 
 # Загружает и применяет настройки из файла
-func set_graphics():
-	var graphcfg = ConfigFile.new() # Cоздать объект класса парсера конфиг-файлов
-	var err = graphcfg.load(\"res://scripts/settings.ini\")
-	if err != OK: 
+func apply_settings():
+	var cfg = ConfigFile.new() # Cоздать объект класса парсера конфиг-файлов
+	var err = cfg.load(\"res://scripts/settings.ini\")
+	if err != OK: # трай-кач
 		print(\"opening config file failed\" + str(err))
-		
-	OS.set_window_fullscreen(graphcfg.get_value(\"Graphics\", \"screen_mode\"))
+
+# Графика
+	OS.set_window_fullscreen(cfg.get_value(\"Graphics\", \"screen_mode\"))
 	OS.window_size = OS.get_screen_size()
-	OS.set_use_vsync(graphcfg.get_value(\"Graphics\", \"vsync\"))
-	var size = G.Resolitions.get(graphcfg.get_value(\"Graphics\", \"resolution\"))
+	OS.set_use_vsync(cfg.get_value(\"Graphics\", \"vsync\"))
+	var size = G.Resolitions.get(cfg.get_value(\"Graphics\", \"resolution\"))
 	OS.set_window_size(size)
 	get_tree().set_screen_stretch(SceneTree.STRETCH_MODE_VIEWPORT, SceneTree.STRETCH_ASPECT_KEEP, size)
-	get_viewport().set_use_fxaa(graphcfg.get_value(\"Graphics\", \"fxaa\"))
-	get_viewport().set_msaa(graphcfg.get_value(\"Graphics\", \"msaa\"))
-	G.sensitivity = graphcfg.get_value(\"Controls\", \"sensitivity\")
-	AudioServer.set_bus_volume_db(AudioServer.get_bus_index(\"Master\"), graphcfg.get_value(\"Sound\", \"master_volume\"))
+	get_viewport().set_use_fxaa(cfg.get_value(\"Graphics\", \"fxaa\"))
+	get_viewport().set_msaa(cfg.get_value(\"Graphics\", \"msaa\"))
+
+# Управление & Звук
+	G.sensitivity = cfg.get_value(\"Controls\", \"sensitivity\")
+	InputMap.action_add_event(\"ui_up\", cfg.get_value(\"Controls\", \"ui_up\"))
+	InputMap.action_add_event(\"ui_down\", cfg.get_value(\"Controls\", \"ui_down\"))
+	InputMap.action_add_event(\"ui_left\", cfg.get_value(\"Controls\", \"ui_left\"))
+	InputMap.action_add_event(\"ui_right\", cfg.get_value(\"Controls\", \"ui_right\"))
+	InputMap.action_add_event(\"ui_shift\", cfg.get_value(\"Controls\", \"ui_shift\"))
+	InputMap.action_add_event(\"ui_ctrl\", cfg.get_value(\"Controls\", \"ui_ctrl\"))
+	InputMap.action_add_event(\"ui_drop\", cfg.get_value(\"Controls\", \"ui_drop\"))
+	InputMap.action_add_event(\"ui_move\", cfg.get_value(\"Controls\", \"ui_move\"))
+	InputMap.action_add_event(\"ui_zoom\", cfg.get_value(\"Controls\", \"ui_zoom\"))
+	InputMap.action_add_event(\"ui_tasks\", cfg.get_value(\"Controls\", \"ui_tasks\"))
+	
+	AudioServer.set_bus_volume_db(AudioServer.get_bus_index(\"Master\"), cfg.get_value(\"Sound\", \"master_volume\"))
+
+# Bind template
+	#var key = InputEventKey.new()
+	#key.scancode = 32
+	#InputMap.action_erase_events(\"ui_down\")
+	#InputMap.action_add_event(\"ui_down\", key)
+
+	#e.Set(\"scancode\", KeyList.A);
+	#InputMap.action_erase_events(\"ui_up\")
+	#InputMap.action_add_event(\"ui_up\", e)
+	#OS.get_keycode_string()
+
+# Key List: https://docs.godotengine.org/en/3.0/classes/class_@globalscope.html
 "
 
 [sub_resource type="GDScript" id=6]

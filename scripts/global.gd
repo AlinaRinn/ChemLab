@@ -47,6 +47,7 @@ var label_compounds2
 var sensitivity = 0.005
 var Resolitions: Dictionary = {"3840x2160":Vector2(3840, 2160),
 								"2560x1440":Vector2(2560, 1440),
+								"1920x1200":Vector2(1920, 1200),
 								"1920x1080":Vector2(1920, 1080),
 								"1680x1050":Vector2(1680, 1050),
 								"1536x864":Vector2(1536, 864),
@@ -56,7 +57,6 @@ var Resolitions: Dictionary = {"3840x2160":Vector2(3840, 2160),
 								"1024x768":Vector2(1024, 768),
 								"800x600":Vector2(800, 600)}
 var keybind
-var keyname = ""
 
 func pause(p=true):
 	get_tree().paused = p

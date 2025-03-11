@@ -128,20 +128,20 @@ func get_input():
 		dir.z = 1
 	
 	# Зум камеры
-	if Input.is_action_pressed(\"ui_alt\"):
+	if Input.is_action_pressed(\"ui_zoom\"):
 		$head/Camera.transform.origin.z = -2
 	else: $head/Camera.transform.origin.z = 0
 	
 	# Видимость задач
-	if Input.is_action_just_pressed(\"ui_t\") and task_state:
+	if Input.is_action_just_pressed(\"ui_tasks\") and task_state:
 		G.emit_signal(\"hide_tasks\")
 		task_state = false
-	elif Input.is_action_just_pressed(\"ui_t\") and !task_state:
+	elif Input.is_action_just_pressed(\"ui_tasks\") and !task_state:
 		G.emit_signal(\"show_tasks\")
 		task_state = true
 	
 	# Дроп предмета в руке
-	if Input.is_action_just_pressed(\"ui_g\"):
+	if Input.is_action_just_pressed(\"ui_drop\"):
 		drop()
 	
 	# Обработка кнопки прыжка
@@ -170,7 +170,7 @@ func get_input():
 		dir = dir.rotated(Vector3.UP, rotation.y) * speed 
 		
 	# Позволяет передвигать предметы
-	if Input.is_action_just_pressed(\"ui_f\"):
+	if Input.is_action_just_pressed(\"ui_move\"):
 		if picked_object == null:
 			var collider = cast.get_owner() if cast else null 
 			if collider != null and collider is RigidBody:
