@@ -39,13 +39,20 @@ anchor_bottom = 1.0
 margin_left = -300.0
 margin_right = 300.0
 margin_bottom = 800.0
-rect_min_size = Vector2( 600, 800 )
+rect_min_size = Vector2( 600, 1100 )
 bbcode_enabled = true
-bbcode_text = "[center][b]Программирование[/b]
+bbcode_text = "[center][b]Программирование: ядро[/b]
 
 Илья Басистый @ilyabasisty
-Андрей Самойлов @AndreySyp
 Никита Лущик @AlinaRinn
+Андрей Самойлов @AndreySyp
+
+
+[center][b]Программирование: уровни[/b]
+
+Никита Лущик @AlinaRinn
+Андрей Самойлов @AndreySyp
+Антон Курашевич @akurashkevich
 
 
 [b]Интерфейсы[/b]
@@ -67,11 +74,18 @@ bbcode_text = "[center][b]Программирование[/b]
 Максим Солопов
 Александр Боханцев
 Елизовета Зозуля"
-text = "Программирование
+text = "Программирование: ядро
 
 Илья Басистый @ilyabasisty
-Андрей Самойлов @AndreySyp
 Никита Лущик @AlinaRinn
+Андрей Самойлов @AndreySyp
+
+
+Программирование: уровни
+
+Никита Лущик @AlinaRinn
+Андрей Самойлов @AndreySyp
+Антон Курашевич @akurashkevich
 
 
 Интерфейсы

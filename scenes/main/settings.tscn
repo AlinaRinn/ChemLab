@@ -247,6 +247,7 @@ margin_bottom = 336.0
 tab_align = 0
 
 [node name="Графика" type="Tabs" parent="menu/TabContainer"]
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_top = 34.0
@@ -382,7 +383,6 @@ items = [ "Off", null, false, 0, null, "х2", null, false, 1, null, "х4", null,
 selected = 0
 
 [node name="Управление" type="Tabs" parent="menu/TabContainer"]
-visible = false
 margin_top = 35.0
 margin_right = 700.0
 margin_bottom = 335.0
@@ -421,7 +421,7 @@ margin_top = -8.0
 margin_right = -50.0
 margin_bottom = 8.0
 min_value = 0.001
-max_value = 0.05
+max_value = 0.025
 step = 0.001
 value = 0.005
 tick_count = 10
