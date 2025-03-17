@@ -1,16 +1,75 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=8 format=2]
 
-[ext_resource path="res://assets/images/menu_background.png" type="Texture" id=1]
-[ext_resource path="res://themes/menu_theme.tres" type="Theme" id=2]
+[ext_resource path="res://assets/images/blank_background.jpg" type="Texture" id=1]
+[ext_resource path="res://templates/menu_theme.tres" type="Theme" id=2]
 [ext_resource path="res://assets/fonts/Cascadia/CascadiaMono-Bold.otf" type="DynamicFontData" id=3]
 
 [sub_resource type="GDScript" id=3]
 script/source = "extends Control
 
+
+func _ready():
+	$TextureRect/Animation.play(\"fader\")
+	
 func _input(_event):
 	if Input.is_action_just_pressed(\"ui_cancel\"):
 		G.to(\"chapter_select\")
 "
+
+[sub_resource type="Animation" id=5]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 0, 0, 0, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("../Control/Label:percent_visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 1.0 ]
+}
+
+[sub_resource type="Animation" id=6]
+resource_name = "fader"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 0, 0, 0, 0.313726 ), Color( 0, 0, 0, 0.862745 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("../Control/Label:percent_visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, 1.0 ]
+}
 
 [sub_resource type="DynamicFont" id=4]
 size = 120
@@ -21,25 +80,49 @@ font_data = ExtResource( 3 )
 [node name="plug" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-rect_pivot_offset = Vector2( -856, -306 )
+rect_min_size = Vector2( 800, 600 )
 theme = ExtResource( 2 )
 script = SubResource( 3 )
 
-[node name="ColorRect" type="ColorRect" parent="."]
+[node name="TextureRect" type="TextureRect" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
-color = Color( 0, 0, 0, 1 )
-
-[node name="Sprite" type="Sprite" parent="ColorRect"]
-position = Vector2( 960, 540 )
-scale = Vector2( 1.35402, 1.17137 )
 texture = ExtResource( 1 )
+expand = true
 
-[node name="Label" type="Label" parent="."]
-margin_left = 573.0
-margin_top = 666.0
-margin_right = 1413.0
-margin_bottom = 807.0
+[node name="ColorRect" type="ColorRect" parent="TextureRect"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+rect_pivot_offset = Vector2( 2309.47, 630.911 )
+color = Color( 0, 0, 0, 0 )
+
+[node name="Animation" type="AnimationPlayer" parent="TextureRect"]
+anims/RESET = SubResource( 5 )
+anims/fader = SubResource( 6 )
+
+[node name="Control" type="Control" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -400.0
+margin_top = -300.0
+margin_right = 400.0
+margin_bottom = 300.0
+rect_min_size = Vector2( 800, 600 )
+rect_pivot_offset = Vector2( 1547.2, 125.71 )
+
+[node name="Label" type="Label" parent="Control"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -420.0
+margin_top = -70.5
+margin_right = 420.0
+margin_bottom = 70.5
 rect_rotation = -30.0
+rect_pivot_offset = Vector2( 433.377, 74.7795 )
 custom_fonts/font = SubResource( 4 )
 text = "В разработке"
+uppercase = true

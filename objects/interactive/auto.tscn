@@ -1,0 +1,330 @@
+[gd_scene load_steps=13 format=2]
+
+[ext_resource path="res://assets/models/auto.glb" type="PackedScene" id=1]
+[ext_resource path="res://objects/interaction.tscn" type="PackedScene" id=2]
+[ext_resource path="res://assets/audio/up.mp3" type="AudioStream" id=3]
+[ext_resource path="res://assets/audio/down.mp3" type="AudioStream" id=4]
+
+[sub_resource type="GDScript" id=5]
+script/source = "extends StaticBody
+var active1
+var active2
+var active3
+
+func switch1():
+	if !active1:
+		$Animation1.playback_speed = 4
+		$Animation1.play(\"switch1\")
+		$Audio3Dup.play()
+		active1 = true
+	else:
+		$Animation1.playback_speed = 16
+		$Animation1.play_backwards(\"switch1\")
+		$Audio3Ddown.play()
+		active1 = false
+
+func switch2():
+	if !active2:
+		$Animation2.playback_speed = 4
+		$Animation2.play(\"switch2\")
+		$Audio3Dup.play()
+		active2 = true
+	else:
+		$Animation2.playback_speed = 16
+		$Animation2.play_backwards(\"switch2\")
+		$Audio3Ddown.play()
+		active2 = false
+
+func switch3():
+	if !active3:
+		$Animation3.playback_speed = 4
+		$Animation3.play(\"switch3\")
+		$Audio3Dup.play()
+		active3 = true
+	else:
+		$Animation3.playback_speed = 16
+		$Animation3.play_backwards(\"switch3\")
+		$Audio3Ddown.play()
+		active3 = false
+"
+
+[sub_resource type="BoxShape" id=6]
+extents = Vector3( 0.207601, 0.203572, 0.205193 )
+
+[sub_resource type="Animation" id=1]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Node_0/Mesh_4:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Node_0/Mesh_14:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ false ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Node_0/Mesh_3:rotation_degrees")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0, 0 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Node_0/Mesh_15:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ false ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Node_0/Mesh_5:rotation_degrees")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0, 0 ) ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("Node_0/Mesh_16:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ false ]
+}
+
+[sub_resource type="Animation" id=2]
+resource_name = "switch1"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("Node_0/Mesh_4:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0, 0 ), Vector3( -90, 0, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Node_0/Mesh_14:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+
+[sub_resource type="Animation" id=7]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("../Mesh_3:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("../Mesh_15:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+
+[sub_resource type="Animation" id=8]
+resource_name = "switch2"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("../Mesh_3:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0, 0 ), Vector3( -90, 0, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("../Mesh_15:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+
+[sub_resource type="Animation" id=9]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("../Mesh_5:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("../Mesh_16:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ false ]
+}
+
+[sub_resource type="Animation" id=10]
+resource_name = "switch3"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("../Mesh_5:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0, 0 ), Vector3( -90, 0, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("../Mesh_16:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+
+[node name="auto" instance=ExtResource( 1 )]
+
+[node name="Mesh_14" parent="Node_0" index="6"]
+visible = false
+
+[node name="Mesh_15" parent="Node_0" index="7"]
+visible = false
+
+[node name="Mesh_16" parent="Node_0" index="8"]
+visible = false
+
+[node name="Mesh_4" parent="Node_0" index="11"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.009, -0.0271502, 0.06 )
+
+[node name="Mesh_5" parent="Node_0" index="12"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.045, -0.0271502, 0.06 )
+
+[node name="StaticBody" type="StaticBody" parent="Node_0" index="17"]
+transform = Transform( 0.137657, 0, 0, 0, 0.211375, 1.55206e-08, 0, 1.55206e-08, 0.167976, 0.0266281, -0.0168533, 0.0308838 )
+script = SubResource( 5 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Node_0/StaticBody" index="0"]
+shape = SubResource( 6 )
+
+[node name="interactive1" parent="Node_0/StaticBody" index="1" instance=ExtResource( 2 )]
+transform = Transform( 0.0655422, 0, 0, 0, 0.203948, -4.51629e-09, 0, -4.51618e-09, 0.216576, -0.1299, 7.45058e-09, 0.012083 )
+label = "ПК"
+left_click_action = "switch1"
+left_click_label = "Вкл/Выкл"
+
+[node name="interactive2" parent="Node_0/StaticBody" index="2" instance=ExtResource( 2 )]
+transform = Transform( 0.0652882, 0, 0, 0, 0.202442, -5.43109e-09, 0, -5.43105e-09, 0.217628, 0.00250097, 7.45058e-09, 0.0140432 )
+label = "Нагреватель"
+left_click_action = "switch2"
+left_click_label = "Вкл/Выкл"
+
+[node name="interactive3" parent="Node_0/StaticBody" index="3" instance=ExtResource( 2 )]
+transform = Transform( 0.0652882, 0, 0, 0, 0.202442, -5.43109e-09, 0, -5.43105e-09, 0.217628, 0.134186, 7.45058e-09, 0.0140432 )
+label = "Циркуляционный насос"
+left_click_action = "switch3"
+left_click_label = "Вкл/Выкл"
+
+[node name="Animation1" type="AnimationPlayer" parent="Node_0/StaticBody" index="4"]
+root_node = NodePath("../../..")
+playback_speed = 2.0
+anims/RESET = SubResource( 1 )
+anims/switch1 = SubResource( 2 )
+
+[node name="Animation2" type="AnimationPlayer" parent="Node_0/StaticBody" index="5"]
+playback_speed = 2.0
+anims/RESET = SubResource( 7 )
+anims/switch2 = SubResource( 8 )
+
+[node name="Animation3" type="AnimationPlayer" parent="Node_0/StaticBody" index="6"]
+playback_speed = 2.0
+anims/RESET = SubResource( 9 )
+anims/switch3 = SubResource( 10 )
+
+[node name="Audio3Dup" type="AudioStreamPlayer3D" parent="Node_0/StaticBody" index="7"]
+transform = Transform( 7.26442, 0, 0, 0, -4.73094, 1.1981e-06, 0, -5.20449e-07, -5.95324, 0, 2.23517e-08, 1.49012e-08 )
+stream = ExtResource( 3 )
+
+[node name="Audio3Ddown" type="AudioStreamPlayer3D" parent="Node_0/StaticBody" index="8"]
+stream = ExtResource( 4 )

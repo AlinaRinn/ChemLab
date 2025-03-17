@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=2]
+[gd_scene load_steps=23 format=2]
 
 [ext_resource path="res://objects/static/room/wall_lab.tscn" type="PackedScene" id=1]
 [ext_resource path="res://objects/static/room/floor_lab.tscn" type="PackedScene" id=2]
@@ -20,6 +20,8 @@
 [ext_resource path="res://objects/static/bolt.tscn" type="PackedScene" id=18]
 [ext_resource path="res://objects/interactive/tape_inter.tscn" type="PackedScene" id=19]
 [ext_resource path="res://objects/interactive/wardrobe.tscn" type="PackedScene" id=20]
+[ext_resource path="res://objects/interactive/electroshelf.tscn" type="PackedScene" id=21]
+[ext_resource path="res://objects/interactive/auto.tscn" type="PackedScene" id=22]
 
 [node name="area" type="Spatial"]
 
@@ -60,6 +62,12 @@ transform = Transform( 2, 0, 0, 0, 2.16, 0, 0, 0, 2, 0.148704, -2.97627, 2.98168
 
 [node name="floor" parent="room" instance=ExtResource( 2 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, -0.0548401 )
+
+[node name="electroshelf" parent="room" instance=ExtResource( 21 )]
+transform = Transform( -3, -2.62268e-07, 1.14641e-14, 0, -1.31134e-07, -3, 2.62268e-07, -3, 1.31134e-07, -0.179, 3, 6.613 )
+
+[node name="auto" parent="room/electroshelf" instance=ExtResource( 22 )]
+transform = Transform( 1, 1.42109e-14, -6.77626e-21, -1.42109e-14, 1, -7.10543e-15, 0, 7.10543e-15, 1, -0.0905486, 0.22386, -0.0145758 )
 
 [node name="table" parent="." instance=ExtResource( 8 )]
 transform = Transform( -1.09278e-09, 0, -0.025, 0, 0.025, 0, 0.025, 0, -1.09278e-09, 3.59387, 0.715927, -3.23145 )

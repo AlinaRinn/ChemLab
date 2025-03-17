@@ -1,7 +1,7 @@
 [gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://assets/images/menu_background.png" type="Texture" id=1]
-[ext_resource path="res://themes/menu_theme.tres" type="Theme" id=2]
+[ext_resource path="res://templates/menu_theme.tres" type="Theme" id=2]
 [ext_resource path="res://site/fonts/CascadiaMono/CascadiaMono-Light.otf" type="DynamicFontData" id=3]
 
 [sub_resource type="GDScript" id=10]
@@ -247,7 +247,6 @@ margin_bottom = 336.0
 tab_align = 0
 
 [node name="Графика" type="Tabs" parent="menu/TabContainer"]
-visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_top = 34.0
@@ -383,6 +382,7 @@ items = [ "Off", null, false, 0, null, "х2", null, false, 1, null, "х4", null,
 selected = 0
 
 [node name="Управление" type="Tabs" parent="menu/TabContainer"]
+visible = false
 margin_top = 35.0
 margin_right = 700.0
 margin_bottom = 335.0

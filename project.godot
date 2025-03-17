@@ -21,6 +21,10 @@ boot_splash/bg_color=Color( 0.141176, 0.141176, 0.141176, 1 )
 config/icon="res://assets/images/logo_square.png"
 config/windows_native_icon="res://assets/images/icon.ico"
 
+[audio]
+
+default_bus_layout="res://templates/default_bus_layout.tres"
+
 [autoload]
 
 G="*res://scripts/global.gd"

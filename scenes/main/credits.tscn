@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=2]
 
-[ext_resource path="res://themes/menu_theme.tres" type="Theme" id=1]
+[ext_resource path="res://templates/menu_theme.tres" type="Theme" id=1]
 [ext_resource path="res://assets/images/blank_background.jpg" type="Texture" id=2]
 [ext_resource path="res://assets/audio/outro.mp3" type="AudioStream" id=3]
 
