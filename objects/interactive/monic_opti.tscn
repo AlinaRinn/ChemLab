@@ -4,23 +4,24 @@
 [ext_resource path="res://objects/interaction.tscn" type="PackedScene" id=2]
 
 [sub_resource type="BoxShape" id=1]
-extents = Vector3( 1.84717, 1.58533, 0.355627 )
+extents = Vector3( 0.204775, 0.203284, 0.205983 )
 
 [sub_resource type="CylinderShape" id=2]
-height = 0.478904
-radius = 0.974092
+height = 0.402425
+radius = 0.20193
 
 [node name="monic" type="RigidBody"]
+collision_layer = 8
 
 [node name="monic" parent="." instance=ExtResource( 1 )]
 transform = Transform( 1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0 )
 
 [node name="CollisionShape" type="CollisionShape" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.02348, 0.192534 )
+transform = Transform( 8.96442, 0, 0, 0, 7.709, 0, 0, 0, 1.61616, 0, 2.02348, 0.192534 )
 shape = SubResource( 1 )
 
 [node name="CollisionShape2" type="CollisionShape" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.228635, -0.0442244 )
+transform = Transform( 4.73441, 0, 0, 0, 1.23425, 0, 0, 0, 4.7552, 0, 0.201613, -0.0442244 )
 shape = SubResource( 2 )
 
 [node name="interactive" parent="." instance=ExtResource( 2 )]

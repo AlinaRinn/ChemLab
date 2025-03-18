@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://objects/interactive/pipette.tscn" type="PackedScene" id=1]
 [ext_resource path="res://objects/interactive/pincet.tscn" type="PackedScene" id=2]
@@ -128,10 +128,19 @@ func get_input():
 		dir.z = 1
 	
 	# Зум камеры
-	if Input.is_action_pressed(\"ui_zoom\"):
-		$head/Camera.transform.origin.z = -2
-	else: $head/Camera.transform.origin.z = 0
-	
+	if Input.is_action_just_pressed(\"ui_zoom\"):
+		if state == \"stay\":
+			$ZoomPlayer.play(\"zoomStand\")
+		else: 
+			$ZoomPlayer.play(\"zoomSit\")
+#$head/ClippedCamera.transform.origin.z = -2
+		
+	if Input.is_action_just_released(\"ui_zoom\"):
+		if state == \"stay\":
+			$ZoomPlayer.play_backwards(\"zoomStand\")
+		else: 
+			$ZoomPlayer.play_backwards(\"zoomSit\")
+
 	# Видимость задач
 	if Input.is_action_just_pressed(\"ui_tasks\") and task_state:
 		G.emit_signal(\"hide_tasks\")
@@ -175,10 +184,22 @@ func get_input():
 			var collider = cast.get_owner() if cast else null 
 			if collider != null and collider is RigidBody:
 				picked_object = collider
+				picked_object.axis_lock_angular_x = true
+				picked_object.axis_lock_angular_y = true
+				picked_object.axis_lock_angular_z = true
 		elif picked_object != null:
+			picked_object.axis_lock_angular_x = false
+			picked_object.axis_lock_angular_y = false
+			picked_object.axis_lock_angular_z = false
 			picked_object = null
 
-	
+	# Позволяет вращать предметы
+	if Input.is_action_pressed(\"ui_rotate\") and picked_object != null:
+		picked_object.axis_lock_angular_x = false
+		picked_object.angular_velocity.x = 4
+	elif picked_object != null:
+		picked_object.axis_lock_angular_x = true
+
 	# Взаимодействие с блокнотами
 		#if G.active_note:
 			#G.blank_notes()
@@ -209,8 +230,10 @@ func drop():
 			
 	# Удаляем предмет из рук, и добавляем его на сцену
 	var drop_obj = in_hand_object
-	drop_obj.translation = G.player.get_node('head/hand').global_transform.origin
 	hand.remove_child(in_hand_object)
+	drop_obj.translation = G.player.get_node('head/drop').global_transform.origin
+	drop_obj.angular_velocity = Vector3(0, 0, 0)
+	drop_obj.linear_velocity = Vector3(-transform.basis[2][0], transform.basis[1][0], -transform.basis[0][0]) * 3 + (G.player.vel / 2)
 	in_hand_object = null
 	in_hand_object_id = null
 	drop_obj.sleeping = false
@@ -245,10 +268,13 @@ func _input(e):
 radius = 0.306188
 height = 1.6
 
+[sub_resource type="SphereShape" id=9]
+radius = 0.192849
+
 [sub_resource type="Animation" id=3]
 length = 0.001
 tracks/0/type = "value"
-tracks/0/path = NodePath("head/Camera:translation")
+tracks/0/path = NodePath("head:translation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -257,10 +283,10 @@ tracks/0/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Vector3( 0, 0, 0 ) ]
+"values": [ Vector3( 0, 2.32333, 0 ) ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("head:translation")
+tracks/1/path = NodePath("head/player_hand:translation")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -269,10 +295,10 @@ tracks/1/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Vector3( 0, 2.32333, 0 ) ]
+"values": [ Vector3( 0.0801525, -0.0562506, -0.0885729 ) ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("head/player_hand:translation")
+tracks/2/path = NodePath("CollisionShape:scale")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -281,10 +307,10 @@ tracks/2/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Vector3( 0.0801525, -0.0562506, -0.0885729 ) ]
+"values": [ Vector3( 1, 1, 0.5 ) ]
 }
 tracks/3/type = "value"
-tracks/3/path = NodePath("CollisionShape:scale")
+tracks/3/path = NodePath("CollisionShape:shape:height")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
@@ -293,10 +319,10 @@ tracks/3/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Vector3( 1, 1, 0.5 ) ]
+"values": [ 1.6 ]
 }
 tracks/4/type = "value"
-tracks/4/path = NodePath("CollisionShape:shape:height")
+tracks/4/path = NodePath("CollisionShape:translation")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/imported = false
@@ -305,10 +331,10 @@ tracks/4/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ 1.6 ]
+"values": [ Vector3( 0, 0.267651, 0 ) ]
 }
 tracks/5/type = "value"
-tracks/5/path = NodePath("CollisionShape:translation")
+tracks/5/path = NodePath("CollisionCamera:translation")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/imported = false
@@ -317,7 +343,7 @@ tracks/5/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Vector3( 0, 0.267651, 0 ) ]
+"values": [ Vector3( 0, 2.32358, 0 ) ]
 }
 
 [sub_resource type="Animation" id=4]
@@ -386,18 +412,129 @@ tracks/2/keys = {
 "times": PoolRealArray( 0, 0.1 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ Vector3( 0, 0.88569, 0 ), Vector3( 0, 0.267651, 0 ) ]
+"values": [ Vector3( 0, 0.88569, 0 ), Vector3( 0, 0.571053, 0 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("CollisionCamera:translation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0, 2.32358, 0 ), Vector3( 0, 1.19987, 0 ) ]
+}
+
+[sub_resource type="Animation" id=7]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("head/Camera:translation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("CollisionCamera:translation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector3( 0, 2.31973, 0 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath(".:collision_layer")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 5 ]
+}
+
+[sub_resource type="Animation" id=10]
+resource_name = "zoomSit"
+length = 0.25
+tracks/0/type = "value"
+tracks/0/path = NodePath("CollisionCamera:translation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0, 1.19987, 0 ), Vector3( 0, 1.2, -2 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("head/Camera:translation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0, 0 ), Vector3( 0, 0, -2 ) ]
+}
+
+[sub_resource type="Animation" id=8]
+resource_name = "zoomStand"
+length = 0.25
+tracks/0/type = "value"
+tracks/0/path = NodePath("head/Camera:translation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0, 0 ), Vector3( 0, 0, -2 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("CollisionCamera:translation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0, 2.323, 0 ), Vector3( 0, 2.323, -2 ) ]
 }
 
 [node name="player" type="KinematicBody"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.84756, 0 )
 collision_layer = 2
 collision_mask = 5
+collision/safe_margin = 0.005
 script = SubResource( 1 )
 
 [node name="CollisionShape" type="CollisionShape" parent="."]
 transform = Transform( 1, 0, 0, 0, -4.37114e-08, 0.5, 0, -1, -2.18557e-08, 0, 0.267651, 0 )
 shape = SubResource( 6 )
+
+[node name="CollisionCamera" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.32358, 0 )
+shape = SubResource( 9 )
 
 [node name="head" type="Spatial" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.32333, 0 )
@@ -409,13 +546,17 @@ collision_mask = 4
 collide_with_areas = true
 
 [node name="Camera" type="Camera" parent="head"]
+current = true
 near = 0.01
 
 [node name="player_hand" type="Spatial" parent="head"]
 transform = Transform( 0.0985865, 0.0167543, 0, -0.0167543, 0.0985865, 0, 0, 0, 0.1, 0.0801525, -0.0562506, -0.0885729 )
 
 [node name="hand" type="Position3D" parent="head"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.9579 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.8 )
+
+[node name="drop" type="Position3D" parent="head"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0839033, -0.0533868, -0.09 )
 
 [node name="pincet" parent="head" instance=ExtResource( 2 )]
 transform = Transform( -0.0303, 0.0301773, -0.0903949, -0.0690003, 0.0584793, 0.0426513, 0.0657333, 0.0752961, 0.00310321, -0.263766, -0.111748, -0.331101 )
@@ -429,3 +570,9 @@ visible = false
 anims/RESET = SubResource( 3 )
 anims/run = SubResource( 4 )
 anims/sit = SubResource( 5 )
+
+[node name="ZoomPlayer" type="AnimationPlayer" parent="."]
+reset_on_save = false
+anims/RESET = SubResource( 7 )
+anims/zoomSit = SubResource( 10 )
+anims/zoomStand = SubResource( 8 )

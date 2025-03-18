@@ -22,6 +22,7 @@ func music():
 extents = Vector3( 28.6446, 7.99478, 8.68205 )
 
 [node name="tape" type="RigidBody"]
+collision_layer = 4
 mass = 5.0
 script = SubResource( 2 )
 
@@ -33,7 +34,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.44214, -0.756365, 7.40398 )
 shape = SubResource( 1 )
 
 [node name="interactive" parent="." instance=ExtResource( 2 )]
-transform = Transform( 29.3128, 0, 0, 0, 8.66921, 0, 0, 0, 7.9963, 1.44214, 0.536343, 8.20128 )
+transform = Transform( 29.3128, 0, 0, 0, 8.66921, 0, 0, 0, 6.36245, 1.44214, 0.536343, 8.20128 )
 label = "Магнитофон"
 left_click_action = "music"
 left_click_label = "Вкл./Выкл. музыку"

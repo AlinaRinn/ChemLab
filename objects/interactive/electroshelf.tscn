@@ -67,7 +67,6 @@ material/0 = ExtResource( 4 )
 transform = Transform( 0.733425, 0, 0, 0, 0.462529, 0, 0, 0, 0.745053, -0.150343, 0.0928379, -0.149147 )
 
 [node name="CollisionShape" type="CollisionShape" parent="Shelf/PAINEL 300 X 300 X 200SLDASM/StaticBody" index="0"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
 shape = SubResource( 5 )
 
 [node name="PAINEL 300 X 300 X 200SLDASM001" parent="Shelf" index="1"]
