@@ -291,32 +291,35 @@ shape = SubResource( 6 )
 
 [node name="label" parent="Node_0/StaticBody" index="1" instance=ExtResource( 5 )]
 transform = Transform( 0.15, 0, 0, 0, 0.1, -3.55271e-15, 0, 0, 0.1, -0.127639, 0.00730054, 0.173929 )
-label_name = "ПК"
+label_name = "Термостат"
 font_size = 100
 
 [node name="interactive1" parent="Node_0/StaticBody" index="2" instance=ExtResource( 2 )]
 transform = Transform( 0.0655422, 0, 0, 0, 0.203948, -4.51629e-09, 0, -4.51618e-09, 0.216576, -0.1299, 7.45058e-09, 0.012083 )
-label = "ПК"
+label = "Термостат"
 left_click_action = "switch1"
 left_click_label = "Вкл/Выкл"
 
 [node name="label2" parent="Node_0/StaticBody" index="3" instance=ExtResource( 5 )]
 transform = Transform( 0.15, 0, 0, 0, 0.1, -3.55271e-15, 0, 0, 0.1, 0.004049, 0.00762641, 0.173917 )
-label_name = "Термометры"
+label_name = "Нагреватель"
 font_size = 50
 
 [node name="interactive2" parent="Node_0/StaticBody" index="4" instance=ExtResource( 2 )]
 transform = Transform( 0.0652882, 0, 0, 0, 0.202442, -5.43109e-09, 0, -5.43105e-09, 0.217628, 0.00250097, 7.45058e-09, 0.0140432 )
-label = "Термометры"
+label = "Нагреватель"
 left_click_action = "switch2"
 left_click_label = "Вкл/Выкл"
 
 [node name="label3" parent="Node_0/StaticBody" index="5" instance=ExtResource( 5 )]
 transform = Transform( 0.15, 0, 0, 0, 0.1, -3.55271e-15, 0, 0, 0.1, 0.134083, 0.00659226, 0.174475 )
-font_size = 50
+label_name = "Циркуляционный"
+label_extra = "насос"
+font_size = 40
 
 [node name="interactive3" parent="Node_0/StaticBody" index="6" instance=ExtResource( 2 )]
 transform = Transform( 0.0652882, 0, 0, 0, 0.202442, -5.43109e-09, 0, -5.43105e-09, 0.217628, 0.134186, 7.45058e-09, 0.0140432 )
+label = "Циркуляционный насос"
 left_click_action = "switch3"
 left_click_label = "Вкл/Выкл"
 

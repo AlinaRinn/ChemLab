@@ -1,0 +1,152 @@
+[gd_scene load_steps=14 format=2]
+
+[ext_resource path="res://assets/models/valv3.glb" type="PackedScene" id=1]
+[ext_resource path="res://assets/materials/Red_roughness.material" type="Material" id=2]
+[ext_resource path="res://assets/materials/metal_copper.material" type="Material" id=3]
+[ext_resource path="res://assets/materials/metal.material" type="Material" id=4]
+[ext_resource path="res://assets/materials/metal_darkgrey.material" type="Material" id=5]
+[ext_resource path="res://assets/materials/metal_blue.material" type="Material" id=6]
+[ext_resource path="res://objects/interaction.tscn" type="PackedScene" id=7]
+
+[sub_resource type="BoxShape" id=1]
+extents = Vector3( 0.204671, 0.202636, 0.20635 )
+
+[sub_resource type="GDScript" id=2]
+script/source = "extends Spatial
+
+var active = false
+
+func open():
+	if !active:
+		active = true
+		$AnimationPlayer.play(\"open\")
+	else:
+		active = false
+		$AnimationPlayer.play_backwards(\"open\")
+"
+
+[sub_resource type="CylinderShape" id=3]
+height = 0.410528
+radius = 0.21921
+
+[sub_resource type="CylinderShape" id=4]
+height = 0.424093
+radius = 0.201847
+
+[sub_resource type="Animation" id=5]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("../13Tapon:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector3( -6.83245e-07, -90, 180 ) ]
+}
+
+[sub_resource type="Animation" id=6]
+resource_name = "open"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("../13Tapon:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5, 1, 1.5, 2 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0, 180 ), Vector3( 0, 90, 180 ), Vector3( 0, 180, 180 ), Vector3( 0, 270, 180 ), Vector3( 0, 360, 180 ) ]
+}
+
+[node name="valv3" instance=ExtResource( 1 )]
+
+[node name="04PrensaEstopa" parent="." index="0"]
+material/0 = ExtResource( 3 )
+
+[node name="13Tapon" parent="." index="1"]
+transform = Transform( 4.37114e-08, -1.19249e-08, -1, -8.74228e-08, -1, 1.19249e-08, -1, 8.74228e-08, -4.37114e-08, 0, 0.108804, 0 )
+material/0 = ExtResource( 4 )
+
+[node name="07Volante" parent="13Tapon" index="0"]
+material/0 = ExtResource( 2 )
+
+[node name="Nut" parent="13Tapon" index="1"]
+material/0 = ExtResource( 5 )
+
+[node name="01CuerpoInferior" parent="." index="2"]
+material/0 = ExtResource( 4 )
+
+[node name="03CuerpoSuperior" parent="." index="3"]
+material/0 = ExtResource( 6 )
+
+[node name="Bolt001" parent="." index="5"]
+material/0 = ExtResource( 4 )
+
+[node name="Nut002" parent="Bolt001" index="0"]
+material/0 = ExtResource( 4 )
+
+[node name="Bolt002" parent="." index="6"]
+material/0 = ExtResource( 4 )
+
+[node name="Nut001" parent="Bolt002" index="0"]
+material/0 = ExtResource( 4 )
+
+[node name="Bolt003" parent="." index="7"]
+material/0 = ExtResource( 4 )
+
+[node name="Nut003" parent="Bolt003" index="0"]
+material/0 = ExtResource( 4 )
+
+[node name="Bolt004" parent="." index="8"]
+material/0 = ExtResource( 4 )
+
+[node name="Nut004" parent="Bolt004" index="0"]
+material/0 = ExtResource( 4 )
+
+[node name="Bolt005" parent="." index="9"]
+material/0 = ExtResource( 4 )
+
+[node name="Nut005" parent="Bolt005" index="0"]
+material/0 = ExtResource( 4 )
+
+[node name="Bolt006" parent="." index="10"]
+material/0 = ExtResource( 4 )
+
+[node name="Nut006" parent="Bolt006" index="0"]
+material/0 = ExtResource( 4 )
+
+[node name="StaticBody" type="StaticBody" parent="." index="11"]
+transform = Transform( 0.326627, 0, 0, 0, 0.437644, 0, 0, 0, 0.437149, 0, 0.0754599, 0 )
+
+[node name="CollisionShape" type="CollisionShape" parent="StaticBody" index="0"]
+shape = SubResource( 1 )
+
+[node name="Valve" type="Spatial" parent="." index="12"]
+script = SubResource( 2 )
+
+[node name="StaticBody2" type="StaticBody" parent="Valve" index="0"]
+transform = Transform( 0.0948215, 0, 0, 0, 0.612112, 0, 0, 0, 0.0844828, 0, 0.16019, 0 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Valve/StaticBody2" index="0"]
+shape = SubResource( 3 )
+
+[node name="StaticBody" type="StaticBody" parent="Valve" index="1"]
+transform = Transform( 0.357773, 0, 0, 0, 0.0392158, 0, 0, 0, 0.361126, 0, 0.2633, 0 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Valve/StaticBody" index="0"]
+shape = SubResource( 4 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Valve" index="2"]
+anims/RESET = SubResource( 5 )
+anims/open = SubResource( 6 )
+
+[node name="interactive" parent="Valve" index="3" instance=ExtResource( 7 )]
+transform = Transform( 0.0699149, 0, 0, 0, 0.105119, 0, 0, 0, 0.0728567, 0, 0.18286, 0 )
+left_click_action = "open"
+left_click_label = "Открыть/Закрыть"

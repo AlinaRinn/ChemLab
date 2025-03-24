@@ -1,0 +1,43 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://site/fonts/CascadiaMono/CascadiaMono-Bold.otf" type="DynamicFontData" id=1]
+[ext_resource path="res://assets/materials/plastic_white.material" type="Material" id=2]
+
+[sub_resource type="GDScript" id=4]
+script/source = "extends Spatial
+
+export(String) var label_name
+export(String) var label_extra
+export(int) var font_size
+
+func _ready():
+	$MeshInstance/Label3D.text = label_name
+	$MeshInstance/Label3D.font.size = font_size
+	if label_extra != null:
+		$MeshInstance/Label3D.text = label_name + \"\\n\" + label_extra
+"
+
+[sub_resource type="CubeMesh" id=1]
+
+[sub_resource type="Skin" id=2]
+
+[sub_resource type="DynamicFont" id=5]
+size = 40
+font_data = ExtResource( 1 )
+
+[node name="label" type="Spatial"]
+transform = Transform( 0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0 )
+script = SubResource( 4 )
+
+[node name="MeshInstance" type="MeshInstance" parent="."]
+transform = Transform( 0.376239, 0, 0, 0, 0.227337, 0, 0, 0, 0.000437023, 0, 0, 0 )
+mesh = SubResource( 1 )
+skin = SubResource( 2 )
+material/0 = ExtResource( 2 )
+
+[node name="Label3D" type="Label3D" parent="MeshInstance"]
+transform = Transform( 2.25, 0, 0, 0, 5, 0, 0, 0, 5, 0, 0.0401309, 1.17671 )
+pixel_size = 0.0025
+double_sided = false
+modulate = Color( 0, 0, 0, 1 )
+font = SubResource( 5 )
