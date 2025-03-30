@@ -1,0 +1,150 @@
+[gd_scene load_steps=15 format=2]
+
+[ext_resource path="res://assets/models/rotametr.glb" type="PackedScene" id=1]
+[ext_resource path="res://assets/materials/tube.material" type="Material" id=2]
+[ext_resource path="res://assets/materials/paint_green.material" type="Material" id=3]
+[ext_resource path="res://site/fonts/CascadiaMono/CascadiaMono-Bold.otf" type="DynamicFontData" id=4]
+[ext_resource path="res://assets/materials/water2.material" type="Material" id=5]
+
+[sub_resource type="GDScript" id=8]
+script/source = "extends Spatial
+
+export(float) var flow
+
+func _ready():
+	refresh()
+
+func refresh():
+	$Flow.text = String(flow) + \" ml/min\"
+"
+
+[sub_resource type="CylinderShape" id=1]
+height = 0.431218
+radius = 0.209338
+
+[sub_resource type="SphereMesh" id=2]
+
+[sub_resource type="CylinderMesh" id=4]
+
+[sub_resource type="DynamicFont" id=3]
+size = 24
+font_data = ExtResource( 4 )
+
+[sub_resource type="DynamicFont" id=7]
+size = 20
+font_data = ExtResource( 4 )
+
+[sub_resource type="DynamicFont" id=9]
+size = 48
+font_data = ExtResource( 4 )
+
+[sub_resource type="Animation" id=5]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("MeshInstance2:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ false ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("MeshInstance:translation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector3( 0, -0.0021668, -1.09334 ) ]
+}
+
+[sub_resource type="Animation" id=6]
+resource_name = "flow0"
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("MeshInstance2:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("MeshInstance:translation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0, -0.0021668, -1.09334 ), Vector3( 0, -0.0021668, -1.11435 ), Vector3( 0, -0.00216679, -1.07233 ), Vector3( 0, -0.0021668, -1.10384 ), Vector3( 0, -0.0021668, -1.10384 ), Vector3( 0, -0.0021668, -1.08914 ), Vector3( 0, -0.0021668, -1.10174 ), Vector3( 0, -0.0021668, -1.08914 ), Vector3( 0, -0.0021668, -1.11645 ), Vector3( 0, -0.0021668, -1.08914 ), Vector3( 0, -0.002, -1.093 ) ]
+}
+
+[node name="rotametr" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0 )
+script = SubResource( 8 )
+
+[node name="RM400-200I-PVC_R0" parent="." index="0"]
+transform = Transform( 10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 0, 0 )
+material/3 = ExtResource( 2 )
+
+[node name="StaticBody" type="StaticBody" parent="." index="1"]
+transform = Transform( 2.50797, 0, 0, 0, 0.656029, 1.59174e-06, 0, 1.59174e-06, 37.0707, 0, -7.19989e-08, -1.64714 )
+
+[node name="CollisionShape" type="CollisionShape" parent="StaticBody" index="0"]
+transform = Transform( 1, 0, 0, 0, 1.14575e-07, 3.87896, 0, -0.257801, -2.01997e-07, 0, 0, 0 )
+shape = SubResource( 1 )
+
+[node name="MeshInstance" type="MeshInstance" parent="." index="2"]
+transform = Transform( 0.15, 0, 0, 0, 0.15, 0, 0, 0, 0.15, 0, -0.0021668, -1.09334 )
+mesh = SubResource( 2 )
+material/0 = ExtResource( 3 )
+
+[node name="MeshInstance2" type="MeshInstance" parent="." index="3"]
+transform = Transform( 0.2565, 0, 0, 0, -5.7149e-08, 0.2565, 0, -1.30742, -1.1212e-08, 0, -7.28243e-08, -1.66603 )
+visible = false
+mesh = SubResource( 4 )
+material/0 = ExtResource( 5 )
+
+[node name="Scale" type="Label3D" parent="." index="4"]
+transform = Transform( -4.37114e-08, 0, -1, 1, -4.37114e-08, -4.37114e-08, -4.37114e-08, -1, 1.91069e-15, -0.220147, -0.00929165, -1.88271 )
+pixel_size = 0.005
+double_sided = false
+text = "-60
+-50
+-40
+-30
+-20
+-10"
+font = SubResource( 3 )
+
+[node name="Units" type="Label3D" parent="." index="5"]
+transform = Transform( -4.37114e-08, 0, -1, 1, -4.37114e-08, -4.37114e-08, -4.37114e-08, -1, 1.91069e-15, -0.220147, -0.000220332, -2.63107 )
+pixel_size = 0.005
+double_sided = false
+text = "L/H"
+font = SubResource( 7 )
+
+[node name="Flow" type="Label3D" parent="." index="6"]
+transform = Transform( -4.37114e-08, 0, -1, 1, -4.37114e-08, -4.37114e-08, -4.37114e-08, -1, 1.91069e-15, -0.438894, -0.00022024, -0.536863 )
+pixel_size = 0.005
+billboard = 1
+double_sided = false
+font = SubResource( 9 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="7"]
+anims/RESET = SubResource( 5 )
+anims/flow0 = SubResource( 6 )

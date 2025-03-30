@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=2]
+[gd_scene load_steps=28 format=2]
 
 [ext_resource path="res://objects/static/room/wall_lab.tscn" type="PackedScene" id=1]
 [ext_resource path="res://objects/static/room/floor_lab.tscn" type="PackedScene" id=2]
@@ -24,6 +24,9 @@
 [ext_resource path="res://objects/interactive/auto.tscn" type="PackedScene" id=22]
 [ext_resource path="res://objects/interactive/auto2.tscn" type="PackedScene" id=23]
 [ext_resource path="res://objects/interactive/valve.tscn" type="PackedScene" id=24]
+[ext_resource path="res://objects/interactive/rotametr.tscn" type="PackedScene" id=25]
+[ext_resource path="res://objects/interactive/rotametr2.tscn" type="PackedScene" id=26]
+[ext_resource path="res://objects/interactive/switch.tscn" type="PackedScene" id=27]
 
 [node name="area" type="Spatial"]
 
@@ -61,6 +64,9 @@ transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 1.51, 2
 
 [node name="door" parent="room/wall_door" instance=ExtResource( 7 )]
 transform = Transform( 2, 0, 0, 0, 2.16, 0, 0, 0, 2, 0.148704, -2.97627, 2.98168 )
+
+[node name="switch" parent="room/wall_door" instance=ExtResource( 27 )]
+transform = Transform( -1.74846e-08, -0.2, -8.74228e-09, 8.74228e-09, -8.74228e-09, 0.2, -0.2, 1.74846e-08, 8.74228e-09, -0.11547, 0.239842, 2.43373 )
 
 [node name="floor" parent="room" instance=ExtResource( 2 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, -0.0548401 )
@@ -259,6 +265,24 @@ transform = Transform( 1.06875, -2.45347e-07, -1.85112, -4.67162e-08, 2.13749, -
 
 [node name="nut" parent="table/pipe_in_pipe/flange3/bolt6" instance=ExtResource( 13 )]
 transform = Transform( -0.95, 8.30515e-08, -7.1535e-08, -8.30517e-08, -0.95, 2.03875e-07, -7.1535e-08, 2.03875e-07, 0.95, 7.14064e-05, -0.0280511, 8.20756e-05 )
+
+[node name="rotametr" parent="table/pipe_in_pipe" instance=ExtResource( 25 )]
+transform = Transform( -0.2, -1.74846e-08, 7.64274e-16, 0, -8.74228e-09, -0.2, 1.74846e-08, -0.2, 8.74228e-09, -0.264903, 0.664843, -2.45432 )
+
+[node name="Tube 90\'" parent="table/pipe_in_pipe/rotametr" instance=ExtResource( 16 )]
+transform = Transform( -3.49691e-07, -1.04907e-06, 8, -1.74846e-06, 8, 1.04907e-06, -8, -1.74846e-06, -3.49691e-07, 1.1591, -0.0023737, -4.71048 )
+
+[node name="Tube 90\'2" parent="table/pipe_in_pipe/rotametr" instance=ExtResource( 16 )]
+transform = Transform( -8, -2.79753e-06, -6.99382e-07, -2.79753e-06, 8, -6.99383e-07, 6.99382e-07, -6.99384e-07, -8, -0.00589943, -0.0023737, 0.286481 )
+
+[node name="rotametr2" parent="table/pipe_in_pipe" instance=ExtResource( 26 )]
+transform = Transform( -0.2, -1.74846e-08, 7.64274e-16, 0, -8.74228e-09, -0.2, 1.74846e-08, -0.2, 8.74228e-09, -0.260148, 0.667959, -2.89779 )
+
+[node name="Tube 90\'" parent="table/pipe_in_pipe/rotametr2" instance=ExtResource( 16 )]
+transform = Transform( -1.04907e-06, -2.73987e-06, 8, -1.74846e-06, 8, 2.73987e-06, -8, -1.74846e-06, -1.04908e-06, 1.16107, 0.0110579, -4.70594 )
+
+[node name="Tube 90\'2" parent="table/pipe_in_pipe/rotametr2" instance=ExtResource( 16 )]
+transform = Transform( -8, -4.97504e-06, -1.39876e-06, -4.97504e-06, 8, -6.99383e-07, 1.39876e-06, -6.99384e-07, -8, -0.00875282, 0.000845909, 0.254651 )
 
 [node name="table2" parent="." instance=ExtResource( 8 )]
 transform = Transform( -1.09278e-09, 0, -0.025, 0, 0.025, 0, 0.025, 0, -1.09278e-09, 3.59387, 0.715927, 1.29394 )
