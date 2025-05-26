@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://assets/models/pipe_in_pipe.gltf" type="PackedScene" id=1]
 [ext_resource path="res://assets/materials/water3.material" type="Material" id=2]
@@ -7,29 +7,271 @@
 [ext_resource path="res://assets/materials/metal.material" type="Material" id=5]
 [ext_resource path="res://assets/materials/glass_pipe.material" type="Material" id=6]
 [ext_resource path="res://assets/materials/glass_invisible.material" type="Material" id=7]
-
-[sub_resource type="CylinderMesh" id=2]
+[ext_resource path="res://assets/materials/water3_lowpriority.material" type="Material" id=8]
 
 [sub_resource type="CubeMesh" id=3]
 
+[sub_resource type="CylinderMesh" id=2]
+
 [sub_resource type="BoxShape" id=1]
 extents = Vector3( 0.31781, 1.03532, 1.77079 )
+
+[sub_resource type="Animation" id=4]
+resource_name = "Filling"
+length = 8.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("Water/Pivot_1:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1, 4 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0.5, 0.2, 0 ), Vector3( 0.5, 0.2, 1 ), Vector3( 1, 1, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Water/Pivot_2:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.9, 1.9, 4.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0, 0 ), Vector3( 0.5, 0.2, 0 ), Vector3( 0.5, 0.2, 1 ), Vector3( 1, 1, 1 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Water/Pivot_1-2:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.9, 1, 4.9 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0, 0 ), Vector3( 0, 0.2, 0.5 ), Vector3( 1, 0.22, 0.5 ), Vector3( 1, 1, 1 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Water/Pivot_3:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 4, 4.7, 5.5, 6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0, 0 ), Vector3( 0, 0, 0 ), Vector3( 1, 0.22, 1 ), Vector3( 1, 0.9, 1 ), Vector3( 1, 1, 1 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Water/Pivot_4:scale")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 5.2, 5.3, 6, 8 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0, 0 ), Vector3( 0, 0, 0 ), Vector3( 0.5, 0.1, 0 ), Vector3( 0.5, 0.6, 1 ), Vector3( 1, 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=5]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Water/Pivot_1:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Water/Pivot_2:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector3( 1, 0.2, 0 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Water/Pivot_1-2:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector3( 1, 0, 0 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Water/Pivot_3:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0, 0 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Water/Pivot_4:scale")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector3( 0.5, 0.1, 0 ) ]
+}
 
 [node name="pipe_in_pipe" instance=ExtResource( 1 )]
 
 [node name="Water" type="Spatial" parent="." index="0"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.00186, 0 )
 
-[node name="Water" type="MeshInstance" parent="Water" index="0"]
-transform = Transform( 0.1, 0, 0, 0, -4.37114e-09, -0.1, 0, 1.38102, -6.03663e-08, 0.181751, -0.772038, 0 )
-mesh = SubResource( 2 )
-material/0 = ExtResource( 2 )
-
-[node name="Hider" type="MeshInstance" parent="Water" index="1"]
+[node name="Hider" type="MeshInstance" parent="Water" index="0"]
 transform = Transform( 0.481379, 0, 0, 0, 1, 0, 0, 0, 1.63211, 0, 2.14515, 0 )
 visible = false
 mesh = SubResource( 3 )
 material/0 = ExtResource( 7 )
+
+[node name="WaterFlow_4" type="MeshInstance" parent="Water" index="1"]
+transform = Transform( 0.1, 0, 0, 0, -4.37114e-09, -0.1, 0, 1.38102, -6.03663e-08, 0.181751, -0.371952, 0 )
+mesh = SubResource( 2 )
+material/0 = ExtResource( 2 )
+
+[node name="WaterFlow_5" type="MeshInstance" parent="Water" index="2"]
+transform = Transform( 0.1, 0, 0, 0, -4.37114e-09, -0.1, 0, 1.38102, -6.03663e-08, 0.181751, 0.027838, 0 )
+mesh = SubResource( 2 )
+material/0 = ExtResource( 2 )
+
+[node name="WaterFlow_6" type="MeshInstance" parent="Water" index="3"]
+transform = Transform( 0.1, 0, 0, 0, -4.37114e-09, -0.1, 0, 1.38102, -6.03663e-08, -0.181261, 0.0282971, 0 )
+mesh = SubResource( 2 )
+material/0 = ExtResource( 2 )
+
+[node name="WaterFlow_7" type="MeshInstance" parent="Water" index="4"]
+transform = Transform( 0.1, 0, 0, 0, -4.37114e-09, -0.1, 0, 1.38102, -6.03663e-08, 0.181751, 0.428614, 0 )
+mesh = SubResource( 2 )
+material/0 = ExtResource( 2 )
+
+[node name="WaterFlow_8" type="MeshInstance" parent="Water" index="5"]
+transform = Transform( 0.1, 0, 0, 0, -4.37114e-09, -0.1, 0, 1.38102, -6.03663e-08, -0.181216, 0.428267, 0 )
+mesh = SubResource( 2 )
+material/0 = ExtResource( 2 )
+
+[node name="WaterFlow_9" type="MeshInstance" parent="Water" index="6"]
+transform = Transform( 0.1, 0, 0, 0, -4.37114e-09, -0.1, 0, 1.38102, -6.03663e-08, 0.181751, 0.827865, 0 )
+mesh = SubResource( 2 )
+material/0 = ExtResource( 2 )
+
+[node name="WaterFlow_10" type="MeshInstance" parent="Water" index="7"]
+transform = Transform( 0.1, 0, 0, 0, -4.37114e-09, -0.1, 0, 1.38102, -6.03663e-08, -0.18072, 0.828575, 0 )
+mesh = SubResource( 2 )
+material/0 = ExtResource( 2 )
+
+[node name="WaterFlowVert_2" type="MeshInstance" parent="Water" index="8"]
+transform = Transform( 0.0971471, 0, 0, 0, -0.178343, 8.36011e-09, 0, -6.10942e-08, -0.0943723, 0.181555, -0.173188, 0.800077 )
+mesh = SubResource( 2 )
+material/0 = ExtResource( 8 )
+
+[node name="WaterFlowVert_3" type="MeshInstance" parent="Water" index="9"]
+transform = Transform( 0.0971471, 0, 0, 0, -0.178343, 8.36011e-09, 0, -6.10942e-08, -0.0943723, -0.181447, 0.228205, -0.799971 )
+mesh = SubResource( 2 )
+material/0 = ExtResource( 8 )
+
+[node name="WaterFlowVert_4" type="MeshInstance" parent="Water" index="10"]
+transform = Transform( 0.0971471, 0, 0, 0, -0.178343, 8.36011e-09, 0, -6.10942e-08, -0.0943723, 0.181555, 0.628477, 0.799803 )
+mesh = SubResource( 2 )
+material/0 = ExtResource( 8 )
+
+[node name="WaterFlowHor_3" type="MeshInstance" parent="Water" index="11"]
+transform = Transform( -4.24644e-09, -0.178343, 8.36011e-09, -0.0971471, 7.79562e-09, -3.65432e-16, 0, -6.10942e-08, -0.0943723, 0.00151355, 0.0281928, -1.02522 )
+mesh = SubResource( 2 )
+material/0 = ExtResource( 8 )
+
+[node name="WaterFlowHor_4" type="MeshInstance" parent="Water" index="12"]
+transform = Transform( -4.24644e-09, -0.178343, 8.36011e-09, -0.0971471, 7.79562e-09, -3.65432e-16, 0, -6.10942e-08, -0.0943723, 0.00151355, 0.429204, 0.965103 )
+mesh = SubResource( 2 )
+material/0 = ExtResource( 8 )
+
+[node name="WaterFlowHor_5" type="MeshInstance" parent="Water" index="13"]
+transform = Transform( -4.24644e-09, -0.178343, 8.36011e-09, -0.0971471, 7.79562e-09, -3.65432e-16, 0, -6.10942e-08, -0.0943723, 0.00151355, 0.831818, -1.02522 )
+mesh = SubResource( 2 )
+material/0 = ExtResource( 8 )
+
+[node name="Pivot_1" type="Spatial" parent="Water" index="14"]
+transform = Transform( 0, 0, 0, 0, 0, 0, 0, 0, 0, 0.181859, -0.872032, 1.38092 )
+
+[node name="WaterFlow_1" type="MeshInstance" parent="Water/Pivot_1" index="0"]
+transform = Transform( 0.1, 0, 0, 0, -6.03663e-08, -0.1, 0, 1.38102, -4.37114e-09, -0.000107899, 0.0999945, -1.38092 )
+mesh = SubResource( 2 )
+skeleton = NodePath("../..")
+material/0 = ExtResource( 2 )
+
+[node name="Pivot_2" type="Spatial" parent="Water" index="15"]
+transform = Transform( 1, 0, 0, 0, 0.2, 0, 0, 0, 0, -0.185681, -0.874504, -1.38126 )
+
+[node name="WaterFlow_2" type="MeshInstance" parent="Water/Pivot_2" index="0"]
+transform = Transform( 0.1, 0, 0, 0, -6.03663e-08, -0.1, 0, 1.38102, -4.37114e-09, 0.00437407, 0.102466, 1.38126 )
+mesh = SubResource( 2 )
+skeleton = NodePath("../..")
+material/0 = ExtResource( 2 )
+
+[node name="Pivot_1-2" type="Spatial" parent="Water" index="16"]
+transform = Transform( 1, 0, 0, 0, 0, 0, 0, 0, 0, 0.158234, -0.872529, -1.02504 )
+
+[node name="WaterFlowHor_1" type="MeshInstance" parent="Water/Pivot_1-2" index="0"]
+transform = Transform( -4.24644e-09, -0.178343, 8.36011e-09, -0.0971471, 7.79562e-09, -3.65432e-16, 0, -6.10942e-08, -0.0943723, -0.15672, 0.100657, -0.000175953 )
+mesh = SubResource( 2 )
+skeleton = NodePath("../..")
+material/0 = ExtResource( 8 )
+
+[node name="Pivot_3" type="Spatial" parent="Water" index="17"]
+transform = Transform( 0, 0, 0, 0, 0, 0, 0, 0, 0, -0.181825, -0.75, -0.798653 )
+
+[node name="WaterFlowVert_1" type="MeshInstance" parent="Water/Pivot_3" index="0"]
+transform = Transform( 0.0971471, 0, 0, 0, -0.178343, 8.36011e-09, 0, -6.10942e-08, -0.0943723, 0.000378281, 0.177426, -0.00131828 )
+mesh = SubResource( 2 )
+skeleton = NodePath("../..")
+material/0 = ExtResource( 8 )
+
+[node name="Pivot_4" type="Spatial" parent="Water" index="18"]
+transform = Transform( 0.5, 0, 0, 0, 0.1, 0, 0, 0, 0, -0.182417, -0.471672, -1.38071 )
+
+[node name="WaterFlow_3" type="MeshInstance" parent="Water/Pivot_4" index="0"]
+transform = Transform( 0.1, 0, 0, 0, -4.37114e-09, -0.1, 0, 1.38102, -6.03663e-08, 0.00124823, 0.0998027, 1.38071 )
+mesh = SubResource( 2 )
+skeleton = NodePath("../..")
+material/0 = ExtResource( 2 )
+
+[node name="Pivot_4-5" type="Spatial" parent="Water" index="19"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.177602, -0.462966, 0.965838 )
+
+[node name="WaterFlowHor_2" type="MeshInstance" parent="Water/Pivot_4-5" index="0"]
+transform = Transform( -4.24644e-09, -0.178343, 8.36011e-09, -0.0971471, 7.79562e-09, -3.65432e-16, 0, -6.10942e-08, -0.0943723, 0.179115, 0.0925794, -0.000734985 )
+mesh = SubResource( 2 )
+skeleton = NodePath("../..")
+material/0 = ExtResource( 8 )
 
 [node name="Mesh_0" parent="Double pipe HE" index="0"]
 material/0 = ExtResource( 4 )
@@ -44,3 +286,5 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.990671, 0 )
 shape = SubResource( 1 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." index="2"]
+anims/Filling = SubResource( 4 )
+anims/RESET = SubResource( 5 )
