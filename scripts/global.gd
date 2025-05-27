@@ -1,5 +1,6 @@
 extends Node
 
+#signals
 signal lightOn
 signal lightOff
 signal paused
@@ -12,6 +13,7 @@ signal level_check_3
 signal level_check_4
 signal level_check_5
 signal level_check_finish
+signal waterflow
 
 # scenes
 var root_level

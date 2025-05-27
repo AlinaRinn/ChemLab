@@ -15,14 +15,19 @@ extents = Vector3( 0.204671, 0.202636, 0.20635 )
 script/source = "extends Spatial
 
 var active = false
+var finished
 
 func open():
 	if !active:
 		active = true
 		$AnimationPlayer.play(\"open\")
+		G.emit_signal(\"waterflow\", active)
+		$interactive.need_label = \"Открыт\"
 	else:
 		active = false
 		$AnimationPlayer.play_backwards(\"open\")
+		G.emit_signal(\"waterflow\", active)
+		$interactive.need_label = \"Закрыт\"
 "
 
 [sub_resource type="CylinderShape" id=3]
@@ -148,5 +153,6 @@ anims/open = SubResource( 6 )
 
 [node name="interactive" parent="Valve" index="3" instance=ExtResource( 7 )]
 transform = Transform( 0.0699149, 0, 0, 0, 0.105119, 0, 0, 0, 0.0728567, 0, 0.18286, 0 )
+label = "Холодная вода"
 left_click_action = "open"
 left_click_label = "Открыть/Закрыть"
