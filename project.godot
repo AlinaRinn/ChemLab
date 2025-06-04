@@ -29,6 +29,10 @@ default_bus_layout="res://templates/default_bus_layout.tres"
 
 G="*res://scripts/global.gd"
 
+[debug]
+
+gdscript/warnings/unused_signal=false
+
 [display]
 
 window/size/width=1920

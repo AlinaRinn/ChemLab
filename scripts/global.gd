@@ -66,7 +66,7 @@ func pause(p=true):
 
 # Меняет сцену
 func to(scene):
-	get_tree().change_scene("res://scenes/main/"+scene+".tscn")
+	print(get_tree().change_scene("res://scenes/main/"+scene+".tscn"))
 
 # Вставляет в путь к уровню значение переменной level, которая меняется через функции кнопок меню 
 func load_level():

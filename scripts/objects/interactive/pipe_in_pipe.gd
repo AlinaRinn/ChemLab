@@ -16,5 +16,5 @@ func waterflow(active):
 		audiopos = $AudioStreamPlayer3D.get_playback_position()
 		$AudioStreamPlayer3D.stop()
 
-func finished(anim_name):
+func finished():
 	finished = true
