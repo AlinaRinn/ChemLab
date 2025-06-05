@@ -343,6 +343,9 @@ transform = Transform( -8, -4.97504e-06, -1.39876e-06, -4.97504e-06, 8, -6.99383
 
 [node name="elemer" parent="table/pipe_in_pipe" instance=ExtResource( 29 )]
 transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -0.47104, 0.930526, -3.48313 )
+channel1 = 228.8
+channel2 = 1337.7
+channelNum = 2
 
 [node name="table2" parent="." instance=ExtResource( 8 )]
 transform = Transform( -1.09278e-09, 0, -0.025, 0, 0.025, 0, 0.025, 0, -1.09278e-09, 3.59387, 0.715927, 1.29394 )

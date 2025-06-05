@@ -1194,4 +1194,5 @@ ui_rotate={
 [rendering]
 
 quality/filters/msaa=2
+quality/depth/hdr=false
 environment/default_environment="res://environments/default_env.tres"

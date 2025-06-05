@@ -1,5 +1,51 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://assets/models/elemer.glb" type="PackedScene" id=1]
+[ext_resource path="res://assets/fonts/font_6.ttf" type="DynamicFontData" id=2]
+
+[sub_resource type="GDScript" id=4]
+script/source = "extends Spatial
+
+export(float) var channel1
+export(float) var channel2
+export(int) var channelNum
+
+func _ready():
+	$Temperature1.text = String(channel1)
+	$Temperature2.text = String(channel2)
+	$Channel.text = String(channelNum)
+"
+
+[sub_resource type="DynamicFont" id=1]
+size = 32
+outline_color = Color( 0, 1, 0.0627451, 1 )
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 64
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=3]
+size = 32
+font_data = ExtResource( 2 )
 
 [node name="elemer" instance=ExtResource( 1 )]
+script = SubResource( 4 )
+
+[node name="Channel" type="Label3D" parent="." index="1"]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.201067, 0.0785148, 0.56546 )
+modulate = Color( 0, 1, 0, 1 )
+text = "1"
+font = SubResource( 1 )
+
+[node name="Temperature1" type="Label3D" parent="." index="2"]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.20067, 0.134335, -0.223891 )
+modulate = Color( 1, 0, 0, 1 )
+text = "50.2"
+font = SubResource( 2 )
+
+[node name="Temperature2" type="Label3D" parent="." index="3"]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.20067, -0.287602, -0.434792 )
+modulate = Color( 1, 0, 0, 1 )
+text = "50.2"
+font = SubResource( 3 )
