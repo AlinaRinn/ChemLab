@@ -3,7 +3,7 @@
 [ext_resource path="res://assets/models/rotametr.glb" type="PackedScene" id=1]
 [ext_resource path="res://assets/materials/tube.material" type="Material" id=2]
 [ext_resource path="res://assets/materials/paint_green.material" type="Material" id=3]
-[ext_resource path="res://site/fonts/CascadiaMono/CascadiaMono-Bold.otf" type="DynamicFontData" id=4]
+[ext_resource path="res://assets/fonts/Cascadia/CascadiaMono-Bold.otf" type="DynamicFontData" id=4]
 [ext_resource path="res://assets/materials/water2.material" type="Material" id=5]
 
 [sub_resource type="GDScript" id=8]
@@ -21,6 +21,11 @@ func refresh():
 	
 func stop():
 	$AnimationPlayer.play(\"RESET\")
+
+func script_changed():
+	$Flow.text = String(flow * 1000 / 60) + \" ml/min\"
+	$AnimationPlayer.play(\"flow\")
+	$Pivot.translation.z = -0.0055 * flow
 "
 
 [sub_resource type="CylinderShape" id=1]
@@ -187,3 +192,5 @@ font = SubResource( 9 )
 anims/RESET = SubResource( 5 )
 anims/flow = SubResource( 10 )
 anims/flow0 = SubResource( 6 )
+
+[connection signal="script_changed" from="." to="." method="script_changed"]

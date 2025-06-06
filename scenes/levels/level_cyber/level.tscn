@@ -342,7 +342,11 @@ transform = Transform( -1.04907e-06, -2.73987e-06, 8, -1.74846e-06, 8, 2.73987e-
 transform = Transform( -8, -4.97504e-06, -1.39876e-06, -4.97504e-06, 8, -6.99383e-07, 1.39876e-06, -6.99384e-07, -8, -0.00875282, 0.000845909, 0.254651 )
 
 [node name="elemer" parent="table/pipe_in_pipe" instance=ExtResource( 29 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -4.76837e-07, 1.2823, -4.1407 )
+transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -0.44629, 1.02948, -3.47053 )
+channel1 = 344.0
+channel2 = 44.0
+channelNum = 55
+progressBar = 77.0
 
 [node name="table2" parent="." instance=ExtResource( 8 )]
 transform = Transform( -1.09278e-09, 0, -0.025, 0, 0.025, 0, 0.025, 0, -1.09278e-09, 3.59387, 0.715927, 1.29394 )
