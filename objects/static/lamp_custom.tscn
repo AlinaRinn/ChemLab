@@ -7,14 +7,13 @@
 script/source = "extends Spatial
 
 func _ready():
-	G.connect(\"lightOff\", self, \"switchOff\")
-	G.connect(\"lightOn\", self, \"switchOn\")
+	G.connect(\"light\", self, \"switch\")
 
-func switchOn():
-	$LightAnimation.play(\"LightOn\")
-
-func switchOff():
-	$LightAnimation.play(\"LightOff\")
+func switch(state):
+	if !state:
+		$LightAnimation.play(\"LightOn\")
+	else:
+		$LightAnimation.play(\"LightOff\")
 "
 
 [sub_resource type="SpatialMaterial" id=1]

@@ -9,23 +9,19 @@
 [sub_resource type="GDScript" id=8]
 script/source = "extends Spatial
 
-export(float) var flow
-
 func _ready():
-	refresh()
+	G.connect(\"waterflow\", self, \"refresh\")
 
-func refresh():
-	$Flow.text = String(flow * 1000 / 60) + \" ml/min\"
+# range 0-600 L/H
+func refresh(_state, level): 
+	$Flow.text = String(level * 6 * 1000 / 60) + \" ml/min\"
 	$AnimationPlayer.play(\"flow\")
-	$Pivot.translation.z = -0.0055 * flow
+	$Pivot.translation.z = -1.2 -0.0015 * (level * 6)
+	if level == 0:
+		stop()
 	
 func stop():
 	$AnimationPlayer.play(\"RESET\")
-
-func script_changed():
-	$Flow.text = String(flow * 1000 / 60) + \" ml/min\"
-	$AnimationPlayer.play(\"flow\")
-	$Pivot.translation.z = -0.0055 * flow
 "
 
 [sub_resource type="CylinderShape" id=1]
@@ -154,7 +150,7 @@ mesh = SubResource( 4 )
 material/0 = ExtResource( 5 )
 
 [node name="Pivot" type="Spatial" parent="." index="3"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.2 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1 )
 
 [node name="MeshInstance" type="MeshInstance" parent="Pivot" index="0"]
 transform = Transform( 0.15, 0, 0, 0, 0.15, 0, 0, 0, 0.15, 0, 0, 0 )
@@ -192,5 +188,3 @@ font = SubResource( 9 )
 anims/RESET = SubResource( 5 )
 anims/flow = SubResource( 10 )
 anims/flow0 = SubResource( 6 )
-
-[connection signal="script_changed" from="." to="." method="script_changed"]

@@ -10,8 +10,13 @@
 script/source = "extends VBoxContainer
 
 func _ready():
-	G.connect(\"hide_tasks\", self, \"hide\")
-	G.connect(\"show_tasks\", self, \"show\")
+	G.connect(\"tasks\", self, \"switcher\")
+	
+func switcher(state):
+	if !state:
+		hide()
+	else:	
+		show()
 "
 
 [sub_resource type="DynamicFont" id=10]

@@ -7,7 +7,7 @@ var audiopos = 0.0
 func _ready():
 	G.connect("waterflow", self, "waterflow")
 	
-func waterflow(active):
+func waterflow(active, _level):
 	if active and !finished:
 		$AnimationPlayer.play("Filling")
 		$AudioStreamPlayer3D.play(audiopos)
@@ -16,5 +16,6 @@ func waterflow(active):
 		audiopos = $AudioStreamPlayer3D.get_playback_position()
 		$AudioStreamPlayer3D.stop()
 
-func finished():
+func _on_AnimationPlayer_animation_finished(anim_name):
 	finished = true
+	G.exchanger_full = true

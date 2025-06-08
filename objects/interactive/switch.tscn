@@ -15,11 +15,11 @@ func switch():
 	if !active:
 		active = true
 		$SwitchAnimation.play(\"switch\")
-		G.emit_signal(\"lightOff\")
+		G.emit_signal(\"light\", 1)
 	else:
 		active = false
 		$SwitchAnimation.play_backwards(\"switch\")
-		G.emit_signal(\"lightOn\")
+		G.emit_signal(\"light\", 0)
 
 "
 
@@ -79,5 +79,4 @@ anims/switch = SubResource( 2 )
 [node name="interactive" parent="trigger" index="1" instance=ExtResource( 5 )]
 transform = Transform( 0.538773, 0, 0, 0, 0.107304, 0, 0, 0, 0.668104, -0.00367272, 0.306013, 0.0096726 )
 label = "Выключатель"
-left_click_action = "switch"
 left_click_label = "Вкл/Выкл свет"

@@ -324,7 +324,6 @@ transform = Transform( 0.534375, -7.59578e-08, -0.925565, 0.925565, 5.10813e-08,
 
 [node name="rotametr_cold" parent="table/pipe_in_pipe" instance=ExtResource( 25 )]
 transform = Transform( -0.2, -1.74846e-08, 7.64274e-16, 0, -8.74228e-09, -0.2, 1.74846e-08, -0.2, 8.74228e-09, -0.264903, 0.664843, -2.45432 )
-flow = 300.0
 
 [node name="Tube 90\'" parent="table/pipe_in_pipe/rotametr_cold" instance=ExtResource( 16 )]
 transform = Transform( -3.49691e-07, -1.04907e-06, 8, -1.74846e-06, 8, 1.04907e-06, -8, -1.74846e-06, -3.49691e-07, 1.1591, -0.0023737, -4.71048 )

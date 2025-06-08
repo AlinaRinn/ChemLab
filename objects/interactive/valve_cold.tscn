@@ -15,19 +15,36 @@ extents = Vector3( 0.204671, 0.202636, 0.20635 )
 script/source = "extends Spatial
 
 var active = false
-var finished
+var level = 0.0
+var anime = false
 
-func open():
-	if !active:
+func opening():
+	if !G.exchanger_full and !anime:
 		active = true
 		$AnimationPlayer.play(\"open\")
-		G.emit_signal(\"waterflow\", active)
-		$interactive.need_label = \"Открыт\"
-	else:
+		level = 100.0
+		G.emit_signal(\"waterflow\", active, level)
+	if G.exchanger_full:
+		active = true
+		$interactive.need_label = \"Открытие\"
+		if level < 100.0:
+			level = level + 0.1
+			get_parent().get_child(1).rotate_y(0.01)
+		G.emit_signal(\"waterflow\", active, level)
+
+
+func closing():
+	if G.exchanger_full:
 		active = false
-		$AnimationPlayer.play_backwards(\"open\")
-		G.emit_signal(\"waterflow\", active)
-		$interactive.need_label = \"Закрыт\"
+		$interactive.need_label = \"Закрытие\"
+		if level > 0.0:
+			level = level - 0.1
+			get_parent().get_child(1).rotate_y(-0.01)
+		G.emit_signal(\"waterflow\", active, level)
+
+
+func _on_AnimationPlayer_animation_started(anim_name):
+	anime = true
 "
 
 [sub_resource type="CylinderShape" id=3]
@@ -154,5 +171,8 @@ anims/open = SubResource( 6 )
 [node name="interactive" parent="Valve" index="3" instance=ExtResource( 7 )]
 transform = Transform( 0.0699149, 0, 0, 0, 0.105119, 0, 0, 0, 0.0728567, 0, 0.18286, 0 )
 label = "Холодная вода"
-left_click_action = "open"
+left_hold_action = "opening"
 left_click_label = "Открыть/Закрыть"
+right_hold_action = "closing"
+
+[connection signal="animation_started" from="Valve/AnimationPlayer" to="Valve" method="_on_AnimationPlayer_animation_started"]

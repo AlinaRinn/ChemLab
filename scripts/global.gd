@@ -44,19 +44,18 @@ var Resolitions: Dictionary = {"3840x2160":Vector2(3840, 2160),
 								"800x600":Vector2(800, 600)}
 
 # SIGNALS
-signal lightOn
-signal lightOff
 signal paused
-signal hide_tasks
-signal show_tasks
 signal escape
+signal light(state)
+signal tasks(state)
+signal waterflow(active, level)
+var exchanger_full = false
 signal level_check_1
 signal level_check_2
 signal level_check_3
 signal level_check_4
 signal level_check_5
 signal level_check_finish
-signal waterflow
 
 # GAME ACTIONS
 # Пауза

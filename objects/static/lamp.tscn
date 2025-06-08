@@ -10,14 +10,13 @@ albedo_texture = ExtResource( 1 )
 script/source = "extends OmniLight
 
 func _ready():
-	G.connect(\"lightOff\", self, \"switchOff\")
-	G.connect(\"lightOn\", self, \"switchOn\")
+	G.connect(\"light\", self, \"switch\")
 
-func switchOn():
-	$LightAnimation.play(\"LightOn\")
-
-func switchOff():
-	$LightAnimation.play(\"LightOff\")
+func switch(state):
+	if !state:
+		$LightAnimation.play(\"LightOn\")
+	else:
+		$LightAnimation.play(\"LightOff\")
 "
 
 [sub_resource type="Animation" id=2]
