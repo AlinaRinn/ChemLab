@@ -1,0 +1,46 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://assets/fonts/Cascadia/CascadiaMonoItalic-BoldItalic.otf" type="DynamicFontData" id=1]
+[ext_resource path="res://assets/materials/board3material.material" type="Material" id=2]
+[ext_resource path="res://assets/fonts/Cascadia/CascadiaMonoItalic-Italic.otf" type="DynamicFontData" id=3]
+
+[sub_resource type="CubeMesh" id=1]
+size = Vector3( 3, 2, 0.05 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 64
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=3]
+size = 24
+font_data = ExtResource( 3 )
+
+[node name="Board" type="Spatial"]
+
+[node name="MeshInstance" type="MeshInstance" parent="."]
+transform = Transform( 0.914961, 0, 0, 0, 0.914961, 0, 0, 0, 0.914961, 0, 0, 0 )
+mesh = SubResource( 1 )
+material/0 = ExtResource( 2 )
+
+[node name="Title" type="Label3D" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.682067, 0.0277039 )
+pixel_size = 0.0025
+text = "ХОД РАБОТЫ
+"
+font = SubResource( 2 )
+
+[node name="Text" type="Label3D" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.29822, 0.635397, 0.0261117 )
+pixel_size = 0.0025
+double_sided = false
+text = "1. Включи тумблеры подачи питания на элементы установки в электрощитке
+2. Открой кран подачи холодной воды и дождись заполнения теплообменника
+3. С помощью кранов горячей и холодной воды установи необходимый режим 
+теплообмена
+4. Запусти программу \"The Fish\" на ПК
+5. 
+
+"
+font = SubResource( 3 )
+horizontal_alignment = 0
+vertical_alignment = 0

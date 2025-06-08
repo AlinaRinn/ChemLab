@@ -2,7 +2,7 @@
 
 [ext_resource path="res://assets/models/rotametr.glb" type="PackedScene" id=1]
 [ext_resource path="res://assets/materials/tube.material" type="Material" id=2]
-[ext_resource path="res://assets/materials/paint_green.material" type="Material" id=3]
+[ext_resource path="res://assets/materials/emission_green.material" type="Material" id=3]
 [ext_resource path="res://assets/fonts/Cascadia/CascadiaMono-Bold.otf" type="DynamicFontData" id=4]
 [ext_resource path="res://assets/materials/water2.material" type="Material" id=5]
 

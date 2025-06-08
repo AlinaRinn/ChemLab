@@ -8,20 +8,26 @@
 
 [sub_resource type="GDScript" id=5]
 script/source = "extends StaticBody
-var active1
-var active2
-var active3
+signal active1(state)
+signal active2(state)
+signal active3(state)
+var active1 = false
+var active2 = false
+var active3 = false
 
+	
 func switch1():
 	if !active1:
 		$Animation1.playback_speed = 4
 		$Animation1.play(\"switch1\")
 		$Audio3Dup.play()
+		emit_signal(\"active1\", true)
 		active1 = true
 	else:
 		$Animation1.playback_speed = 16
 		$Animation1.play_backwards(\"switch1\")
 		$Audio3Ddown.play()
+		emit_signal(\"active1\", false)
 		active1 = false
 
 func switch2():
@@ -29,11 +35,13 @@ func switch2():
 		$Animation2.playback_speed = 4
 		$Animation2.play(\"switch2\")
 		$Audio3Dup.play()
+		emit_signal(\"active2\", true)
 		active2 = true
 	else:
 		$Animation2.playback_speed = 16
 		$Animation2.play_backwards(\"switch2\")
 		$Audio3Ddown.play()
+		emit_signal(\"active2\", false)
 		active2 = false
 
 func switch3():
@@ -41,11 +49,13 @@ func switch3():
 		$Animation3.playback_speed = 4
 		$Animation3.play(\"switch3\")
 		$Audio3Dup.play()
+		emit_signal(\"active3\", true)
 		active3 = true
 	else:
 		$Animation3.playback_speed = 16
 		$Animation3.play_backwards(\"switch3\")
 		$Audio3Ddown.play()
+		emit_signal(\"active3\", false)
 		active3 = false
 "
 

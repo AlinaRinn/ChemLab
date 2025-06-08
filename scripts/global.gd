@@ -49,6 +49,8 @@ signal escape
 signal light(state)
 signal tasks(state)
 signal waterflow(active, level)
+signal heatflow(level)
+signal power(config)
 var exchanger_full = false
 signal level_check_1
 signal level_check_2
