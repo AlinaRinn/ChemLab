@@ -17,7 +17,8 @@ func _ready():
 	$Temperature2.text = String(channel2)
 	$Channel.text = String(channelNum)
 
-# Активый баг движка годот - Sprite3D должен быть после Viewport (есть в оф беклоге)"
+# Активый баг движка годот - Sprite3D должен быть после Viewport (есть в оф беклоге)
+"
 
 [sub_resource type="Image" id=11]
 data = {

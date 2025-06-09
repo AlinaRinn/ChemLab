@@ -16,6 +16,6 @@ func waterflow(active, _level):
 		audiopos = $AudioStreamPlayer3D.get_playback_position()
 		$AudioStreamPlayer3D.stop()
 
-func _on_AnimationPlayer_animation_finished(anim_name):
+func _on_AnimationPlayer_animation_finished(_anim_name):
 	finished = true
 	G.exchanger_full = true
