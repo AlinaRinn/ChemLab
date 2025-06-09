@@ -19,3 +19,6 @@ func waterflow(active, _level):
 func _on_AnimationPlayer_animation_finished(_anim_name):
 	finished = true
 	G.exchanger_full = true
+
+func heat_exchange(externalFlow, externalFlow_inTemp, internalFlow, internalFlow_inTemp):
+	pass

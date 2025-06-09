@@ -9,6 +9,7 @@
 script/source = "extends Spatial
 var switch = false
 var power = false
+signal pc_on(state)
 
 func on_off(state):
 	if state:
@@ -21,11 +22,13 @@ func power_on():
 	if power and !switch:
 		$AnimationPlayer.play(\"work\")
 		switch = true
+		emit_signal(\"pc_on\", true)
 	
 func shutdown():
 	if switch:
 		$AnimationPlayer.play(\"RESET\")
 		switch = false
+		emit_signal(\"pc_on\", false)
 "
 
 [sub_resource type="BoxShape" id=1]
