@@ -8,7 +8,7 @@
 [ext_resource path="res://assets/materials/glass_pipe.material" type="Material" id=6]
 [ext_resource path="res://assets/materials/glass_invisible.material" type="Material" id=7]
 [ext_resource path="res://assets/materials/water3_lowpriority.material" type="Material" id=8]
-[ext_resource path="res://scripts/objects/interactive/pipe_in_pipe.gd" type="Script" id=9]
+[ext_resource path="res://objects/interactive/pipe_in_pipe.gd" type="Script" id=9]
 [ext_resource path="res://assets/audio/cold.mp3" type="AudioStream" id=10]
 
 [sub_resource type="CubeMesh" id=3]

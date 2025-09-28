@@ -1,0 +1,55 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://assets/fonts/Cascadia/CascadiaMonoItalic-BoldItalic.otf" type="DynamicFontData" id=1]
+[ext_resource path="res://assets/materials/board3material.material" type="Material" id=2]
+[ext_resource path="res://assets/fonts/Cascadia/CascadiaMonoItalic-Italic.otf" type="DynamicFontData" id=3]
+
+[sub_resource type="CubeMesh" id=1]
+size = Vector3( 3, 2, 0.05 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 64
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=3]
+size = 24
+font_data = ExtResource( 3 )
+
+[node name="Board" type="Spatial"]
+
+[node name="MeshInstance" type="MeshInstance" parent="."]
+transform = Transform( 0.914961, 0, 0, 0, 0.914961, 0, 0, 0, 0.914961, 0, 0, 0 )
+mesh = SubResource( 1 )
+material/0 = ExtResource( 2 )
+
+[node name="Title" type="Label3D" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.682067, 0.0277039 )
+pixel_size = 0.0025
+text = "Задание
+"
+font = SubResource( 2 )
+
+[node name="Text" type="Label3D" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.29822, 0.635397, 0.0261117 )
+pixel_size = 0.0025
+double_sided = false
+text = "Объемная скорость потока горячей воды V1 = 5000 мл/мин.
+Объемная скорость потока холодной воды V2 = 2500 мл/мин.
+Общая длина медной и стеклянной труб 
+теплообменника L (поверхность теплообмена) = 15 м = 15000 мм,
+Наружный диаметр стеклянной трубы – 100 мм, толщина стенок  – 5 мм, 
+средний диаметр = (100 + 90) / 2 = 95 мм
+Наружный диаметр медной трубы – 50 мм, толщина стенок  – 2 мм, 
+средний диаметр = (50 + 46) / 2 = 48 мм
+Температура окружающего воздуха T3 = 24 ℃
+
+
+Показания температур в точках установки термопар по длине труб: 
+> В четырех точках медной трубы:
+T1(0 м) = 42,7 С, T2(4,5 м) = 41,6 С, T3(9 м) = 38,5 С, T4(15 м) = 38,5 С; 
+> В четырех точках стеклянной трубы:
+T1(0 м) = 42,7 ℃, T2(4,5 м) = 41,6 ℃, T3(9 м) = 38,5 ℃, T4(15 м) = 38,5 ℃; 
+"
+font = SubResource( 3 )
+horizontal_alignment = 0
+vertical_alignment = 0
